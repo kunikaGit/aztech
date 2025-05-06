@@ -1,0 +1,76 @@
+@use './mixin.scss' as *;
+@import 'bootstrap/dist/css/bootstrap.min.css';
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+@font-face {
+	font-family: "DM Sans";
+	src: url("../fonts/DM_Sans/static/DMSans-Bold.ttf");
+	font-weight: 700;
+}
+@font-face {
+	font-family: "DM Sans";
+	src: url("../fonts/DM_Sans/static/DMSans-SemiBold.ttf");
+	font-weight: 600;
+}
+@font-face {
+	font-family: "DM Sans";
+	src: url("../fonts/DM_Sans/static/DMSans-Medium.ttf");
+	font-weight: 500;
+}
+@font-face {
+	font-family: "DM Sans";
+	src: url("../fonts/DM_Sans/static/DMSans-Regular.ttf");
+	font-weight: 400;
+}
+@font-face {
+	font-family: "DM Sans";
+	src: url("../fonts/DM_Sans/static/DMSans-Light.ttf");
+	font-weight: 300;
+}
+@font-face {
+	font-family: "Poppins";
+	src: url("../fonts/Poppins-Regular.ttf");
+	font-weight: 400;
+}
+  
+body {
+    font-family: "DM Sans";
+	background-color: var(--light-color);
+	font-size: 16px;
+}
+
+a{
+	text-decoration: none;
+	color: var(--black-color);
+}
+
+h1,h2,h3,h4,h5,h6{
+	color: var(--heading-color);
+}
+section{
+	padding: 50px 0;
+	position: relative;
+}
+.blue-btn{
+ @include blue-btn(var(--blue-color),var(--white-color),16px,10px 20px,6px);
+ box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.main-heading{
+	h2{
+		color: var(--heading-color);
+		font-size: 40px;
+		font-weight: 700;
+	}
+}
+.two-grid{
+	display: flex;
+	gap: 20px;
+	.grid-item{
+		width: 50%;
+	}
+}

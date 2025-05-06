@@ -1,0 +1,95 @@
+@use '../../../assets/scss/mixin.scss' as *;
+
+.banner {
+   padding: 80px 0;
+   .two-grid{
+    align-items: center;
+    .hero-content{
+        width: 50%;
+        .label{
+            font-weight: 500;
+            font-size: 22px;
+            color: var(--blue-color);
+        }
+        h1{
+            font-size: 48px;
+            color: var(--heading-color);
+            line-height: 56px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        p{
+            font-size: 18px;
+            color: var(--text-grey);
+            width: 80%;
+            margin-bottom: 50px;
+        }
+        .searchbox {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 0 8px;
+            border: 1px solid #cccccc81;
+            input {
+                width: 100%;
+                border: none;
+                outline: none;
+                padding: 20px;
+                font-size: 22px;
+                &::placeholder{
+                    font-size: 20px;
+                    color: #D9D9D9;
+                    font-family: 'poppins';
+                }
+            }
+            button{
+                @include button(var(--blue-color),var(--white-color),16px,15px,6px);
+                width: 110px;
+            }
+        }
+    }
+    .hero-img{
+        width: 50%;
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
+        .accounts{
+            border-radius: 30px;
+            background: linear-gradient(278.06deg, #D4FC79 6.11%, #96E6A1 95.27%);
+            padding: 30px;
+            display: flex;
+            gap: 40px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            align-items: center;
+            justify-content: center;
+            width: 300px;
+            .imgaes{
+                display: flex;
+                align-items: center;
+                img{
+                    height: 45px;
+                    width: 45px;
+                    border-radius: 100%;
+                    border: 2px solid #fff;
+                    margin: 0 -5px;
+                }
+                margin: 0 -20px;
+            }
+            h4{
+                font-weight: 700;
+                font-size: 21px;
+                color: var(--heading-color);
+                margin-bottom: 2px;
+                font-family: 'poppins';
+            }
+            span{
+                color: #727272;
+                font-family: 'poppins';
+            }
+        }
+    }
+   }
+}

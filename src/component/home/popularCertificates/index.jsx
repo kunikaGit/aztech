@@ -1,0 +1,57 @@
+import React from 'react'
+import './popularCertificates.scss'
+import imageMap from '../../../utils/helpers'
+import { EyeIcon, MessageIcon, StarIcon } from '../../../icons/icons'
+
+const cards = [
+    {image:'certificate1.png'},
+    {image:'certificate2.png'},
+    {image:'certificate3.png'}
+]
+const PopularCertifictes = () => {
+    return (
+        <section className='popular-certificate-wrape'>
+            <div className='header-section'>
+                <div className='main-heading'>
+                    <span className='up-heading'>Specializations and Professional Certificates</span>
+                    <h2>Most Popular Certificates</h2>
+                    <span className='lower-heading'>Explore our most popular programs, get job-ready for an in-demand career.</span>
+                </div>
+                <button type='button' className='blue-btn'>Show 8 More</button>
+            </div>
+            <div className='certificate-cards'>
+                {cards.map((item,index)=>(
+                <div className='cards' key={index}>
+                    <div className='img'><img src={imageMap[`${item.image}`]} /></div>
+                    <div className='content'>
+                        <h3 className='title'>Inflation calculator (2024...</h3>
+                        <p>Ever-so-useful Excel Inflation Calculator covering 50 countries. Fully editable.</p>
+                        <div className='spc'>
+                            <div className='item'>Calculator</div>
+                            <div className='item'>Inflation</div>
+                            <div className='item'>Finance</div>
+                        </div>
+                        <ul className='p-0 list-content'>
+                            <li><StarIcon /><b>4.6</b>(480 Review)</li>
+                            <li><EyeIcon />1,840</li>
+                            <li><MessageIcon />249</li>
+                        </ul>
+                        <div className='card_footer'>
+                            <div className='d-flex gap-3'>
+                                <img src={imageMap['dummy-img.png']} alt='profile' />
+                                <div className='profile-content'>
+                                    <h3 className='name'>Diana Jones</h3>
+                                    <h3 className='des'>Pegasus Team</h3>
+                                </div>
+                            </div>
+                            <button type='button'>$12.00</button>
+                        </div>
+                    </div>
+                </div>
+                ))}
+            </div>
+        </section>
+    )
+}
+
+export default PopularCertifictes

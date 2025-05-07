@@ -1,5 +1,5 @@
 import React from 'react'
-import './Chooseplan.scss'
+import './chooseplan.scss'
 const Chooseplan = () => {
     return (
         <section className='choose-plan'>

@@ -1,5 +1,5 @@
 import './assets/scss/index.scss'
-import RoutesMain from './routes/Routes'
+import RoutesMain from './routes/routes';
 
 function App() {
 

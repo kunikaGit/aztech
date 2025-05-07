@@ -1,0 +1,88 @@
+.choose-plan {
+    .main-heading {
+        text-align: center;
+        width: 75%;
+        margin: auto;
+        margin-bottom: 80px;
+
+        p {
+            color: #656565;
+        }
+    }
+
+    .plan-cards {
+        display: flex;
+        gap: 30px;
+
+        .cards {
+            width: 33%;
+            border: 2px solid #636363;
+            border-radius: 16px;
+            color: #636363;
+            padding: 40px 30px;
+
+            hr {
+                border-bottom: 2px solid #636363;
+                opacity: 1;
+            }
+
+            .title {
+                color: #636363;
+                font-size: 30px;
+                font-weight: 700;
+            }
+
+            .des {
+                font-size: 14px;
+            }
+
+            .price {
+                margin-bottom: 20px;
+
+                h2 {
+                    font-size: 50px;
+                    font-weight: 700;
+                    color: #656565;
+                    margin: 0;
+                }
+
+                span {
+                    font-size: 12px;
+                }
+            }
+
+            .plan-btn {
+                width: 100%;
+                padding: 15px;
+                border: none;
+                color: #FFFFFF;
+                font-weight: 600;
+                background-color: #8B8B8B;
+                border-radius: 4px;
+                margin-bottom: 30px;
+            }
+
+            &.active {
+                color: #FFFFFF;
+                background: linear-gradient(147.87deg, #6F4CF3 22.08%, #0EACDC 100.23%);
+                .title {
+                    color: var(--white-color);
+                }
+                .price {
+                    h2{
+                        color: var(--white-color);
+                    }
+                }
+                .plan-btn {
+                    background-color: var(--white-color);
+                    color: #070707;
+                }
+                hr {
+                    border-bottom: 2px solid #fff;
+                    opacity: 1;
+                }
+    
+            }
+        }
+    }
+}

@@ -1,7 +1,8 @@
 import React from 'react'
 import Header from '../../component/header';
-import { Banner, HomeCategories, PopularCertifictes } from '../../component';
+import { Banner, Chooseplan, HomeCategories, OnlineCourse, PopularCertifictes, TrustedPrtner } from '../../component';
 import { Container } from 'react-bootstrap';
+import Footer from '../../component/footer';
 
 
 const Home = () => {
@@ -13,7 +14,11 @@ const Home = () => {
       <Banner />
       <HomeCategories/>
       <PopularCertifictes/>
+      <OnlineCourse/>
+      <Chooseplan/>
+      <TrustedPrtner/>
       </Container>
+      {/* <Footer/> */}
     </div>
   )
 }

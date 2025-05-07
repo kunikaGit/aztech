@@ -1,76 +1,57 @@
-footer {
-    background-color: #1B1B1B;
-    padding-top: 65px;
-
-    .footer-flex {
-        display: flex;
-        padding: 42px 0;
-        border-bottom: 1px solid #FFFFFF1A;
-
-        .left-side {
-            width: 50%;
-
-            .content {
-                width: 65%;
-                color: var(--white-color);
-                font-weight: 300;
-                font-size: 16px;
-                line-height: 25px;
-            }
-        }
-
-        .right-side {
-            width: 50%;
-            display: flex;
-            justify-content: flex-end;
-            align-items: flex-end;
-
-            ul {
-                display: flex;
-                gap: 10px;
-                align-items: center;
-                padding: 0;
-                margin: 0;
-
-                li {
-                    list-style: none;
-
-                    img {
-                        height: 42px;
-                        width: 42px;
-                    }
-                }
-            }
-        }
+.footer {
+    background-color: #f4f8fc;
+    padding: 40px 0;
+  
+    &__container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 1200px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      gap: 20px;
     }
-
-    .copy-right {
-        padding: 25px 0;
-        display: flex;
-        color: #FFFFFF99;
-        justify-content: space-between;
+  
+    &__section {
+      flex: 1 1 200px;
+      max-width: 250px;
+  
+      p {
         font-size: 14px;
-        font-weight: 300;
-        .links {
-            a {
-                position: relative;
-                color: #FFFFFF99;
-                font-size: 15px;
-                font-weight: 300;
-                padding: 0 17px;
-                &:last-child{
-                    &::before{
-                        position: absolute;
-                        content: "";
-                        height: 5px;
-                        width: 5px;
-                        border-radius: 100%;
-                        background-color: #FFFFFF99;
-                        left: 0;
-                        top: 10px;
-                    }
-                }
-            }
+        color: #555;
+        margin: 8px 0;
+      }
+  
+      a {
+        color: #0073e6;
+        text-decoration: none;
+        font-size: 14px;
+        display: block;
+        margin: 5px 0;
+  
+        &:hover {
+          text-decoration: underline;
         }
+      }
     }
-}
+  
+    &__logo {
+      max-width: 150px;
+      margin-bottom: 15px;
+    }
+  
+    &__social {
+      display: flex;
+      gap: 10px;
+  
+      .footer__icon {
+        font-size: 18px;
+        color: #555;
+  
+        &:hover {
+          color: #0073e6;
+        }
+      }
+    }
+  }
+  

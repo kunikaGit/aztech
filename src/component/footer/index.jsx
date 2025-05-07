@@ -1,39 +1,58 @@
-import React from "react"
-import { Container } from "react-bootstrap"
-import imageMap from "../../utils/helpers"
-import { Link } from "react-router-dom"
-import './footer.scss'
+import React from 'react';
+import './footer.scss';
+import imageMap from '../../utils/helpers';
+
 const Footer = () => {
-    return (
-        <footer>
-            <Container>
-                <div className="logo">
-                    <img src={imageMap['logo-light.svg']} alt="logo" />
-                </div>
-                <div className="footer-flex">
-                    <div className="left-side">
-                        <div className="content">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                        </div>
-                    </div>
-                    <div className="right-side">
-                        <ul>
-                            <li><Link to="#"><img src={imageMap['insta.svg']} alt="instagram" /></Link></li>
-                            <li><Link to="#"><img src={imageMap['fb.svg']} alt="fb" /></Link></li>
-                            <li><Link to="#"><img src={imageMap['linkedin.svg']} alt="linkedin" /></Link></li>
-                            <li><Link to="#"><img src={imageMap['youtube.svg']} alt="youtube" /></Link></li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="copy-right">
-                    <div className="copy">©Copyright 2025</div>
-                    <div className="links">
-                        <Link to="">Privacy Policy</Link>
-                        <Link to="">Terms & Condition</Link>
-                    </div>
-                </div>
-            </Container>
-        </footer>
-    )
-}
-export default Footer
+  return (
+    <footer className="footer">
+      <div className="footer__container">
+        <div className="footer__section">
+          <img src={imageMap['logo.png']} alt="AZTECH Logo" className="footer__logo" />
+          <p>Email</p>
+          <a href="mailto:contact@neovision.com">contact@neovision.com</a>
+          <p>Address</p>
+          <p>Lorem Ipsum dorme<br />Si amor 48568595</p>
+        </div>
+
+        <div className="footer__section">
+          <p>Phone Number</p>
+          <a href="tel:+18001234567">+1 (800) 123–4567</a>
+        </div>
+
+        <div className="footer__section">
+          <p>Quick Links</p>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+
+        <div className="footer__section">
+          <p>Explore</p>
+          <ul>
+            <li><a href="#">Product Demos</a></li>
+            <li><a href="#">Case Studies</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">Media & Press</a></li>
+            <li><a href="#">Events & Webinars</a></li>
+          </ul>
+        </div>
+
+        <div className="footer__section">
+          <p>LEARNING COURSES BY TOP INSTRUCTORS</p>
+          <p>Dive into a world where technology and virtual reality converge to create mind-blowing experiences.</p>
+          <div className="footer__social">
+            <a href="#" className="footer__icon">🔗</a>
+            <a href="#" className="footer__icon">🔗</a>
+            <a href="#" className="footer__icon">🔗</a>
+            <a href="#" className="footer__icon">🔗</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

@@ -92,8 +92,8 @@ const ProductDetail = () => {
                         </div>
                     </div>
                 </section>
-                <Footer />
             </Container>
+                <Footer />
         </>
     )
 }

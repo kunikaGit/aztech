@@ -5,6 +5,7 @@ import { Container } from 'react-bootstrap';
 const Footer = () => {
   return (
     <footer className="footer">
+      <Container>
       <img src='images/fulllogo.png' alt="AZTECH Logo" className="footer__logo" />
       <div className="footer__container">
         <div className="footer__section">
@@ -51,6 +52,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      </Container>
     </footer>
   );
 };

@@ -20,6 +20,7 @@ header {
             display: flex;
             align-items: center;
             gap: 10px;
+            cursor: pointer;
             img{
                 max-width: 50px;
             }
@@ -44,6 +45,11 @@ header {
                         font-size: 16px;
                         color: var(--heading-color);
                         font-family: "Poppins";
+                        &.active{
+                            color: var(--blue-color);
+                            font-weight: 500;
+                            border-bottom: 2px solid var(--blue-color);
+                        }
                     }
                 }
             }

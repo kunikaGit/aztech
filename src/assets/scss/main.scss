@@ -41,7 +41,8 @@ body {
     font-family: "DM Sans";
 	background-color: var(--light-color);
 	font-size: 16px;
-	background: linear-gradient(135deg, #FFFFFF 0%, #E2F1F8 100%);
+	// background: linear-gradient(135deg, #FFFFFF 0%, #E2F1F8 100%);
+	background: url(../../assets/images/bg.png);
 }
 
 a{
@@ -75,3 +76,25 @@ section{
 		width: 50%;
 	}
 }
+.text-effect {
+	font-size: 5rem;
+	font-weight: bold;
+	position: relative;
+	display: inline-block;
+	color: #333;
+	text-transform: uppercase;
+	
+	// Main text shadow (reflective effect)
+	&::after {
+	  content: attr(data-text);
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  color: rgba(0, 0, 0, 0.1);
+	  transform: scaleY(-1);
+	  transform-origin: top;
+	  filter: blur(1px);
+	}
+  
+  }
+  

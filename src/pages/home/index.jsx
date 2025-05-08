@@ -17,8 +17,8 @@ const Home = () => {
       <OnlineCourse/>
       <Chooseplan/>
       <TrustedPrtner/>
+      <Footer/>
       </Container>
-      {/* <Footer/> */}
     </div>
   )
 }

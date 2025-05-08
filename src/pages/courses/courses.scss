@@ -1,28 +1,38 @@
-@use '../../../assets/scss/mixin.scss' as *;    
-.popular-certificate-wrape{
-    .header-section{
-        display: flex;
-        justify-content: space-between;
+@use '../../assets/scss/mixin.scss' as *;    
+
+.courses-wrapped{
+    .two-grid{
+        padding: 50px 0;
+        gap: 30px;
+        height: 70vh;
         align-items: center;
-        margin-bottom: 35px;
-        .main-heading{
-            h2{
-                margin: 0;
-            }
-            .up-heading{
-                font-size: 24px;
-            }
-            .lower-heading{
-                font-size: 18px;
-            }
+    }
+    .heading{
+        width: 40%;
+    }
+    .main-content{
+        width: 60%;
+        h2{
+            font-size: 38px;
+            font-weight: 700;
+            color: #474747;
+        }
+        p{
+            font-size: 18px;
+            color: var(--text-grey);
         }
         .blue-btn{
             width: 200px;
         }
     }
+    .course-listing{
+        .main-heading{
+            margin-bottom: 30px;
+        }
     .certificate-cards{
         display: flex;
         gap: 16px;
+        margin-bottom: 50px;
         .cards{
             width: 33%;
             background-color: var(--white-color);
@@ -99,4 +109,5 @@
             }
         }
     }
+}
 }

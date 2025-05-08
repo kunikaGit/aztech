@@ -1,0 +1,149 @@
+.product-details{
+    .two_grid{
+        display: flex;
+        gap: 30px;
+        .content{
+            width: 70%;
+            .review{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+            .more-details{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 30px;
+                .detail-item{
+                    display: flex;
+                    gap: 50px;
+                    .item{
+                        p{
+                            color: #50566B;
+                            font-size: 14px;
+                            margin-bottom: 4px;
+                        }
+                        span{
+                            color: var(--heading-color);
+                            font-weight: 600;
+                            font-size: 16px;
+                        }
+                    }
+                }
+                .actions{
+                    display: flex;
+                    gap: 20px;
+                    .action-item{
+                        display: flex;
+                        padding: 10px;
+                        gap: 10px;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .course-video{
+                margin-bottom: 30px;
+                img{
+                width: 100%;
+                }
+            }
+            .description-box{
+                background-color: #fff;
+                padding: 24px;
+                border-radius: 8px;
+                margin-bottom: 30px;
+                .sub-heading{
+                    color:  #1A2134;
+                    font-weight: 700;
+                }
+                p{
+                    color: #000000;
+                }
+            }
+        }
+        .price-chart{
+            width: 30%;
+            background: linear-gradient(180deg, rgba(194, 233, 251, 0.5) 0%, rgba(161, 196, 253, 0.5) 100%);
+            border-radius: 8px;
+            padding: 30px 20px;
+            height: fit-content;
+            h2{
+                font-size: 24px;
+                font-weight: 700;
+            }
+            .price{
+                display: flex;
+                gap: 10px;
+                margin-bottom: 30px;
+                font-size: 14px;
+                align-items: center;
+                .discount{
+                    padding: 5px;
+                    font-size:14px;
+                    background-color: var(--blue-color);
+                    color: #fff;
+                    border-radius: 5px;
+                    line-height: 1.1;
+                }
+            }
+            .action-btn{
+                margin-bottom: 30px;
+                button{
+                    width: 100%;
+                    text-align: center;
+                    padding: 15px;
+                    margin-bottom: 10px;
+                    outline: none;
+                    border-radius: 8px;
+                    border:1px solid  var(--blue-color);
+                    box-shadow: none;
+                    &.field{
+                        background-color: var(--blue-color);
+                        color: var(--white-color);
+                    }
+                    &.outlined{
+                        color: var(--blue-color);
+                    }
+                }
+            }
+            .title{
+                font-size: 18px;
+                font-weight: 700;
+            }
+            .course-list{
+                margin-bottom: 30px;
+                ul{
+                    padding-left: 15px;
+                    li{
+                        font-size: 14px;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+            .profile-photo{
+                margin-top: 20px;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                .img{
+                    img{
+                        height: 50px;
+                        width: 50px;
+                        border-radius: 100%;
+                    }
+                }
+                .detail{
+                    h4{
+                        font-size: 14px;
+                        margin-bottom: 0;
+                    }
+                    span{
+                        font-size: 12px;
+                        color: var(--text-grey);
+                    }
+                }
+            }
+        }
+    }
+}

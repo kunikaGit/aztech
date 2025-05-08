@@ -2,6 +2,7 @@ import React from 'react'
 import './popularCertificates.scss'
 import imageMap from '../../../utils/helpers'
 import { EyeIcon, MessageIcon, StarIcon } from '../../../icons/icons'
+import { useNavigate } from 'react-router-dom'
 
 const cards = [
     {image:'certificate1.png'},
@@ -9,6 +10,7 @@ const cards = [
     {image:'certificate3.png'}
 ]
 const PopularCertifictes = () => {
+    const navigate = useNavigate()
     return (
         <section className='popular-certificate-wrape'>
             <div className='header-section'>
@@ -22,7 +24,7 @@ const PopularCertifictes = () => {
             <div className='certificate-cards'>
                 {cards.map((item,index)=>(
                 <div className='cards' key={index}>
-                    <div className='img'><img src={imageMap[`${item.image}`]} /></div>
+                    <div className='img' onClick={()=>navigate('/detail')}><img src={imageMap[`${item.image}`]} /></div>
                     <div className='content'>
                         <h3 className='title'>Inflation calculator (2024...</h3>
                         <p>Ever-so-useful Excel Inflation Calculator covering 50 countries. Fully editable.</p>

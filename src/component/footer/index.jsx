@@ -1,26 +1,26 @@
 import React from 'react';
 import './footer.scss';
-import imageMap from '../../utils/helpers';
+import { Container } from 'react-bootstrap';
 
 const Footer = () => {
   return (
     <footer className="footer">
+      <img src='images/fulllogo.png' alt="AZTECH Logo" className="footer__logo" />
       <div className="footer__container">
         <div className="footer__section">
-          <img src={imageMap['logo.png']} alt="AZTECH Logo" className="footer__logo" />
-          <p>Email</p>
+          <h3>Email</h3>
           <a href="mailto:contact@neovision.com">contact@neovision.com</a>
-          <p>Address</p>
+          <h3>Address</h3>
           <p>Lorem Ipsum dorme<br />Si amor 48568595</p>
         </div>
 
         <div className="footer__section">
-          <p>Phone Number</p>
+          <h3>Phone Number</h3>
           <a href="tel:+18001234567">+1 (800) 123–4567</a>
         </div>
 
         <div className="footer__section">
-          <p>Quick Links</p>
+          <h3>Quick Links</h3>
           <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">About Us</a></li>
@@ -30,7 +30,7 @@ const Footer = () => {
         </div>
 
         <div className="footer__section">
-          <p>Explore</p>
+          <h3>Explore</h3>
           <ul>
             <li><a href="#">Product Demos</a></li>
             <li><a href="#">Case Studies</a></li>
@@ -41,7 +41,7 @@ const Footer = () => {
         </div>
 
         <div className="footer__section">
-          <p>LEARNING COURSES BY TOP INSTRUCTORS</p>
+          <h3>LEARNING COURSES BY TOP INSTRUCTORS</h3>
           <p>Dive into a world where technology and virtual reality converge to create mind-blowing experiences.</p>
           <div className="footer__social">
             <a href="#" className="footer__icon">🔗</a>

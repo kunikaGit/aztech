@@ -1,7 +1,4 @@
 import React from 'react'
-import Footer from '../../component/footer';
-import { Container } from 'react-bootstrap';
-import Header from '../../component/header';
 import './courses.scss'
 import imageMap from '../../utils/helpers';
 import { EyeIcon, MessageIcon, StarIcon } from '../../icons/icons';
@@ -16,8 +13,6 @@ const Courses = () => {
     const navigate = useNavigate()
     return (
         <>
-            <Container>
-                <Header />
                 <div className='courses-wrapped'>
                     <div className='two-grid'>
                         <div className='heading'>
@@ -139,8 +134,6 @@ const Courses = () => {
                     </div>
                 </section>
                 </div>
-            </Container>
-            <Footer />
         </>
     )
 }

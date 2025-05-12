@@ -1,3 +1,71 @@
+@use "./breakpoints" as breakpoints;
+
+@mixin media_320 {
+  @media #{breakpoints.$media_320} {
+    @content
+  }
+}
+
+;
+
+@mixin media_480 {
+  @media #{breakpoints.$media_480} {
+    @content
+  }
+};
+@mixin media_576{
+  @media #{breakpoints.$media_576} {
+    @content
+  }
+};
+
+@mixin media_768 {
+  @media #{breakpoints.$media_768} {
+    @content
+  }
+}
+
+;
+
+@mixin media_991 {
+  @media #{breakpoints.$media_991} {
+    @content
+  }
+}
+
+;
+
+@mixin media_1024 {
+  @media #{breakpoints.$media_1024} {
+    @content
+  }
+}
+
+;
+
+@mixin media_1200 {
+  @media #{breakpoints.$media_1200} {
+    @content
+  }
+}
+
+;
+
+@mixin media_1280 {
+  @media #{breakpoints.$media_1280} {
+    @content
+  }
+}
+
+;
+
+@mixin media_1440 {
+  @media #{breakpoints.$media_1440} {
+    @content
+  }
+}
+
+;
 @mixin button($bg,$color,$size,$padding,$radius) {
     background: $bg;
     color: $color;

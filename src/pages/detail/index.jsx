@@ -1,16 +1,12 @@
 import React from 'react'
 import imageMap from '../../utils/helpers'
-import { Container } from 'react-bootstrap'
-import Header from '../../component/header'
-import Footer from '../../component/footer'
 import './detail.scss'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
+import { FilterList, ListAltSharp } from '@mui/icons-material'
 const ProductDetail = () => {
     return (
         <>
-            <Container>
-                <Header />
                 <section className='product-details'>
                     <div className='two_grid'>
                         <div className='content'>
@@ -81,7 +77,7 @@ const ProductDetail = () => {
                                 <h3 className='title'>About the Instructor</h3>
                                 <div className='profile-photo'>
                                     <div className='img'>
-                                        <img src={imageMap['profile4.png']} alt='profile'/>
+                                        <img src={imageMap['profile4.png']} alt='profile' />
                                     </div>
                                     <div className='detail'>
                                         <h4>DR. Soman Jumakir</h4>
@@ -89,11 +85,19 @@ const ProductDetail = () => {
                                     </div>
                                 </div>
                             </div>
+                                    <div className='d-flex justify-content-between align-items-center'>
+                                        <div className='review'>
+                                            <span>5.5</span>
+                                            <img src={imageMap['startIcon.svg']} alt='star' />
+                                        </div>
+                                        <div className='review'>
+                                            <ListAltSharp/>
+                                            <span>12 Courses</span>
+                                        </div>
+                                    </div>
                         </div>
                     </div>
                 </section>
-            </Container>
-                <Footer />
         </>
     )
 }

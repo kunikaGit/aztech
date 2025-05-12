@@ -9,16 +9,12 @@ const Home = () => {
 
   return (
     <div className='landing-page-wrapped'>
-      <Container>
-      <Header />
       <Banner />
       <HomeCategories/>
       <PopularCertifictes/>
       <OnlineCourse/>
       <Chooseplan/>
       <TrustedPrtner/>
-      </Container>
-      <Footer/>
     </div>
   )
 }

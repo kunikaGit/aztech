@@ -39,10 +39,12 @@
   
 body {
     font-family: "DM Sans";
-	background-color: var(--light-color);
 	font-size: 16px;
 	// background: linear-gradient(135deg, #FFFFFF 0%, #E2F1F8 100%);
 	background: url(../../assets/images/bg.png);
+	background-color: var(--light-color);
+	width: 100%;
+	background-repeat: no-repeat;
 }
 
 a{

@@ -2,14 +2,14 @@
     .two_grid{
         display: flex;
         gap: 30px;
+        .review{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
         .content{
             width: 70%;
-            .review{
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                margin-bottom: 20px;
-            }
             .more-details{
                 display: flex;
                 align-items: center;
@@ -126,6 +126,7 @@
                 display: flex;
                 align-items: center;
                 gap: 20px;
+                margin-bottom: 30px;
                 .img{
                     img{
                         height: 50px;

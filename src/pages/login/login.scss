@@ -1,0 +1,154 @@
+@use '../../assets/scss/mixin.scss' as *;
+.login-wrapped {
+    padding: 80px 0;
+    .two-grid {
+        @include media_768{
+           flex-direction: column-reverse;
+        }
+        .content {
+            width: 40%;
+            @include media_768{
+                width: 100%;
+            }
+            .logo {
+                margin-bottom: 15px;
+                img{
+                    max-width: 150px;
+                }
+            }
+
+            .heading {
+                font-size: 40px;
+                font-weight: 500;
+                line-height: 45px;
+                margin-bottom: 40px;
+            }
+
+            .checklist {
+                ul {
+                    padding: 0;
+
+                    li {
+                        list-style: none;
+                        padding: 16px;
+                        padding-left: 50px;
+                        background-color: #00609475;
+                        border-radius: 6px;
+                        margin-bottom: 20px;
+                        font-size: 20px;
+                        color: var(--white-color);
+                        position: relative;
+
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            background-image: url(../../assets/images/right.svg);
+                            background-repeat: no-repeat;
+                            width: 20px;
+                            height: 20px;
+                            left: 16px;
+                            top: 25px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .form {
+            width: 60%;
+            @include media_768{
+                width: 100%;
+            }
+            form{
+                background: linear-gradient(180deg, #C2E9FB 0%, #A1C4FD 100%);
+                width: 80%;
+                margin-left: auto;
+                padding: 60px;
+                border-radius: 30px;
+                @include media_768{
+                    width: 100%;
+                    padding: 10px;
+                }
+                h1{
+                    color: #101010;
+                    font-size: 48px;
+                    margin-bottom: 30px;
+                }
+                p{
+                    color: #515151;
+                    font-size: 16px;
+                    margin-bottom: 36px;
+                }
+                .divide-line{
+                    margin: 25px 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                    &::before{
+                        content: '';
+                        position: absolute;
+                        height: 1px;
+                        background-color: #6F6F6F;
+                        width: 35%;
+                        left: 0;
+                    }
+                    &::after{
+                        content: '';
+                        position: absolute;
+                        height: 1px;
+                        background-color: #6F6F6F;
+                        width: 35%;
+                        right: 0;
+                    }
+                    span{
+                        color: #6F6F6F;
+                    }
+                }
+                .input-main-data{
+                    margin-bottom: 25px;
+                    label{
+                        color: #101010;
+                        font-weight: 500;
+                        margin-bottom: 10px;
+                    }
+                }
+                .input-box {
+                    display: block;
+                    padding: 16px 16px;
+                    border-radius: 56px;
+                    outline: none;
+                    border: 1px solid #8A8A8A;
+                    width: 100%;
+                    background-color: transparent;
+                    &::placeholder{
+                        font-size: 14px;
+                    }
+                }
+                .form-footer {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 30px;
+                    label{
+                        input{
+                            height: 20px;
+                            width: 20px;
+                        }
+                    }
+                    a{
+                        color: #101010;
+                        font-weight: 500;
+                        margin-bottom: 0;
+                    }
+                    
+                }
+                .blue-btn{
+                    width: 100%;
+                    border-radius: 30px;
+                    padding: 16px;
+                }
+            }
+        }
+    }
+}

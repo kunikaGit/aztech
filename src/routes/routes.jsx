@@ -1,7 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Courses, Home, Login, ProductDetail, Signup } from '../pages';
+import { Courses, Home, Login, Myplans, ProductDetail, Signup } from '../pages';
 import Mainlayout from '../mainlayout';
+import DashboardOutlet from '../pages/dashboardOutlet';
 const RoutesMain = () => {
   return (
     <Router>
@@ -13,6 +14,9 @@ const RoutesMain = () => {
           <Route index element={<Home />} />
           <Route path='/courses' element={<Courses />} />
           <Route path='/detail' element={<ProductDetail />} />
+        </Route>
+        <Route path="/myaccount" element={<DashboardOutlet />}>
+          <Route path='/myaccount/myplans' element={<Myplans />} />
         </Route>
       </Routes>
     </Router>

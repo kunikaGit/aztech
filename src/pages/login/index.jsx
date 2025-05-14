@@ -1,10 +1,10 @@
 import React from 'react'
 import imageMap from '../../utils/helpers'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './login.scss'
 import { Container } from 'react-bootstrap'
 const Login = () => {
-
+const navigate=  useNavigate()
   return (
     <div className='login-wrapped'>
       <Container>
@@ -49,7 +49,7 @@ const Login = () => {
                 </label>
                 <Link to='#/'>Forgot Password</Link>
             </div>
-            <button type='submit' className='blue-btn'>Login</button>
+            <button type='submit' className='blue-btn' onClick={()=>navigate('/myaccount/dashboard')}>Login</button>
           </form>
         </div>
       </div>

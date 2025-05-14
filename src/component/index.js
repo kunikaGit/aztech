@@ -7,6 +7,10 @@ export { default as Chooseplan } from "./home/chooseplan";
 export { default as TrustedPrtner } from "./home/trustedPartner";
 
 
+//dahsboard
+export { default as Welcome } from "./dashboard/welcome";
+export { default as Dahboardtable } from "./dashboard/dahboardtable";
+
 
 
 

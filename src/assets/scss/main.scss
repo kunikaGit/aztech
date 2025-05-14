@@ -43,14 +43,24 @@
 	font-weight: 400;
 }
 
+@font-face {
+	font-family: "Poppins";
+	src: url("../fonts/Poppins-Bold.ttf");
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: "Poppins";
+	src: url("../fonts/Poppins-SemiBold.ttf");
+	font-weight: 600;
+}
+
 body {
 	font-family: "DM Sans";
 	font-size: 16px;
 	// background: linear-gradient(135deg, #FFFFFF 0%, #E2F1F8 100%);
-	background: url(../../assets/images/bg.png);
 	background-color: var(--light-color);
 	width: 100%;
-	background-repeat: no-repeat;
 }
 
 a {
@@ -98,12 +108,23 @@ section {
 	display: flex;
 
 	.sidebar-wrapped {
-		width:250px;
+		width: 250px;
 	}
+
 	.dashboard-main {
+		padding: 22px 30px 22px 22px;
 		width: calc(100% - 250px);
 	}
 
+}
+
+.dash-heading {
+	h2 {
+		color: var(--heading-color);
+		font-size: 20px;
+		font-weight: 600;
+		font-family: 'poppins';
+	}
 }
 
 .text-effect {
@@ -126,4 +147,127 @@ section {
 		filter: blur(1px);
 	}
 
+}
+
+.az-table {
+	.table-header {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 20px;
+
+		.dash-heading {
+			h2 {
+				margin-bottom: 4px;
+			}
+
+			p {
+				font-size: 14px;
+				color: var(--text-grey);
+			}
+		}
+
+		ul {
+			display: flex;
+			background-color: #EFF1F9;
+			align-items: center;
+			border-radius: 8px;
+			padding: 0;
+
+			li {
+				list-style: none;
+				text-align: center;
+
+				a {
+					width: 100px;
+					padding: 10px;
+					color: var(--text-grey);
+					display: block;
+
+					&.active {
+						background-color: #22A6AC;
+						border-radius: 8px;
+						color: #fff;
+						font-weight: 600;
+					}
+				}
+			}
+		}
+	}
+.table-container{
+	padding: 10px 20px;
+	background-color: var(--white-color);
+	border-radius: 10px;
+}
+	table {
+		width: 100%;
+
+		thead {
+			th {
+				color: #626679;
+				font-size: 14px;
+				padding: 12px;
+			}
+		}
+
+		tbody {
+			.custom-row {
+				position: relative;
+				&::after{
+					content: '';
+					position: absolute;
+					left: 0;
+					top: 12px;
+					height: 50px;
+					width: 2px;
+				}
+				&.borders-0 {
+					&::after{
+					background-color: red;
+					}
+				}
+
+				&.borders-1 {
+					&::after{
+					background-color: orange;
+					}
+				}
+
+				&.borders-2 {
+					&::after{
+					background-color: pink;
+					}
+				}
+			}
+
+			td {
+				font-size: 12px;
+				max-width: 120px;
+				padding: 12px;
+
+				.profile {
+					.image {
+						img {
+							height: 50px;
+							width: 50px;
+							border-radius: 10px;
+						}
+					}
+
+					.info {
+						h3 {
+							font-size: 12px;
+							font-weight: 500;
+						}
+
+						p {
+							font-size: 12px;
+							font-weight: 400;
+							color: var(--text-grey);
+							margin: 0;
+						}
+					}
+				}
+			}
+		}
+	}
 }

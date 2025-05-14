@@ -4,6 +4,8 @@ export { default as ProductDetail } from "./detail";
 export { default as Login } from "./login";
 export { default as Signup } from "./signup";
 export { default as Myplans } from "./myplans";
+export { default as Dashboard } from "./dahboard";
+
 
 
 

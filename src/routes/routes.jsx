@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Courses, Dashboard, Home, Login, Myplans, ProductDetail, Signup } from '../pages';
+import { Courses, Dashboard, Home, Login, Myplans, Networks, ProductDetail, Signup ,Transactions} from '../pages';
 import Mainlayout from '../mainlayout';
 import DashboardOutlet from '../pages/dashboardOutlet';
 const RoutesMain = () => {
@@ -19,7 +19,8 @@ const RoutesMain = () => {
         <Route path="/myaccount" element={<DashboardOutlet />}>
           <Route path='/myaccount/myplans' element={<Myplans />} />
           <Route path='/myaccount/dashboard' element={<Dashboard />} />
-
+          <Route path='/myaccount/transactions' element={<Transactions />} />
+          <Route path='/myaccount/networks' element={<Networks />} />
         </Route>
       </Routes>
     </Router>

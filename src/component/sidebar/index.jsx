@@ -9,17 +9,19 @@ const Sidebar = () => {
         <div className='sidebar-wrapped'>
             <div className='logo'>
                 <Link to='/'>
-                <img src='/images/fulllogo.png' />
+                    <img src='/images/fulllogo.png' />
                 </Link>
             </div>
             <div className='menulist'>
                 <ul>
-                    <li><Link to='/myaccount/dashboard' className={location.pathname.includes('/dashboard') ?'active':''}>
-                    <DashboardIcon /> Dashboard</Link></li>
-                    <li><Link to='/myaccount/myplans'  className={location.pathname.includes('/myplans') ?'active':''}>
-                    <BookIcon />Learning Plan</Link></li>
-                    <li><Link to='/#'><TransactionIcon /> Transaction</Link></li>
-                    <li><Link to='/#'><NetworkIcon /> Network</Link></li>
+                    <li><Link to='/myaccount/dashboard' className={location.pathname.includes('/dashboard') ? 'active' : ''}>
+                        <DashboardIcon /> Dashboard</Link></li>
+                    <li><Link to='/myaccount/myplans' className={location.pathname.includes('/myplans') ? 'active' : ''}>
+                        <BookIcon />Learning Plan</Link></li>
+                    <li><Link to='/myaccount/transactions' className={location.pathname.includes('/transactions') ? 'active' : ''}><TransactionIcon />
+                        Transaction</Link></li>
+                    <li><Link to='/myaccount/networks' className={location.pathname.includes('/networks') ? 'active' : ''}>
+                        <NetworkIcon /> Network</Link></li>
                     <li><Link to='/#'><ProfileIcon /> Profile</Link></li>
                     <li><Link to='/#'><SettingIcon /> Setting</Link></li>
                     <li><Link to='/#'><HelpIcon /> Help</Link></li>

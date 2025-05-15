@@ -5,20 +5,24 @@ import { Link } from 'react-router-dom'
 import { EditIcon } from '../../icons/icons'
 import { red } from '@mui/material/colors';
 
-const Dahboardtable = () => {
+const Networks = () => {
         const users = [
         { name: 'Brug Michael', email: 'app@dev.com', paid: '$ 2,000', date: '25 May 2025', validTill: '25 May 2026', status: 'Approved' },
         { name: 'John Doe', email: 'john@dev.com', paid: '$ 1,500', date: '15 Apr 2025', validTill: '15 Apr 2026', status: 'Pending' },
         { name: 'Jane Smith', email: 'jane@dev.com', paid: '$ 2,500', date: '10 Jun 2025', validTill: '10 Jun 2026', status: 'Approved' },
-        { name: 'Alice Johnson', email: 'alice@dev.com', paid: '$ 1,200', date: '05 Jul 2025', validTill: '05 Jul 2026', status: 'Expired' }
+        { name: 'Alice Johnson', email: 'alice@dev.com', paid: '$ 1,200', date: '05 Jul 2025', validTill: '05 Jul 2026', status: 'Expired' },
+        { name: 'Alice Johnson', email: 'alice@dev.com', paid: '$ 1,200', date: '05 Jul 2025', validTill: '05 Jul 2026', status: 'Expired' },
+        { name: 'Alice Johnson', email: 'alice@dev.com', paid: '$ 1,200', date: '05 Jul 2025', validTill: '05 Jul 2026', status: 'Expired' },
+        { name: 'Alice Johnson', email: 'alice@dev.com', paid: '$ 1,200', date: '05 Jul 2025', validTill: '05 Jul 2026', status: 'Expired' },
+        { name: 'Alice Johnson', email: 'alice@dev.com', paid: '$ 1,200', date: '05 Jul 2025', validTill: '05 Jul 2026', status: 'Expired' },
     ];
 
     return (
         <div className='az-table'>
             <div className='table-header'>
                 <div className='dash-heading'>
-                    <h2>Total Users</h2>
-                    <p>More than 550+ new members</p>
+                    <h2>Your Network</h2>
+                    <p>1942 Networks</p>
                 </div>
                 <ul>
                     <li><Link to='/#' className='active'>Month</Link></li>
@@ -71,4 +75,4 @@ const Dahboardtable = () => {
     )
 }
 
-export default Dahboardtable
+export default Networks

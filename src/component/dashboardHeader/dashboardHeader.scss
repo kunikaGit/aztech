@@ -1,0 +1,54 @@
+.dashboard-header{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    gap: 75px;
+    margin-bottom: 30px;
+    .first-section{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: 75%;
+        .search-box{
+            background-color: var(--color-ECEFF3);
+            border-radius: 200px;
+            padding:0 10px;
+            width: 90%;
+            svg{
+                margin: 0 10px;
+                path{
+                    fill: #666D80;
+                }
+            }
+            input{
+                padding: 17px 0;
+                border: 0;
+                background-color: transparent;
+                &:focus{
+                    outline: 0;
+                }
+            }
+        }
+        .notification{
+            width: 100px;
+        }
+    }
+    .profile-section{
+        gap: 14px;
+            .title-bar{
+                text-align: right;
+                .title{
+                    font-size: 14px;
+                    color: var(--heading-color);
+                    font-weight: 700;
+                    margin-bottom: 0px;
+                    line-height: 22px;
+                }
+                span{
+                    color: var(--text-grey);
+                    font-weight: 400;
+                    font-size: 12px;
+                }
+        }
+    }
+}

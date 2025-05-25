@@ -8,6 +8,7 @@ export const API_ENDPOINTS = {
     professions:'/professions',
     profile_get:"/profile",
     profile_update:"/profile",
+    plans:"/plan",
     instantFunding:"/plan?id=&tableName=instant_funding_plans",
     twoPhase:"/plan?id=&tableName=two_phases_plans",
     paymentMethods:"/payment/methods",

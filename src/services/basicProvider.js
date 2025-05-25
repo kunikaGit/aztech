@@ -11,7 +11,6 @@ class BasicProvider {
     this.navigate = navigate;
     this.isUser = isUser;
     this.dispatch = dispatch;
-    console.log(authToken,"?")
     this.authToken = authToken;
   }
 

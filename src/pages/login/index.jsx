@@ -6,40 +6,42 @@ import { Container } from 'react-bootstrap';
 import { EyeIcon, EyeoffIcon } from '../../icons/icons'
 import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
-import { successMsg, errorMsg } from "../../utils/customFn";
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios'; // for calling userinfo API
+import { login } from "../../redux/action/authAction";
+import { useDispatch } from "react-redux";
+import OverlayLoading from "../../component/common/overlayLoader";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { fetchData } = useApiRequest();
+  const dispatch = useDispatch();
 
-  const [loading,setLoading]=useState(false)
+  const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     auth_type: 'email',
   });
 
-  const [errors,setErrors] = useState({})
+  const [errors, setErrors] = useState({})
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]:  value,
+      [name]: value,
     }));
 
     setErrors((prev) => ({
       ...prev,
-      [name]:  "",
+      [name]: "",
     }))
   };
 
-  const validation=()=>{
+  const validation = () => {
     const newErrors = {};
 
-       if (!formData.email.trim()) newErrors.email = 'Email is required';
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
     else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Invalid email';
     if (!formData.password) newErrors.password = 'Password is required';
 
@@ -48,28 +50,23 @@ const Login = () => {
     return Object.keys(newErrors).length === 0;
   }
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  try {
+    try {
 
-    if(!validation()){
-      return
+      if (!validation()) {
+        return
+      }
+      setLoading(true)
+
+      dispatch(login({ formData, navigate }))
+
+    } catch (error) {
+      console.error('Login error:', error);
+      alert(error.response?.data?.message || 'Login failed. Please try again.');
     }
-    let res = await fetchData(API_ENDPOINTS.signup, navigate, "POST", formData);
-           if (res.success) {
-             successMsg(res.message)
-             navigate(`/login`)
-           } else {
-             errorMsg(res.message)
-             setLoading(false)
-   
-           }
-  } catch (error) {
-    console.error('Login error:', error);
-    alert(error.response?.data?.message || 'Login failed. Please try again.');
-  }
-};
+  };
 
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
@@ -82,8 +79,12 @@ const handleSubmit = async (e) => {
             },
           }
         );
-        console.log('Google User Info:', res.data);
-        navigate('/myaccount/dashboard');
+        let payload = JSON.stringify({
+          email: res.data.email,
+          auth_type: 'google',
+        })
+        dispatch(login({ formData: payload, navigate }));
+
       } catch (err) {
         console.error('Google login failed', err);
       }
@@ -92,7 +93,10 @@ const handleSubmit = async (e) => {
   });
 
   return (
-    <><div className='login-wrapped'>
+    <>
+          <OverlayLoading isLoading={loading} />
+    
+    <div className='login-wrapped'>
       <Container>
         <div className='two-grid'>
           <div className='content'>
@@ -140,7 +144,7 @@ const handleSubmit = async (e) => {
                   className='input-box'
                   required
                 />
-                 {errors.email && <small className='text-danger'>{errors.email}</small>}
+                {errors.email && <small className='text-danger'>{errors.email}</small>}
               </div>
 
               <div className='input-main-data'>
@@ -154,7 +158,7 @@ const handleSubmit = async (e) => {
                   className='input-box'
                   required
                 />
-                 {errors.password && <small className='text-danger'>{errors.password}</small>}
+                {errors.password && <small className='text-danger'>{errors.password}</small>}
 
               </div>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import imageMap from '../../utils/helpers'
 import { Container } from 'react-bootstrap'
 import { EyeIcon, EyeoffIcon } from '../../icons/icons'
@@ -11,10 +11,13 @@ import axios from 'axios'; // for calling userinfo API
 import { Link } from 'react-router-dom'
 
 import OverlayLoading from "../../component/common/overlayLoader";
+import { isloginSuccess } from "../../redux/slice/authSlice";
+import { useDispatch } from "react-redux";
 
 const Signup = () => {
   const { fetchData } = useApiRequest();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
@@ -23,6 +26,7 @@ const Signup = () => {
     email: '',
     password: '',
     confirm_password: '',
+    referred_by:'',
     auth_type: 'email'
   });
 
@@ -31,6 +35,17 @@ const Signup = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
 
+
+      const [isRefFromUrl, setIsRefFromUrl] = useState(false)
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(location.search);
+        const ref = searchParams.get('ref');
+        if (ref) {
+            setIsRefFromUrl(true)
+            setFormData((prev) => ({ ...prev, referred_by: ref }));
+        }
+    }, [location.search]);
 
   const handleChange = (e) => {
     setFormData(prev => ({
@@ -130,14 +145,19 @@ const Signup = () => {
           }
         );
 
-        console.log('Google User Info:', res.data);
         let payload = {
-          name: res.data.given_name, surname: res.data.family_name, email: res.data.email, auth_type: "google"
+          name: res.data.given_name, surname: res.data.family_name, email: res.data.email, auth_type: "google" , referred_by:isRefFromUrl?formData.referred_by:''
         }
         let resp = await fetchData(API_ENDPOINTS.signup, navigate, "POST", payload);
         if (resp.success) {
-          successMsg(resp.message)
-          navigate(`/login`)
+              
+            localStorage.setItem("auth_token", resp?.data.token);
+            localStorage.setItem("name", resp?.data.name);
+            localStorage.setItem("profile", resp?.data.profile);
+            dispatch(isloginSuccess());
+            navigate("/")
+            successMsg(resp?.message);
+
         } else {
           errorMsg(resp.message)
           setLoading(false)
@@ -190,7 +210,7 @@ const Signup = () => {
                 </div>
 
                 <div className='input-main-data'>
-                  <label>First Name</label>
+                  <label>First Name *</label>
                   <input
                     name='name'
                     type='text'
@@ -203,7 +223,7 @@ const Signup = () => {
                 </div>
 
                 <div className='input-main-data'>
-                  <label>Last Name</label>
+                  <label>Last Name *</label>
                   <input
                     name='surname'
                     type='text'
@@ -216,7 +236,7 @@ const Signup = () => {
                 </div>
 
                 <div className='input-main-data'>
-                  <label>E-mail</label>
+                  <label>E-mail *</label>
                   <input
                     name='email'
                     type='email'
@@ -229,7 +249,7 @@ const Signup = () => {
                 </div>
 
                 <div className='input-main-data'>
-                  <label>Password</label>
+                  <label>Password *</label>
                   <input
                     name='password'
                     type={isPasswordVisible ? 'password' : 'text'}
@@ -258,7 +278,7 @@ const Signup = () => {
                 </div>
 
                 <div className='input-main-data'>
-                  <label>Confirm Password</label>
+                  <label>Confirm Password *</label>
                   <input
                     name='confirm_password'
                     type={isConfirmPasswordVisible ? 'password' : 'text'}
@@ -272,6 +292,20 @@ const Signup = () => {
                   </div>
                   {errors.confirm_password && <small className='text-danger'>{errors.confirm_password}</small>}
                 </div>
+
+                {!isRefFromUrl && 
+                <div className='input-main-data'>
+                  <label>Referral Id (Optional)</label>
+                  <input
+                    name='referred_by'
+                    type='email'
+                    placeholder='Enter your referral if have'
+                    className='input-box'
+                    value={formData.referred_by}
+                    onChange={handleChange}
+                  />
+                  {errors.referred_by && <small className='text-danger'>{errors.referred_by}</small>}
+                </div>}
 
                 <button type='submit' className='blue-btn'>Sign Up</button>
 

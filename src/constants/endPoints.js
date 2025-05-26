@@ -1,11 +1,11 @@
 export const API_ENDPOINTS = {
     // auth
-    signup:'/register',
-    send_resetOtp:'/forgotpasword',
-    verify_resetOtp:'/verifyotp',
-    resetPassword:'/reset-password',
-    countries:'/countries',
-    professions:'/professions',
+    signup:'/users/register',
+    send_resetOtp:'/users/forgotpasword',
+    verify_resetOtp:'/users/verifyotp',
+    resetPassword:'/users/reset-password',
+    countries:'/users/countries',
+    professions:'/users/professions',
     profile_get:"/profile",
     profile_update:"/profile",
     plans:"/plan",

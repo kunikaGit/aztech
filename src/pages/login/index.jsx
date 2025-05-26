@@ -11,7 +11,7 @@ import axios from 'axios'; // for calling userinfo API
 import { login } from "../../redux/action/authAction";
 import { useDispatch } from "react-redux";
 import OverlayLoading from "../../component/common/overlayLoader";
-
+import TelegramLogin from "../signup/telegram"
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -64,7 +64,8 @@ const Login = () => {
 
     } catch (error) {
       console.error('Login error:', error);
-      alert(error.response?.data?.message || 'Login failed. Please try again.');
+        setLoading(false)
+
     }
   };
 
@@ -128,6 +129,8 @@ const Login = () => {
                 <img src={imageMap['google.svg']} alt='google icon' />
                 Sign in with Google
               </button>
+                                <TelegramLogin redirectUrl={'https://arcforyou.com/telegram-auth'} />
+
 
               <div className='divide-line'>
                 <span>Or sign in with</span>

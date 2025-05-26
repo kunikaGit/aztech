@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom'
 import OverlayLoading from "../../component/common/overlayLoader";
 import { isloginSuccess } from "../../redux/slice/authSlice";
 import { useDispatch } from "react-redux";
+import TelegramLogin from "./telegram"
 
 const Signup = () => {
   const { fetchData } = useApiRequest();
@@ -205,6 +206,8 @@ const Signup = () => {
                   <img src={imageMap['google.svg']} alt='google icon' />
                   Sign up with Google
                 </button>
+
+                  <TelegramLogin redirectUrl={'https://arcforyou.com/telegram-auth'} />
                 <div className='divide-line'>
                   <span>Or sign in with</span>
                 </div>

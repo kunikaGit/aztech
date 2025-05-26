@@ -15,7 +15,7 @@ export const login = createAsyncThunk(
           "Content-Type": "application/json",
         },
       };
-      const { data } = await axios.post("login", formData, config);
+      const { data } = await axios.post("users/login", formData, config);
       if (data.status || data.success) {
         localStorage.setItem("auth_token", data?.data.token);
 

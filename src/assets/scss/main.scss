@@ -86,7 +86,9 @@ section {
 	@include blue-btn(var(--blue-color), var(--white-color), 16px, 10px 20px, 6px);
 	box-shadow: 0px 4px 4px 0px #00000040;
 }
-
+.light-btn{
+	@include blue-btn(rgba(0,110,255,0.10), var(--blue-color), 16px, 10px 20px, 6px);
+}
 .main-heading {
 	h2 {
 		color: var(--heading-color);
@@ -120,7 +122,7 @@ section {
 
 .dash-heading {
 	h2 {
-		color: var(--heading-color);
+		color: var(--color-3F4254);
 		font-size: 20px;
 		font-weight: 600;
 		font-family: 'poppins';
@@ -193,11 +195,13 @@ section {
 			}
 		}
 	}
-.table-container{
-	padding: 10px 20px;
-	background-color: var(--white-color);
-	border-radius: 10px;
-}
+
+	.table-container {
+		padding: 10px 20px;
+		background-color: var(--white-color);
+		border-radius: 10px;
+	}
+
 	table {
 		width: 100%;
 
@@ -212,7 +216,8 @@ section {
 		tbody {
 			.custom-row {
 				position: relative;
-				&::after{
+
+				&::after {
 					content: '';
 					position: absolute;
 					left: 0;
@@ -220,21 +225,22 @@ section {
 					height: 50px;
 					width: 2px;
 				}
+
 				&.borders-0 {
-					&::after{
-					background-color: red;
+					&::after {
+						background-color: red;
 					}
 				}
 
 				&.borders-1 {
-					&::after{
-					background-color: orange;
+					&::after {
+						background-color: orange;
 					}
 				}
 
 				&.borders-2 {
-					&::after{
-					background-color: pink;
+					&::after {
+						background-color: pink;
 					}
 				}
 			}
@@ -270,4 +276,78 @@ section {
 			}
 		}
 	}
+}
+
+.input-main-data {
+	margin-bottom: 15px;
+	label{
+	color: var(--color-3F4254);
+	font-size: 16px;
+	font-weight: 600;
+	display: block;
+	}
+	input{
+	color: var(--color-3F4254);
+	font-size: 16px;
+	display: block;
+	width: 100%;
+	padding: 14px;
+	border-radius: 50px;
+	border: 1px solid var(--text-grey);
+	outline: none;
+	}
+}
+.checkcontainer {
+    position: relative;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;  
+    label{
+        font-size: var(--font_14);
+		cursor: pointer;
+    }
+    input {
+		cursor: pointer;
+        width: 18px;
+        height: 18px;
+        border: 0;
+        margin-right: 3px;
+        position: relative;
+        top: 3px;
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: url(../../assets/images/blank-check.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        &:checked {
+            &::after {
+                opacity: 1;
+            }
+        }
+
+        &::after {
+            content: "";
+            display: block;
+            width: inherit;
+            height: inherit;
+            border-radius: inherit;
+            position: absolute;
+            transform: scale(1);
+            transform-origin: center center;
+            border-radius: 3px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-image: url(../../assets/images/cheked.svg);
+            height: 20px;
+            width: 20px;
+            background-color: #fff;
+            top: -1px;
+            left: -1px;
+            opacity: 0;
+        }
+    }
 }

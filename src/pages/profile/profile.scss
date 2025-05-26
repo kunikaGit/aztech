@@ -1,0 +1,94 @@
+@use '../../assets/scss/mixin.scss' as *;
+
+.my-plan-wrapped {
+    .profile-info {
+        display: flex;
+        margin-bottom: 40px;
+
+        .profile-des {
+            width: 50%;
+            display: flex;
+            gap: 20px;
+
+            .profile-img {
+                width: 170px;
+
+                img {
+                    height: 110px;
+                    width: 110px;
+                    border-radius: 20px;
+                }
+            }
+
+            .description {
+                h3 {
+                    font-size: 16px;
+                    margin-bottom: 0;
+                    color: var(--color-3F4254);
+                    font-weight: 700;
+                }
+
+                p {
+                    font-size: 12px;
+                    color: var(--text-grey);
+                }
+
+            }
+        }
+
+        .actions {
+            width: 50%;
+            display: flex;
+            justify-content: end;
+            align-items: start;
+            gap: 20px;
+
+            button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                font-size: 14px;
+                height: 36px;
+                box-shadow: none;
+
+                svg {
+                    max-width: 17px;
+                }
+            }
+        }
+    }
+
+    .profile-form {
+        display: flex;
+        column-gap:  30px;
+        row-gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+
+        .input-main-data {
+            width: calc(50% - 20px);
+            label{
+                padding-left: 10px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    .action-btns {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        justify-content: end;
+        button{
+            width: 155px;
+        }
+        .save {
+            @include blue-btn(var(--blue-color), var(--white-color), 16px, 10px 20px, 6px);
+        }
+
+        .cancel {
+            @include blue-btn(var(--text-grey), var(--white-color), 16px, 10px 20px, 6px);
+        }
+    }
+}

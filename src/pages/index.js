@@ -7,6 +7,10 @@ export { default as Myplans } from "./myplans";
 export { default as Dashboard } from "./dahboard";
 export { default as Transactions } from "./transactions";
 export { default as Networks } from "./networks";
+export { default as MyProfile } from "./profile";
+export { default as Checkout } from "./checkout";
+
+
 
 
 

@@ -101,7 +101,7 @@ const Login = () => {
       <Container>
         <div className='two-grid'>
           <div className='content'>
-            <div className='logo'>
+            <div className='logo' onClick={()=>navigate('/')}>
               <img src='/images/logo-big.png' alt='logo' />
             </div>
             <div className='heading'>

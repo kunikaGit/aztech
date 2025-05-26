@@ -9,6 +9,8 @@ export const API_ENDPOINTS = {
     profile_get:"/profile",
     profile_update:"/profile",
     plans:"/plan",
+    products:"/products",
+    categories:"/categories",
     instantFunding:"/plan?id=&tableName=instant_funding_plans",
     twoPhase:"/plan?id=&tableName=two_phases_plans",
     paymentMethods:"/payment/methods",

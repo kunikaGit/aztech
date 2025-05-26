@@ -12,7 +12,7 @@ const RoutesMain = () => {
     {/* -----------outer pages--------- */}
         <Route path="/" element={<Mainlayout />}>
           <Route index element={<Home />} />
-          <Route path='/courses' element={<Courses />} />
+          <Route path='/products' element={<Courses />} />
           <Route path='/detail' element={<ProductDetail />} />
         </Route>
     {/* ----------inner dashboard pages-------------- */}

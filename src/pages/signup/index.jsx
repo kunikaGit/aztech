@@ -301,7 +301,7 @@ const Signup = () => {
                   <label>Referral Id (Optional)</label>
                   <input
                     name='referred_by'
-                    type='email'
+                    type='text'
                     placeholder='Enter your referral if have'
                     className='input-box'
                     value={formData.referred_by}

@@ -10,6 +10,9 @@ export const API_ENDPOINTS = {
     profile_update:"/profile",
     plans:"/plan",
     products:"/products",
+        referralTree:"/profile/referral-tree",
+        referralList:"/profile/referral-list",
+
     categories:"/categories",
     instantFunding:"/plan?id=&tableName=instant_funding_plans",
     twoPhase:"/plan?id=&tableName=two_phases_plans",

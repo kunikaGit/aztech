@@ -1,0 +1,70 @@
+.input-main-data {
+    position: relative;
+    label {
+        color: var(--color_647C9B);
+        display: block;
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 6px;
+
+        .asterisk {
+            font-size: 16px;
+            color: #F44336;
+        }
+    }
+
+    input {
+        border: 1px solid var(--light-blue);
+        font-weight: 300;
+        font-size: 16px;
+        color: var(--black-color);
+        border-radius: 3px;
+        padding: 10px;
+        width: 100%;
+        outline: none;
+    }
+
+    select {
+        word-wrap: normal;
+        border: 1px solid var(--light-blue);
+        font-weight: 300;
+        font-size: 16px;
+        color: var(--black-color);
+        border-radius: 3px;
+        padding: 10px;
+        width: 100%;
+        outline: none;
+
+        &:focus {
+            border-color: var(--orange-color);
+        }
+    }
+
+    &.select-mui-vs {
+        .MuiOutlinedInput-root {
+            // border: 1px solid var(--light-blue) !important;
+            font-weight: 300;
+            font-size: 16px;
+            color: var(--black-color);
+            border-radius: 3px;
+            padding: 10px;
+            width: 100%;
+            outline: none;
+            padding: 0 !important;
+            font-family: var(--Quicksand);
+            @include media_1024 {
+                font-size: 14px;
+                padding: 0px 5px !important;
+            }
+        }
+
+
+        .MuiOutlinedInput-notchedOutline {
+            border: none;
+        }
+        .Mui-focused .MuiOutlinedInput-notchedOutline {
+            border:1px solid var(--orange-color);
+        }
+
+    }
+}

@@ -1,0 +1,23 @@
+.networks {
+    .table-header {
+        li {
+            list-style: none;
+            text-align: center;
+
+            button {
+                width: 100px;
+                padding: 10px;
+                color: var(--text-grey);
+                display: block;
+                border: none;
+
+                &.active {
+                    background-color: var(--blue-color);
+                    border-radius: 8px;
+                    color: #fff;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}

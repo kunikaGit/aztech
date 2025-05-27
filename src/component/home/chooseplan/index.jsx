@@ -4,25 +4,30 @@ import useApiRequest from "../../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../../constants/endPoints";
 import { useNavigate } from "react-router-dom";
 const Chooseplan = () => {
-  const { fetchData } = useApiRequest();
-  const navigate = useNavigate();
+    const { fetchData } = useApiRequest();
+    const navigate = useNavigate();
 
-  const [plans,setPlans]=useState([]);
-  useEffect(()=>{
-    callPlansApi()
-  },[]);
+    const [plans, setPlans] = useState([]);
+    useEffect(() => {
+        callPlansApi()
+    }, []);
 
-  const callPlansApi=async()=>{
-    try{
-        let res=await fetchData(API_ENDPOINTS.plans,navigate,'GET',{}) ;
+    const callPlansApi = async () => {
+        try {
+            let res = await fetchData(API_ENDPOINTS.plans, navigate, 'GET', {});
 
-        if(res.success){
-            setPlans(res.data)
+            if (res.success) {
+                setPlans(res.data)
+            }
+        } catch (error) {
+            console.log(error)
         }
-    }catch(error){
-        console.log(error)
     }
-  }
+
+    const handleCheckout = (e, plan) => {
+        e.preventDefault();
+        navigate('/myaccount/checkout', { state: { product: plan } });
+    };
     return (
         <section className='choose-plan'>
             <div className='main-heading'>
@@ -35,24 +40,24 @@ const Chooseplan = () => {
             </div>
             <div className='plan-cards'>
 
-{plans.length >0 && 
-plans.map((plan,index)=>(
-    <div className={index==1?'cards active':'cards'}>
-                    <h3 className='title'>{plan.name}</h3>
-                    <p className='des'>{plan.description}</p>
-                    <hr />
-                    <div className='price'>
-                        <h2>${parseFloat(plan.amount).toFixed(1)}</h2>
-                        <span>Per {plan.duration}</span>
-                    </div>
-                    <button type='button' className='plan-btn'>Get Started</button>
-                    <div className='plan-benifits'>
-                        <ul>
-                           {plan?.pointers.length > 0 && plan?.pointers.map((point)=>(<li>{point}</li>))}
-                        </ul>
-                    </div>
-                </div>
-))}
+                {plans.length > 0 &&
+                    plans.map((plan, index) => (
+                        <div className={index == 1 ? 'cards active' : 'cards'}>
+                            <h3 className='title'>{plan.name}</h3>
+                            <p className='des'>{plan.description}</p>
+                            <hr />
+                            <div className='price'>
+                                <h2>${parseFloat(plan.amount).toFixed(1)}</h2>
+                                <span>Per {plan.duration}</span>
+                            </div>
+                            <button type='button' className='plan-btn' onClick={(e) => handleCheckout(e, plan)}>Get Started</button>
+                            <div className='plan-benifits'>
+                                <ul>
+                                    {plan?.pointers.length > 0 && plan?.pointers.map((point) => (<li>{point}</li>))}
+                                </ul>
+                            </div>
+                        </div>
+                    ))}
 
                 {/* <div className='cards'>
                     <h3 className='title'>{}</h3>

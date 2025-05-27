@@ -22,7 +22,8 @@ const Sidebar = () => {
                         Transaction</Link></li>
                     <li><Link to='/myaccount/networks' className={location.pathname.includes('/networks') ? 'active' : ''}>
                         <NetworkIcon /> Network</Link></li>
-                    <li><Link to='/#'><ProfileIcon /> Profile</Link></li>
+                    <li><Link to='/myaccount/profile' className={location.pathname.includes('/profile') ? 'active' : ''}>
+                    <ProfileIcon /> Profile</Link></li>
                     <li><Link to='/#'><SettingIcon /> Setting</Link></li>
                     <li><Link to='/#'><HelpIcon /> Help</Link></li>
                 </ul>

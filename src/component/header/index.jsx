@@ -1,9 +1,13 @@
-import React from "react"
+import React,{useEffect} from "react"
 import { Link, useNavigate } from "react-router-dom";
 import './header.scss'
 import { UserIcon } from "../../icons/icons";
+import { useDispatch, useSelector } from "react-redux";
 const Header = () => {
-    const navigate = useNavigate()
+      const { auth_token } = useSelector((state) => state.auth);
+    
+    const navigate = useNavigate();
+
     return (
         <header>
             <div className="header-wrapped">
@@ -21,8 +25,8 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="actions">
-                    <button type="button" className="orange-button" onClick={()=>navigate('/login')}>
-                        My Account
+                    <button type="button" className="orange-button" onClick={()=>navigate(auth_token?'/myaccount/dashboard':'/login')}>
+                       {auth_token? `My Account`:`Login`}
                         <UserIcon />
                     </button>
                 </div>

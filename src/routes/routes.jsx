@@ -1,14 +1,22 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Courses, Dashboard, Home, Login, Myplans, Networks, ProductDetail, Signup ,Transactions} from '../pages';
+import { Routes, Route } from 'react-router-dom';
+import { Checkout, Courses, Dashboard, Home, Login, Myplans, MyProfile, Networks, ProductDetail, Signup ,Transactions,SuccessStatus,FailedStatus} from '../pages';
 import Mainlayout from '../mainlayout';
 import DashboardOutlet from '../pages/dashboardOutlet';
+import AutoLogoutHandler from "./autoLogoutHeader"
 const RoutesMain = () => {
   return (
-    <Router>
+    <>
+    <AutoLogoutHandler/>
+
       <Routes>
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
+
+        <Route path='/success' element={<SuccessStatus />} />
+
+        <Route path='/failed' element={<FailedStatus />} />
+
     {/* -----------outer pages--------- */}
         <Route path="/" element={<Mainlayout />}>
           <Route index element={<Home />} />
@@ -21,9 +29,12 @@ const RoutesMain = () => {
           <Route path='/myaccount/dashboard' element={<Dashboard />} />
           <Route path='/myaccount/transactions' element={<Transactions />} />
           <Route path='/myaccount/networks' element={<Networks />} />
+          <Route path='/myaccount/checkout' element={<Checkout />} />
+          <Route path='/myaccount/profile' element={<MyProfile />} />
         </Route>
       </Routes>
-    </Router>
+  
+    </>
   )
 }
 

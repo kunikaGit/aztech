@@ -1,0 +1,90 @@
+@use '../../assets/scss/abstract/mixins' as *;
+
+.status-wrapped {
+    background-color: ff;
+    height: 100vh;
+    .upper-body {
+        padding: 100px 0;
+
+        @include media_1024 {
+            padding: 50px 0;
+        }
+
+    }
+
+    .form-box {
+        background-color:#f3f3f3;
+        width: 50%;
+        margin: auto;
+        padding: 30px 70px;
+        border-radius: 16px;
+
+        @include media_1024 {
+            width: 80%;
+            padding: 30px 50px;
+        }
+
+        @include media_576 {
+            width: 90%;
+            padding: 30px;
+        }
+        .icon{
+            display: flex;
+            justify-content: center;
+        }
+        .success-message{
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 10px;
+            strong{
+                color: var(--theme-purple);
+            }
+        }
+        .info{
+            text-align: center;
+            font-size: 18px;
+        }
+        form {
+            margin-bottom: 50px;
+            @include media_768 {
+               margin-bottom: 20px;
+            }
+        }
+
+        .main-heading {
+            font-size: 28px;
+            color: var(--theme-purple);
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 0;
+            &.failed{
+                color: rgba(255, 0, 0, 0.642);
+            }
+            @include media_768 {
+                font-size: 22px;
+            }
+        }
+
+        .input-main-data {
+            margin-bottom: 20px;
+            position: relative;
+            .eyeicon{
+                position: absolute;
+                right: 10px;
+                top: 40px;
+                cursor: pointer;
+            }
+            @include media_768 {
+               margin-bottom: 15px;
+            }
+            input {
+                width: 100%;
+                @include media_768 {
+                  padding: 7px;
+                }
+            }
+        }
+
+    }
+}
+

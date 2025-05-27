@@ -41,7 +41,7 @@ const Courses = () => {
                     <div className='heading'>
                         <div className='relative'>
                             {/* <h1 className='title-heading'>Courses</h1> */}
-                            <img src={imageMap['course-text.svg']} alt='course' />
+                            <img src={imageMap['products-text.svg']} alt='course' />
                         </div>
                     </div>
                     <div className='main-content'>

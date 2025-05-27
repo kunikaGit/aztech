@@ -1,0 +1,130 @@
+@use "./breakpoints" as breakpoints;
+
+@mixin media_320 {
+  @media #{breakpoints.$media_320} {
+    @content
+  }
+};
+@mixin media_375 {
+  @media #{breakpoints.$media_320} {
+    @content
+  }
+}
+
+@mixin media_480 {
+  @media #{breakpoints.$media_480} {
+    @content
+  }
+};
+@mixin media_576{
+  @media #{breakpoints.$media_576} {
+    @content
+  }
+};
+
+@mixin media_768 {
+  @media #{breakpoints.$media_768} {
+    @content
+  }
+}
+
+;
+
+@mixin media_991 {
+  @media #{breakpoints.$media_991} {
+    @content
+  }
+}
+
+;
+
+@mixin media_1024 {
+  @media #{breakpoints.$media_1024} {
+    @content
+  }
+}
+
+;
+
+@mixin media_1200 {
+  @media #{breakpoints.$media_1200} {
+    @content
+  }
+}
+
+;
+
+@mixin media_1280 {
+  @media #{breakpoints.$media_1280} {
+    @content
+  }
+}
+
+;
+
+@mixin media_1440 {
+  @media #{breakpoints.$media_1440} {
+    @content
+  }
+}
+
+;
+
+@mixin media_min_1920 {
+  @media #{breakpoints.$media_min_1920} {
+    @content
+  }
+};
+@mixin media_min_1600 {
+  @media #{breakpoints.$media_min_1600} {
+    @content
+  }
+}
+
+;
+
+@mixin main_heading($size, $color, $ff: var(--Quicksand), $fw: 700) {
+  font-size: $size;
+  color: $color;
+  font-family: $ff;
+  font-weight: $fw;
+}
+
+@mixin theme_button($size, $color, $bg, $padding, $radius, $bordercolor, $fw) {
+  font-size: $size;
+  color: $color;
+  background-color: $bg;
+  padding: $padding;
+  border-radius: $radius;
+  border-color: $bordercolor;
+  font-weight: $fw;
+  border: 1px solid;
+
+  &:hover {
+    background-color: $color;
+    color: $bg;
+    text-decoration: none;
+  }
+  &:disabled {
+    &:hover {
+      background-color: $bg;
+      color: $color;
+    }
+  }
+}
+
+@mixin border_button($size, $color, $padding, $radius, $bordercolor, $fw) {
+  font-size: $size;
+  color: $color;
+  padding: $padding;
+  border-radius: $radius;
+  border-color: $bordercolor;
+  font-weight: $fw;
+  background-color: transparent;
+  border: 1px solid;
+
+  &:hover {
+    background-color: $color;
+    color: #fff;
+  }
+}

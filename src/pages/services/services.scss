@@ -1,0 +1,84 @@
+.services-wrapped {
+    .two-grid {
+        padding: 50px 0;
+        gap: 30px;
+        height: 70vh;
+        align-items: center;
+
+        .heading {
+            width: 40%;
+        }
+
+        .main-content {
+            width: 60%;
+
+            h2 {
+                font-size: 38px;
+                font-weight: 700;
+                color: #474747;
+            }
+
+            p {
+                font-size: 18px;
+                color: var(--text-grey);
+            }
+
+            .blue-btn {
+                width: 200px;
+            }
+        }
+    }
+
+    .service-cards-wrapped {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        margin-bottom: 50px;
+
+        .service-cards {
+            width: calc(50% - 20px);
+            border-radius: 30px;
+            padding: 35px 45px;
+            background-color: var(--white-color);
+            color: var(--black-color);
+            transition: 0.3s;
+
+            &:hover {
+                background: linear-gradient(147.87deg, #6F4CF3 22.08%, #0EACDC 100.23%);
+                color: var(--white-color);
+
+                h3,
+                p {
+                    color: var(--white-color);
+                }
+
+                .icon {
+                    background-color: var(--white-color);
+                }
+
+            }
+
+            .icon {
+                height: 66px;
+                width: 66px;
+                border-radius: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px;
+                background-color: #E5EFFF;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 28px;
+                font-weight: 700;
+                margin-bottom: 15px;
+            }
+
+            p {
+                font-size: 20px;
+            }
+        }
+    }
+}

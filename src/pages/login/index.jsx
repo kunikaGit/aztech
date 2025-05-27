@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import imageMap from '../../utils/helpers';
 import { Link, useNavigate } from 'react-router-dom';
 import './login.scss';
@@ -17,11 +17,11 @@ const Login = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-useEffect(() => {
-  if (auth_token) {
-    navigate('/myaccount/dashboard'); // ✅ Safe inside useEffect
-  }
-}, [auth_token, navigate]);
+  useEffect(() => {
+    if (auth_token) {
+      navigate('/myaccount/dashboard'); // ✅ Safe inside useEffect
+    }
+  }, [auth_token, navigate]);
 
   const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
@@ -68,7 +68,7 @@ useEffect(() => {
       setLoading(true)
 
       dispatch(login({ formData, navigate }))
-setLoading(false)
+      setLoading(false)
     } catch (error) {
       console.error('Login error:', error);
       setLoading(false)

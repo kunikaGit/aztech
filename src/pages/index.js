@@ -11,6 +11,10 @@ export { default as MyProfile } from "./profile";
 export { default as Checkout } from "./checkout";
 export { default as SuccessStatus } from "./status/successStatus";
 export { default as FailedStatus } from "./status/failedStatus";
+export { default as AboutUs } from "./aboutus";
+export { default as Services } from "./services";
+
+
 
 
 

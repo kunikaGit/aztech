@@ -11,6 +11,10 @@ export { default as TrustedPrtner } from "./home/trustedPartner";
 export { default as Welcome } from "./dashboard/welcome";
 export { default as Dahboardtable } from "./dashboard/dahboardtable";
 
+//about us
+
+export { default as Faq } from "./aboutus/faq";
+export { default as Whoweare } from "./aboutus/whoweare";
 
 
 

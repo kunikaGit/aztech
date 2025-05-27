@@ -40,7 +40,6 @@ const Courses = () => {
                 <div className='two-grid'>
                     <div className='heading'>
                         <div className='relative'>
-                            {/* <h1 className='title-heading'>Courses</h1> */}
                             <img src={imageMap['products-text.svg']} alt='course' />
                         </div>
                     </div>

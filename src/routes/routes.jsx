@@ -1,6 +1,7 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom';
-import { Checkout, Courses, Dashboard, Home, Login, Myplans, MyProfile, Networks, ProductDetail, Signup ,Transactions,SuccessStatus,FailedStatus} from '../pages';
+import { Checkout, Courses, Dashboard, Home, Login, Myplans, MyProfile, Networks, 
+  ProductDetail, Signup ,Transactions,SuccessStatus,FailedStatus, AboutUs, Services} from '../pages';
 import Mainlayout from '../mainlayout';
 import DashboardOutlet from '../pages/dashboardOutlet';
 import AutoLogoutHandler from "./autoLogoutHeader"
@@ -22,6 +23,8 @@ const RoutesMain = () => {
           <Route index element={<Home />} />
           <Route path='/products' element={<Courses />} />
           <Route path='/detail' element={<ProductDetail />} />
+          <Route path='/about-us' element={<AboutUs />} />
+          <Route path='/services' element={<Services />} />
         </Route>
     {/* ----------inner dashboard pages-------------- */}
         <Route path="/myaccount" element={<DashboardOutlet />}>

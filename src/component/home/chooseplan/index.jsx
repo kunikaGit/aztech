@@ -3,7 +3,10 @@ import './chooseplan.scss'
 import useApiRequest from "../../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../../constants/endPoints";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
 const Chooseplan = () => {
+      const { auth_token } = useSelector((state) => state.auth);
     const { fetchData } = useApiRequest();
     const navigate = useNavigate();
 
@@ -26,7 +29,12 @@ const Chooseplan = () => {
 
     const handleCheckout = (e, plan) => {
         e.preventDefault();
+        if(auth_token){
         navigate('/myaccount/checkout', { state: { product: plan } });
+        return
+        }
+                navigate('/login');
+
     };
     return (
         <section className='choose-plan'>

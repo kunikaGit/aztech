@@ -73,7 +73,7 @@ const Networks = () => {
                     <table>
                         <thead>
                             <tr>
-                                <th></th>
+                                <th>Referrals</th>
                                 {/* <th>Name</th> */}
                                 <th>Date</th>
                                 {/* <th>Valid Till</th> */}

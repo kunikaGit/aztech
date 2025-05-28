@@ -262,7 +262,7 @@ const Signup = () => {
                     onChange={handleChange}
                   />
                   <div className="eyeicon" onClick={() => setIsPasswordVisible(!isPasswordVisible)}>
-                    {isPasswordVisible ? <EyeoffIcon /> : <EyeIcon />}
+                    {isPasswordVisible ? <EyeoffIcon/> : <EyeIcon />}
                   </div>
                   {errors.password && <small className='text-danger'>{errors.password}</small>}
                 </div>

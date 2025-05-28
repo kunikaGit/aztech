@@ -10,6 +10,7 @@ export const API_ENDPOINTS = {
     profile_update: "/profile",
     plans: "/plan",
     products: "/products",
+    categorywise:"/products/categorywise",
     referralTree: "/profile/referral-tree",
     referralList: "/profile/referral-list",
     paymentMethods: '/payment/methods',
@@ -21,6 +22,8 @@ export const API_ENDPOINTS = {
     checkout: "/payment/create-checkout-session",
     updateStatus: "/payment/update-stripe-session-status",
     transactions:'/transactions',
+    faq:'/content/faq',
+
     couponCode: "/payment/apply-coupon-code",
     getProfile: "/profile",
     updateProfile: "/profile",

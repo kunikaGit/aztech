@@ -1,22 +1,33 @@
 
 import { Accordion } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react'
+
+import { useNavigate } from 'react-router-dom';
+import useApiRequest from "../../hook/useApiRequest";
+import { API_ENDPOINTS } from "../../constants/endPoints";
 
 
-const getFaq = [
-    {
-        question: 'Who we are?',
-        answer: 'Our founders Dustin Moskovitz and Justin Rosenstein met while leading Engineering .Tortor porttitor tortor vitae commodo et. Et morbi at felis vestibulum pulvinar libero utne pulvinar libero'
-    },
-    {
-        question: 'What’s our goal?',
-        answer: 'Our founders Dustin Moskovitz and Justin Rosenstein met while leading Engineering .Tortor porttitor tortor vitae commodo et. Et morbi at felis vestibulum pulvinar libero utne pulvinar libero'
-    },
-    {
-        question: 'Our vision',
-        answer: 'Our founders Dustin Moskovitz and Justin Rosenstein met while leading Engineering .Tortor porttitor tortor vitae commodo et. Et morbi at felis vestibulum pulvinar libero utne pulvinar libero'
-    },
-]
 const Faq = () => {
+    const navigate = useNavigate();
+    const [list, setList] = useState([])
+    useEffect(() => {
+        callApi()
+    }, []);
+
+    const { fetchData } = useApiRequest();
+
+    const callApi = async () => {
+        try {
+
+            const faqRes = await fetchData(`${API_ENDPOINTS.faq}`, navigate, "GET", {});
+            if (faqRes.success) {
+                setList(faqRes.data)
+            }
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
 
 
@@ -29,7 +40,7 @@ const Faq = () => {
             </div>
             <div className='item2'>
                 <Accordion>
-                    {getFaq?.map((item, index) => (
+                    {list?.map((item, index) => (
                         <Accordion.Item
                             eventKey={`${index}`}
                             key={index}

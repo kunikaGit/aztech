@@ -1,18 +1,20 @@
 import React from 'react'
 import './banner.scss'
 import imageMap from '../../../utils/helpers'
+import TypingInput from './TypingInput'
 
 const Banner = () => {
   return (
     <div className='banner'>
       <div className='two-grid'>
         <div className='hero-content'>
-          <h3 className='label'>Introduction Interactive</h3>
-          <h1>Learning Courses by Top Instructors</h1>
-          <p>Choose from over 4.000 courses on topics like Web Design, Web Development, Mobile Development, and much more</p>
+          <h3 className='label'>Smart Reward System</h3>
+          <h1>Your All-in-One Digital Mall for Learning, Creativity & Growth</h1>
+          <p>Explore AI tools, education, music, codes, eBooks, and more – all under one roof. Earn rewards, refer friends, and unlock unlimited digital possibilities!</p>
           <div className='searchbox'>
-            <input type='text' placeholder='Search course' />
-            <button type='button'>Search</button>
+            {/* <input type='text' placeholder='Search course' /> */}
+            {/* <button type='button'>Search</button> */}
+            <TypingInput/>
           </div>
         </div>
         <div className='hero-img'>

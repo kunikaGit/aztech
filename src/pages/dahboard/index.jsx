@@ -5,7 +5,7 @@ const Dashboard = () => {
   return (
     <div className='dahboard-wrapped'>
         <Welcome/>
-        <Dahboardtable/>
+        {/* <Dahboardtable/> */}
     </div>
   )
 }

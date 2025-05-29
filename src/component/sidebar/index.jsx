@@ -1,5 +1,5 @@
 import React from 'react'
-import { BookIcon, DashboardIcon, HelpIcon, NetworkIcon, ProfileIcon, SettingIcon, TransactionIcon } from '../../icons/icons'
+import { BookIcon, DashboardIcon, HelpIcon, NetworkIcon, ProfileIcon, SettingIcon, TransactionIcon, StarIcon } from '../../icons/icons'
 import { Link, useLocation } from 'react-router-dom'
 import './sidebar.scss'
 
@@ -16,14 +16,18 @@ const Sidebar = () => {
                 <ul>
                     <li><Link to='/myaccount/dashboard' className={location.pathname.includes('/dashboard') ? 'active' : ''}>
                         <DashboardIcon /> Dashboard</Link></li>
-                    <li><Link to='/myaccount/myplans' className={location.pathname.includes('/myplans') ? 'active' : ''}>
-                        <BookIcon />Learning Plan</Link></li>
+                    <li><Link to='/myaccount/packages' className={location.pathname.includes('/packages') ? 'active' : ''}>
+                        <StarIcon /> Packages</Link></li>
+                    <li><Link to='/myaccount/games' className={location.pathname.includes('/games') ? 'active' : ''}>
+                        <BookIcon /> Games</Link></li>
+                    <li><Link to='/myaccount/mall' className={location.pathname.includes('/mall') ? 'active' : ''}>
+                        <BookIcon /> Mall</Link></li>
                     <li><Link to='/myaccount/transactions' className={location.pathname.includes('/transactions') ? 'active' : ''}><TransactionIcon />
                         Transaction</Link></li>
                     <li><Link to='/myaccount/networks' className={location.pathname.includes('/networks') ? 'active' : ''}>
                         <NetworkIcon /> Network</Link></li>
                     <li><Link to='/myaccount/profile' className={location.pathname.includes('/profile') ? 'active' : ''}>
-                    <ProfileIcon /> Profile</Link></li>
+                        <ProfileIcon /> Profile</Link></li>
                     <li><Link to='/#'><SettingIcon /> Setting</Link></li>
                     <li><Link to='/#'><HelpIcon /> Help</Link></li>
                 </ul>

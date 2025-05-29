@@ -40,12 +40,15 @@ const Chooseplan = () => {
         <section className='choose-plan'>
             <div className='main-heading'>
                 <h2>
-                    Choose a plan that fits<br /> your needs
+                    Unlock Limitless Possibilities <br /> at a Price That Feels Unreal
                 </h2>
                 <p>
-                    Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris, turpis et commodo pharetra, pretium tincidunt lacus. Pellentesque non elit. Fusce sed justo eu urna porta tincidunt. Integer sagittis. Vivamus a mauris eget arcu gravida tristique.
+                    Why pay more for less? With AZ Tech, you get a complete digital mall — from AI tools and educational content to entertainment and pro resources — all starting at just <strong>$0.08/day</strong>. No gimmicks, no overpriced subscriptions — just pure value built for learners, creators, and dreamers. Choose a plan that fuels your passion and rewards your journey.
                 </p>
+                <span className='plan-badge'>Only $2.4/month – Everything You Need, All in One Place</span>
+
             </div>
+
             <div className='plan-cards'>
 
                 {plans.length > 0 &&

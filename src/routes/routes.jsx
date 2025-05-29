@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom';
 import { Checkout, Courses, Dashboard, Home, Login, Myplans, MyProfile, Networks, 
-  ProductDetail, Signup ,Transactions,SuccessStatus,FailedStatus, AboutUs, Services} from '../pages';
+  ProductDetail, Signup ,Transactions,SuccessStatus,FailedStatus, AboutUs, Services , Packages,Games} from '../pages';
 import Mainlayout from '../mainlayout';
 import DashboardOutlet from '../pages/dashboardOutlet';
 import AutoLogoutHandler from "./autoLogoutHeader"
@@ -28,12 +28,16 @@ const RoutesMain = () => {
         </Route>
     {/* ----------inner dashboard pages-------------- */}
         <Route path="/myaccount" element={<DashboardOutlet />}>
-          <Route path='/myaccount/myplans' element={<Myplans />} />
+          <Route path='/myaccount/mall' element={<Myplans />} />
+          <Route path='/myaccount/packages' element={<Packages />} />
+
           <Route path='/myaccount/dashboard' element={<Dashboard />} />
           <Route path='/myaccount/transactions' element={<Transactions />} />
           <Route path='/myaccount/networks' element={<Networks />} />
           <Route path='/myaccount/checkout' element={<Checkout />} />
           <Route path='/myaccount/profile' element={<MyProfile />} />
+          <Route path='/myaccount/games' element={<Games />} />
+
         </Route>
       </Routes>
   

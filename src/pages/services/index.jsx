@@ -1,7 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import imageMap from '../../utils/helpers'
-import './services.scss'
+import './services.scss';
+import { useNavigate } from 'react-router-dom';
+import useApiRequest from "../../hook/useApiRequest";
+import { API_ENDPOINTS } from "../../constants/endPoints";
 const Services = () => {
+        const { fetchData } = useApiRequest();
+    const navigate = useNavigate();
+
+    const [list, setList] = useState([]);
+    const [total, setTotal] = useState('');
+
+    useEffect(() => {
+        callApi()
+    }, []);
+
+    const callApi = async () => {
+        try {
+            let res = await fetchData(API_ENDPOINTS.categories, navigate, 'GET', {});
+
+            if (res.success) {
+                setList(res.data.list)
+                setTotal(res.data.total)
+            }
+
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
     return (
         <div className='services-wrapped'>
             <div className='two-grid'>
@@ -11,41 +38,23 @@ const Services = () => {
                     </div>
                 </div>
                 <div className='main-content'>
-                    <h2>Aztech is one of world best virtual learning network eLearning</h2>
-                    <p>Choose from over 4.000 courses on topics like Web Design, Web Development, Mobile Development, and much more</p>
+                    <h2>Discover the Ultimate Digital Mall at AZ Tech</h2>
+                    <p>Explore thousands of cutting-edge digital products — from AI tools and creative assets to eBooks, videos, music, and much more. Everything you need to learn, create, and grow is just a click away.</p>
                     <button type='button' className='blue-btn'>Explore Now</button>
                 </div>
+
             </div>
             <div className='service-cards-wrapped'>
+
+                {list.length>0 &&
+                list.map((category)=>(
                 <div className='service-cards'>
                     <div className='icon'>
                         <img src={imageMap['cube.svg']} alt='icon'/>
                     </div>
-                    <h3>UI/UX design</h3>
-                    <p>Use your preferred shell, whether it's zsh, pwsh, or git bash, seamlessly inside the editor.</p>
-                </div>
-                  <div className='service-cards'>
-                    <div className='icon'>
-                        <img src={imageMap['cube.svg']} alt='icon'/>
-                    </div>
-                    <h3>UI/UX design</h3>
-                    <p>Use your preferred shell, whether it's zsh, pwsh, or git bash, seamlessly inside the editor.</p>
-                </div>
-                  <div className='service-cards'>
-                    <div className='icon'>
-                        <img src={imageMap['cube.svg']} alt='icon'/>
-                    </div>
-                    <h3>UI/UX design</h3>
-                    <p>Use your preferred shell, whether it's zsh, pwsh, or git bash, seamlessly inside the editor.</p>
-                </div>
-                    <div className='service-cards'>
-                    <div className='icon'>
-                        <img src={imageMap['cube.svg']} alt='icon'/>
-                    </div>
-                    <h3>UI/UX design</h3>
-                    <p>Use your preferred shell, whether it's zsh, pwsh, or git bash, seamlessly inside the editor.</p>
-                </div>
-
+                    <h3>{category.name}</h3>
+                    <p>{category.description}</p>
+                </div>)) }
             </div>
             
         </div>

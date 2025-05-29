@@ -42,11 +42,13 @@ const PopularCertifictes = () => {
         <section className='popular-certificate-wrape'>
             <div className='header-section'>
                 <div className='main-heading'>
-                    <span className='up-heading'>Specializations and Professional Certificates</span>
-                    <h2>Most Popular Certificates</h2>
-                    <span className='lower-heading'>Explore our most popular programs, get job-ready for an in-demand career.</span>
+                    <span className='up-heading'>Trending Digital Essentials</span>
+                    <h2>Most Popular Picks on AZ Tech</h2>
+                    <span className='lower-heading'>
+                        Discover what everyone’s loving – from AI tools and eBooks to music, research, and more.
+                    </span>
                 </div>
-                {total - 3 > 0 && <button type='button' className='blue-btn' onClick={()=>{handleProduct()}}>Show {total - 3} More</button>}
+                {total - 3 > 0 && <button type='button' className='blue-btn' onClick={() => { handleProduct() }}>Show {total - 3} More</button>}
             </div>
             {/* <div className='certificate-cards'>
                 {cards.map((item,index)=>(

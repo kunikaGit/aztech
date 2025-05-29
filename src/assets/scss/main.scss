@@ -346,6 +346,13 @@ section {
 
 .input-main-data {
 	margin-bottom: 15px;
+	position: relative;
+	.eyeicon {
+		position: absolute;
+		right: 10px;
+		top: 50px;
+		cursor: pointer;
+	}
 
 	label {
 		color: var(--color-3F4254);

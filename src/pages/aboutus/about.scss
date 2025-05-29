@@ -77,12 +77,13 @@
             display: flex;
             gap: 35px;
             margin-bottom: 50px;
-
+            
             img {
                 width: 100%;
                 object-fit: cover;
                 height: auto;
                 border-radius: 50px;
+                height: 450px;
             }
 
             .img1 {
@@ -98,7 +99,7 @@
             display: flex;
             gap: 30px;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 50px;
 
             .logo {
                 width: 30%;
@@ -119,14 +120,14 @@
 
             h2 {
                 width: 70%;
-                font-size: 36px;
+                font-size: 32px;
                 font-weight: 600;
             }
         }
 
         .content {
             color: #00000099;
-            font-size: 36px;
+            font-size: 30px;
             font-weight: 500;
             margin-bottom: 50px;
         }

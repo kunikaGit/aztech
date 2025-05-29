@@ -37,14 +37,29 @@
                 outline: none;
                 padding: 20px;
                 font-size: 22px;
-                &::placeholder{
-                    font-size: 20px;
-                    color: #D9D9D9;
-                    font-family: 'poppins';
+                font-family: 'Poppins', sans-serif;
+                // &::placeholder{
+                //     font-size: 20px;
+                //     color: #D9D9D9;
+                //     font-family: 'poppins';
+                    // }
+                    // Placeholder animation styles
+                    &::placeholder {
+                        font-size: 20px;
+                        color: #020202;
+                        font-family: 'Poppins', sans-serif;
+                        transition: color 0.3s ease;
+                    }
+                
+                    // Optional: blinking effect for '|' at the end of placeholder
+                    &::placeholder::after {
+                        content: '|'; // optional blinking cursor
+                        animation: blink 1s step-start infinite;
+                    }
                 }
-            }
-            button{
-                @include button(var(--blue-color),var(--white-color),16px,15px,6px);
+                
+                button {
+                    @include button(var(--blue-color),var(--white-color),16px,15px,6px);
                 width: 110px;
             }
         }

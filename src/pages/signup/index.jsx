@@ -187,14 +187,14 @@ const Signup = () => {
                 <img src='/images/logo-big.png' alt='logo' />
               </div>
               <div className='heading'>
-                Sign Up to enjoy the huge ton of <b>Premium</b> Courses
+                Join <b>AZ Tech</b> – Your Digital Gateway to Learn & Grow 🚀
               </div>
               <div className='checklist'>
                 <ul>
-                  <li>Special discounts rates</li>
-                  <li>Unlimited free downloads</li>
-                  <li>Special promotions</li>
-                  <li>Coupon winning</li>
+                  <li>Explore thousands of free eBooks, research & more</li>
+                  <li>Learn with goals, track progress, and achieve daily targets</li>
+                  <li>Enjoy time-pass games while staying productive</li>
+                  <li>Be part of a growing digital learning community</li>
                 </ul>
               </div>
             </div>
@@ -209,7 +209,7 @@ const Signup = () => {
 
                   <TelegramLogin redirectUrl={'https://arcforyou.com/telegram-auth'} />
                 <div className='divide-line'>
-                  <span>Or sign in with</span>
+                  <span>Or sign up with</span>
                 </div>
 
                 <div className='input-main-data'>

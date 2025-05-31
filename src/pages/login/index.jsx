@@ -112,14 +112,14 @@ const Login = () => {
                 <img src='/images/logo-big.png' alt='logo' />
               </div>
               <div className='heading'>
-                Login to enjoy the huge ton of <b>exclusive Courses</b>
+                Welcome Back to <b>AZ Tech!</b>👋 
               </div>
               <div className='checklist'>
                 <ul>
-                  <li>Special discount rates</li>
-                  <li>Unlimited free downloads</li>
-                  <li>Special promotions</li>
-                  <li>Coupon winning</li>
+                  <li>Access your personalized learning dashboard</li>
+                  <li>Resume from where you left off</li>
+                  <li>Unlock your saved courses, eBooks, and tools</li>
+                  <li>Secure login to keep your progress safe</li>
                 </ul>
               </div>
             </div>

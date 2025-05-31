@@ -14,6 +14,10 @@ const initialState = {
   isAuthenticated: isAuthenticated,
   auth_token: localStorage.getItem("auth_token") || null,  // 👈 new line
   vrfyOtpEmail: null,
+  status:localStorage.getItem("status"),
+  plan_id:localStorage.getItem("plan_id"),
+  name:localStorage.getItem("name"),
+  profile:localStorage.getItem("profile")
 };
 
 
@@ -23,13 +27,21 @@ const authSlice = createSlice({
   reducers: {
     isloginSuccess(state) {
       const token = localStorage.getItem("auth_token");
+      const status = localStorage.getItem("status");
+      const plan_id = localStorage.getItem("plan_id");
+      const name = localStorage.getItem("name");
+      const profile = localStorage.getItem("profile");
       if (token) {
         return {
           ...state,
           loading: false,
           isAuthenticated: true,
           auth_token: token,  // 👈 store token in state
+          status,
+          plan_id,
           error: null,
+          profile,
+          name
         };
       }
     },    

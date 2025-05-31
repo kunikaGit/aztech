@@ -12,6 +12,8 @@ export const API_ENDPOINTS = {
     products: "/products",
     categories:"/products/categories",
     categorywise:"/products/categorywise",
+    openProduct:"/products/open",
+
     planwise:"/products/planwise",
     referralTree: "/profile/referral-tree",
     referralList: "/profile/referral-list",

@@ -7,15 +7,19 @@ import { FilterList, Language, ListAltSharp } from '@mui/icons-material';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
+import { useDispatch, useSelector } from "react-redux";
+
 const ProductDetail = () => {
 
+    const { auth_token,plan_id,status } = useSelector((state) => state.auth);
 
     const { fetchData } = useApiRequest();
     const navigate = useNavigate();
-  const location = useLocation();
+    const location = useLocation();
 
     const [list, setList] = useState([]);
     const [total, setTotal] = useState('');
+    const [ids, setId] = useState('');
 
     useEffect(() => {
         callApi()
@@ -23,11 +27,11 @@ const ProductDetail = () => {
 
     const callApi = async () => {
         try {
-                 const queryParams = new URLSearchParams(location.search);
-      const id = queryParams.get('prd'); // this will be "4" if ?prd=4
+            const queryParams = new URLSearchParams(location.search);
+            const id = queryParams.get('prd'); // this will be "4" if ?prd=4
 
-      if (!id) return; // Optionally handle if id is not present
-
+            if (!id) return; // Optionally handle if id is not present
+            setId(id)
             let res = await fetchData(`${API_ENDPOINTS.products}?id=${id}`, navigate, 'GET', {});
 
             if (res.success) {
@@ -35,6 +39,28 @@ const ProductDetail = () => {
                 setTotal(res.data.total)
 
             }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const handleChange = async (e) => {
+        e.preventDefault()
+        try {
+            if (auth_token) {
+                if (plan_id >= ids) {
+                    let res = await fetchData(`${API_ENDPOINTS.openProduct}?id=${ids}`, navigate, 'GET', {});
+                    if (res.success) {
+                       window.open(res.data[0].link, '_blank');
+                    }
+                    return
+                } else {
+                    navigate('/')
+                    return
+                }
+            }
+            navigate('/')
+
         } catch (error) {
             console.log(error)
         }
@@ -103,8 +129,9 @@ const ProductDetail = () => {
                                 <div className='discount'>{list[0].discount_percentage > 0 ? `${list[0].discount_percentage}% Off` : 'No discount available'}</div>
                             </div>
                             <div className='action-btn'>
-                                <button type='button' className='field'>Add to Cart</button>
-                                <button type='button' className='outlined'>Buy Now</button>
+                                {console.log(plan_id , list[0].plan_included)}
+                                {/* <button type='button' className='field'>Add to Cart</button> */}
+                                <button type='button' className='outlined' onClick={(e) => handleChange(e)}>{auth_token ? plan_id >= list[0].plan_included ? "Open" : "Upgrade Now" : "Buy Now"}</button>
                             </div>
                             <div className='course-list'>
                                 <h3 className='title'>This product includes</h3>

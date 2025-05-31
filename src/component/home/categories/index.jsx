@@ -9,12 +9,12 @@ const HomeCategories = () => {
             </div>
             <div className='two-grid'>
                 <div className='cat-banner'>
-                    <ul>
+                    {/* <ul>
                         <li>AI Courses</li>
                         <li>Creative Tools</li>
                         <li>Digital Products</li>
                         <li>Smart Learning</li>
-                    </ul>
+                    </ul> */}
                     <div className='cat-img'>
                         <img src={imageMap['category-banner.png']} alt='img' />
                     </div>

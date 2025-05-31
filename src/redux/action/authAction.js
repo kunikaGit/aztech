@@ -18,9 +18,13 @@ export const login = createAsyncThunk(
       const { data } = await axios.post("users/login", formData, config);
       if (data.status || data.success) {
         localStorage.setItem("auth_token", data?.data.token);
+        localStorage.setItem("stauts", data?.data.status);
+        localStorage.setItem("plan_id", data?.data.plan_id);
+        localStorage.setItem("name", data?.data.name);
+        localStorage.setItem("profile", data?.data.profile);
 
         dispatch(isloginSuccess());
-        navigate("/")
+      //  navigate("/")
         successMsg(data.message)
         return data;
       } else {

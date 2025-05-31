@@ -20,6 +20,9 @@
             border-radius: 16px;
             color: #636363;
             padding: 40px 30px;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); // soft shadow
+            transition: all 0.3s ease;
 
             hr {
                 border-bottom: 2px solid #636363;
@@ -62,26 +65,42 @@
                 margin-bottom: 30px;
             }
 
-            &.active {
+            &:hover {
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); // deeper shadow on hover
+                transform: scale(1.05); // this makes the card grow
+
+            }
+
+            &.active,
+
+            &:hover {
                 color: #FFFFFF;
                 background: linear-gradient(147.87deg, #6F4CF3 22.08%, #0EACDC 100.23%);
+
                 .title {
                     color: var(--white-color);
                 }
+
                 .price {
-                    h2{
+                    h2 {
                         color: var(--white-color);
                     }
                 }
+
                 .plan-btn {
                     background-color: var(--white-color);
                     color: #070707;
                 }
+
                 hr {
                     border-bottom: 2px solid #fff;
                     opacity: 1;
                 }
-    
+
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); // even stronger for active
+                transform: scale(1.07); // optional: make active card grow a bit more
+
+
             }
         }
     }

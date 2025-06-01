@@ -8,10 +8,15 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
 import { useDispatch, useSelector } from "react-redux";
+import { EyeIcon, EyeoffIcon } from '../../icons/icons'
+import PdfPreview from './previewPdf';
+
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const ProductDetail = () => {
+    const [previewUrl, setPreviewUrl] = useState(null);
 
-    const { auth_token,plan_id,status } = useSelector((state) => state.auth);
+    const { auth_token, plan_id, status } = useSelector((state) => state.auth);
 
     const { fetchData } = useApiRequest();
     const navigate = useNavigate();
@@ -44,22 +49,44 @@ const ProductDetail = () => {
         }
     }
 
-    const handleChange = async (e) => {
+    const handleCallOpen = async (e) => { // this will call main pdf 
         e.preventDefault()
         try {
             if (auth_token) {
                 if (plan_id >= ids) {
                     let res = await fetchData(`${API_ENDPOINTS.openProduct}?id=${ids}`, navigate, 'GET', {});
                     if (res.success) {
-                       window.open(res.data[0].link, '_blank');
+                        //window.open(res.data[0].link, '_blank');
+                        setPreviewUrl(res.data[0].link)
                     }
                     return
                 } else {
-                    navigate('/')
+                    navigate(`${baseUrl}`)
                     return
                 }
             }
-            navigate('/')
+            navigate(`${baseUrl}`)
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const handleCallPreview = async (e) => { // this will call sample pdf 
+        e.preventDefault()
+        try {
+            if (auth_token) {
+                if (plan_id >= ids) {
+                    let res = await fetchData(`${API_ENDPOINTS.openProduct}?id=${ids}`, navigate, 'GET', {});
+                    if (res.success) {
+                        //window.open(res.data[0].link, '_blank');
+                        setPreviewUrl(res.data[0].link)
+
+                    }
+                    return
+                }
+            }
+            navigate(`${baseUrl}`)
 
         } catch (error) {
             console.log(error)
@@ -85,7 +112,7 @@ const ProductDetail = () => {
                                         <span>
                                             {new Date(list[0].updated_at || list[0].created_at).toLocaleDateString('en-GB', {
                                                 day: '2-digit',
-                                                month: 'short', // use 'long' for full month name
+                                                month: 'short',
                                                 year: 'numeric'
                                             })}
                                         </span>
@@ -107,19 +134,22 @@ const ProductDetail = () => {
                                 <div className='actions'>
                                     <div className='action-item'><FavoriteBorderIcon /> Wishlist</div>
                                     <div className='action-item'><ShareOutlinedIcon />Share</div>
+                                    <div className='action-item' onClick={(e) => { handleCallPreview(e) }}><EyeIcon />Preview</div>
+
                                 </div>
                             </div>
                             <div className='course-video'>
-                                {/* <img src={imageMap['youtube-preview.png']} alt='youtube' /> */}
-                                <img src={`${list[0].main_image}`} alt='youtube' />
-
+                                {!previewUrl ? (
+                                    <img src={`${list[0].main_image}`} alt='preview' />
+                                ) : (
+                                    <PdfPreview pdfUrl={previewUrl} />
+                                )}
                             </div>
+
                             <div className='description-box'>
                                 <h4 className='sub-heading'>Overview</h4>
                                 <p>{list[0].overview}</p>
-                                {/* <p>This course has been specifically designed for beginners who have been looking to obtain a hands-on learning experience with Python, teaching you concepts of programming right from the basics and Python being the most simplest language for a beginner to start with.</p>
-                                <p>It is the right time to start learning the in-demand Python language because of its gaining popularity in the fields on Data Science, Backend Development, Internet of Things, etc. Keep yourself equipped with the most sought-after skills!</p>
-                                <p>You will work on a project at the end of this course, which has been designed for you to implement all the topics which you would have mastered by the end of this course to give you enough confidence to start writing your own independent programs in Python.</p> */}
+
                             </div>
                         </div>
                         <div className='price-chart'>
@@ -129,19 +159,13 @@ const ProductDetail = () => {
                                 <div className='discount'>{list[0].discount_percentage > 0 ? `${list[0].discount_percentage}% Off` : 'No discount available'}</div>
                             </div>
                             <div className='action-btn'>
-                                {console.log(plan_id , list[0].plan_included)}
-                                {/* <button type='button' className='field'>Add to Cart</button> */}
-                                <button type='button' className='outlined' onClick={(e) => handleChange(e)}>{auth_token ? plan_id >= list[0].plan_included ? "Open" : "Upgrade Now" : "Buy Now"}</button>
+                                <button type='button' className='outlined' onClick={(e) => handleCallOpen(e)}>{auth_token ? plan_id >= list[0].plan_included ? "Open" : "Upgrade Now" : "Buy Now"}</button>
                             </div>
                             <div className='course-list'>
                                 <h3 className='title'>This product includes</h3>
                                 <ul>
                                     {list[0].includes.map((include) => (<li>{include}</li>))}
-                                    {/* <li>1 article</li>
-                                    <li>50 downloadable resources</li>
-                                    <li>Full lifetime access</li>
-                                    <li>Access on mobile and TV</li>
-                                    <li>Certificate of completion</li> */}
+
                                 </ul>
                             </div>
                             {list[0].instructor_name &&
@@ -157,19 +181,12 @@ const ProductDetail = () => {
                                         </div>
                                     </div>
                                 </div>}
-                            {/* <div className='d-flex justify-content-between align-items-center'>
-                                        <div className='review'>
-                                            <span>5.5</span>
-                                            <img src={imageMap['startIcon.svg']} alt='star' />
-                                        </div>
-                                        <div className='review'>
-                                            <ListAltSharp/>
-                                            <span>12 Courses</span>
-                                        </div>
-                                    </div> */}
                         </div>
                     </div>
                 </section>}
+
+
+
         </>
     )
 }

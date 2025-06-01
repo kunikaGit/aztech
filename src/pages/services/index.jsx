@@ -50,7 +50,8 @@ const Services = () => {
                 list.map((category)=>(
                 <div className='service-cards'>
                     <div className='icon'>
-                        <img src={imageMap['cube.svg']} alt='icon'/>
+                        {console.log(category.icon)}
+                        <img src={imageMap[`${category.icon}`]} alt='icon'/>
                     </div>
                     <h3>{category.name}</h3>
                     <p>{category.description}</p>

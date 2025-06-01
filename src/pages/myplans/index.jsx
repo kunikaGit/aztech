@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
 import { EyeIcon, MessageIcon, StarIcon } from '../../icons/icons';
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const Myplans = () => {
 
@@ -119,7 +120,7 @@ const Myplans = () => {
                     {products?.length > 0 &&
                       products.map((product) => (
                         <div className='cards' key={index}>
-                          <div className='img' onClick={() => navigate(`/detail?prd=${product.id}`)}><img src={`${product.preview_image}`} /></div>
+                          <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${product.id}`)}><img src={`${product.preview_image}`} /></div>
                           <div className='content'>
                             <h3 className='title'>{product.name}</h3>
                             <p>{product.description}</p>

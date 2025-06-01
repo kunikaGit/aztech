@@ -5,6 +5,8 @@ import { EyeIcon, MessageIcon, StarIcon } from '../../../icons/icons'
 import { useNavigate } from 'react-router-dom'
 import useApiRequest from "../../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../../constants/endPoints";
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 const cards = [
     { image: 'certificate1.png' },
     { image: 'certificate2.png' },
@@ -36,7 +38,7 @@ const PopularCertifictes = () => {
     }
 
     const handleProduct=()=>{
-        navigate('/products')
+        navigate(`${baseUrl}products`)
     }
     return (
         <section className='popular-certificate-wrape'>
@@ -86,7 +88,7 @@ const PopularCertifictes = () => {
                 <div className='certificate-cards'>
                     {list.map((item, index) => (
                         <div className='cards' key={index}>
-                            <div className='img' onClick={() => navigate(`/detail?prd=${item.id}`)}>
+                            <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)}>
                                 <img src={`${item.preview_image}`} /></div>
                             <div className='content'>
                                 <h3 className='title'>{item.name}</h3>

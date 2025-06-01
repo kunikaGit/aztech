@@ -7,6 +7,7 @@ import { API_ENDPOINTS } from "../../constants/endPoints";
 import { successMsg, errorMsg } from "../../utils/customFn";
 import { loadStripe } from '@stripe/stripe-js';
 import OverlayLoading from "../../component/common/overlayLoader";
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const Checkout = () => {
     let VITE_REACT_STRIPE_PUBLIC_KEY = import.meta.env.VITE_REACT_STRIPE_PUBLIC_KEY;
@@ -35,7 +36,7 @@ const Checkout = () => {
     useEffect(() => {
         if (!productDetails) {
             // Redirect if product details not found
-             navigate('/');
+             navigate(`${baseUrl}`);
            // callApi();
 
         } else {

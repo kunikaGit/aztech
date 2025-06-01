@@ -11,7 +11,9 @@ import axios from 'axios'; // for calling userinfo API
 import { login } from "../../redux/action/authAction";
 import { useDispatch, useSelector } from "react-redux";
 import OverlayLoading from "../../component/common/overlayLoader";
-import TelegramLogin from "../signup/telegram"
+import TelegramLogin from "../signup/telegram";
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 const Login = () => {
   const { auth_token } = useSelector((state) => state.auth);
 
@@ -19,7 +21,7 @@ const Login = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (auth_token) {
-      navigate('/myaccount/dashboard'); // ✅ Safe inside useEffect
+      navigate(`${baseUrl}myaccount/dashboard`); // ✅ Safe inside useEffect
     }
   }, [auth_token, navigate]);
 
@@ -108,8 +110,8 @@ const Login = () => {
         <Container>
           <div className='two-grid'>
             <div className='content'>
-              <div className='logo' onClick={() => navigate('/')}>
-                <img src='/images/logo-big.png' alt='logo' />
+              <div className='logo' onClick={() => navigate(`${baseUrl}`)}>
+                <img src={`${baseUrl}images/logo-big.png`} alt='logo' />
               </div>
               <div className='heading'>
                 Welcome Back to <b>AZ Tech!</b>👋 
@@ -183,12 +185,12 @@ const Login = () => {
                     />
                     Remember me
                   </label>
-                  <Link to='/forgot-password'>Forgot Password</Link>
+                  <Link to={`${baseUrl}forgot-password`}>Forgot Password</Link>
                 </div>
 
                 <div className='new-account'>
                   <span>
-                    Do not have an account? <Link to='/signup'><b>Sign Up</b></Link> Here
+                    Do not have an account? <Link to={`${baseUrl}signup`}><b>Sign Up</b></Link> Here
                   </span>
                 </div>
 

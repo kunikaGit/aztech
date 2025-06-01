@@ -14,6 +14,7 @@ import OverlayLoading from "../../component/common/overlayLoader";
 import { isloginSuccess } from "../../redux/slice/authSlice";
 import { useDispatch } from "react-redux";
 import TelegramLogin from "./telegram"
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const Signup = () => {
   const { fetchData } = useApiRequest();
@@ -117,7 +118,7 @@ const Signup = () => {
         let res = await fetchData(API_ENDPOINTS.signup, navigate, "POST", formData);
         if (res.success) {
           successMsg(res.message)
-          navigate(`/login`)
+          navigate(`${baseUrl}login`)
         } else {
           errorMsg(res.message)
           setLoading(false)
@@ -156,7 +157,7 @@ const Signup = () => {
             localStorage.setItem("name", resp?.data.name);
             localStorage.setItem("profile", resp?.data.profile);
             dispatch(isloginSuccess());
-            navigate("/")
+            navigate(`${baseUrl}`)
             successMsg(resp?.message);
 
         } else {
@@ -183,8 +184,8 @@ const Signup = () => {
         <Container>
           <div className='two-grid'>
             <div className='content'>
-              <div className='logo' onClick={()=>navigate('/')}>
-                <img src='/images/logo-big.png' alt='logo' />
+              <div className='logo' onClick={()=>navigate(`${baseUrl}`)}>
+                <img src={`${baseUrl}images/logo-big.png`} alt='logo' />
               </div>
               <div className='heading'>
                 Join <b>AZ Tech</b> – Your Digital Gateway to Learn & Grow 🚀
@@ -313,7 +314,7 @@ const Signup = () => {
                 <button type='submit' className='blue-btn'>Sign Up</button>
 
                 <div className='new-account'>
-                  <span>Already have an account?  <Link to='/login'><b>Login</b></Link> from here</span>
+                  <span>Already have an account?  <Link to={`${baseUrl}login`}><b>Login</b></Link> from here</span>
                 </div>
               </form>
 

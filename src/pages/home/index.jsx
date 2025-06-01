@@ -14,7 +14,7 @@ const Home = () => {
       <PopularCertifictes/>
       <OnlineCourse/>
       <Chooseplan/>
-      <TrustedPrtner/>
+      {/* <TrustedPrtner/> */}
     </div>
   )
 }

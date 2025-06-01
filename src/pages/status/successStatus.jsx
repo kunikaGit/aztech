@@ -3,6 +3,8 @@ import './status.scss';
 import { useNavigate, useLocation } from 'react-router-dom';
 import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 const SuccessStatus = () => {
 
   const navigate = useNavigate();
@@ -12,7 +14,7 @@ const SuccessStatus = () => {
       let data = location.state?.txHash
       await updateStatusApi(1, data);
       setTimeout(() => {
-        navigate('/');
+        navigate(`${baseUrl}`);
       }, 2000);
     }, 3000);
 

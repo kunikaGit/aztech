@@ -5,42 +5,40 @@ import { Checkout, Courses, Dashboard, Home, Login, Myplans, MyProfile, Networks
 import Mainlayout from '../mainlayout';
 import DashboardOutlet from '../pages/dashboardOutlet';
 import AutoLogoutHandler from "./autoLogoutHeader"
+const baseUrl = import.meta.env.VITE_BASE_URL;
 const RoutesMain = () => {
   return (
-    <>
-    <AutoLogoutHandler/>
+        <>
+      <AutoLogoutHandler />
 
       <Routes>
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<Signup />} />
+        {/* Auth & Status Routes */}
+        <Route path={`${baseUrl}login`} element={<Login />} />
+        <Route path={`${baseUrl}signup`} element={<Signup />} />
+        <Route path={`${baseUrl}success`} element={<SuccessStatus />} />
+        <Route path={`${baseUrl}failed`} element={<FailedStatus />} />
 
-        <Route path='/success' element={<SuccessStatus />} />
-
-        <Route path='/failed' element={<FailedStatus />} />
-
-    {/* -----------outer pages--------- */}
-        <Route path="/" element={<Mainlayout />}>
+        {/* -----------Outer pages--------- */}
+        <Route path={`${baseUrl}`} element={<Mainlayout />}>
           <Route index element={<Home />} />
-          <Route path='/products' element={<Courses />} />
-          <Route path='/detail' element={<ProductDetail />} />
-          <Route path='/about-us' element={<AboutUs />} />
-          <Route path='/services' element={<Services />} />
+          <Route path={`${baseUrl}products`} element={<Courses />} />
+          <Route path={`${baseUrl}detail`} element={<ProductDetail />} />
+          <Route path={`${baseUrl}about-us`} element={<AboutUs />} />
+          <Route path={`${baseUrl}services`} element={<Services />} />
         </Route>
-    {/* ----------inner dashboard pages-------------- */}
-        <Route path="/myaccount" element={<DashboardOutlet />}>
-          <Route path='/myaccount/mall' element={<Myplans />} />
-          <Route path='/myaccount/packages' element={<Packages />} />
 
-          <Route path='/myaccount/dashboard' element={<Dashboard />} />
-          <Route path='/myaccount/transactions' element={<Transactions />} />
-          <Route path='/myaccount/networks' element={<Networks />} />
-          <Route path='/myaccount/checkout' element={<Checkout />} />
-          <Route path='/myaccount/profile' element={<MyProfile />} />
-          <Route path='/myaccount/games' element={<Games />} />
-
+        {/* ----------Inner Dashboard pages-------------- */}
+        <Route path={`${baseUrl}myaccount`} element={<DashboardOutlet />}>
+          <Route path={`${baseUrl}myaccount/mall`} element={<Myplans />} />
+          <Route path={`${baseUrl}myaccount/packages`} element={<Packages />} />
+          <Route path={`${baseUrl}myaccount/dashboard`} element={<Dashboard />} />
+          <Route path={`${baseUrl}myaccount/transactions`} element={<Transactions />} />
+          <Route path={`${baseUrl}myaccount/networks`} element={<Networks />} />
+          <Route path={`${baseUrl}myaccount/checkout`} element={<Checkout />} />
+          <Route path={`${baseUrl}myaccount/profile`} element={<MyProfile />} />
+          <Route path={`${baseUrl}myaccount/games`} element={<Games />} />
         </Route>
       </Routes>
-  
     </>
   )
 }

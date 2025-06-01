@@ -59,7 +59,7 @@ const Packages = ({setPlan}) => {
 
         {plans.length > 0 &&
           plans.map((plan, index) => (
-            <div className={index == 1 ? 'cards active' : 'cards'}>
+            <div className={'cards'}>
               <h3 className='title'>{plan.name}</h3>
               <p className='des'>{plan.description}</p>
               <hr />

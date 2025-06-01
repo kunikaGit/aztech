@@ -12,6 +12,7 @@ import toast from "react-hot-toast";
 // export const Icons = importAll(require.context("../assest/images/icons", false));
 export const toastLoading = "Loading..."
 export const resolveTime = 1000
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 export const getHeader = () => {
 
@@ -118,7 +119,7 @@ export const handleCatchErrors = (error, navigate, rejectWithValue, path) => {
   if (error.code === "ERR_NETWORK") {
     // Handle network-related errors
     if (rejectWithValue) {
-      navigate("/");
+      navigate(`${baseUrl}`);
       return rejectWithValue(error.message);
     }
   } else {
@@ -133,10 +134,10 @@ export const handleCatchErrors = (error, navigate, rejectWithValue, path) => {
 
           // Navigate to login or the path provided
           if (path === "inquiry") {
-            navigate("/"); // Redirect to home or login page
+            navigate(`${baseUrl}`); // Redirect to home or login page
           } else {
             errorMsg("User Unauthorized");
-            navigate(path || "/");
+            navigate(path || `${baseUrl}`);
           }
           break;
 
@@ -176,7 +177,7 @@ export const handleCatchErrors = (error, navigate, rejectWithValue, path) => {
 
         default:
           // Handle unknown error status
-          navigate("/");
+          navigate(`${baseUrl}`);
       }
     }
   }

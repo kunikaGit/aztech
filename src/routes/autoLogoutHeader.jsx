@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../src/redux/slice/authSlice.js';
 import { autoLogout } from "../utils/autoLogout.js";
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const AutoLogoutHandler = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const AutoLogoutHandler = () => {
     if (auth_token) {
       autoLogout(auth_token, () => {
         dispatch(logout());
-        navigate("/login");
+        navigate(`${baseUrl}login`);
       });
     }
   }, [auth_token, dispatch, navigate]);

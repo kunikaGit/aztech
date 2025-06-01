@@ -6,6 +6,7 @@ import useApiRequest from "../../hook/useApiRequest";
 import { errorMsg, successMsg } from "../../utlis/customFn";
 import { useDispatch } from "react-redux";
 import { isloginSuccess } from "../../redux/slice/authSlice.js";
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const TelegramSignup = () => {
     const { fetchData } = useApiRequest();
@@ -100,7 +101,7 @@ const TelegramSignup = () => {
                 localStorage.setItem("auth_token", signUpRes?.data.token);
 
                 dispatch(isloginSuccess());
-                navigate("/")
+                navigate(`${baseUrl}`)
             } else {
                 errorMsg(signUpRes?.message ? signUpRes?.message : signUpRes)
             }
@@ -123,7 +124,7 @@ const TelegramSignup = () => {
                 <div className='upper-body'>
                     <div className='form-box'>
                         <div className='logo-box'>
-                            <Link to='/' className='logo-text animate-gradient mb-5 block text-center'>
+                            <Link to={`${baseUrl}`} className='logo-text animate-gradient mb-5 block text-center'>
                                 ARC
                             </Link>
                         </div>
@@ -159,7 +160,7 @@ const TelegramSignup = () => {
                         </div>
 
                         <div className='signup-text'>
-                            <p>Already have an account? <Link to="/login">Login</Link></p>
+                            <p>Already have an account? <Link to={`${baseUrl}login`}>Login</Link></p>
                         </div>
                     </div>
                 </div>

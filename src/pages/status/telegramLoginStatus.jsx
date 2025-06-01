@@ -4,6 +4,7 @@ import OverlayLoading from '../../component/common/overlayLoader.jsx';
 import { errorMsg } from "../../utlis/customFn";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/action/authAction";
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const TelegramLoginStatus = () => {
     const dispatch = useDispatch();
@@ -51,7 +52,7 @@ const TelegramLoginStatus = () => {
       const submitForm = async () => {
     if (!telegramData) {
         errorMsg('Telegram authentication data missing.');
-        setTimeout(() => navigate('/login'), 2000); // Redirect after 2s if data is missing
+        setTimeout(() => navigate(`${baseUrl}login`), 2000); // Redirect after 2s if data is missing
         return;
     }
         try {
@@ -74,7 +75,7 @@ const TelegramLoginStatus = () => {
             setLoading(false)
             errorMsg(err)
    // ⏳ Redirect to login after 2 seconds if there's an error
-        setTimeout(() => navigate('/login'), 2000);
+        setTimeout(() => navigate(`${baseUrl}login`), 2000);
             } finally {
             setLoading(false);
         }

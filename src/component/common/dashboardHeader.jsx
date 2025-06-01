@@ -8,6 +8,7 @@ import { logout } from '../../redux/slice/authSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { handleDarkMode } from '../../utlis/handleDarkMode';
+const baseUrl = import.meta.env.VITE_BASE_URL;  
 
 const DashboardHeader = ({ title }) => {
     const navigate = useNavigate();
@@ -73,7 +74,7 @@ const DashboardHeader = ({ title }) => {
                 {showMenu &&
                     <div className='dropdown'>
                         <ul>
-                            <li><Link to="/dashboard/myprofile" className='flex items-center gap-2'><UserIcon />Profile</Link></li>
+                            <li><Link to={`${baseUrl}dashboard/myprofile`} className='flex items-center gap-2'><UserIcon />Profile</Link></li>
                         </ul>
                     </div>
                 }

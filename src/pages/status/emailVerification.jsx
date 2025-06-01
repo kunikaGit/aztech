@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const EmailVerification = () => {
     const navigate = useNavigate();
@@ -39,7 +40,7 @@ const EmailVerification = () => {
             }
     
             setTimeout(() => {
-                navigate('/login');
+                navigate(`${baseUrl}`);
             }, 2000);
         }, 3000);
     

@@ -10,6 +10,8 @@ const cards = [
     { image: 'certificate2.png' },
     { image: 'certificate3.png' }
 ]
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 const Courses = () => {
     const { fetchData } = useApiRequest();
     const navigate = useNavigate();
@@ -76,7 +78,7 @@ const Courses = () => {
                                             {products?.length > 0 &&
                                                 products.map((product) => (
                                                     <div className='cards' key={index}>
-                                                        <div className='img' onClick={() => navigate(`/detail?prd=${product.id}`)}><img src={`${product.preview_image}`} /></div>
+                                                        <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${product.id}`)}><img src={`${product.preview_image}`} /></div>
                                                         <div className='content'>
                                                             <h3 className='title'>{product.name}</h3>
                                                             <p>{product.description}</p>
@@ -98,7 +100,7 @@ const Courses = () => {
                                                                         </div>
                                                                     </div>}
                                                                 {/* <button type='button'>${product.price}</button> */}
-                                                                <button type='button' onClick={() => navigate(`/detail?prd=${product.id}`)}>View Now</button>
+                                                                <button type='button' onClick={() => navigate(`${baseUrl}detail?prd=${product.id}`)}>View Now</button>
 
                                                             </div>
                                                         </div>

@@ -4,6 +4,7 @@ import useApiRequest from "../../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../../constants/endPoints";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const Chooseplan = () => {
       const { auth_token } = useSelector((state) => state.auth);
@@ -30,10 +31,10 @@ const Chooseplan = () => {
     const handleCheckout = (e, plan) => {
         e.preventDefault();
         if(auth_token){
-        navigate('/myaccount/checkout', { state: { product: plan } });
+        navigate(`${baseUrl}myaccount/checkout`, { state: { product: plan } });
         return
         }
-                navigate('/login');
+                navigate(`${baseUrl}login`);
 
     };
     return (

@@ -112,12 +112,15 @@ section {
 	display: flex;
 
 	.sidebar-wrapped {
-		width: 250px;
+		width: 200px;
 	}
 
 	.dashboard-main {
 		padding: 22px 30px 22px 22px;
-		width: calc(100% - 250px);
+		width: calc(100% - 200px);
+		@include media_1280{
+			padding: 15px;
+		}
 	}
 
 }

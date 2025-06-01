@@ -1,99 +1,44 @@
-.welcome-wrapped {
-        .dash-heading{
-        margin-bottom: 40px;
+.games-wrapped {
+    padding: 20px;
+   .content{
+    text-align: center;
+    margin-bottom: 30px;
+    h3{
+        color: var(--white-color);
+        font-size: 30px;
+        font-weight: 600;
     }
-    .main-title {
-        color: var(--color-420B23);
-        font-size: 36px;
-        font-family: 'poppins';
-        font-weight: 700;
-        margin-bottom: 20px;
+    p{
+        color: var(--white-color);
+        font-size: 18px;
+        width: 60%;
+        margin: auto;
     }
-
-
-    .flex-container {
-        display: flex;
-        gap: 30px;
-        margin-bottom: 40px;
-
-        .blue-card {
-            background-color: #027CB5;
-            border-radius: 16px;
-            padding: 26px 40px;
-            position: relative;
-            width: 100%;
-            position: relative;
-
-            .content {
-                width: 80%;
-            }
-
-            h3 {
-                color: var(--white-color);
-                font-size: 32px;
-                font-weight: 600;
-                font-family: 'poppins';
-                line-height: 46px;
-
-            }
-
-            p {
-                color: var(--color-ECEFF3);
-                font-size: 20px;
-                font-family: 'poppins';
-                font-weight: 300;
-                margin: 0;
-            }
-
-            .roket {
-                position: absolute;
-                right: 50px;
-                top: -44px;
-            }
-
-            .content-cards {
-                width: 25%;
-
-                .border-card {
-                    border: 1px solid #CED7F7;
-                    text-align: center;
-                    padding: 16px;
-                    width: 100%;
-                    border-radius: 8px;
-
-                    h3 {
-                        color: #459ED8;
-                        font-size: 20px;
-                        font-weight: 700;
-                        margin-bottom: 5px;
-                    }
-
-                    p {
-                        margin: 0;
-                    }
-                }
-            }
-        }
-
-        .content-cards {
-            width: 25%;
-
-            .border-card {
-                border: 1px solid #CED7F7;
+   }
+    .blue-card{
+        background-color: #027CB5;
+        border-radius: 16px;
+        padding: 26px 40px;
+        position: relative;
+        width: 100%;
+        position: relative;
+        .content-cards{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            .border-card{
+                width: calc(25% - 20px);
                 text-align: center;
-                padding: 16px;
-                width: 100%;
-                border-radius: 8px;
-
-                h3 {
-                    color: #459ED8;
-                    font-size: 20px;
-                    font-weight: 700;
-                    margin-bottom: 5px;
-                }
-
-                p {
+                border: 1px solid #fff;
+                padding: 10px;
+                border-radius: 10px;
+                p{
+                    color: #fff;
                     margin: 0;
+                }
+                iframe{
+                    width: 100%;
+                    overflow: hidden;
                 }
             }
         }

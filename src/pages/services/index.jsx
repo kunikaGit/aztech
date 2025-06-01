@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
 const Services = () => {
-        const { fetchData } = useApiRequest();
+    const { fetchData } = useApiRequest();
     const navigate = useNavigate();
 
     const [list, setList] = useState([]);
@@ -46,18 +46,19 @@ const Services = () => {
             </div>
             <div className='service-cards-wrapped'>
 
-                {list.length>0 &&
-                list.map((category)=>(
-                <div className='service-cards'>
-                    <div className='icon'>
-                        {console.log(category.icon)}
-                        <img src={imageMap[`${category.icon}`]} alt='icon'/>
-                    </div>
-                    <h3>{category.name}</h3>
-                    <p>{category.description}</p>
-                </div>)) }
+                {list.length > 0 &&
+                    list.map((category) => (
+                        <div className='service-cards'>
+                            <div className='icon'>
+                                <img src={imageMap['cube.svg']} alt='icon' />
+                            </div>
+                            <div className='content'>
+                                <h3>{category.name}</h3>
+                                <p>{category.description}</p>
+                            </div>
+                        </div>))}
             </div>
-            
+
         </div>
     )
 }

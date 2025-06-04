@@ -21,7 +21,7 @@ const Header = () => {
                     <ul>
                         <li><Link to={`${baseUrl}`} className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
                         <li><Link to={`${baseUrl}products`} className={location.pathname === '/products' ? 'active' : ''}>Products</Link></li>
-                        <li><Link to={`${baseUrl}about-us`} className={location.pathname === '/about-us' ? 'active' : ''}>About Us  </Link></li>
+                        {/* <li><Link to={`${baseUrl}about-us`} className={location.pathname === '/about-us' ? 'active' : ''}>About Us  </Link></li> */}
                         <li><Link to={`${baseUrl}services`} className={location.pathname === '/services' ? 'active' : ''}>Services</Link></li>
                         {/* <li><Link>Blog</Link></li> */}
                     </ul>

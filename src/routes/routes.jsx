@@ -5,6 +5,7 @@ import { Checkout, Courses, Dashboard, Home, Login, Myplans, MyProfile, Networks
 import Mainlayout from '../mainlayout';
 import DashboardOutlet from '../pages/dashboardOutlet';
 import AutoLogoutHandler from "./autoLogoutHeader"
+
 const baseUrl = import.meta.env.VITE_BASE_URL;
 const RoutesMain = () => {
   return (

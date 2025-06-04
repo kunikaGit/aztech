@@ -63,6 +63,13 @@ body {
 	width: 100%;
 }
 
+.container {
+	max-width: 90% !important;	
+	@include media_min_1600 {
+		max-width: 1400px !important;
+	}
+}
+
 a {
 	text-decoration: none;
 	color: var(--black-color);
@@ -118,7 +125,8 @@ section {
 	.dashboard-main {
 		padding: 22px 30px 22px 22px;
 		width: calc(100% - 200px);
-		@include media_1280{
+
+		@include media_1280 {
 			padding: 15px;
 		}
 	}
@@ -350,6 +358,7 @@ section {
 .input-main-data {
 	margin-bottom: 15px;
 	position: relative;
+
 	.eyeicon {
 		position: absolute;
 		right: 10px;

@@ -63,6 +63,12 @@
   @media #{breakpoints.$media_1440} {
     @content
   }
+};
+
+@mixin media_min_1600 {
+  @media #{breakpoints.$media_min_1600} {
+    @content
+  }
 }
 
 ;

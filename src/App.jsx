@@ -1,8 +1,8 @@
 import './assets/scss/index.scss'
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import RoutesMain from './routes/routes';
 import { Toaster } from "react-hot-toast";
-
 function App() {
 
   return (

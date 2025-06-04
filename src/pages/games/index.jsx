@@ -61,8 +61,8 @@ const Games = () => {
         <div className='games-wrapped'>
             <div className='blue-card'>
                 <div className='content'>
-                    <h3>🏹 Play free games under az community</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam incidunt ut, amet tempora possimus quos!</p>
+                    <h3> Play free games under az community</h3>
+<p>Enjoy a variety of engaging and fun games, absolutely free—exclusively for our community members!</p>
                 </div>
                 <div className='content-cards'>
                         {list.length > 0 &&

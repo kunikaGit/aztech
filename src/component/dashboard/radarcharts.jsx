@@ -74,17 +74,20 @@ const ApexChart = ({ title, value }) => {
     );
 };
 
-const Radarcharts = () => {
+const Radarcharts = ({data}) => {
+
+
+
     return (
         <>
             <div className="radar-card theme-card mb-4" >
                 <h2 className="card-heading" style={{ color: 'var(--text_black)' }}>
-                     Objectives</h2>
+                     Activity</h2>
                 <div className="tradingobjective-cards">
-                    <ApexChart title="Profit target" value={76} />
-                    <ApexChart title="Max drawdown (Daily)" value={63} />
-                    <ApexChart title="Max drawdown (Overall)" value={88} />
-                    <ApexChart title="Minimum trading days" value={45} />
+                    <ApexChart title="Package product visited" value={data.totalVisitedFromPackage} />
+                    <ApexChart title="Referral (Daily)" value={data.totalReferal} />
+                    <ApexChart title="Downline (Overall)" value={data.totalDownline} />
+                    <ApexChart title="Other products" value={data.totalotherPurchases} />
                 </div>
             </div>
           

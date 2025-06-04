@@ -10,11 +10,14 @@ import { API_ENDPOINTS } from "../../constants/endPoints";
 import { useDispatch, useSelector } from "react-redux";
 import { EyeIcon, EyeoffIcon } from '../../icons/icons'
 import PdfPreview from './previewPdf';
-
+import PreviewModal from './imagePreview';
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const ProductDetail = () => {
     const [previewUrl, setPreviewUrl] = useState(null);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [previewFormat, setPreviewFormat] = useState('');
 
     const { auth_token, plan_id, status } = useSelector((state) => state.auth);
 
@@ -40,6 +43,7 @@ const ProductDetail = () => {
             let res = await fetchData(`${API_ENDPOINTS.products}?id=${id}`, navigate, 'GET', {});
 
             if (res.success) {
+               setPreviewFormat(res.data.list[0].format)
                 setList(res.data.list)
                 setTotal(res.data.total)
 
@@ -80,7 +84,8 @@ const ProductDetail = () => {
                     let res = await fetchData(`${API_ENDPOINTS.openProduct}?id=${ids}`, navigate, 'GET', {});
                     if (res.success) {
                         //window.open(res.data[0].link, '_blank');
-                        setPreviewUrl(res.data[0].link)
+                        setPreviewUrl(res.data[0].link);
+                        setIsModalOpen(true)
 
                     }
                     return
@@ -121,14 +126,16 @@ const ProductDetail = () => {
                                         <p>Level</p>
                                         <span>{list[0].level_name}</span>
                                     </div>
+                                    {list[0].total_opens>1 &&
                                     <div className='item'>
                                         <p>Audience</p>
-                                        <span>{list[0].audience}</span>
-                                    </div>
+                                        <span>{list[0].total_opens}</span>
+                                    </div>}
+                                    {list[0].show_language &&
                                     <div className='item'>
                                         <p>Language</p>
                                         {list[0].languages.map((language) => (<span>{language} | </span>))}
-                                    </div>
+                                    </div>}
 
                                 </div>
                                 <div className='actions'>
@@ -141,8 +148,17 @@ const ProductDetail = () => {
                             <div className='course-video'>
                                 {!previewUrl ? (
                                     <img src={`${list[0].main_image}`} alt='preview' />
-                                ) : (
+                                ) : list[0].format === "pdf" ? (
                                     <PdfPreview pdfUrl={previewUrl} />
+                                ) : list[0].format === "video" ? (
+                                    <div className="video-thumbnail-wrapper">
+                                        <img src={`${list[0].main_image}`} alt="video-preview" />
+                                        <div className="play-icon">
+                                            ▶️
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <img src={`${list[0].main_image}`} alt="preview" />
                                 )}
                             </div>
 
@@ -183,6 +199,12 @@ const ProductDetail = () => {
                                 </div>}
                         </div>
                     </div>
+                     <PreviewModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        fileUrl={previewUrl}
+        format={previewFormat}
+      />
                 </section>}
 
 

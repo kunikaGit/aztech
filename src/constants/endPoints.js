@@ -32,6 +32,8 @@ export const API_ENDPOINTS = {
     getProfile: "/profile",
     updateProfile: "/profile",
     changePassowrd: "/profile/change-password",
+    dashboard: "/profile/dashboard",
+
     forgotPassword: "/forgot-password",
     verifyEmail: "/verify-email",
     currencies: "/payment/crypto-currencies?status=active",

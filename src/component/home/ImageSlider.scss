@@ -1,0 +1,46 @@
+.slider-container {
+  perspective: 1000px;
+  width: 350px;
+  height: 350px;
+  margin: auto;
+  position: relative;
+}
+
+.prism {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+}
+
+/* Position 3 faces around a triangular prism */
+.face:nth-child(1) {
+  transform: rotateY(0deg) translateZ(173px); /* 300 / (2 * tan(30)) */
+}
+.face:nth-child(2) {
+  transform: rotateY(120deg) translateZ(173px);
+}
+.face:nth-child(3) {
+  transform: rotateY(240deg) translateZ(173px);
+}
+
+/* Rotate prism based on activeIndex */
+.rotate-0 {
+  transform: rotateY(0deg);
+}
+.rotate-1 {
+  transform: rotateY(-120deg);
+}
+.rotate-2 {
+  transform: rotateY(-240deg);
+}

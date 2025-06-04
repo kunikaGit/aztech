@@ -1,17 +1,17 @@
 import React from 'react'
 import imageMap from '../../utils/helpers'
-
+const baseUrl = import.meta.env.VITE_BASE_URL;
 const WalletCards = () => {
   return (
     <div className='wallet-cards'>
         <div className='card-wrapped theme-card'>
             <div className='icon'>
-                <img src='/images/logo.png' alt='icon'/>
+                <img src={`${baseUrl}images/logo.png`} alt='icon'/>
             </div>
             <div className='content'>
                 <h3>AZ Wallet</h3>
                 <p>$200</p>
-                <button type='button' className='withdra-btn'>Withdraw</button>
+                <button type='button' className='withdra-btn'>Purchase</button>
             </div>
         </div>
         <div className='card-wrapped theme-card'>
@@ -21,7 +21,7 @@ const WalletCards = () => {
             <div className='content'>
                 <h3>Game Wallet</h3>
                 <p>$200</p>
-                <button type='button' className='withdra-btn'>Withdraw</button>
+                <button type='button' className='withdra-btn'>Withdraw to cash wallet</button>
             </div>
         </div>
         <div className='card-wrapped theme-card'>
@@ -31,7 +31,7 @@ const WalletCards = () => {
             <div className='content'>
                 <h3>Cash Wallet</h3>
                 <p>$200</p>
-                <button type='button' className='withdra-btn'>Withdraw</button>
+                <button type='button' className='withdra-btn'>Transfer</button>
             </div>
         </div>
         <div className='card-wrapped theme-card'>
@@ -41,7 +41,7 @@ const WalletCards = () => {
             <div className='content'>
                 <h3>Withdraw Wallet</h3>
                 <p>$200</p>
-                <button type='button' className='withdra-btn'>Withdraw</button>
+                <button type='button' className='withdra-btn'>View</button>
             </div>
         </div>
     </div>

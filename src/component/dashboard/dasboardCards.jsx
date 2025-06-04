@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactApexChart from 'react-apexcharts';
 
-const DasboardCards = () => {
+const DasboardCards = ({data}) => {
   const baseOptions = {
     chart: {
       type: 'line',
@@ -39,13 +39,13 @@ const DasboardCards = () => {
   // Example card data
 const cards = [
   {
-    title: 'Total Courses',
+    title: 'Total Products Visited',
     percent: '+8.5%',
     isPositive: true,
     series: [{ name: 'Desktops', data: [10, 25, 20, 35, 50, 70, 80  , 100] }],
   },
   {
-    title: 'Active Users',
+    title: 'Active Referral Users',
     percent: '-4.2%',
     isPositive: false,
     series: [{ name: 'Desktops', data: [70, 60, 65, 50, 55, 40, 35, 30] }],
@@ -54,20 +54,15 @@ const cards = [
     title: 'Subscribers',
     percent: '+12.0%',
     isPositive: true,
-    series: [{ name: 'Desktops', data: [15, 30, 25, 35, 40, 45, 50, 55] }],
+    series: [{ name: 'Desktops', data: [15, 30, 25, 0, 40, 45, 50, 55] }],
   },
-  // {
-  //   title: 'Dropouts',
-  //   percent: '-3.3%',
-  //   isPositive: false,
-  //   series: [{ name: 'Desktops', data: [55, 50, 60, 45, 50, 40, 35, 25] }],
-  // },
+
 ];
 
 
   return (
     <div className="dashbord-cards">
-      {cards.map((card, index) => {
+      {data.map((card, index) => {
         const options = {
           ...baseOptions,
           stroke: {
@@ -89,7 +84,7 @@ const cards = [
               />
             </div>
             <p>
-              <span  style={{ color: card.isPositive ? '#28a745' : '#dc3545' }}>{card.percent}</span> Since yesterday
+              <span  style={{ color: card.isPositive ? '#28a745' : '#dc3545' }}>{card.percent}</span> Since last month
             </p>
           </div>
         );

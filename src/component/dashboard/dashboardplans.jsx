@@ -1,44 +1,28 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
-const Dashboardplans = () => {
+const Dashboardplans = ({data}) => {
+    const navigate = useNavigate()
+    const handlePage=(e,planId)=>{
+        e.preventDefault();
+        navigate(`${baseUrl}`)
+    }
     return (
         <div className='dashboard-plans'>
-            <div className='plan-card theme-card'>
+           { data.map((plan)=>(<div className='plan-card theme-card'>
                 <div className='flex-card'>
                     <div className='left-side'>
-                        <h3>Basic Plan</h3>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam, quia.</p>
+                        <h3>{plan.name}</h3>
+                        <p>{plan.description}</p>
                     </div>
                     <div className='right-side'>
-                        <h2 className='price'>$100 <span>per/month</span></h2>
+                        <h2 className='price'>${parseFloat(plan.amount).toFixed(2)} <span>per/{plan.duration}</span></h2>
                     </div>
                 </div>
-                <button type='button' className='get-start'>Get Plan</button>
-            </div>
-             <div className='plan-card theme-card'>
-                <div className='flex-card'>
-                    <div className='left-side'>
-                        <h3>Basic Plan</h3>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam, quia.</p>
-                    </div>
-                    <div className='right-side'>
-                        <h2 className='price'>$100 <span>per/month</span></h2>
-                    </div>
-                </div>
-                <button type='button' className='get-start'>Get Plan</button>
-            </div>
-             <div className='plan-card theme-card'>
-                <div className='flex-card'>
-                    <div className='left-side'>
-                        <h3>Basic Plan</h3>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam, quia.</p>
-                    </div>
-                    <div className='right-side'>
-                        <h2 className='price'>$100 <span>per/month</span></h2>
-                    </div>
-                </div>
-                <button type='button' className='get-start'>Get Plan</button>
-            </div>
+                <button type='button' className='get-start' disabled={plan.button_name=="Already Achieved"} onClick={(e)=>{handlePage(e,plan.id)}}>{plan.button_name}</button>
+            </div>))}
+           
         </div>
     )
 }

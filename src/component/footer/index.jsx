@@ -1,12 +1,12 @@
 import React from 'react';
 import './footer.scss';
 import { Container } from 'react-bootstrap';
-
+const baseUrl= import.meta.env.VITE_BASE_URL;  
 const Footer = () => {
   return (
     <footer className="footer">
       <Container>
-      <img src='images/fulllogo.png' alt="AZTECH Logo" className="footer__logo" />
+      <img src={`${baseUrl}images/fulllogo.png`} alt="AZTECH Logo" className="footer__logo" />
       <div className="footer__container">
         <div className="footer__section">
           <h3>Email</h3>

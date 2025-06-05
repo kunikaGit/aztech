@@ -41,7 +41,7 @@ const Sidebar = () => {
                     <li><Link to={`${baseUrl}myaccount/profile`} className={location.pathname.includes('/profile') ? 'active' : ''}>
                         <ProfileIcon /> Profile</Link></li>
                     <li><Link to={`${baseUrl}#`}><SettingIcon /> Setting</Link></li>
-                    <li><Link to={`${baseUrl}#`}><HelpIcon /> Help</Link></li>
+                    <li><Link to={`${baseUrl}myaccount/help`} className={location.pathname.includes('/help') ? 'active' : ''}><HelpIcon /> Help</Link></li>
                     <li><Link onClick={(e)=>{handleLogout(e)}}><Logout /> Logout</Link></li>
                 </ul>
             </div>

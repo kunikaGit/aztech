@@ -30,9 +30,17 @@
         background-color: #f4f7faaa;
         padding: 20px;
         border-radius: 20px;
+        margin-bottom: 20px;
+
+        .sub-heading {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: #004aab;
+        }
 
         .slick-slide {
-            padding: 0 10px;
+            padding: 0 15px;
         }
 
         .cards {
@@ -48,6 +56,7 @@
                 img {
                     width: 100%;
                     height: 220px;
+                    object-fit: cover;
                 }
             }
 
@@ -64,6 +73,8 @@
                 p {
                     color: #111111B2;
                     margin-bottom: 10px;
+                    font-size: 14px;
+                    line-height: 19px;
                 }
 
                 .spc {
@@ -120,10 +131,12 @@
 
                     button {
                         @include blue-btn(var(--blue-color), var(--white-color), 16px, 8px 20px, 6px);
-                        font-weight: 700;
+                        font-weight: 500;
                     }
                 }
             }
         }
     }
+
+
 }

@@ -4,12 +4,13 @@ import './services.scss';
 import { useNavigate } from 'react-router-dom';
 import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 const Services = () => {
     const { fetchData } = useApiRequest();
     const navigate = useNavigate();
 
     const [list, setList] = useState([]);
-    const [total, setTotal] = useState('');
 
     useEffect(() => {
         callApi()
@@ -21,13 +22,17 @@ const Services = () => {
 
             if (res.success) {
                 setList(res.data.list)
-                setTotal(res.data.total)
             }
 
 
         } catch (error) {
             console.log(error)
         }
+    }
+
+    const handleProduct=(e,category)=>{
+        //e.previentDefault()
+        navigate(`${baseUrl}products?category=${category.id}?name=${category.name}`)
     }
     return (
         <div className='services-wrapped'>
@@ -48,7 +53,7 @@ const Services = () => {
 
                 {list.length > 0 &&
                     list.map((category) => (
-                        <div className='service-cards'>
+                        <div className='service-cards' onClick={(e)=>{handleProduct(e,category)}}>
                             <div className='icon'>
                                 <img src={imageMap[`${category.icon}`]} alt='icon' />
                             </div>

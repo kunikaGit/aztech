@@ -6,7 +6,8 @@ import './dashboardHeader.scss'
 import { useSelector,useDispatch } from 'react-redux'
 const DashboardHeader = () => {
        const { name } = useSelector((state) => state.auth);
-       const { profile } = useSelector((state) => state.auth);
+       const  profile  = useSelector((state) => state.auth);
+       console.log(profile)
     return (
         <div className='dashboard-header'>
             <div className='first-section'>

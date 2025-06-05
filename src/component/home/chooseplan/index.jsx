@@ -39,6 +39,7 @@ const Chooseplan = () => {
     };
     return (
         <section className='choose-plan'>
+            <div className='certificate-cards'>
             <div className='main-heading'>
                 <h2>
                     Unlock Limitless Possibilities <br /> at a Price That Feels Unreal
@@ -70,58 +71,7 @@ const Chooseplan = () => {
                             </div>
                         </div>
                     ))}
-
-                {/* <div className='cards'>
-                    <h3 className='title'>{}</h3>
-                    <p className='des'>Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris, turpis et commodo pharetra.</p>
-                    <hr />
-                    <div className='price'>
-                        <h2>$100</h2>
-                        <span>per month / member</span>
-                    </div>
-                    <button type='button' className='plan-btn'>Get Started</button>
-                    <div className='plan-benifits'>
-                        <ul>
-                            <li>35 curabitur augue</li>
-                            <li>Dapibus quis</li>
-                            <li>Vivamus a mauris eget</li> 
-                        </ul>
-                    </div>
-                </div>
-                <div className='cards active'>
-                    <h3 className='title'>Basic Plan  </h3>
-                    <p className='des'>Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris, turpis et commodo pharetra.</p>
-                    <hr />
-                    <div className='price'>
-                        <h2>$100</h2>
-                        <span>per month / member</span>
-                    </div>
-                    <button type='button' className='plan-btn'>Get Started</button>
-                    <div className='plan-benifits'>
-                        <ul>
-                            <li>35 curabitur augue</li>
-                            <li>Dapibus quis</li>
-                            <li>Vivamus a mauris eget</li> 
-                        </ul>
-                    </div>
-                </div>
-                <div className='cards'>
-                    <h3 className='title'>Basic Plan  </h3>
-                    <p className='des'>Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris, turpis et commodo pharetra.</p>
-                    <hr />
-                    <div className='price'>
-                        <h2>$100</h2>
-                        <span>per month / member</span>
-                    </div>
-                    <button type='button' className='plan-btn'>Get Started</button>
-                    <div className='plan-benifits'>
-                        <ul>
-                            <li>35 curabitur augue</li>
-                            <li>Dapibus quis</li>
-                            <li>Vivamus a mauris eget</li> 
-                        </ul>
-                    </div>
-                </div> */}
+            </div>
             </div>
         </section>
     )

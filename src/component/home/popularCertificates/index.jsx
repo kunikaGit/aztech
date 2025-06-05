@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import './popularCertificates.scss'
-import imageMap from '../../../utils/helpers'
 import { EyeIcon, MessageIcon, StarIcon } from '../../../icons/icons'
 import { useNavigate } from 'react-router-dom'
 import useApiRequest from "../../../hook/useApiRequest";
@@ -8,41 +7,42 @@ import { API_ENDPOINTS } from "../../../constants/endPoints";
 import Slider from 'react-slick'
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
-  var settings = {
+var settings = {
     dots: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: 3,
+    slidesToScroll: 3,
     initialSlide: 0,
+    arrows:false,
     responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow:3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true
+            }
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                initialSlide: 2
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
         }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
     ]
-  };
-  
+};
+
 const cards = [
     { image: 'certificate1.png' },
     { image: 'certificate2.png' },
@@ -73,7 +73,7 @@ const PopularCertifictes = () => {
         }
     }
 
-    const handleProduct=()=>{
+    const handleProduct = () => {
         navigate(`${baseUrl}products`)
     }
 
@@ -89,40 +89,40 @@ const PopularCertifictes = () => {
                 </div>
                 {total - 3 > 0 && <button type='button' className='blue-btn' onClick={() => { handleProduct() }}>Show {total - 3} More</button>}
             </div>
-           
+
             {list.length > 0 &&
                 <div className='certificate-cards'>
                     <Slider {...settings}>
-                    {list.map((item, index) => (
-                        <div className='cards' key={index}>
-                            <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)}>
-                                <img src={`${item.preview_image}`} /></div>
-                            <div className='content'>
-                                <h3 className='title'>{item.name}</h3>
-                                <p>{item.description}</p>
-                                <div className='spc'>
-                                    {item.keywords.length > 0 && item.keywords.map((keyword) => (<div className='item'>{keyword}</div>))}
-                                </div>
-                                <ul className='p-0 list-content'>
-                                    <li><StarIcon /><b>4.6</b>(480 Review)</li>
-                                    <li><EyeIcon />1,840</li>
-                                    <li><MessageIcon />249</li>
-                                </ul>
-                                <div className='card_footer'>
-                                    {item.instructor_name &&
-                                        <div className='d-flex gap-3'>
-                                            <img src={`${item.instructor_image}`} alt='profile' />
-                                            <div className='profile-content'>
-                                                <h3 className='name'>{item.instructor_name}</h3>
-                                                <h3 className='des'>{item.instructor_description}</h3>
-                                            </div>
-                                        </div>}
-                                    <button type='button'>${item.price}</button>
+                        {list.map((item, index) => (
+                            <div className='cards' key={index}>
+                                <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)}>
+                                    <img src={`${item.preview_image}`} /></div>
+                                <div className='content'>
+                                    <h3 className='title'>{item.name}</h3>
+                                    <p>{item.description}</p>
+                                    <div className='spc'>
+                                        {item.keywords.length > 0 && item.keywords.map((keyword) => (<div className='item'>{keyword}</div>))}
+                                    </div>
+                                    <ul className='p-0 list-content'>
+                                        <li><StarIcon /><b>4.6</b>(480 Review)</li>
+                                        <li><EyeIcon />1,840</li>
+                                        <li><MessageIcon />249</li>
+                                    </ul>
+                                    <div className='card_footer'>
+                                        {item.instructor_name &&
+                                            <div className='d-flex gap-3'>
+                                                <img src={`${item.instructor_image}`} alt='profile' />
+                                                <div className='profile-content'>
+                                                    <h3 className='name'>{item.instructor_name}</h3>
+                                                    <h3 className='des'>{item.instructor_description}</h3>
+                                                </div>
+                                            </div>}
+                                        <button type='button'>${item.price}</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
-                    
+                        ))}
+
                     </Slider>
                 </div>}
         </section>

@@ -1,13 +1,14 @@
-import React,{useEffect} from "react"
+import React, { useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import './header.scss'
 import { UserIcon } from "../../icons/icons";
 import { useDispatch, useSelector } from "react-redux";
+import { Search } from "@mui/icons-material";
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const Header = () => {
-      const { auth_token } = useSelector((state) => state.auth);
-    
+    const { auth_token } = useSelector((state) => state.auth);
+
     const navigate = useNavigate();
 
     return (
@@ -17,6 +18,10 @@ const Header = () => {
                     <img src="/test/images/logo.png" alt="logo" />
                     <h2>AZTECH</h2>
                 </div>
+                     <div className='searchbox'>
+                        <div className='search-icon'><Search color="#ccc"/></div>
+                        <input placeholder="Search" name="search"/>
+                    </div>
                 <div className="menu">
                     <ul>
                         <li><Link to={`${baseUrl}`} className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
@@ -25,11 +30,9 @@ const Header = () => {
                         <li><Link to={`${baseUrl}services`} className={location.pathname === '/services' ? 'active' : ''}>Services</Link></li>
                         {/* <li><Link>Blog</Link></li> */}
                     </ul>
-                </div>
-                <div className="actions">
-                    <button type="button" className="orange-button" onClick={()=>navigate(auth_token?`${baseUrl}myaccount/dashboard`:`${baseUrl}login`)}>
-                       {auth_token? `My Account`:`Login`}
-                        <UserIcon />
+                    <button type="button" className="orange-button" onClick={() => navigate(auth_token ? `${baseUrl}myaccount/dashboard` : `${baseUrl}login`)}>
+                        {auth_token ? <span>My Account <UserIcon /></span> : `Login`}
+
                     </button>
                 </div>
             </div>

@@ -65,12 +65,20 @@
         row-gap: 10px;
         flex-wrap: wrap;
         margin-bottom: 20px;
-
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 15px;
         .input-main-data {
             width: calc(50% - 20px);
             label{
                 padding-left: 10px;
                 margin-bottom: 10px;
+            }
+            textarea{
+                width: 100%;
+                padding: 15px;
+                border: 1px solid var(--text-grey);
+                border-radius: 13px;
             }
         }
     }

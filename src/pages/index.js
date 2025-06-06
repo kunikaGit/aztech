@@ -15,6 +15,8 @@ export { default as AboutUs } from "./aboutus";
 export { default as Services } from "./services";
 export { default as Packages } from "./products";
 export { default as Games } from "./games";
+export { default as Help } from "./help";
+
 
 
 

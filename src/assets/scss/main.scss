@@ -123,7 +123,7 @@ section {
 	}
 
 	.dashboard-main {
-		padding: 22px 30px 22px 22px;
+		padding: 22px 50px 22px 50px;
 		width: calc(100% - 200px);
 
 		@include media_1280 {
@@ -136,7 +136,7 @@ section {
 .dash-heading {
 	h2 {
 		color: var(--color-3F4254);
-		font-size: 20px;
+		font-size: 25px;
 		font-weight: 600;
 		font-family: 'poppins';
 	}
@@ -178,6 +178,7 @@ section {
 			p {
 				font-size: 14px;
 				color: var(--text-grey);
+				margin: 0;
 			}
 		}
 
@@ -373,12 +374,12 @@ section {
 		display: block;
 	}
 
-	input {
+	input ,select{
 		color: var(--color-3F4254);
 		font-size: 16px;
 		display: block;
 		width: 100%;
-		padding: 14px;
+		padding:12px 14px;
 		border-radius: 50px;
 		border: 1px solid var(--text-grey);
 		outline: none;

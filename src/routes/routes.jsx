@@ -1,7 +1,8 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom';
 import { Checkout, Courses, Dashboard, Home, Login, Myplans, MyProfile, Networks, 
-  ProductDetail, Signup ,Transactions,SuccessStatus,FailedStatus, AboutUs, Services , Packages,Games} from '../pages';
+  ProductDetail, Signup ,Transactions,SuccessStatus,FailedStatus, AboutUs, Services , Packages,Games,
+  Help} from '../pages';
 import Mainlayout from '../mainlayout';
 import DashboardOutlet from '../pages/dashboardOutlet';
 import AutoLogoutHandler from "./autoLogoutHeader"
@@ -38,6 +39,7 @@ const RoutesMain = () => {
           <Route path={`${baseUrl}myaccount/checkout`} element={<Checkout />} />
           <Route path={`${baseUrl}myaccount/profile`} element={<MyProfile />} />
           <Route path={`${baseUrl}myaccount/games`} element={<Games />} />
+          <Route path={`${baseUrl}myaccount/help`} element={<Help />} />
         </Route>
       </Routes>
     </>

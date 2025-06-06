@@ -6,6 +6,47 @@ import { useNavigate } from 'react-router-dom';
 import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
 import { useState, useEffect } from 'react'
+import Select from 'react-select';
+
+
+const customStyles = {
+  control: (base) => ({
+    ...base,
+    backgroundColor: '#fff',
+    borderRadius: '30px',
+    border: '0.5px solid rgba(153, 153, 153, 0.567)',
+    padding: '0 2px',
+    color: '#fff',
+    outline: 'none',
+    boxShadow: 'none',
+    fontSize: '14px',
+    height: '45px'
+  }),
+  menu: (base) => ({
+    ...base,
+    backgroundColor: '#fff',
+    color: '#000',
+    borderRadius: '10px',
+    zIndex: 10,
+    fontSize: '14px',
+  }),
+  option: (base, state) => ({
+    ...base,
+    backgroundColor: state.isFocused ? 'lightblue' : '#fff',
+    color: '#000',
+    cursor: 'pointer',
+  }),
+  singleValue: (base) => ({
+    ...base,
+    color: '#fff',
+  }),
+  placeholder: (base) => ({
+    ...base,
+    fontSize: '14px',
+    color: '#aaa',
+    opacity: '0.7',
+  }),
+};
 
 const MyProfile = () => {
   const { fetchData } = useApiRequest();
@@ -61,6 +102,8 @@ const MyProfile = () => {
   };
 
 
+
+
   const updateProfile = async (e) => {
     e.preventDefault()
     try {
@@ -69,6 +112,11 @@ const MyProfile = () => {
       console.log(error)
     }
   }
+  const handleReactSelectChange = (field, value) => {
+    setFormData({ ...formData, [field]: value });
+    setErrors({ ...errors, [field]: '' }); // Clear error
+  };
+
 
   return (
     <div className='my-plan-wrapped'>
@@ -146,6 +194,19 @@ const MyProfile = () => {
 
           <div className='input-main-data'>
             <label>Country</label>
+            {/* <Select
+              options={countries?.map((country) => ({
+                label: country.name,
+                value: country.id,
+              }))}
+              styles={customStyles}
+              name='country_id'
+              placeholder="Select Country"
+              value={countries.find(opt => opt.value === formData.country_id) || null}
+              onChange={(selected) => handleReactSelectChange("country_id", selected)}
+              isSearchable={true}
+              disabled={!edit}
+            /> */}
             <select
               name='country_id'
               value={formData.country_id || ""}

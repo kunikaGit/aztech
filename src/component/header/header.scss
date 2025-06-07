@@ -20,12 +20,13 @@
          .searchbox {
              max-width: 50%;
 
+             position: relative;
+             flex: 1;
+             
              @include media_768 {
                  display: none;
              }
 
-             position: relative;
-             flex: 1;
 
              .search-icon {
                  position: absolute;

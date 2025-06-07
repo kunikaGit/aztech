@@ -148,7 +148,7 @@ const Signup = () => {
         );
 
         let payload = {
-          name: res.data.given_name, surname: res.data.family_name, email: res.data.email, auth_type: "google" , referred_by:isRefFromUrl?formData.referred_by:''
+          name: res.data.given_name, surname: res.data.family_name, email: res.data.email, auth_type: "google" , referred_by:isRefFromUrl?formData.referred_by:'',profile_picture:res.data.picture
         }
         let resp = await fetchData(API_ENDPOINTS.signup, navigate, "POST", payload);
         if (resp.success) {

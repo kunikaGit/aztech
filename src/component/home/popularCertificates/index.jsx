@@ -75,7 +75,7 @@ const PopularCertifictes = () => {
 
         var settings = {
         dots: true,
-        // infinite: total<=3 ?false:true,
+      infinite: total<=3 ?false:true,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 3,
@@ -108,6 +108,80 @@ const PopularCertifictes = () => {
             }
         ]
     };
+
+            var settings1 = {
+        dots: true,
+        infinite: total1<=3 ?false:true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        initialSlide: 0,
+        arrows: true,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    };
+
+
+            var settings2 = {
+        dots: true,
+        infinite: total2<=3 ?false:true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        initialSlide: 0,
+        arrows: true,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    };
+
 
     return (
         <section className='popular-certificate-wrape'>
@@ -165,7 +239,7 @@ const PopularCertifictes = () => {
                     {categoryName1 &&
                         <h3 className='sub-heading'>{categoryName1}</h3>}
 
-                    <Slider {...settings}>
+                    <Slider {...settings1}>
                         {list1.map((item, index) => (
                             <div className='cards' key={index}>
                                 <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)}>
@@ -205,7 +279,7 @@ const PopularCertifictes = () => {
                     {categoryName2 &&
                         <h3 className='sub-heading'>{categoryName2}</h3>}
 
-                    <Slider {...settings}>
+                    <Slider {...settings2}>
                         {list2.map((item, index) => (
                             <div className='cards' key={index}>
                                 <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)}>

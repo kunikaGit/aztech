@@ -13,8 +13,6 @@ const Banner = () => {
           <h1>Your All-in-One Digital Mall for Learning, Creativity & Growth</h1>
           <p>Explore AI tools, education, music, codes, eBooks, and more – all under one roof. Earn rewards, refer friends, and unlock unlimited digital possibilities!</p>
           <div className='searchbox'>
-            {/* <input type='text' placeholder='Search course' /> */}
-            {/* <button type='button'>Search</button> */}
             <TypingInput/>
           </div>
         </div>

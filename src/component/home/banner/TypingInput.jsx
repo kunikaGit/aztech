@@ -51,7 +51,7 @@ const TypingInput = () => {
       type="text"
       placeholder={placeholder + '|'}
       value={inputValue}
-      onChange={(e) => setInputValue(e.target.value)}
+      //onChange={(e) => setInputValue(e.target.value)}
       className="animated-input"
     />
   );

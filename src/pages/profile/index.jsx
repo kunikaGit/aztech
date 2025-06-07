@@ -7,46 +7,7 @@ import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
 import { useState, useEffect } from 'react'
 import Select from 'react-select';
-
-
-const customStyles = {
-  control: (base) => ({
-    ...base,
-    backgroundColor: '#fff',
-    borderRadius: '30px',
-    border: '0.5px solid rgba(153, 153, 153, 0.567)',
-    padding: '0 2px',
-    color: '#fff',
-    outline: 'none',
-    boxShadow: 'none',
-    fontSize: '14px',
-    height: '45px'
-  }),
-  menu: (base) => ({
-    ...base,
-    backgroundColor: '#fff',
-    color: '#000',
-    borderRadius: '10px',
-    zIndex: 10,
-    fontSize: '14px',
-  }),
-  option: (base, state) => ({
-    ...base,
-    backgroundColor: state.isFocused ? 'lightblue' : '#fff',
-    color: '#000',
-    cursor: 'pointer',
-  }),
-  singleValue: (base) => ({
-    ...base,
-    color: '#fff',
-  }),
-  placeholder: (base) => ({
-    ...base,
-    fontSize: '14px',
-    color: '#aaa',
-    opacity: '0.7',
-  }),
-};
+import { successMsg, errorMsg } from "../../utils/customFn";
 
 const MyProfile = () => {
   const { fetchData } = useApiRequest();
@@ -56,6 +17,8 @@ const MyProfile = () => {
   const [professions, setProfessions] = useState([]);
   const [genders, setGenders] = useState(["male", "female", "other"]);
 
+  const [selectedImage, setSelectedImage] = useState(null); // for preview
+  const [selectedFile, setSelectedFile] = useState(null);   // for upload
 
   const [errors, setErrors] = useState({})
 
@@ -70,6 +33,9 @@ const MyProfile = () => {
 
       if (res.success) {
         setFormData(res.data)
+        if(res.data.profile_picture){
+          setSelectedImage(res.data.profile_picture)
+        }
       }
 
       let resCountries = await fetchData(API_ENDPOINTS.countries, navigate, 'GET', {});
@@ -104,20 +70,63 @@ const MyProfile = () => {
 
 
 
-  const updateProfile = async (e) => {
-    e.preventDefault()
-    try {
-      console.log(formData)
-    } catch (error) {
-      console.log(error)
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (file.size > 400 * 1024) {
+        alert("Image must be less than 400 KB");
+        return;
+      }
+      setSelectedImage(URL.createObjectURL(file)); // preview
+      setSelectedFile(file); // upload
     }
-  }
-  const handleReactSelectChange = (field, value) => {
-    setFormData({ ...formData, [field]: value });
-    setErrors({ ...errors, [field]: '' }); // Clear error
   };
 
 
+  const updateProfile = async (e) => {
+    e.preventDefault()
+    try {
+      const payload = new FormData();
+
+      // Add all fields from formData
+      Object.entries(formData).forEach(([key, value]) => {
+        if (value !== undefined && value !== null) {
+          payload.append(key, value);
+        }
+      });
+
+      // Add profile image if selected
+      if (selectedFile) {
+        payload.append('profile_picture', selectedFile);
+      }
+
+      let res = await fetchData(API_ENDPOINTS.updateProfile, navigate, 'PUT', payload);
+      if (res.success) {
+        successMsg(res.message)
+      } else {
+        errorMsg(res.message)
+      }
+
+    } catch (error) {
+      console.log(error)
+      errorMsg(error)
+
+    }
+  }
+
+   const formatDateTime = (isoString) => {
+        const date = new Date(isoString);
+        return date.toLocaleString("en-GB", {
+            day: "2-digit",
+            month: "short", // or "2-digit"
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: true, // set to false for 24-hour format
+        });
+      }
   return (
     <div className='my-plan-wrapped'>
       <div className='dash-heading'>
@@ -125,7 +134,7 @@ const MyProfile = () => {
         <p>Edit your profile</p>
       </div>
       <div className='profile-info'>
-        <div className='profile-des'>
+        {/* <div className='profile-des'>
           <div className='profile-img'>
             <img src={imageMap['user.png']} alt='profile' />
           </div>
@@ -136,9 +145,24 @@ const MyProfile = () => {
             <h3>Membership Status</h3>
             {formData && <p>{formData.status}</p>}
           </div>
+        </div> */}
+        <div className='profile-des'>
+          <div className='profile-img'>
+            <img
+              src={selectedImage || imageMap['user.png']}
+              alt='profile'
+            />
+            <input type="file" accept="image/*" onChange={handleImageChange} />
+          </div>
+          <div className='description'>
+            {formData && <h3>{formData.name} {formData.surname}</h3>}
+            {formData && <p>Member since : {formatDateTime(formData.created_at)}</p>}
+            <h3>Membership Status</h3>
+            {formData && <p>{formData.status}</p>}
+          </div>
         </div>
         <div className='actions'>
-          <button type='button' className='light-btn'>Upload new picture</button>
+          <button type='button' className='light-btn' onClick={(e) => { updateProfile(e) }}>Upload new picture</button>
           {!edit && <button type='button' className='blue-btn' onClick={() => { setEdit(true) }}><Edit />Edit</button>}
         </div>
       </div>
@@ -310,7 +334,7 @@ const MyProfile = () => {
               type='text'
               placeholder='Enter referral address'
               name='referral_link'
-              value={formData.referral_link}
+              value={formData.referal_link}
               disabled
             />
           </div>

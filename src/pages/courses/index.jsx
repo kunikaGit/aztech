@@ -71,6 +71,7 @@ const Courses = () => {
                             </div>
                             <Slider
                                 dots={true}
+                                infinite={item.length>3?true:false}
                                 speed={500}
                                 slidesToShow={3}
                                 slidesToScroll={3}

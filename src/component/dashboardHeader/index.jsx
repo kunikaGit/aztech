@@ -25,7 +25,7 @@ const DashboardHeader = () => {
                     <span> {status}</span>
                 </div>
                 <div className='profile'>
-                    <img src={imageMap['profile2.png']} alt='profile'/>
+                    <img src={imageMap['user-icon.png']} alt='profile'/>
                 </div>
             </div>
         </div>

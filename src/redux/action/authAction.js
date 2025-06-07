@@ -16,6 +16,7 @@ export const login = createAsyncThunk(
         },
       };
       const { data } = await axios.post("users/login", formData, config);
+
       if (data.status || data.success) {
         localStorage.setItem("auth_token", data?.data.token);
         localStorage.setItem("stauts", data?.data.status);

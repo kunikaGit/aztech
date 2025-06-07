@@ -16,8 +16,8 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
 const ProductDetail = () => {
     const [previewUrl, setPreviewUrl] = useState(null);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [previewFormat, setPreviewFormat] = useState('');
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [previewFormat, setPreviewFormat] = useState('');
 
     const { auth_token, plan_id, status } = useSelector((state) => state.auth);
 
@@ -43,7 +43,7 @@ const ProductDetail = () => {
             let res = await fetchData(`${API_ENDPOINTS.products}?id=${id}`, navigate, 'GET', {});
 
             if (res.success) {
-               setPreviewFormat(res.data.list[0].format)
+                setPreviewFormat(res.data.list[0].format)
                 setList(res.data.list)
                 setTotal(res.data.total)
 
@@ -126,16 +126,16 @@ const ProductDetail = () => {
                                         <p>Level</p>
                                         <span>{list[0].level_name}</span>
                                     </div>
-                                    {list[0].total_opens>1 &&
-                                    <div className='item'>
-                                        <p>Audience</p>
-                                        <span>{list[0].total_opens}</span>
-                                    </div>}
+                                    {list[0].total_opens > 1 &&
+                                        <div className='item'>
+                                            <p>Audience</p>
+                                            <span>{list[0].total_opens}</span>
+                                        </div>}
                                     {list[0].show_language &&
-                                    <div className='item'>
-                                        <p>Language</p>
-                                        {list[0].languages.map((language) => (<span>{language} | </span>))}
-                                    </div>}
+                                        <div className='item'>
+                                            <p>Language</p>
+                                            {list[0].languages.map((language) => (<span>{language} | </span>))}
+                                        </div>}
 
                                 </div>
                                 <div className='actions'>
@@ -199,12 +199,12 @@ const ProductDetail = () => {
                                 </div>}
                         </div>
                     </div>
-                     <PreviewModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        fileUrl={previewUrl}
-        format={previewFormat}
-      />
+                    <PreviewModal
+                        isOpen={isModalOpen}
+                        onClose={() => setIsModalOpen(false)}
+                        fileUrl={previewUrl}
+                        format={previewFormat}
+                    />
                 </section>}
 
 

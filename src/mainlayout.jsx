@@ -8,13 +8,13 @@ import imageMap from './utils/helpers'
 const Mainlayout = () => {
     return (
         <>
-            <div style={{ background: `url(${imageMap['bg.png']})`,backgroundRepeat:'no-repeat',backgroundSize:'cover'}}>
-            <Container>
-                <Header />
-                <Outlet />
-            </Container>
-            <Footer />
-        </div >
+            <div style={{ background: `url(${imageMap['bg.png']})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
+                <Container>
+                    <Header />
+                    <Outlet />
+                </Container>
+                <Footer />
+            </div >
         </>
     )
 }

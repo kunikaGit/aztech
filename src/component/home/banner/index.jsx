@@ -3,14 +3,22 @@ import './banner.scss'
 import imageMap from '../../../utils/helpers'
 import TypingInput from './TypingInput'
 import ImageSlider from '../imageSlider'
+import { Link } from 'react-router-dom'
+
 
 const Banner = () => {
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
   return (
     <div className='banner'>
       <div className='two-grid'>
         <div className='hero-content'>
           <h3 className='label'>Smart Reward System</h3>
-          <h1>Your All-in-One Digital Mall for Learning, Creativity & Growth</h1>
+          <h1>Your All In One<br/>
+            SMART DIGITAL MALL<br/>
+            SMART LEARNING<br/>
+          </h1>
+          <Link to={`${baseUrl}signup`} className='blue-button'>Signup Now</Link>
           <p>Explore AI tools, education, music, codes, eBooks, and more – all under one roof. Earn rewards, refer friends, and unlock unlimited digital possibilities!</p>
           <div className='searchbox'>
             <TypingInput/>

@@ -5,7 +5,8 @@ const HomeCategories = () => {
     return (
         <section className='home-category-wrapped'>
             <div className='main-heading'>
-                <h2>Explore AZ Tech – Your Smart Digital Universe Starts Now!</h2>
+                <h2>EXPLORE AZ TECH - YOUR SMART DIGITAL REWARD SYSTEM</h2>
+                <h2>REFER -PLAY - EARN UNLIMITED INCOME</h2>
             </div>
             <div className='two-grid'>
                 <div className='cat-banner'>

@@ -7,7 +7,22 @@
 
         .hero-content {
             width: 45%;
-
+            .blue-button{
+                display: block;
+                margin-bottom: 30px;
+                width: fit-content;
+                font-size: 18px;
+                border: 1px solid var(--blue-color);
+                padding: 10px 30px;
+                border-radius: 8px;
+                transition: .3s;
+                background-color: var(--blue-color);
+                color: var(--white-color);
+                &:hover{
+                    color: var(--blue-color);
+                    background-color: var(--white-color);
+                }
+            }
             // .label {
             //     font-weight: 500;
             //     font-size: 22px;
@@ -49,7 +64,7 @@
                 font-size: 18px;
                 color: var(--text-grey);
                 width: 80%;
-                margin-bottom: 50px;
+                margin-bottom: 20px;
 
                 @include media_1280 {
                     font-size: 16px;

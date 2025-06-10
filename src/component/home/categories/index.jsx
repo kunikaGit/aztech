@@ -4,9 +4,19 @@ import './homecategories.scss'
 const HomeCategories = () => {
     return (
         <section className='home-category-wrapped'>
-            <div className='main-heading'>
-                <h2>Explore AZ Tech – Your Smart Digital Universe Starts Now!</h2>
-            </div>
+            {/* <div className='main-heading'>
+                <h2>EXPLORE AZ TECH - YOUR SMART DIGITAL REWARD SYSTEM</h2>
+                <h2>REFER -PLAY - EARN UNLIMITED INCOME</h2>
+            </div> */}
+
+            <div className="main-heading">
+  <h2>
+    <span className="black-part">EXPLORE AZ TECH </span>
+    <span className="highlight-part">YOUR SMART DIGITAL REWARD SYSTEM</span>
+  </h2>
+  <h2 className="sub-heading">REFER - PLAY - EARN UNLIMITED INCOME</h2>
+</div>
+
             <div className='two-grid'>
                 <div className='cat-banner'>
                     {/* <ul>

@@ -1,73 +1,138 @@
-.home-category-wrapped{
-    .main-heading{
-        width: 70%;
+.home-category-wrapped {
+    // .main-heading{
+    //     width: 70%;
+    //     margin-bottom: 50px;
+    //     h2{
+    //         text-transform: uppercase;
+    //         margin: 0;
+    //     }
+    // }
+
+    .main-heading {
+        width: 100%;
         margin-bottom: 50px;
-        h2{
+        text-align: left;
+
+        h2 {
             text-transform: uppercase;
             margin: 0;
+            font-weight: 600;
+            display: inline-block;
+            line-height: 1.4;
         }
+
+        .black-part {
+            color: #000;
+            font-size: 42px;
+        }
+
+        .highlight-part {
+            color: #1366D6; // a fresher blue alternative to #1A73E8
+            font-size: 40px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .sub-heading {
+            font-size: 30px;
+            color: #333;
+            margin-top: 15px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 1280px) {
+            .main-heading {
+
+                .black-part,
+                .highlight-part {
+                    font-size: 36px;
+                }
+
+                .sub-heading {
+                    font-size: 26px;
+                }
+            }
+        }
+
     }
-    .two-grid{
+
+    .two-grid {
         gap: 33px;
-        .cat-banner{
+
+        .cat-banner {
             display: flex;
             width: 60%;
-           ul{
+
+            ul {
                 width: 15%;
                 padding: 0;
                 margin: 0;
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
-                li{
+
+                li {
                     list-style: none;
                 }
             }
-            .cat-img{
+
+            .cat-img {
                 width: 85%;
-                img{
+
+                img {
                     width: 100%;
                 }
             }
         }
-        .content{
+
+        .content {
             width: 40%;
-            .label{
+
+            .label {
                 background-image: url(../../../assets/images/arrow-shape.svg);
                 padding: 2px 22px;
                 background-repeat: no-repeat;
                 object-fit: cover;
                 height: 42px;
-                span{
+
+                span {
                     color: var(--white-color);
                     font-size: 14px;
                     font-weight: 500;
                 }
             }
-            .title{
+
+            .title {
                 font-size: 30px;
                 font-weight: 700;
                 margin-bottom: 22px;
             }
-            .detail-author{
+
+            .detail-author {
                 margin-bottom: 20px;
-                span{
+
+                span {
                     font-size: 16px;
                 }
-                .author{
+
+                .author {
                     font-style: italic;
                     color: #6A6A6A;
                     font-weight: 500;
                 }
-                .date{
+
+                .date {
                     color: #0000007A;
                 }
             }
-            p{
+
+            p {
                 margin-bottom: 20px;
                 color: #0000007A;
             }
-            .blue-btn{
+
+            .blue-btn {
                 width: 100%;
             }
         }

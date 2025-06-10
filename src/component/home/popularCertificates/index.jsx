@@ -187,7 +187,7 @@ const PopularCertifictes = () => {
         <section className='popular-certificate-wrape'>
             <div className='header-section'>
                 <div className='main-heading'>
-                    <span className='up-heading'>Trending Digital Essentials</span>
+                    {/* <span className='up-heading'>Trending Digital Essentials</span> */}
                     <h2>Most Popular Picks on AZ Tech</h2>
                     <span className='lower-heading'>
                         Discover what everyone’s loving – from AI tools and eBooks to music, research, and more.

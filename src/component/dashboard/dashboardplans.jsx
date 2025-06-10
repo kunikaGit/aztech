@@ -6,7 +6,8 @@ const Dashboardplans = ({data}) => {
     const navigate = useNavigate()
     const handlePage=(e,planId)=>{
         e.preventDefault();
-        navigate(`${baseUrl}`)
+ navigate(`${baseUrl}`)
+       
     }
     return (
         <div className='dashboard-plans'>

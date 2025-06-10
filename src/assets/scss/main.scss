@@ -64,7 +64,8 @@ body {
 }
 
 .container {
-	max-width: 90% !important;	
+	max-width: 90% !important;
+
 	@include media_min_1600 {
 		max-width: 1500px !important;
 	}
@@ -374,12 +375,13 @@ section {
 		display: block;
 	}
 
-	input ,select{
+	input,
+	select {
 		color: var(--color-3F4254);
 		font-size: 16px;
 		display: block;
 		width: 100%;
-		padding:12px 14px;
+		padding: 12px 14px;
 		border-radius: 50px;
 		border: 1px solid var(--text-grey);
 		outline: none;
@@ -441,4 +443,22 @@ section {
 			opacity: 0;
 		}
 	}
+}
+
+.landing-page-wrapped{
+	.hero-section{
+		background-color: #fff;
+		padding: 0;
+		padding-top: 20px;
+		.header-wrapped{
+			margin: 0;
+			background-color: var(--light-color);
+			margin: 0;
+		}
+	}
+}
+.transparent-card {
+	background-color: rgba(244, 247, 250, 0.6666666667);
+	padding: 20px;
+	border-radius: 20px;
 }

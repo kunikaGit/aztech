@@ -1,8 +1,10 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom';
-import { Checkout, Courses, Dashboard, Home, Login, Myplans, MyProfile, Networks, 
-  ProductDetail, Signup ,Transactions,SuccessStatus,FailedStatus, AboutUs, Services , Packages,Games,
-  Help} from '../pages';
+import {
+  Checkout, Courses, Dashboard, Home, Login, Myplans, MyProfile, Networks,
+  ProductDetail, Signup, Transactions, SuccessStatus, FailedStatus, AboutUs, Services, Packages, Games,
+  Help
+} from '../pages';
 import Mainlayout from '../mainlayout';
 import DashboardOutlet from '../pages/dashboardOutlet';
 import AutoLogoutHandler from "./autoLogoutHeader"
@@ -10,19 +12,18 @@ import AutoLogoutHandler from "./autoLogoutHeader"
 const baseUrl = import.meta.env.VITE_BASE_URL;
 const RoutesMain = () => {
   return (
-        <>
+    <>
       <AutoLogoutHandler />
-
       <Routes>
         {/* Auth & Status Routes */}
         <Route path={`${baseUrl}login`} element={<Login />} />
         <Route path={`${baseUrl}signup`} element={<Signup />} />
         <Route path={`${baseUrl}success`} element={<SuccessStatus />} />
         <Route path={`${baseUrl}failed`} element={<FailedStatus />} />
+        <Route path={`${baseUrl}`} element={<Home />} />
 
         {/* -----------Outer pages--------- */}
         <Route path={`${baseUrl}`} element={<Mainlayout />}>
-          <Route index element={<Home />} />
           <Route path={`${baseUrl}products`} element={<Courses />} />
           <Route path={`${baseUrl}detail`} element={<ProductDetail />} />
           <Route path={`${baseUrl}about-us`} element={<AboutUs />} />

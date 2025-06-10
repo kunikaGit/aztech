@@ -1,18 +1,18 @@
 import React from 'react';
-import Modal from 'react-modal';
+import { Modal } from 'react-bootstrap';
 
-Modal.setAppElement('#root'); // Important for accessibility
+// Modal.setAppElement('#root'); // Important for accessibility
 
 const PreviewModal = ({ isOpen, onClose, fileUrl, format }) => {
-    console.log({ isOpen, onClose, fileUrl, format })
+  console.log({ isOpen, onClose, fileUrl, format })
   return (
     <Modal
-      isOpen={isOpen}
-      onRequestClose={onClose}
-        ariaHideApp={false}  
-      contentLabel="Preview"
-      className="preview-modal"
-      overlayClassName="preview-overlay"
+      show={isOpen}
+      onHide={onClose}
+      size='lg'
+      // ariaHideApp={false}
+      // contentLabel="Preview"
+      // className="preview-modal"
     >
       <button className="close-btn" onClick={onClose}>✕</button>
       <div className="preview-content">

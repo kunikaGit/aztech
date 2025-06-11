@@ -62,16 +62,20 @@ const Games = () => {
             <div className='blue-card'>
                 <div className='content'>
                     <h3> Play free games under az community</h3>
-<p>Enjoy a variety of engaging and fun games, absolutely free—exclusively for our community members!</p>
+                    <p>Enjoy a variety of engaging and fun games, absolutely free—exclusively for our community members!</p>
                 </div>
                 <div className='content-cards'>
-                        {list.length > 0 &&
-                            list.map((item) => (<div className='border-card'>
-                                <GameEmbed src={item.link} />
-                                <p>{item.title}</p>
-                            </div>))}
+                    {list.length > 0 &&
+                        list.map((item) => (<div className='border-card'>
+                            <GameEmbed src={item.link} />
+                            <p>{item.title}</p>
+                        </div>))}
                 </div>
             </div>
+
+           <video autoPlay muted loop playsInline className='background-video'>
+      <source src={`/test/images/aztech-games-bg.mp4`} type="video/mp4" />
+    </video>
         </div>
     )
 }

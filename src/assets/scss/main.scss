@@ -445,18 +445,23 @@ section {
 	}
 }
 
-.landing-page-wrapped{
+.landing-page-wrapped {
 	.hero-section{
 		background-color: #fff;
-		padding: 0;
-		padding-top: 20px;
-		.header-wrapped{
-			margin: 0;
-			background-color: var(--light-color);
-			margin: 0;
+			padding: 0;
+			padding-top: 20px;
+
+			.header-wrapped {
+				margin: 0;
+				background-color: var(--light-color);
+				margin: 0;
 		}
 	}
+
+	
+
 }
+
 .transparent-card {
 	background-color: rgba(244, 247, 250, 0.6666666667);
 	padding: 20px;

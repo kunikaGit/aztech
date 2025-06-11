@@ -1,72 +1,82 @@
+@use '../../assets/scss/mixin.scss' as *;
+
 .footer {
-    background-color: #fff;
-    padding: 40px 0;
-    
-  .footer__section{
-    ul{
+  background-color: #fff;
+  padding: 40px 0;
+
+  .footer__section {
+    ul {
       padding-left: 5px;
-      li{
+
+      li {
         list-style: none;
         color: #000000A1;
         margin-bottom: 15px;
       }
     }
-    h3{
+
+    h3 {
       font-size: 18px;
       color: #000000;
       margin: 8px 0;
       font-weight: 500;
     }
   }
-    &__container {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin: 0 auto;
-      flex-wrap: wrap;
-      gap: 20px;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 20px;
+
+  }
+
+  &__section {
+    flex: 1 1 200px;
+    max-width: 200px;
+
+    @include media_1280 {
+      flex: 1 1 180px;
+      max-width: 180px;
     }
-  
-    &__section {
-      flex: 1 1 200px;
-      max-width: 250px;
-  
-      p {
-        font-size: 14px;
-        color: #555;
-        margin: 8px 0;
-      }
-  
-      a {
-        color: #000000A1;
-        text-decoration: none;
-        font-size: 16px;
-        display: block;
-        margin: 5px 0;
-  
-        &:hover {
-          text-decoration: underline;
-        }
-      }
+
+    p {
+      font-size: 14px;
+      color: #555;
+      margin: 8px 0;
     }
-  
-    &__logo {
-      max-width: 200px;
-      margin-bottom: 50px;
-    }
-  
-    &__social {
-      display: flex;
-      gap: 10px;
-  
-      .footer__icon {
-        font-size: 18px;
-        color: #555;
-  
-        &:hover {
-          color: #0073e6;
-        }
+
+    a {
+      color: #000000A1;
+      text-decoration: none;
+      font-size: 16px;
+      display: block;
+      margin: 5px 0;
+
+      &:hover {
+        text-decoration: underline;
       }
     }
   }
-  
+
+  &__logo {
+    max-width: 200px;
+    margin-bottom: 50px;
+  }
+
+  &__social {
+    display: flex;
+    gap: 10px;
+
+    .footer__icon {
+      font-size: 18px;
+      color: #555;
+
+      &:hover {
+        color: #0073e6;
+      }
+    }
+  }
+}

@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import imageMap from '../../utils/helpers'
-import './services.scss';
 import { useNavigate } from 'react-router-dom';
 import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
-const Services = () => {
+const HomeServices = () => {
     const { fetchData } = useApiRequest();
     const navigate = useNavigate();
-
     const [list, setList] = useState([]);
 
     useEffect(() => {
@@ -29,27 +27,19 @@ const Services = () => {
     }
 
     const handleProduct = (e, category) => {
-        //e.previentDefault()
         navigate(`${baseUrl}products?category=${category.id}?name=${category.name}`)
     }
     return (
         <div className='services-wrapped'>
-            <div className='two-grid'>
-                <div className='heading'>
-                    <div className='relative'>
-                        <img src={imageMap['services.svg']} alt='course' />
-                    </div>
+                <div className='main-heading mb-4'>
+                    <h2>AZ Tech Services</h2>
+                    <span className='lower-heading'>
+                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, accusamus.
+                    </span>
                 </div>
-                <div className='main-content'>
-                    <h2>Discover the Ultimate Digital Mall at AZ Tech</h2>
-                    <p>Explore thousands of cutting-edge digital products — from AI tools and creative assets to eBooks, videos, music, and much more. Everything you need to learn, create, and grow is just a click away.</p>
-                    <button type='button' className='blue-btn'>Explore Now</button>
-                </div>
-
-            </div>
             <div className='service-cards-wrapped'>
                 {list.length > 0 &&
-                    list.map((category) => (
+                    list.slice(0, 8).map((category) => (
                         <div className='service-cards' onClick={(e) => { handleProduct(e, category) }}>
                             <div className='icon'>
                                 <img src={imageMap[`${category.icon}`]} alt='icon' />
@@ -60,9 +50,8 @@ const Services = () => {
                             </div>
                         </div>))}
             </div>
-
         </div>
     )
 }
 
-export default Services
+export default HomeServices

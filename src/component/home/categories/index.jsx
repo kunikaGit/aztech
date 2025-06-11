@@ -10,12 +10,12 @@ const HomeCategories = () => {
             </div> */}
 
             <div className="main-heading">
-  <h2>
-    <span className="black-part">EXPLORE AZ TECH </span>
-    <span className="highlight-part">YOUR SMART DIGITAL REWARD SYSTEM</span>
-  </h2>
-  <h2 className="sub-heading">Refer Friends – Play Smart – Earn Big</h2>
-</div>
+                <h2>
+                    <span className="black-part">EXPLORE AZ TECH </span>
+                    <span className="highlight-part">YOUR SMART DIGITAL REWARD SYSTEM</span>
+                </h2>
+                <h2 className="sub-heading">Refer Friends – Play Smart – Earn Big</h2>
+            </div>
 
             <div className='two-grid'>
                 <div className='cat-banner'>

@@ -11,6 +11,9 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
 
   return (
     <div className='banner'>
+      <div className='searchbox'>
+            <TypingInput/>
+          </div>
       <div className='two-grid'>
         <div className='hero-content'>
           <h3 className='label'>Smart Reward System</h3>
@@ -23,16 +26,13 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
 
           <h1 class="banner-heading">
             Your All In One<br />
-            <span>SMART DIGITAL MALL</span><br />
-            <span>SMART LEARNING</span><br />
-            <span>SMART REWARD</span><br />
-            <em>JOIN US NOW</em>
+            <span>Smart Digital Mall, Smart Rewards</span><br />
+            <span>Smart Learning</span><br />
+            <Link to='/signup' className='em'>Join us now</Link>
           </h1>
           {/* <Link to={`${baseUrl}signup`} className='blue-button'>Signup Now</Link> */}
           <p>Ready to level up your life? Dive into awesome AI tools, epic eBooks, cool code, music, and more — all in one digital playground. Learn new stuff, earn rewards, and bring your friends along for the ride. Let’s make smart moves together!</p>
-          {/* <div className='searchbox'>
-            <TypingInput/>
-          </div> */}
+          
         </div>
 
         <ImageSlider images={['https://az-file-uploads.s3.eu-west-1.amazonaws.com/ChatGPT+Image+Jun+4%2C+2025%2C+04_19_33+PM.png', 'https://az-file-uploads.s3.eu-west-1.amazonaws.com/ChatGPT+Image+Jun+4%2C+2025%2C+04_11_03+PM.png', 'https://az-file-uploads.s3.eu-west-1.amazonaws.com/ChatGPT+Image+Jun+4%2C+2025%2C+04_15_01+PM.png']}/>

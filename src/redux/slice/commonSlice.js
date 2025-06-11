@@ -1,14 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { getAllRoles} from "../action/commonAction";
-
-
-
+import { getAllCategories } from "../action/commonAction";
 
 const initialState = {
   loading: false,
   error: null,
   success: false,
-  // getAllRoles: null,
+  getCategory: null,
 };
 
 const commonSlice = createSlice({
@@ -17,24 +14,24 @@ const commonSlice = createSlice({
   reducers: {
   },
 
-  // extraReducers: (builder) => {
-  //   builder
-  //     //  getAllRoles
-  //     .addCase(getAllRoles.pending, (state) => {
-  //       state.loading = true;
-  //       state.error = null;
-  //     })
-  //     .addCase(getAllRoles.fulfilled, (state, { payload }) => {
-  //       state.loading = false;
-  //       state.getAllRoles = payload;
+  extraReducers: (builder) => {
+    builder
+      //  getAllCategories
+      .addCase(getAllCategories.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getAllCategories.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.getCategory = payload;
      
-  //     })
-  //     .addCase(getAllRoles.rejected, (state, { payload }) => {
-  //       state.loading = false;
-  //       state.error = payload;
-  //     })
+      })
+      .addCase(getAllCategories.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+      })
       
-  // },
+  },
 });
 
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../../component/header';
-import { Banner, Chooseplan, HomeCategories, OnlineCourse, PopularCertifictes, TrustedPrtner } from '../../component';
+import { Banner, Chooseplan, HomeCategories, HomeServices, OnlineCourse, PopularCertifictes, TrustedPrtner } from '../../component';
 import { Container } from 'react-bootstrap';
 import Footer from '../../component/footer';
 import imageMap from '../../utils/helpers';
@@ -18,6 +18,7 @@ const Home = () => {
       </section>
       <Container>
         <HomeCategories />
+        <HomeServices/>
         <PopularCertifictes />
         <OnlineCourse />
         <Chooseplan />

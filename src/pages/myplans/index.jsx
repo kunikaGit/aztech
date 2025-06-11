@@ -103,10 +103,6 @@ const Myplans = () => {
 
     <div className='courses-wrapped'>
       <section className='course-listing'>
-
-
-
-
         {list1?.length > 0 &&
           list1?.map((item, index) => (
             <><div className='main-heading'>
@@ -120,6 +116,7 @@ const Myplans = () => {
                     {products?.length > 0 &&
                       products.map((product) => (
                         <div className='cards' key={index}>
+                          <div className='label-bg'>Ebook</div>
                           <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${product.id}`)}><img src={`${product.preview_image}`} /></div>
                           <div className='content'>
                             <h3 className='title'>{product.name}</h3>

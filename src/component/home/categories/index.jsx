@@ -14,7 +14,7 @@ const HomeCategories = () => {
     <span className="black-part">EXPLORE AZ TECH </span>
     <span className="highlight-part">YOUR SMART DIGITAL REWARD SYSTEM</span>
   </h2>
-  <h2 className="sub-heading">REFER - PLAY - EARN UNLIMITED INCOME</h2>
+  <h2 className="sub-heading">Refer Friends – Play Smart – Earn Big</h2>
 </div>
 
             <div className='two-grid'>

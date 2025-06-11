@@ -73,9 +73,9 @@ const PopularCertifictes = () => {
         navigate(`${baseUrl}products`)
     }
 
-        var settings = {
+    var settings = {
         dots: true,
-      infinite: total<=3 ?false:true,
+        infinite: total <= 3 ? false : true,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 3,
@@ -109,9 +109,9 @@ const PopularCertifictes = () => {
         ]
     };
 
-            var settings1 = {
+    var settings1 = {
         dots: true,
-        infinite: total1<=3 ?false:true,
+        infinite: total1 <= 3 ? false : true,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 3,
@@ -146,9 +146,9 @@ const PopularCertifictes = () => {
     };
 
 
-            var settings2 = {
+    var settings2 = {
         dots: true,
-        infinite: total2<=3 ?false:true,
+        infinite: total2 <= 3 ? false : true,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 3,
@@ -198,8 +198,12 @@ const PopularCertifictes = () => {
 
             {list.length > 0 &&
                 <div className='certificate-cards'>
-                    {categoryName &&
-                        <h3 className='sub-heading'>{categoryName}</h3>}
+
+                    <div className='card-header'>
+                        {categoryName && <h3 className='sub-heading'>{categoryName}</h3>}
+                        <button type='button' className='blue-btn'>Explore All</button>
+                    </div>
+
                     <Slider {...settings}>
                         {list.map((item, index) => (
                             <div className='cards' key={index}>
@@ -236,9 +240,10 @@ const PopularCertifictes = () => {
 
             {list1.length > 0 &&
                 <div className='certificate-cards'>
-                    {categoryName1 &&
-                        <h3 className='sub-heading'>{categoryName1}</h3>}
-
+                  <div className='card-header'>
+                        {categoryName1 && <h3 className='sub-heading'>{categoryName}</h3>}
+                        <button type='button' className='blue-btn'>Explore All</button>
+                    </div>
                     <Slider {...settings1}>
                         {list1.map((item, index) => (
                             <div className='cards' key={index}>
@@ -276,8 +281,10 @@ const PopularCertifictes = () => {
 
             {list2.length > 0 &&
                 <div className='certificate-cards'>
-                    {categoryName2 &&
-                        <h3 className='sub-heading'>{categoryName2}</h3>}
+                   <div className='card-header'>
+                        {categoryName2 && <h3 className='sub-heading'>{categoryName2}</h3>}
+                        <button type='button' className='blue-btn'>Explore All</button>
+                    </div>
 
                     <Slider {...settings2}>
                         {list2.map((item, index) => (

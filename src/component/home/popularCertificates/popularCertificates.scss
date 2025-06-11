@@ -32,16 +32,28 @@
         border-radius: 20px;
         margin-bottom: 20px;
 
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; // vertically center
+            margin-bottom: 40px; // same as your previous margin on h3
+        }
+
         .sub-heading {
+
             font-size: 24px;
             font-weight: 600;
             margin-bottom: 40px;
             color: #004aab;
+
         }
 
         .slick-slide {
             padding: 0 15px;
+
         }
+
 
         .cards {
             // width: 33%;

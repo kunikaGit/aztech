@@ -29,10 +29,10 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
             <em>JOIN US NOW</em>
           </h1>
           {/* <Link to={`${baseUrl}signup`} className='blue-button'>Signup Now</Link> */}
-          <p>Explore AI tools, education, music, codes, eBooks, and more – all under one roof. Earn rewards, refer friends, and unlock unlimited digital possibilities!</p>
-          <div className='searchbox'>
+          <p>Ready to level up your life? Dive into awesome AI tools, epic eBooks, cool code, music, and more — all in one digital playground. Learn new stuff, earn rewards, and bring your friends along for the ride. Let’s make smart moves together!</p>
+          {/* <div className='searchbox'>
             <TypingInput/>
-          </div>
+          </div> */}
         </div>
 
         <ImageSlider images={['https://az-file-uploads.s3.eu-west-1.amazonaws.com/ChatGPT+Image+Jun+4%2C+2025%2C+04_19_33+PM.png', 'https://az-file-uploads.s3.eu-west-1.amazonaws.com/ChatGPT+Image+Jun+4%2C+2025%2C+04_11_03+PM.png', 'https://az-file-uploads.s3.eu-west-1.amazonaws.com/ChatGPT+Image+Jun+4%2C+2025%2C+04_15_01+PM.png']}/>

@@ -59,6 +59,9 @@ const Games = () => {
 
     return (
         <div className='games-wrapped'>
+             <video autoPlay muted loop playsInline className='background-video'>
+      <source src={`https://az-file-uploads.s3.eu-west-1.amazonaws.com/aztech-games-bg.mp4`} type="video/mp4" />
+    </video>
             <div className='blue-card'>
                 <div className='content'>
                     <h3> Play free games under az community</h3>
@@ -73,9 +76,7 @@ const Games = () => {
                 </div>
             </div>
 
-           <video autoPlay muted loop playsInline className='background-video'>
-      <source src={`/test/images/aztech-games-bg.mp4`} type="video/mp4" />
-    </video>
+          
         </div>
     )
 }

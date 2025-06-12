@@ -1,55 +1,61 @@
 .games-wrapped {
-    padding: 20px;
-   .content{
-    text-align: center;
-    margin-bottom: 30px;
-    h3{
-        color: var(--white-color);
-        font-size: 30px;
-        font-weight: 600;
-    }
-    p{
-        color: var(--white-color);
-        font-size: 18px;
-        width: 60%;
-        margin: auto;
-    }
-   }
+    padding: 0;
 
-   .background-video {
-    padding: 26px 40px;
-        position: center;
+    .content {
+        text-align: center;
+        margin-bottom: 30px;
+
+        h3 {
+            color: var(--white-color);
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        p {
+            color: var(--white-color);
+            font-size: 18px;
+            width: 60%;
+            margin: auto;
+        }
+    }
+
+    .background-video {
+        padding: 0;
+        background-position: center;
         width: 100%;
-   
-    width: 50%;
-    height: 40%;
-    object-fit: cover;
-    z-index: 0;
-    opacity: 1; // You can adjust the darkness/lightness
-    pointer-events: none;
-  }
-    .blue-card{
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+        opacity: 1; // You can adjust the darkness/lightness
+        pointer-events: none;
+    }
+
+    .blue-card {
         background-color: #027CB5;
         border-radius: 16px;
         padding: 26px 40px;
         position: relative;
         width: 100%;
         position: relative;
-        .content-cards{
+
+        .content-cards {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
-            .border-card{
+
+            .border-card {
                 width: calc(25% - 20px);
                 text-align: center;
                 border: 1px solid #fff;
                 padding: 10px;
                 border-radius: 10px;
-                p{
+
+                p {
                     color: #fff;
                     margin: 0;
                 }
-                iframe{
+
+                iframe {
                     width: 100%;
                     overflow: hidden;
                 }

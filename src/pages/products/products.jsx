@@ -126,6 +126,7 @@ const Products = ({ planId }) => {
               <div className='main-heading'>
                 <h2 className='sub-heading'>{item.name}</h2>
               </div>
+              <div className='certificate-cards'>
               <Slider
                 dots={true}
                 infinite={item.length > 3 ? true : false}
@@ -195,6 +196,7 @@ const Products = ({ planId }) => {
                     // </div>
                   ))}
               </Slider>
+              </div>
             </div>))}
 
 

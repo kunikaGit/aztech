@@ -70,10 +70,11 @@ const Courses = () => {
                                 <h2 className='sub-heading'>{item.name}</h2>
                             </div> */}
 
-                             <div className='card-header'>
-                        {item.name && <h3 className='sub-heading'>{item.name}</h3>}
-                        <button type='button' className='blue-btn'>Explore All</button>
-                    </div>
+                            <div className='card-header'>
+                                {item.name && <h3 className='sub-heading'>{item.name}</h3>}
+                                <button type='button' className='blue-btn'>Explore All</button>
+                            </div>
+                            <div className='certificate-cards'>
                             <Slider
                                 dots={true}
                                 infinite={item.length > 3 ? true : false}
@@ -113,8 +114,8 @@ const Courses = () => {
                                     item?.products.map((product) => (
                                         // <div className='certificate-cards'>
                                         <div className='cards' key={index}>
-                                           
-                                            <div className='label-bg'>{product.type_name}</div> 
+
+                                            <div className='label-bg'>{product.type_name}</div>
                                             <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${product.id}`)}><img src={`${product.preview_image}`} /></div>
                                             <div className='content'>
                                                 <h3 className='title'>{product.name}</h3>
@@ -145,6 +146,7 @@ const Courses = () => {
                                         // </div>
                                     ))}
                             </Slider>
+                            </div>
                         </div>))}
                 {/* </section > */}
             </div >

@@ -29,7 +29,6 @@ const Networks = () => {
                 setList(res.data)
             }
             if (res2.success) {
-                console.log(res2.data)
                 setList2(res2.data)
             }
         } catch (error) {
@@ -42,6 +41,20 @@ const Networks = () => {
         e.preventDefault()
         setType(newType)
     }
+
+        const formatDateTime = (isoString) => {
+        const date = new Date(isoString);
+        return date.toLocaleString("en-GB", {
+            day: "2-digit",
+            month: "short", // or "2-digit"
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: true, // set to false for 24-hour format
+        });
+    };
+
     return (
         <div className='az-table networks'>
             <div className='table-header'>
@@ -74,7 +87,7 @@ const Networks = () => {
                         <thead>
                             <tr>
                                 <th>Referrals</th>
-                                {/* <th>Name</th> */}
+                                <th>Level</th>
                                 <th>Date</th>
                                 {/* <th>Valid Till</th> */}
                                 <th>Status</th>
@@ -93,11 +106,11 @@ const Networks = () => {
                                             </div>
                                         </div>
                                     </td>
-                                    {/* <td>{user.paid}</td> */}
-                                    <td>{user.created_at}</td>
+                                    <td>{user.level}</td>
+                                    <td>{formatDateTime(user.created_at)}</td>
                                     {/* <td>{user.validTill}</td> */}
                                     <td>
-                                        <div className='status'>{user.status}</div>
+                                        <div className='status'>{user.status=="active"?'Active':'Inactive'}</div>
                                     </td>
                                     {/* <td>
                                         <div className='action d-flex gap-2'>

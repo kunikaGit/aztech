@@ -29,14 +29,23 @@ const HomeServices = () => {
     const handleProduct = (e, category) => {
         navigate(`${baseUrl}products?category=${category.id}?name=${category.name}`)
     }
+
+    const handleChange = (e) => {
+        e.preventDefault()
+        navigate(`${baseUrl}services`)
+    }
     return (
         <div className='services-wrapped'>
-                <div className='main-heading mb-4'>
-                    <h2>AZ Tech Services</h2>
-                    <span className='lower-heading'>
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, accusamus.
-                    </span>
+            <div className='main-heading mb-4'>
+                {/* <h2>AZ Tech Services</h2> */}
+                <div className='card-header'>
+                    <h2 className='sub-heading'>AZ Tech Services</h2>
+                    <button type='button' className='blue-btn' onClick={(e) => { handleChange(e) }}>Explore All</button>
                 </div>
+                <span className='lower-heading'>
+                    Find amazing categories
+                </span>
+            </div>
             <div className='service-cards-wrapped'>
                 {list.length > 0 &&
                     list.slice(0, 8).map((category) => (

@@ -1,9 +1,16 @@
 .services-wrapped {
+                    .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; // vertically center
+            margin-bottom: 40px; // same as your previous margin on h3
+        }
     .two-grid {
         padding: 70px 0;
         gap: 30px;
         // height: 70vh;
         align-items: center;
+
 
         .heading {
             width: 50%;

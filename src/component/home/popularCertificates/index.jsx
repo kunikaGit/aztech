@@ -23,9 +23,9 @@ const PopularCertifictes = () => {
     const [list2, setList2] = useState([]);
     const [total2, setTotal2] = useState('');
 
-    const [categoryName, setCategoryName] = useState('');
-    const [categoryName1, setCategoryName1] = useState('');
-    const [categoryName2, setCategoryName2] = useState('');
+    const [categoryName, setCategoryName] = useState();
+    const [categoryName1, setCategoryName1] = useState();
+    const [categoryName2, setCategoryName2] = useState();
 
 
 
@@ -45,14 +45,14 @@ const PopularCertifictes = () => {
 
                 setList(res?.data[0]?.products)
                 setTotal(res.data[0].products.length)
-                setCategoryName(res?.data[0]?.name)
+                setCategoryName(res?.data[0])
             }
 
             if (res1?.success) {
 
                 setList1(res1?.data[0]?.products)
                 setTotal1(res1.data[0].products.length)
-                setCategoryName1(res1?.data[0]?.name)
+                setCategoryName1(res1?.data[0])
 
             }
 
@@ -60,7 +60,7 @@ const PopularCertifictes = () => {
 
                 setList2(res2?.data[0]?.products)
                 setTotal2(res2.data[0].products.length)
-                setCategoryName2(res2?.data[0]?.name)
+                setCategoryName2(res2?.data[0])
 
             }
 
@@ -182,6 +182,9 @@ const PopularCertifictes = () => {
         ]
     };
 
+    const handlePageChange=(e,category)=>{
+        navigate(`${baseUrl}products?category=${category.id}?name=${category.name}`)
+    }
 
     return (
         <section className='popular-certificate-wrape'>
@@ -200,8 +203,8 @@ const PopularCertifictes = () => {
                 <div className='certificate-cards'>
 
                     <div className='card-header'>
-                        {categoryName && <h3 className='sub-heading'>{categoryName}</h3>}
-                        <button type='button' className='blue-btn'>Explore All</button>
+                        {categoryName && <h3 className='sub-heading'>{categoryName.name}</h3>}
+                        <button type='button' className='blue-btn' onClick={(e)=>{handlePageChange(e,categoryName)}}>Explore All</button>
                     </div>
 
                     <Slider {...settings}>
@@ -241,9 +244,9 @@ const PopularCertifictes = () => {
 
             {list1.length > 0 &&
                 <div className='certificate-cards'>
-                  <div className='card-header'>
-                        {categoryName1 && <h3 className='sub-heading'>{categoryName}</h3>}
-                        <button type='button' className='blue-btn'>Explore All</button>
+                    <div className='card-header'>
+                        {categoryName1 && <h3 className='sub-heading'>{categoryName1.name}</h3>}
+                        <button type='button' className='blue-btn' onClick={(e)=>{handlePageChange(e,categoryName1)}}>Explore All</button>
                     </div>
                     <Slider {...settings1}>
                         {list1.map((item, index) => (
@@ -283,15 +286,15 @@ const PopularCertifictes = () => {
 
             {list2.length > 0 &&
                 <div className='certificate-cards'>
-                   <div className='card-header'>
-                        {categoryName2 && <h3 className='sub-heading'>{categoryName2}</h3>}
-                        <button type='button' className='blue-btn'>Explore All</button>
+                    <div className='card-header'>
+                        {categoryName2 && <h3 className='sub-heading'>{categoryName2.name}</h3>}
+                        <button type='button' className='blue-btn' onClick={(e)=>{handlePageChange(e,categoryName2)}}>Explore All</button>
                     </div>
 
                     <Slider {...settings2}>
                         {list2.map((item, index) => (
                             <div className='cards' key={index}>
-                                <div className='label-bg'>Ebook</div>
+                                <div className='label-bg'>{item.type_name}</div>
                                 <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)}>
                                     <img src={`${item.preview_image}`} /></div>
                                 <div className='content'>

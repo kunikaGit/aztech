@@ -17,7 +17,7 @@ const ReferralTree = ({ data }) => {
     return {
       name: `${node.name} ${node.surname}`,
       attributes: {
-        Status: node.status,
+        Status: node.status=='active'?"Active":"Inactive",
       },
       children: node.referrals?.map(mapToTreeFormat) || [],
     };

@@ -62,16 +62,21 @@ const Courses = () => {
                     </div>
 
                 </div>
-            
+
                 {list1?.length > 0 &&
                     list1?.map((item, index) => (
                         <div className={`${index % 2 == 0 ? 'certificate-cards-new' : 'certificate-cards-new'} `}>
-                            <div className='main-heading'>
+                            {/* <div className='main-heading'>
                                 <h2 className='sub-heading'>{item.name}</h2>
-                            </div>
+                            </div> */}
+
+                             <div className='card-header'>
+                        {item.name && <h3 className='sub-heading'>{item.name}</h3>}
+                        <button type='button' className='blue-btn'>Explore All</button>
+                    </div>
                             <Slider
                                 dots={true}
-                                infinite={item.length>3?true:false}
+                                infinite={item.length > 3 ? true : false}
                                 speed={500}
                                 slidesToShow={3}
                                 slidesToScroll={3}
@@ -108,6 +113,8 @@ const Courses = () => {
                                     item?.products.map((product) => (
                                         // <div className='certificate-cards'>
                                         <div className='cards' key={index}>
+                                           
+                                            <div className='label-bg'>{product.type_name}</div> 
                                             <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${product.id}`)}><img src={`${product.preview_image}`} /></div>
                                             <div className='content'>
                                                 <h3 className='title'>{product.name}</h3>

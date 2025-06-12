@@ -33,7 +33,8 @@ const HomeCategories = () => {
                     <div className='label'>
                         <span>Introduction Video</span>
                     </div>
-                    <h3 className='title'>Welcome to AZ Tech — The Future of Learning & Earning</h3>
+                    <h3 className='title'>Welcome to AZ Tech<br/>
+                    The Future of Learning & Earning</h3>
                     <div className='d-flex align-items-center justify-content-between detail-author'>
                         <span className='author'>Presented by AZ Tech</span>
                         <span className='date'>Launching 2025</span>

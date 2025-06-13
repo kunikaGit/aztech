@@ -210,7 +210,7 @@ const PopularCertifictes = () => {
                     <Slider {...settings}>
                         {list.map((item, index) => (
                             <div className='cards' key={index}>
-                                <div className='label-bg'>Ebook</div>
+                                <div className='label-bg'>{item.type_name}</div>
                                 <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)}>
                                     <img src={`${item.preview_image}`} /></div>
                                 <div className='content'>
@@ -251,7 +251,7 @@ const PopularCertifictes = () => {
                     <Slider {...settings1}>
                         {list1.map((item, index) => (
                             <div className='cards' key={index}>
-                                <div className='label-bg'>Ebook</div>
+                                <div className='label-bg'>{item.type_name}</div>
                                 <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)}>
                                     <img src={`${item.preview_image}`} /></div>
                                 <div className='content'>

@@ -51,7 +51,8 @@ const HomeServices = () => {
                     list.slice(0, 8).map((category) => (
                         <div className='service-cards' onClick={(e) => { handleProduct(e, category) }}>
                             <div className='icon'>
-                                <img src={imageMap[`${category.icon}`]} alt='icon' />
+                                {/* <img src={imageMap[`${category.icon}`]} alt='icon' /> */}
+                                 <img src={`${category.icon}`} alt='icon' />
                             </div>
                             <div className='content'>
                                 <h3>{category.name}</h3>

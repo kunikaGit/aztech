@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useRef }  from 'react'
 import imageMap from '../../../utils/helpers'
 import './homecategories.scss'
 const HomeCategories = () => {
+
+      const videoRef = useRef(null);
+
+    const handlePlay = () => {
+        if (videoRef.current) {
+            videoRef.current.play();
+        }
+    }
     return (
         <section className='home-category-wrapped'>
             {/* <div className='main-heading'>
@@ -25,9 +33,16 @@ const HomeCategories = () => {
                         <li>Digital Products</li>
                         <li>Smart Learning</li>
                     </ul> */}
-                    <div className='cat-img'>
-                        <img src={imageMap['category-banner.png']} alt='img' />
-                    </div>
+<div className='cat-img'>
+    <video 
+        ref={videoRef} 
+        src={'https://az-file-uploads.s3.eu-west-1.amazonaws.com/3sec.mp4'} 
+        alt='video'
+        controls={false}
+    />
+    <button className='play-btn' onClick={handlePlay}>Play</button>
+</div>
+
                 </div>
                 <div className='content'>
                     <div className='label'>

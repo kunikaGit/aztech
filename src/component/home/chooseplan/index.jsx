@@ -60,7 +60,7 @@ const Chooseplan = () => {
                             <p className='des'>{plan.description}</p>
                             <hr />
                             <div className='price'>
-                                <h2>${parseFloat(plan.amount).toFixed(1)}</h2>
+                                <h2>${parseFloat(plan.amount).toFixed(0)}</h2>
                                 <span>Per {plan.duration}</span>
                             </div>
                             <button type='button' className='plan-btn' onClick={(e) => handleCheckout(e, plan)}>Get Started</button>

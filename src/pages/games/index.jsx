@@ -3,7 +3,8 @@ import GameEmbed from "./games"
 import { useNavigate } from 'react-router-dom';
 import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
-import './games.scss'
+import './games.scss';
+import AZProgress from './azprogres';
 const Games = () => {
     const { fetchData } = useApiRequest();
     const navigate = useNavigate();
@@ -62,6 +63,8 @@ const Games = () => {
             <video autoPlay muted loop playsInline className='background-video'>
                 <source src={`https://az-file-uploads.s3.eu-west-1.amazonaws.com/win2x.mp4`} type="video/mp4" />
             </video>
+
+            <AZProgress progress={100} />
             <div className='blue-card'>
                 <div className='content'>
                     <h3> Play free games under az community</h3>

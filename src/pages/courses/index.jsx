@@ -66,9 +66,6 @@ const Courses = () => {
                 {list1?.length > 0 &&
                     list1?.map((item, index) => (
                         <div className={`${index % 2 == 0 ? 'certificate-cards-new' : 'certificate-cards-new'} `}>
-                            {/* <div className='main-heading'>
-                                <h2 className='sub-heading'>{item.name}</h2>
-                            </div> */}
 
                             <div className='card-header'>
                                 {item.name && <h3 className='sub-heading'>{item.name}</h3>}

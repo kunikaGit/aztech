@@ -1,0 +1,18 @@
+.az-container {
+  background: black;
+  padding: 20px;
+  text-align: center;
+}
+
+.az-svg {
+  width: 400px;
+  height: 300px;
+}
+
+.az-path {
+  fill: none;
+  stroke: #00fff7;
+  stroke-width: 8px;
+  filter: drop-shadow(0 0 6px #00fff7) drop-shadow(0 0 10px #00fff7);
+  transition: stroke-dashoffset 0.3s ease;
+}

@@ -11,9 +11,9 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
 
   return (
     <div className='banner'>
-      <div className='searchbox'>
+      {/* <div className='searchbox'>
             <TypingInput/>
-          </div>
+          </div> */}
       <div className='two-grid'>
         <div className='hero-content'>
           <h3 className='label'>Smart Reward System</h3>

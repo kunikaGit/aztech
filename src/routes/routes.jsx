@@ -21,6 +21,7 @@ const RoutesMain = () => {
         <Route path={`${baseUrl}success`} element={<SuccessStatus />} />
         <Route path={`${baseUrl}failed`} element={<FailedStatus />} />
         <Route path={`${baseUrl}`} element={<Home />} />
+          <Route path={`${baseUrl}myaccount/games`} element={<Games />} />
 
         {/* -----------Outer pages--------- */}
         <Route path={`${baseUrl}`} element={<Mainlayout />}>
@@ -39,7 +40,6 @@ const RoutesMain = () => {
           <Route path={`${baseUrl}myaccount/networks`} element={<Networks />} />
           <Route path={`${baseUrl}myaccount/checkout`} element={<Checkout />} />
           <Route path={`${baseUrl}myaccount/profile`} element={<MyProfile />} />
-          <Route path={`${baseUrl}myaccount/games`} element={<Games />} />
           <Route path={`${baseUrl}myaccount/help`} element={<Help />} />
         </Route>
       </Routes>

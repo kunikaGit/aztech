@@ -62,7 +62,23 @@ body {
 	background-color: var(--light-color);
 	width: 100%;
 }
+::-webkit-scrollbar {
+  width: 8px;              /* Vertical scrollbar width */
+  height: 5px;             /* Horizontal scrollbar height */
+}
 
+::-webkit-scrollbar-track {
+  background: #f1f1f1;      /* Track color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: lightblue;         /* Thumb color */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #55555586;         /* Thumb hover color */
+}
 .container {
 	max-width: 90% !important;
 

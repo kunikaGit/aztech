@@ -54,7 +54,7 @@ const Packages = ({data,setPlan}) => {
 
         {data.length > 0 &&
           data.map((plan, index) => (
-            <div className={'cards'}>
+            <div className={'cards'} key={index}>
               <h3 className='title'>{plan.name}</h3>
               <p className='des'>{plan.description}</p>
               <hr />
@@ -65,10 +65,10 @@ const Packages = ({data,setPlan}) => {
               <button type='button' className='plan-btn' disabled={plan.button_name=="Already Achieved"} onClick={(e) => handleCheckout(e, plan)}>{plan.button_name}</button>
               <div className='plan-benifits'>
                 <ul>
-                  {plan?.pointers.length > 0 && plan?.pointers.map((point) => (<li>{point}</li>))}
+                  {plan?.pointers.length > 0 && plan?.pointers.map((point,idx) => (<li key={idx}>{point}</li>))}
                 </ul>
               </div>
-               <button type='button' className='btn' onClick={(e) => handleCheckout(e, plan)}>View Products</button>
+               <button type='button' className='blue-btn' onClick={(e) => handleCheckout(e, plan)}>View Products</button>
             </div>
             
           ))}

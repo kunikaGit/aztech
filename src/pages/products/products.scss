@@ -23,6 +23,12 @@
             color: #636363;
             padding: 40px 30px;
             position: relative;
+            &:hover{
+                .blue-btn{
+                    background-color: var(--white-color);
+                    color: #000;
+                }
+            }
 
             hr {
                 border-bottom: 2px solid #636363;

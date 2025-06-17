@@ -44,8 +44,8 @@ const Category = ({ planId,setCategory }) => {
 
       <div className='service-cards-wrapped'>
         {list.length > 0 &&
-          list.map((category) => (
-            <div className='service-cards' onClick={(e) => { handleProduct(e, category) }}>
+          list.map((category,index) => (
+            <div className='service-cards' key={index} onClick={(e) => { handleProduct(e, category) }}>
               <div className='icon'>
                 {/* <img src={imageMap[`${category.icon}`]} alt='icon' /> */}
                 <img src={`${category.icon}`} alt='icon' />

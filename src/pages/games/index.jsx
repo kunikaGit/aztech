@@ -5,7 +5,13 @@ import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
 import './games.scss';
 import AZProgress from './azprogres';
+import { useSelector } from "react-redux";
+
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 const Games = () => {
+          const { auth_token } = useSelector((state) => state.auth);
+    
     const { fetchData } = useApiRequest();
     const navigate = useNavigate();
     const [list, setList] = useState([
@@ -58,17 +64,31 @@ const Games = () => {
         }
     }
 
+    const handleParticipate=(e)=>{
+        e.preventDefault();
+        let plan={name:"Game Plan",description:"The game plan will give 2X of your participation amount.",id:4,amount:25}
+if(auth_token){
+        navigate(`${baseUrl}myaccount/checkout`, { state: { product: plan } });
+        return
+        }
+                navigate(`${baseUrl}login`);
+    }
+
     return (
         <div className='games-wrapped'>
             <video autoPlay muted loop playsInline className='background-video'>
-                <source src={`https://az-file-uploads.s3.eu-west-1.amazonaws.com/win2x.mp4`} type="video/mp4" />
+                <source src={`https://az-file-uploads.s3.eu-west-1.amazonaws.com/game-video.mp4`} type="video/mp4" />
             </video>
 
-            <AZProgress progress={50} />
-            <div className='blue-card'>
+            {/* <AZProgress progress={100} /> */}
+            {/* <div className='blue-card'>
                 <div className='content'>
                     <h3> Play free games under az community</h3>
                     <p>Enjoy a variety of engaging and fun games, absolutely free—exclusively for our community members!</p>
+                </div>
+
+                <div className='content-cards'>
+                    <button onClick={(e)=>{handleParticipate(e)}}>Participate Now</button>
                 </div>
                 <div className='content-cards'>
                     {list.length > 0 &&
@@ -77,7 +97,7 @@ const Games = () => {
                             <p>{item.title}</p>
                         </div>))}
                 </div>
-            </div>
+            </div> */}
 
 
         </div>

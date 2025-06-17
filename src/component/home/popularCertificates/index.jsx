@@ -201,7 +201,6 @@ const PopularCertifictes = () => {
 
             {list.length > 0 &&
                 <div className='certificate-cards'>
-
                     <div className='card-header'>
                         {categoryName && <h3 className='sub-heading'>{categoryName.name}</h3>}
                         <button type='button' className='blue-btn' onClick={(e)=>{handlePageChange(e,categoryName)}}>Explore All</button>

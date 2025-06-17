@@ -2,11 +2,12 @@
 .login-wrapped {
     padding: 80px 0;
     .two-grid {
+        gap: 100px;
         @include media_768{
            flex-direction: column-reverse;
         }
         .content {
-            width: 40%;
+            width: 50%;
             @include media_768{
                 width: 100%;
             }
@@ -56,15 +57,14 @@
         }
 
         .form {
-            width: 60%;
+            width: 50%;
             @include media_768{
                 width: 100%;
             }
             form{
                 background: linear-gradient(180deg, #C2E9FB 0%, #A1C4FD 100%);
-                width: 90%;
                 margin-left: auto;
-                padding: 60px;
+                padding: 35px;
                 border-radius: 30px;
                 @include media_768{
                     width: 100%;
@@ -72,8 +72,9 @@
                 }
                 h1{
                     color: #101010;
-                    font-size: 45px;
-                    margin-bottom: 20px;
+                    font-size: 36px;
+                    margin-bottom: 10px;
+                    font-weight: 600;
                 }
                 p{
                     color: #515151;

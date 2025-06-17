@@ -1,7 +1,7 @@
 import React from 'react'
 import imageMap from '../../utils/helpers'
 const baseUrl = import.meta.env.VITE_BASE_URL;
-const WalletCards = () => {
+const WalletCards = ({data}) => {
   return (
     <div className='wallet-cards'>
         <div className='card-wrapped theme-card'>
@@ -10,7 +10,7 @@ const WalletCards = () => {
             </div>
             <div className='content'>
                 <h3>AZ Wallet</h3>
-                <p>$200</p>
+                <p>${parseFloat(data?.azWallet).toFixed(2)}</p>
                 <button type='button' className='withdra-btn'>Purchase</button>
             </div>
         </div>
@@ -30,7 +30,7 @@ const WalletCards = () => {
             </div>
             <div className='content'>
                 <h3>Cash Wallet</h3>
-                <p>$200</p>
+                <p>${parseFloat(data?.cashWallet).toFixed(2)}</p>
                 <button type='button' className='withdra-btn'>Transfer</button>
             </div>
         </div>

@@ -7,10 +7,8 @@ import { EyeIcon, MessageIcon, StarIcon } from '../../icons/icons';
 import Slider from 'react-slick';
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
+const Products = ({ planId,categoryId }) => {
 
-
-
-const Product = ({ planId ,categoryId}) => {
   const { fetchData } = useApiRequest();
   const navigate = useNavigate();
   const [list1, setList1] = useState([]);
@@ -22,33 +20,31 @@ const Product = ({ planId ,categoryId}) => {
     try {
       let res1 = await fetchData(`${API_ENDPOINTS.productsCategoryPlanwise}?plan_id=${planId}&category_id=${categoryId}`, navigate, 'GET', {});
       //  let res1 = await fetchData(API_ENDPOINTS.categorywise, navigate, 'GET', {});
+
       if (res1.success) {
 
         setList1(res1.data.list)
       }
-
-
     } catch (error) {
       console.log(error)
     }
   }
 
-
-
   return (
 
     <div className='courses-wrapped'>
+      <section className='course-listing'>
 
-        {list1?.length > 0 &&
-          list1?.map((item, index) => (
-            <div className={`${index % 2 == 0 ? 'certificate-cards-new' : 'certificate-cards-new'} `}>
-              <div className='main-heading'>
-                <h2 className='sub-heading'>{item.name}</h2>
-              </div>
+
+
+{console.log(list1)}
+
+        
+
               <div className='certificate-cards'>
               <Slider
                 dots={true}
-                infinite={item.length > 3 ? true : false}
+                infinite={list1.length > 3 ? true : false}
                 speed={500}
                 slidesToShow={3}
                 slidesToScroll={3}
@@ -81,8 +77,9 @@ const Product = ({ planId ,categoryId}) => {
                   }
                 ]}
               >
-                {item?.products?.length > 0 &&
-                  item?.products.map((product) => (
+                {list1?.length > 0 &&
+                  list1?.map((product,index) => (
+                     <div className='certificate-cards'>
                     <div className='cards' key={index}>
                       <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${product.id}`)}><img src={`${product.preview_image}`} /></div>
                       <div className='content'>
@@ -105,21 +102,22 @@ const Product = ({ planId ,categoryId}) => {
                                 <h3 className='des'>{product.instructor_description}</h3>
                               </div>
                             </div>}
+                          {/* <button type='button'>${product.price}</button> */}
                           <button type='button' onClick={() => navigate(`${baseUrl}detail?prd=${product.id}`)}>View Now</button>
 
                         </div>
                       </div>
                     </div>
-                    // </div>
+                     </div>
                   ))}
               </Slider>
               </div>
-            </div>))}
+ 
 
 
+      </section>
     </div>
-
   )
 }
 
-export default Product
+export default Products

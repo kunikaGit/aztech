@@ -119,7 +119,7 @@ const Checkout = () => {
         e.preventDefault()
         if (!validation()) return;
 setLoading(true)
-        const payload={...formData,paymentMethodId:selectedPayment.id,id:productDetails.id}
+        const payload={...formData,paymentMethodId:selectedPayment.id,id:productDetails.id,plan_type:productDetails.id==4?"game":"plans"}
         try {
             let res = await fetchData(API_ENDPOINTS.checkout, navigate, 'POST', payload);
 
@@ -206,7 +206,7 @@ setLoading(true)
                             <div className='order-details-box'>
                                 <h6>Package Name: {productDetails.name}</h6>
                                 <p>Description: {productDetails.description}</p>
-                                <span>Duration: {productDetails.duration}</span>
+                               {productDetails.duration && <span>Duration: {productDetails.duration}</span>}
                             </div>
                         </div>
                         <div className='white-card'>

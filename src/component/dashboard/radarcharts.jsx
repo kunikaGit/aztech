@@ -84,8 +84,8 @@ const Radarcharts = ({data}) => {
                 <h2 className="card-heading" style={{ color: 'var(--text_black)' }}>
                      Activity</h2>
                 <div className="tradingobjective-cards">
-                    <ApexChart title="Package product visited" value={data.totalVisitedFromPackage} />
-                    <ApexChart title="Referral (Daily)" value={data.totalReferal} />
+                    <ApexChart title="Referral Earnings" value={data.referralEarning} />
+                    <ApexChart title="Referral" value={data.totalReferal} />
                     <ApexChart title="Downline (Overall)" value={data.totalDownline} />
                     <ApexChart title="Other products" value={data.totalotherPurchases} />
                 </div>

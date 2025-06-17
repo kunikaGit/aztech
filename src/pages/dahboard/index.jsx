@@ -6,6 +6,8 @@ import Radarcharts from '../../component/dashboard/radarcharts'
 import WalletCards from '../../component/dashboard/walletCards'
 import Dashboardplans from '../../component/dashboard/dashboardplans'
 import Dashbordtable from '../../component/dashboard/dashbordtable'
+import DashbordtableTwo from '../../component/dashboard/dashbordtable2'
+
 import { UserIcon } from '../../icons/icons'
 import { useNavigate } from 'react-router-dom';
 import useApiRequest from "../../hook/useApiRequest";
@@ -47,11 +49,15 @@ return(<>Loading...</>)
         </div>
       </div>
       <DasboardCards data={data.graphs}/>
-      <WalletCards />
+      <WalletCards data={data.balance}/>
       <div className='flex-two-grid'>
         <div className='left-side'>
-          <Radarcharts data={{totalVisitedFromPackage:data.totalVisitedFromPackage,totalotherPurchases:data.totalotherPurchases,totalDownline:data.totalDownline,totalReferal:data.totalReferal}}/>
-          <Dashbordtable data={data.referralTable} />
+          <Radarcharts data={{totalVisitedFromPackage:data.totalVisitedFromPackage,totalotherPurchases:data.totalotherPurchases,totalDownline:data.totalDownline,totalReferal:data.totalReferal,referralEarning:parseFloat(data.referralEarningBalance).toFixed(2)}}/>
+         <div><Dashbordtable data={data.referralTable} />
+
+          <DashbordtableTwo data={data.referralEarning} /></div>
+
+
         </div>
         <div className='right-side'>
           <Dashboardplans data={data.plans}/>

@@ -18,7 +18,7 @@ const Dashboardplans = ({data}) => {
                         <p>{plan.description}</p>
                     </div>
                     <div className='right-side'>
-                        <h2 className='price'>${parseFloat(plan.amount).toFixed(2)} <span>per/{plan.duration}</span></h2>
+                        <h2 className='price'>${parseFloat(plan.amount).toFixed(0)} <span>per/{plan.duration}</span></h2>
                     </div>
                 </div>
                 <button type='button' className='get-start' disabled={plan.button_name=="Already Achieved"} onClick={(e)=>{handlePage(e,plan.id)}}>{plan.button_name}</button>

@@ -70,6 +70,24 @@ export const NetworkIcon = () => (
         <path d="M7.75 9.25C9.40685 9.25 10.75 7.90685 10.75 6.25C10.75 4.59315 9.40685 3.25 7.75 3.25C6.09315 3.25 4.75 4.59315 4.75 6.25C4.75 7.90685 6.09315 9.25 7.75 9.25Z" stroke="#666D80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
 )
+export const GameIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg"width="20" height="20"  viewBox="0 0 24 24" fill="#666D80">
+        <path d="M12 2C15.1215 2 17.9089 3.43021 19.7428 5.67108L13.4142 12L19.7428 18.3289C17.9089 20.5698 15.1215 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C13.7232 20 15.3548 19.4531 16.6974 18.4774L16.905 18.32L10.5859 12L16.905 5.679L16.6974 5.52261C15.4338 4.60431 13.9142 4.06583 12.3031 4.00565L12 4ZM12 5C12.8284 5 13.5 5.67157 13.5 6.5C13.5 7.32843 12.8284 8 12 8C11.1716 8 10.5 7.32843 10.5 6.5C10.5 5.67157 11.1716 5 12 5Z">
+        </path>
+    </svg>
+)
+
+export const PackageIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="#666D80"
+  >
+    <path d="M21 7.5L12 2 3 7.5V17.5L12 22L21 17.5V7.5ZM12 4.15L18.6 8L12 11.85L5.4 8L12 4.15ZM5 9.97L11 13.57V19.65L5 16.47V9.97ZM13 19.65V13.57L19 9.97V16.47L13 19.65Z" />
+  </svg>
+);
 
 export const ProfileIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
@@ -118,6 +136,18 @@ export const GreenUp = () => (
 )
 
 export const RedDown = () => (
-<svg xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
-<path d="M14.5 12L16.79 9.71L11.91 4.83L7.91 8.83L0.5 1.41L1.91 0L7.91 6L11.91 2L18.21 8.29L20.5 6V12H14.5Z" fill="#F93C65"></path></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
+        <path d="M14.5 12L16.79 9.71L11.91 4.83L7.91 8.83L0.5 1.41L1.91 0L7.91 6L11.91 2L18.21 8.29L20.5 6V12H14.5Z" fill="#F93C65"></path></svg>
 )
+
+export const LogoutIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="#666D80"
+  >
+    <path d="M16 17L14.59 15.59L17.17 13H9V11H17.17L14.59 8.41L16 7L21 12L16 17ZM4 19H12V21H4C2.9 21 2 20.1 2 19V5C2 3.9 2.9 3 4 3H12V5H4V19Z" />
+  </svg>
+);

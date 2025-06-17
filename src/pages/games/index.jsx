@@ -64,7 +64,7 @@ const Games = () => {
                 <source src={`https://az-file-uploads.s3.eu-west-1.amazonaws.com/win2x.mp4`} type="video/mp4" />
             </video>
 
-            <AZProgress progress={100} />
+            <AZProgress progress={50} />
             <div className='blue-card'>
                 <div className='content'>
                     <h3> Play free games under az community</h3>

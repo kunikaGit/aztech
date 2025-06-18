@@ -13,7 +13,7 @@ const TrustedPrtner = () => {
                     </div>
                 </div>
                 <div className='image'>
-                    <img src={imageMap['partners-logo.png']} alt='partners'/>
+                    <img src={imageMap['partners-logo-1.png']} alt='partners'/>
                 </div>
             </div>
         </section>

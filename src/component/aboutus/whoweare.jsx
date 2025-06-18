@@ -10,7 +10,7 @@ const Whoweare = () => {
         </div>
         <div className='heading'>
             <div className='logo'>
-                <img src='images/logo.png' alt='AZ Tech Logo' />
+                <img src='images/logo-1.png' alt='AZ Tech Logo' />
                 <h3>Who We Are</h3>
             </div>
             <h2>Transforming Digital Learning & Creativity Since 2024</h2>

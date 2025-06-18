@@ -111,7 +111,7 @@ const Login = () => {
           <div className='two-grid'>
             <div className='content'>
               <div className='logo' onClick={() => navigate(`${baseUrl}`)}>
-                <img src={`${baseUrl}images/logo-big.png`} alt='logo' />
+                <img src={`${baseUrl}images/logo-big-1.png`} alt='logo' />
               </div>
               <div className='heading'>
                 Welcome Back to <b>AZ Tech!</b>👋 

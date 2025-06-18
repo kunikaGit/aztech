@@ -6,7 +6,7 @@ const WalletCards = ({data}) => {
     <div className='wallet-cards'>
         <div className='card-wrapped theme-card'>
             <div className='icon'>
-                <img src={`${baseUrl}images/logo.png`} alt='icon'/>
+                <img src={`${baseUrl}images/logo-1.png`} alt='icon'/>
             </div>
             <div className='content'>
                 <h3>AZ Wallet</h3>

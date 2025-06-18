@@ -15,7 +15,7 @@ const Header = () => {
         <header>
             <div className="header-wrapped">
                 <div className="logo" onClick={() => navigate(`${baseUrl}`)}>
-                    <img src="/test/images/logo.png" alt="logo" />
+                    <img src="/test/images/logo-1.png" alt="logo" />
                     <h2>AZTECH</h2>
                 </div>
                      <div className='searchbox'>

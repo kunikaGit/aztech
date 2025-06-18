@@ -6,10 +6,10 @@ const Footer = () => {
   return (
     <footer className="footer">
       <Container>
-        {/* <img src={`${baseUrl}images/fulllogo.png`} alt="AZTECH Logo" className="footer__logo" /> */}
+        {/* <img src={`${baseUrl}images/fulllogo-1.png`} alt="AZTECH Logo" className="footer__logo" /> */}
         <div className="footer__container">
           <div className="footer__section">
-            <img src={`${baseUrl}images/fulllogo.png`} alt="AZTECH Logo" className="footer__logo" />
+            <img src={`${baseUrl}images/fulllogo-1.png`} alt="AZTECH Logo" className="footer__logo" />
           </div>
 
           {/* <div className="footer__section">

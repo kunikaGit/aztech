@@ -21,7 +21,7 @@ const Sidebar = () => {
         <div className='sidebar-wrapped'>
             <div className='logo'>
                 <Link to={`${baseUrl}`}>
-                    <img src={`${baseUrl}images/fulllogo.png`} />
+                    <img src={`${baseUrl}images/fulllogo-1.png`} />
                 </Link>
             </div>
             <div className='menulist'>

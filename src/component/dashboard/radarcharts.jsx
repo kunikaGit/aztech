@@ -83,7 +83,7 @@ const Radarcharts = ({data}) => {
             <div className="radar-card theme-card mb-4" >
                 <h2 className="card-heading" style={{ color: 'var(--text_black)' }}>
                      Activity</h2>
-                <div className="tradingobjective-cards">
+                <div className="tradingobjective-cards d-flex">
                     <ApexChart title="Referral Earnings" value={data.referralEarning} />
                     <ApexChart title="Referral" value={data.totalReferal} />
                     <ApexChart title="Downline (Overall)" value={data.totalDownline} />

@@ -35,8 +35,8 @@ const Dashboard = () => {
     }
   }
 
-  if(!data){
-return(<>Loading...</>)
+  if (!data) {
+    return (<>Loading...</>)
   }
 
   return (
@@ -45,23 +45,19 @@ return(<>Loading...</>)
         <h2 className='main-title'>Welcome {data.name} 👋</h2>
         <div className='box theme-card'>
           <UserIcon />
-         {data.status=='active' ?  <span>{data.remainingDays} Days Left</span> :<span>Inactive User</span>}
+          {data.status == 'active' ? <span>{data.remainingDays} Days Left</span> : <span>Inactive User</span>}
         </div>
       </div>
-      <DasboardCards data={data.graphs}/>
-      <WalletCards data={data.balance}/>
+      <DasboardCards data={data.graphs} />
+      <WalletCards data={data.balance} />
+      <Dashboardplans data={data.plans} />
+      <Radarcharts data={{ totalVisitedFromPackage: data.totalVisitedFromPackage, totalotherPurchases: data.totalotherPurchases, totalDownline: data.totalDownline, totalReferal: data.totalReferal, referralEarning: parseFloat(data.referralEarningBalance).toFixed(2) }} />
       <div className='flex-two-grid'>
         <div className='left-side'>
-          <Radarcharts data={{totalVisitedFromPackage:data.totalVisitedFromPackage,totalotherPurchases:data.totalotherPurchases,totalDownline:data.totalDownline,totalReferal:data.totalReferal,referralEarning:parseFloat(data.referralEarningBalance).toFixed(2)}}/>
-         <div><Dashbordtable data={data.referralTable} />
-
-          <DashbordtableTwo data={data.referralEarning} /></div>
-
-
+            <Dashbordtable data={data.referralTable} />
         </div>
-        <div className='right-side'>
-          <Dashboardplans data={data.plans}/>
-        </div>
+          <div className='right-side'>
+            <DashbordtableTwo data={data.referralEarning} /></div>
       </div>
     </div>
   )

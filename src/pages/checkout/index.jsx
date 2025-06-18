@@ -20,6 +20,9 @@ const Checkout = () => {
 
     // ✅ Product details passed via router state
     const [productDetails, setProductDetails] = useState(location.state?.product || null);
+
+    const [type_id, set_type_id] = useState(location.state?.type || null);
+
     const [paymentMethods, setPaymentMethods] = useState([]);
 
     const [formData, setFormData] = useState({
@@ -119,7 +122,7 @@ const Checkout = () => {
         e.preventDefault()
         if (!validation()) return;
 setLoading(true)
-        const payload={...formData,paymentMethodId:selectedPayment.id,id:productDetails.id,plan_type:productDetails.id==4?"game":"plans"}
+        const payload={...formData,paymentMethodId:selectedPayment.id,id:productDetails.id,plan_type:productDetails.id==4?"game":"plans",type_id}
         try {
             let res = await fetchData(API_ENDPOINTS.checkout, navigate, 'POST', payload);
 

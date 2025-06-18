@@ -13,7 +13,11 @@ export { default as SuccessStatus } from "./status/successStatus";
 export { default as FailedStatus } from "./status/failedStatus";
 export { default as AboutUs } from "./aboutus";
 export { default as Services } from "./services";
-export { default as Packages } from "./products";
+export { default as Packages } from "./products/packages";
+export { default as Category } from "./products/category";
+export { default as Product } from "./products/products";
+
+
 export { default as Games } from "./games";
 export { default as Help } from "./help";
 

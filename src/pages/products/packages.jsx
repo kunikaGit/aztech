@@ -6,37 +6,40 @@ import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
 import { EyeIcon, MessageIcon, StarIcon } from '../../icons/icons';
 import { useDispatch, useSelector } from "react-redux";
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
-const Packages = ({data,setPlan}) => {
+const Packages = () => {
 
   const { auth_token } = useSelector((state) => state.auth);
   const { fetchData } = useApiRequest();
   const navigate = useNavigate();
 
-  const [plans, setPlans] = useState([]);
-  useEffect(() => {
-    callPlansApi()
-  }, []);
-
-  const callPlansApi = async () => {
-    try {
-      let res = await fetchData(API_ENDPOINTS.plans, navigate, 'GET', {});
-
-      if (res.success) {
-        setPlans(res.data)
+    const [data, setData] = useState([])
+  
+    useEffect(() => {
+      callApi()
+    }, []);
+  
+    const callApi = async () => {
+      try {
+        let res = await fetchData(API_ENDPOINTS.dashboard, navigate, 'GET', {});
+  
+        if (res.success) {
+          setData(res.data.plans)
+        }
+      } catch (error) {
+        console.log(error)
       }
-    } catch (error) {
-      console.log(error)
     }
-  }
-
   const handleCheckout = (e, plan) => {
     e.preventDefault();
-    setPlan(plan.id)
+    //setPlan(plan.id)
+    navigate(`${baseUrl}myaccount/services?plan_id=${plan.id}`)
 
   };
 
   return (
+    <div className='dahboard-wrapped'>
     <section className='choose-plan'>
 
       <div className='flex-container'>
@@ -54,7 +57,7 @@ const Packages = ({data,setPlan}) => {
 
         {data.length > 0 &&
           data.map((plan, index) => (
-            <div className={'cards'}>
+            <div className={'cards'} key={index}>
               <h3 className='title'>{plan.name}</h3>
               <p className='des'>{plan.description}</p>
               <hr />
@@ -65,16 +68,17 @@ const Packages = ({data,setPlan}) => {
               <button type='button' className='plan-btn' disabled={plan.button_name=="Already Achieved"} onClick={(e) => handleCheckout(e, plan)}>{plan.button_name}</button>
               <div className='plan-benifits'>
                 <ul>
-                  {plan?.pointers.length > 0 && plan?.pointers.map((point) => (<li>{point}</li>))}
+                  {plan?.pointers.length > 0 && plan?.pointers.map((point,idx) => (<li key={idx}>{point}</li>))}
                 </ul>
               </div>
-               <button type='button' className='btn' onClick={(e) => handleCheckout(e, plan)}>View Products</button>
+               <button type='button' className='blue-btn' onClick={(e) => handleCheckout(e, plan)}>View Products</button>
             </div>
             
           ))}
 
       </div>
     </section>
+    </div>
   )
 }
 

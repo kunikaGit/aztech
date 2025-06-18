@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const DashbordtableTwo = ({data}) => {
+const DashbordtableTwo = ({ data }) => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const rowsPerPage = 4;
@@ -20,7 +20,7 @@ const DashbordtableTwo = ({data}) => {
         if (currentPage > 1) setCurrentPage(currentPage - 1);
     };
 
-        const formatDateTime = (isoString) => {
+    const formatDateTime = (isoString) => {
         const date = new Date(isoString);
         return date.toLocaleString("en-GB", {
             day: "2-digit",
@@ -35,6 +35,8 @@ const DashbordtableTwo = ({data}) => {
 
     return (
         <div className='dashboard-table theme-card'>
+            <h2 className="card-heading" style={{ color: 'var(--text_black)' }}>
+                Referral Earnings</h2>
             <table>
                 <thead>
                     <tr>
@@ -54,7 +56,7 @@ const DashbordtableTwo = ({data}) => {
                             <td>{item.level_id}</td>
                             <td>{item.sponsor_name} {item.sponsor_surname}</td>
                             <td>{parseFloat(item.amount).toFixed(2)}</td>
-                            <td>{formatDateTime(item.datetime)}</td> 
+                            <td>{formatDateTime(item.datetime)}</td>
                         </tr>
                     ))}
                 </tbody>

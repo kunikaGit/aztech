@@ -8,6 +8,8 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const Chooseplan = () => {
       const { auth_token } = useSelector((state) => state.auth);
+      const { plan_id } = useSelector((state) => state.auth);
+
     const { fetchData } = useApiRequest();
     const navigate = useNavigate();
 
@@ -28,15 +30,23 @@ const Chooseplan = () => {
         }
     }
 
-    const handleCheckout = (e, plan) => {
+    const handleCheckout = (e, plan,type) => {
         e.preventDefault();
         if(auth_token){
-        navigate(`${baseUrl}myaccount/checkout`, { state: { product: plan } });
+        navigate(`${baseUrl}myaccount/checkout`, { state: { product: plan,type } });
         return
         }
                 navigate(`${baseUrl}login`);
 
     };
+
+        const handleServices = (e, plan) => {
+        e.preventDefault();
+                navigate(`${baseUrl}myaccount/services?plan_id=${plan.id}`)
+
+    };
+
+    
     return (
         <section className='choose-plan'>
             <div className='certificate-cards'>
@@ -63,7 +73,12 @@ const Chooseplan = () => {
                                 <h2>${parseFloat(plan.amount).toFixed(0)}</h2>
                                 <span>Per {plan.duration}</span>
                             </div>
-                            <button type='button' className='plan-btn' onClick={(e) => handleCheckout(e, plan)}>Get Started</button>
+                           {plan_id? <button type='button' className='plan-btn' onClick={(e) =>plan_id>=plan.id ?handleServices(e,plan): handleCheckout(e, plan,2)}>
+                                 {plan_id>=plan.id ? "View Products":"Upgrade Now"}</button>
+                                 :
+                                 <button type='button' className='plan-btn' onClick={(e) => handleCheckout(e, plan,1)}>
+                                 Get Started</button>}
+
                             <div className='plan-benifits'>
                                 <ul>
                                     {plan?.pointers.length > 0 && plan?.pointers.map((point) => (<li>{point}</li>))}

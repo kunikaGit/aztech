@@ -2,7 +2,7 @@ import React from 'react';
 
 const GameEmbed = ({ src, width = 200, height = 200 }) => {
   return (
-      <iframe
+      <div ><iframe
         src={src}
         width={width}
         height={height}
@@ -11,7 +11,7 @@ const GameEmbed = ({ src, width = 200, height = 200 }) => {
         allowFullScreen
         title="Game"
         style={{ border: 'none', borderRadius: '10px' }}
-      ></iframe>
+      ></iframe></div>
   );
 };
 

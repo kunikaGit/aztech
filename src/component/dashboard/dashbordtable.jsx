@@ -35,6 +35,8 @@ const Dashbordtable = ({data}) => {
 
     return (
         <div className='dashboard-table theme-card'>
+                            <h2 className="card-heading" style={{ color: 'var(--text_black)' }}>
+                     Referral List</h2>
             <table>
                 <thead>
                     <tr>

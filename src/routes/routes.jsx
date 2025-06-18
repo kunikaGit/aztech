@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import {
   Checkout, Courses, Dashboard, Home, Login, Myplans, MyProfile, Networks,
   ProductDetail, Signup, Transactions, SuccessStatus, FailedStatus, AboutUs, Services, Packages, Games,
-  Help
+  Help,Category,Product
 } from '../pages';
 import Mainlayout from '../mainlayout';
 import DashboardOutlet from '../pages/dashboardOutlet';
@@ -35,6 +35,9 @@ const RoutesMain = () => {
         <Route path={`${baseUrl}myaccount`} element={<DashboardOutlet />}>
           <Route path={`${baseUrl}myaccount/mall`} element={<Myplans />} />
           <Route path={`${baseUrl}myaccount/packages`} element={<Packages />} />
+          <Route path={`${baseUrl}myaccount/services`} element={<Category />} />
+          <Route path={`${baseUrl}myaccount/products`} element={<Product />} />
+
           <Route path={`${baseUrl}myaccount/dashboard`} element={<Dashboard />} />
           <Route path={`${baseUrl}myaccount/transactions`} element={<Transactions />} />
           <Route path={`${baseUrl}myaccount/networks`} element={<Networks />} />

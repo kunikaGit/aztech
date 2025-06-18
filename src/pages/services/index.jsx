@@ -43,9 +43,12 @@ const Services = () => {
                 <div className='main-content'>
                     <h2>Discover the Ultimate Digital Mall at AZ Tech</h2>
                     <p>Explore thousands of cutting-edge digital products — from AI tools and creative assets to eBooks, videos, music, and much more. Everything you need to learn, create, and grow is just a click away.</p>
-                    <button type='button' className='blue-btn'>Explore Now</button>
+                    {/* <button type='button' className='blue-btn'>Explore Now</button> */}
                 </div>
-
+            </div>
+            <div className='header-card d-flex justify-content-between'>
+                <h2>Developer Plan</h2>
+                <button type='button' className='blue-btn'>Process to checkout</button>
             </div>
             <div className='service-cards-wrapped'>
                 {list.length > 0 &&

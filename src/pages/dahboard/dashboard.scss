@@ -284,4 +284,34 @@
             }
         }
     }
+    .activity_cards{
+        display: grid;
+        grid-template-columns: repeat(5 , 1fr);
+        gap: 10px;
+        margin-bottom: 20px;
+        .card-wrapped{
+            display: flex;
+            gap: 20px;
+            box-shadow: 0px 2px 4px 0px #00000040;
+            padding: 20px 15px;
+            .icon{
+                img{
+                   height: 45px;
+                   width: 45px;
+                }
+            }
+            .content{
+                width: 75%;
+                h3{
+                    color: #242424;
+                    font-size: 22px;
+                    font-weight: 700;
+                    margin: 0;
+                }
+                p{
+                    margin: 0;
+                }
+            }
+        }
+    }
 }

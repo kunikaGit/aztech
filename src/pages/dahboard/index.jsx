@@ -12,6 +12,7 @@ import { UserIcon } from '../../icons/icons'
 import { useNavigate } from 'react-router-dom';
 import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
+import ActivityCard from '../../component/dashboard/activityCards'
 const Dashboard = () => {
   const { fetchData } = useApiRequest();
   const navigate = useNavigate();
@@ -48,10 +49,11 @@ const Dashboard = () => {
           {data.status == 'active' ? <span>{data.remainingDays} Days Left</span> : <span>Inactive User</span>}
         </div>
       </div>
+      <ActivityCard/>
       <DasboardCards data={data.graphs} />
       <WalletCards data={data.balance} />
       <Dashboardplans data={data.plans} />
-      <Radarcharts data={{ totalVisitedFromPackage: data.totalVisitedFromPackage, totalotherPurchases: data.totalotherPurchases, totalDownline: data.totalDownline, totalReferal: data.totalReferal, referralEarning: parseFloat(data.referralEarningBalance).toFixed(2) }} />
+      {/* <Radarcharts data={{ totalVisitedFromPackage: data.totalVisitedFromPackage, totalotherPurchases: data.totalotherPurchases, totalDownline: data.totalDownline, totalReferal: data.totalReferal, referralEarning: parseFloat(data.referralEarningBalance).toFixed(2) }} /> */}
       <div className='flex-two-grid'>
         <div className='left-side'>
             <Dashbordtable data={data.referralTable} />

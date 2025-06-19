@@ -1,4 +1,17 @@
 .services-wrapped {
+    .header-card{
+        background-color: #fff;
+        padding: 10px 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        align-items: center;
+        h2{
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--blue-color);
+        }
+    }
     .card-header {
         display: flex;
         justify-content: space-between;
@@ -53,7 +66,8 @@
             display: flex;
             gap: 20px;
             box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
-
+            transition: .3s;
+            cursor: pointer;
             .content {
                 width: 80%;
             }

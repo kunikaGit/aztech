@@ -1,6 +1,21 @@
 @use '../../assets/scss/mixin.scss' as *;
 
 .courses-wrapped {
+
+     .header-card{
+        background-color: #fff;
+        padding: 10px 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        align-items: center;
+        h2{
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--blue-color);
+        }
+    }
+    
     .two-grid {
         padding: 70px 0;
         gap: 30px;

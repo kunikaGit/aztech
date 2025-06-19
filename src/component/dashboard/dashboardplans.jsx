@@ -4,11 +4,12 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const Dashboardplans = ({data}) => {
     const navigate = useNavigate()
-    const handlePage=(e,planId)=>{
-        e.preventDefault();
- navigate(`${baseUrl}`)
-       
-    }
+     const handleCategory = (e, plan) => {
+    e.preventDefault();
+    //setPlan(plan.id)
+    navigate(`${baseUrl}services?plan_name=${plan.name}&plan=${plan.id}`)
+
+  };
     return (
         <div className='dashboard-plans'>
            { data.map((plan)=>(<div className='plan-card theme-card'>
@@ -21,7 +22,7 @@ const Dashboardplans = ({data}) => {
                         <h2 className='price'>${parseFloat(plan.amount).toFixed(0)} <span>per/{plan.duration}</span></h2>
                     </div>
                 </div>
-                <button type='button' className='get-start' disabled={plan.button_name=="Already Achieved"} onClick={(e)=>{handlePage(e,plan.id)}}>{plan.button_name}</button>
+                <button type='button' className='get-start' disabled={plan.button_name=="Already Achieved"} onClick={(e)=>{handleCategory(e,plan)}}>{plan.button_name}</button>
             </div>))}
            
         </div>

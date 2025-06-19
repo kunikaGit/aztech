@@ -5,7 +5,7 @@ import { API_ENDPOINTS } from "../../../constants/endPoints";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 const baseUrl = import.meta.env.VITE_BASE_URL;
-
+import Plans from '../../plans';
 const Chooseplan = () => {
       const { auth_token } = useSelector((state) => state.auth);
       const { plan_id } = useSelector((state) => state.auth);
@@ -60,8 +60,8 @@ const Chooseplan = () => {
                 <span className='plan-badge'>Only $2.4/month – Everything You Need, All in One Place</span>
 
             </div>
-
-            <div className='plan-cards'>
+<Plans/>
+            {/* <div className='plan-cards'>
 
                 {plans.length > 0 &&
                     plans.map((plan, index) => (
@@ -86,7 +86,7 @@ const Chooseplan = () => {
                             </div>
                         </div>
                     ))}
-            </div>
+            </div> */}
             </div>
         </section>
     )

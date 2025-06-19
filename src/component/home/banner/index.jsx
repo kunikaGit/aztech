@@ -36,7 +36,7 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
           
         </div>
 
-        <ImageSlider images={['https://az-file-uploads.s3.eu-west-1.amazonaws.com/ChatGPT+Image+Jun+4%2C+2025%2C+04_19_33+PM.png', 'https://az-file-uploads.s3.eu-west-1.amazonaws.com/ChatGPT+Image+Jun+4%2C+2025%2C+04_11_03+PM.png', 'https://az-file-uploads.s3.eu-west-1.amazonaws.com/ChatGPT+Image+Jun+4%2C+2025%2C+04_15_01+PM.png']}/>
+        <ImageSlider images={['https://az-file-uploads.s3.eu-west-1.amazonaws.com/banner-1-1.png', 'https://az-file-uploads.s3.eu-west-1.amazonaws.com/banner-1-2.png','https://az-file-uploads.s3.eu-west-1.amazonaws.com/banner-1-3.png']}/>
         {/* <div className='hero-img'>
           <img src={imageMap['banner-img.png']} alt='hero'/>
           <div className="accounts">

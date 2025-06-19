@@ -67,9 +67,9 @@ const Games = () => {
     const handleParticipate = (e) => {
         e.preventDefault();
         let plan = { name: "Game Plan", description: "The game plan will give 2X of your participation amount.", id: 4, amount: 25 }
-        let type=10
+        let type = 10
         if (auth_token) {
-            navigate(`${baseUrl}myaccount/checkout`, { state: { product: plan,type } });
+            navigate(`${baseUrl}myaccount/checkout`, { state: { product: plan, type } });
             return
         }
         navigate(`${baseUrl}login`);
@@ -83,10 +83,10 @@ const Games = () => {
                 </video>
                 <section className='main-content'>
                     <h2 className='highlighted-text-shadow'>WIN 2X AND MORE WITH AZ TECH</h2>
-                    <h3 className='para'>AZ Tech Provides you amazing opportunity to<br/> learn , win and grow</h3>
-                        {/* <button onClick={(e) => { handleParticipate(e) }} className='part-btn mb-5'>Participate Now</button> */}
+                    <h3 className='para'>AZ Tech Provides you amazing opportunity to<br /> learn , win and grow</h3>
+                    {/* <button onClick={(e) => { handleParticipate(e) }} className='part-btn mb-5'>Participate Now</button> */}
 
-                        {/* <div className='withdrawal d-flex justify-content-center align-items-center'>
+                    {/* <div className='withdrawal d-flex justify-content-center align-items-center'>
                              <div className='progressbar'>AZ</div> 
                             <div className='withdrawal-amount'>
                                 <div className='balance'>$2000</div>
@@ -107,13 +107,8 @@ const Games = () => {
                         STARTS WITH ONLY $25
                     </h4>
 
-                    <div className='withdrawal d-flex justify-content-center align-items-center'>
-                        {/* <div className='progressbar'>AZ</div> */}
-                        <div className='withdrawal-amount'>
-                           <b>Note :</b>  <p>The $50 reward isn’t a question of 'if' — only 'when'. Play your part in AZ, and see it happen faster</p>
-                            {/* <div className='balance'>Start your AZ 2X game journey with only $25</div>
-                            <button className='part-btn'>Participate Now</button> */}
-                        </div>
+                    <div className='note'>
+                        <p><b>Note :</b> The $50 reward isn’t a question of 'if' — only 'when'. Play your part in AZ, and see it happen faster</p>
                     </div>
                 </section>
             </div>

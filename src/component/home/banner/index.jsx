@@ -26,8 +26,8 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
 
           <h1 class="banner-heading">
             Your All In One<br />
-            <span>Smart Digital Mall</span><br />
-            <span>Smart Rewards</span><br />
+            <span>Smart Digital Mall, </span>
+            <span>Smart Rewards,</span>
             <span>Smart Learning</span><br />
             <Link to={`${baseUrl}signup`} className='em'>Join us now</Link>
           </h1>

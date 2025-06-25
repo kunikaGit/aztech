@@ -57,11 +57,12 @@ const ProductDetail = () => {
         e.preventDefault()
         try {
             if (auth_token) {
-                if (plan_id >= ids) {
+                if (plan_id >= list[0].plan_included) {
                     let res = await fetchData(`${API_ENDPOINTS.openProduct}?id=${ids}`, navigate, 'GET', {});
                     if (res.success) {
                         //window.open(res.data[0].link, '_blank');
                         setPreviewUrl(res.data[0].link)
+                         setIsModalOpen(true)
                     }
                     return
                 } else {
@@ -80,7 +81,8 @@ const ProductDetail = () => {
         e.preventDefault()
         try {
             if (auth_token) {
-                if (plan_id >= ids) {
+
+                if (plan_id >= list[0].plan_included) {
                     let res = await fetchData(`${API_ENDPOINTS.openProduct}?id=${ids}`, navigate, 'GET', {});
                     if (res.success) {
                         //window.open(res.data[0].link, '_blank');
@@ -91,7 +93,7 @@ const ProductDetail = () => {
                     return
                 }
             }
-            navigate(`${baseUrl}`)
+         //   navigate(`${baseUrl}`)
 
         } catch (error) {
             console.log(error)

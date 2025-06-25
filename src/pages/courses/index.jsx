@@ -197,7 +197,7 @@ const Courses = () => {
 
                 {list1?.length > 0 && (plan_Id) &&
                     list1?.map((item, index) => (
-                        <div className={`${index % 2 == 0 ? 'certificate-cards-new' : 'certificate-cards-new'} `}>
+                      
 
 
                             <div className='certificate-cards'>
@@ -210,9 +210,9 @@ const Courses = () => {
                                         <h3 className='title'>{item.name}</h3>
                                         <p>{item.description}</p>
                                        
-                                       {/* {item?.keywords.length>0 && <div className='spc'>
+                                        {item?.keywords.length>0 && <div className='spc'>
                                             {item?.keywords.map((keyword) => (<div className='item'>{keyword}</div>))}
-                                        </div>} */}
+                                        </div>} 
                                         <ul className='p-0 list-content'>
                                             <li><StarIcon /><b>4.6</b>(480 Review)</li>
                                             <li><EyeIcon />1,840</li>
@@ -227,14 +227,14 @@ const Courses = () => {
                                                         <h3 className='des'>{item.instructor_description}</h3>
                                                     </div>
                                                 </div>}
-                                            {/* <button type='button'>${item.price}</button> */}
+
                                             <button type='button' onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)}>View Now</button>
 
                                         </div>
                                     </div>
                                 </div>
 
-                            </div>
+                        
                         </div>))}
                 {/* </section > */}
             </div >

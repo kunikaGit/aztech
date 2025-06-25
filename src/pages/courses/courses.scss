@@ -46,29 +46,7 @@
         }
     }
 
-    // .course-listing {
-
-    // .certificate-cards-new {
-    //     background-color: #f4f7faaa;
-    //     padding: 20px;
-    //     border-radius: 20px;
-    //     margin-bottom: 40px;
-    //         .sub-heading {
-    //     font-size: 24px;
-    //     font-weight: 600;
-    //     margin-bottom: 40px;
-    //     color: #004aab;
-    // }
-    //     .slick-slide {
-    //         padding: 0 15px;
-    //     }
-
-    //     .main-heading {
-    //         margin-bottom: 30px;
-    //     }
-
-    // }
-    //}
+    
 
     .certificate-cards-new {
         background-color: #f4f7faaa;
@@ -99,5 +77,32 @@
 
       
     }
+
+//     .certificate-cards {
+//   display: flex;
+//   flex-wrap: wrap;
+//   gap: 16px;
+//   margin-bottom: 50px;
+
+//   .cards {
+//   flex: 0 0 calc(33.333% - 10.666px); // 3 per row, accounting for gap
+//   box-sizing: border-box;
+//   background: #fff;
+//   border: 1px solid #ddd;
+//   border-radius: 8px;
+//   overflow: hidden;
+
+//   // Optional: for responsive design
+//   @media (max-width: 992px) {
+//     flex: 0 0 calc(50% - 8px); // 2 per row on tablets
+//   }
+
+//   @media (max-width: 600px) {
+//     flex: 0 0 100%; // 1 per row on mobile
+//   }
+// }
+// }
+
+
 
 }

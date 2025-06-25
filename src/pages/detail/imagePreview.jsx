@@ -4,7 +4,7 @@ import { Modal } from 'react-bootstrap';
 // Modal.setAppElement('#root'); // Important for accessibility
 
 const PreviewModal = ({ isOpen, onClose, fileUrl, format }) => {
-  console.log("????")
+
   return (
     <Modal
       show={isOpen}

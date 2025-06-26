@@ -7,19 +7,22 @@ import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
 import Slider from 'react-slick'
 import { useSelector } from "react-redux";
+import { Col, Row } from 'react-bootstrap';
+import { ShimmerPostItem } from 'react-shimmer-effects';
+import { Search } from '@mui/icons-material';
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const Courses = () => {
     const { plan_id } = useSelector((state) => state.auth);
-  const { auth_token } = useSelector((state) => state.auth);
+    const { auth_token } = useSelector((state) => state.auth);
 
     const queryParams = new URLSearchParams(location.search);
     const category_id = queryParams.get('category'); // this will be "4" if ?prd=4
 
     const plan_Id = queryParams.get('plan'); // <-- Extract plan_id
     const plan_name = queryParams.get('plan_name'); // <-- Extract plan_id
-    const { fetchData } = useApiRequest();
+    const { loading, fetchData } = useApiRequest();
     const navigate = useNavigate();
 
     const [list1, setList1] = useState([]);
@@ -66,18 +69,18 @@ const Courses = () => {
         }
     }
 
-          const handleCheckout = (e, plan) => {
-    e.preventDefault();
-    if (auth_token) {
-      let type = 1
-      if (plan_id < plan.id) {
-        type = 2
-      }
-      navigate(`${baseUrl}myaccount/checkout`, { state: { product: plan, type } });
-      return
-    }
-    navigate(`${baseUrl}login`)
-  };
+    const handleCheckout = (e, plan) => {
+        e.preventDefault();
+        if (auth_token) {
+            let type = 1
+            if (plan_id < plan.id) {
+                type = 2
+            }
+            navigate(`${baseUrl}myaccount/checkout`, { state: { product: plan, type } });
+            return
+        }
+        navigate(`${baseUrl}login`)
+    };
 
     return (
         <>
@@ -97,24 +100,37 @@ const Courses = () => {
                     </div>
 
                 </div>
+                <div className='searchbox'>
+                    <div className='search-icon'><Search color="#ccc" /></div>
+                    <input placeholder="Search" name="search" />
+                </div>
+
                 {plan_Id && plan_id && (plan_id < plan_Id) &&
                     <div className='header-card d-flex justify-content-between'>
                         <h2>Upgrade to {planName}</h2>
-                        <button type='button' className='blue-btn' onClick={(e)=>{handleCheckout(e,planId)}} >Process to checkout</button>
+                        <button type='button' className='blue-btn' onClick={(e) => { handleCheckout(e, planId) }} >Process to checkout</button>
                     </div>
                 }
 
                 {(plan_Id && !plan_id) &&
                     <div className='header-card d-flex justify-content-between'>
                         <h2>Get {planName} Plan</h2>
-                        <button type='button' className='blue-btn' onClick={(e)=>{handleCheckout(e,planId)}} >Process to checkout</button>
+                        <button type='button' className='blue-btn' onClick={(e) => { handleCheckout(e, planId) }} >Process to checkout</button>
                     </div>
                 }
 
-                {list1?.length > 0 && (!plan_Id) &&
+                {loading ?
+                    <Row className='mb-5'>
+                        {[...Array(3)].map((_, index) => (
+                            <Col md={4} key={index}>
+                                <ShimmerPostItem card title text cta imageType="thumbnail" />
+                            </Col>
+                        ))}
+                    </Row>
+                    :
+                    list1?.length > 0 && (!plan_Id) &&
                     list1?.map((item, index) => (
                         <div className={`${index % 2 == 0 ? 'certificate-cards-new' : 'certificate-cards-new'} `}>
-
                             <div className='card-header'>
                                 {item.name && <h3 className='sub-heading'>{item.name}</h3>}
                                 <button type='button' className='blue-btn'>Explore All</button>
@@ -155,7 +171,16 @@ const Courses = () => {
                                         }
                                     ]}
                                 >
-                                    {item?.products?.length > 0 &&
+                                    {loading ?
+                                        <Row className='mb-5'>
+                                            {[...Array(3)].map((_, index) => (
+                                                <Col md={4} key={index}>
+                                                    <ShimmerPostItem card title text cta imageType="thumbnail" />
+                                                </Col>
+                                            ))}
+                                        </Row>
+                                        :
+                                        item?.products?.length > 0 &&
                                         item?.products.map((product) => (
                                             // <div className='certificate-cards'>
                                             <div className='cards' key={index}>
@@ -165,10 +190,10 @@ const Courses = () => {
                                                 <div className='content'>
                                                     <h3 className='title'>{product.name}</h3>
                                                     <p>{product.description}</p>
-                                                    {product?.keywords.length>0 && 
-                                                    <div className='spc'>
-                                                        {product?.keywords.map((keyword) => (<div className='item'>{keyword}</div>))}
-                                                    </div>}
+                                                    {product?.keywords.length > 0 &&
+                                                        <div className='spc'>
+                                                            {product?.keywords.map((keyword) => (<div className='item'>{keyword}</div>))}
+                                                        </div>}
                                                     <ul className='p-0 list-content'>
                                                         <li><StarIcon /><b>4.6</b>(480 Review)</li>
                                                         <li><EyeIcon />1,840</li>
@@ -194,49 +219,49 @@ const Courses = () => {
                                 </Slider>
                             </div>
                         </div>))}
-<div className='certificate-cards without-slider'>
-                {list1?.length > 0 && (plan_Id) &&
-                    list1?.map((item, index) => (
-                      
+                <div className='certificate-cards without-slider'>
+                    {list1?.length > 0 && (plan_Id) &&
+                        list1?.map((item, index) => (
 
 
-                            
 
-                                <div className='cards' key={index}>
 
-                                    <div className='label-bg'>{item.type_name}</div>
-                                    <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)}><img src={`${item.preview_image}`} /></div>
-                                    <div className='content'>
-                                        <h3 className='title'>{item.name}</h3>
-                                        <p>{item.description}</p>
-                                       
-                                        {item?.keywords.length>0 && <div className='spc'>
-                                            {item?.keywords.map((keyword) => (<div className='item'>{keyword}</div>))}
-                                        </div>} 
-                                        <ul className='p-0 list-content'>
-                                            <li><StarIcon /><b>4.6</b>(480 Review)</li>
-                                            <li><EyeIcon />1,840</li>
-                                            <li><MessageIcon />249</li>
-                                        </ul>
-                                        <div className='card_footer'>
-                                            {item.instructor_name &&
-                                                <div className='d-flex gap-3'>
-                                                    <img src={`${item.instructor_image}`} alt='profile' />
-                                                    <div className='profile-content'>
-                                                        <h3 className='name'>{item.instructor_name}</h3>
-                                                        <h3 className='des'>{item.instructor_description}</h3>
-                                                    </div>
-                                                </div>}
 
-                                            <button type='button' onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)}>View Now</button>
+                            <div className='cards' key={index}>
 
-                                        </div>
+                                <div className='label-bg'>{item.type_name}</div>
+                                <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)}><img src={`${item.preview_image}`} /></div>
+                                <div className='content'>
+                                    <h3 className='title'>{item.name}</h3>
+                                    <p>{item.description}</p>
+
+                                    {item?.keywords.length > 0 && <div className='spc'>
+                                        {item?.keywords.map((keyword) => (<div className='item'>{keyword}</div>))}
+                                    </div>}
+                                    <ul className='p-0 list-content'>
+                                        <li><StarIcon /><b>4.6</b>(480 Review)</li>
+                                        <li><EyeIcon />1,840</li>
+                                        <li><MessageIcon />249</li>
+                                    </ul>
+                                    <div className='card_footer'>
+                                        {item.instructor_name &&
+                                            <div className='d-flex gap-3'>
+                                                <img src={`${item.instructor_image}`} alt='profile' />
+                                                <div className='profile-content'>
+                                                    <h3 className='name'>{item.instructor_name}</h3>
+                                                    <h3 className='des'>{item.instructor_description}</h3>
+                                                </div>
+                                            </div>}
+
+                                        <button type='button' onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)}>View Now</button>
+
                                     </div>
                                 </div>
+                            </div>
 
-                        
+
                         ))}
-                        </div>
+                </div>
                 {/* </section > */}
             </div >
         </>

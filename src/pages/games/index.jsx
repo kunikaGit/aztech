@@ -94,13 +94,13 @@ const Games = () => {
                             </div>
                         </div>
 
-                    <div className='withdrawal d-flex justify-content-center align-items-center'>
-                        {/* <div className='progressbar'>AZ</div> */}
+                    {/* <div className='withdrawal d-flex justify-content-center align-items-center'>
+                        <div className='progressbar'>AZ</div> 
                         <div className='withdrawal-amount'>
                             <div className='balance'>Start your AZ 2X game journey with only $25</div>
                             <button className='part-btn' onClick={(e) => { handleParticipate(e) }}>Participate Now</button>
                         </div>
-                    </div>
+                    </div> */}
 
                     <h4 className='mono-font'>
                         NO TASK NO ASK ONLY PLAY<br />

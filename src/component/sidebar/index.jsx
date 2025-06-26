@@ -1,6 +1,6 @@
 import React from 'react'
-import { BookIcon, DashboardIcon, HelpIcon, NetworkIcon, ProfileIcon, SettingIcon, TransactionIcon, StarIcon,Logout, GameIcon,PackageIcon,LogoutIcon } from '../../icons/icons'
-import { Link, useLocation,useNavigate } from 'react-router-dom'
+import { BookIcon, DashboardIcon, HelpIcon, NetworkIcon, ProfileIcon, SettingIcon, TransactionIcon, StarIcon, Logout, GameIcon, PackageIcon, LogoutIcon } from '../../icons/icons'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import './sidebar.scss';
 import { logout } from "../../redux/slice/authSlice";
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,13 +9,13 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const Sidebar = () => {
     const location = useLocation()
-        const dispatch = useDispatch()
+    const dispatch = useDispatch()
     const navigate = useNavigate()
-        const handleLogout = (e) => {
-            e.preventDefault()
-            dispatch(logout());
-            navigate(`${baseUrl}`);
-        };
+    const handleLogout = (e) => {
+        e.preventDefault()
+        dispatch(logout());
+        navigate(`${baseUrl}`);
+    };
 
     return (
         <div className='sidebar-wrapped'>
@@ -38,11 +38,15 @@ const Sidebar = () => {
                         Transaction</Link></li>
                     <li><Link to={`${baseUrl}myaccount/networks`} className={location.pathname.includes('/networks') ? 'active' : ''}>
                         <NetworkIcon /> Network</Link></li>
+                    <li>
+                        <Link to={`${baseUrl}myaccount/scr`} className={location.pathname.includes('/scr') ? 'active' : ''}>
+                            <NetworkIcon /> SCR</Link>
+                    </li>
                     <li><Link to={`${baseUrl}myaccount/profile`} className={location.pathname.includes('/profile') ? 'active' : ''}>
                         <ProfileIcon /> Profile</Link></li>
                     {/* <li><Link to={`${baseUrl}#`}><SettingIcon /> Setting</Link></li> */}
                     <li><Link to={`${baseUrl}myaccount/help`} className={location.pathname.includes('/help') ? 'active' : ''}><HelpIcon /> Help</Link></li>
-                    <li><Link onClick={(e)=>{handleLogout(e)}}><LogoutIcon /> Logout</Link></li>
+                    <li><Link onClick={(e) => { handleLogout(e) }}><LogoutIcon /> Logout</Link></li>
                 </ul>
             </div>
         </div>

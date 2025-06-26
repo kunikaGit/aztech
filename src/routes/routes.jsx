@@ -3,7 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import {
   Checkout, Courses, Dashboard, Home, Login, Myplans, MyProfile, Networks,
   ProductDetail, Signup, Transactions, SuccessStatus, FailedStatus, AboutUs, Services, Packages, Games,
-  Help
+  Help,
+  ScrTable
 } from '../pages';
 import Mainlayout from '../mainlayout';
 import DashboardOutlet from '../pages/dashboardOutlet';
@@ -39,6 +40,7 @@ const RoutesMain = () => {
           <Route path={`${baseUrl}myaccount/dashboard`} element={<Dashboard />} />
           <Route path={`${baseUrl}myaccount/transactions`} element={<Transactions />} />
           <Route path={`${baseUrl}myaccount/networks`} element={<Networks />} />
+          <Route path={`${baseUrl}myaccount/scr`} element={<ScrTable />} />
           <Route path={`${baseUrl}myaccount/checkout`} element={<Checkout />} />
           <Route path={`${baseUrl}myaccount/profile`} element={<MyProfile />} />
           <Route path={`${baseUrl}myaccount/help`} element={<Help />} />

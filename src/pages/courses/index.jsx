@@ -194,13 +194,13 @@ const Courses = () => {
                                 </Slider>
                             </div>
                         </div>))}
-
+<div className='certificate-cards without-slider'>
                 {list1?.length > 0 && (plan_Id) &&
                     list1?.map((item, index) => (
                       
 
 
-                            <div className='certificate-cards'>
+                            
 
                                 <div className='cards' key={index}>
 
@@ -235,7 +235,8 @@ const Courses = () => {
                                 </div>
 
                         
-                        </div>))}
+                        ))}
+                        </div>
                 {/* </section > */}
             </div >
         </>

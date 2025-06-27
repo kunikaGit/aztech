@@ -29,8 +29,8 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
             <span>Smart Digital Mall, </span>
             <span>Smart Rewards,</span>
             <span>Smart Learning</span><br />
-            <Link to={`${baseUrl}signup`} className='em'>Join us now</Link>
           </h1>
+            <Link to={`${baseUrl}signup`} className='em'>Join us now</Link>
           {/* <Link to={`${baseUrl}signup`} className='blue-button'>Signup Now</Link> */}
           <p>Ready to level up your life? Dive into awesome AI tools, epic eBooks, cool code, music, and more — all in one digital mall. Learn new stuff, earn rewards, and bring your friends along for the ride. Let’s make smart moves together!</p>
           

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import './scr.scss'
 const ScrTable = () => {
     const tableData = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
     const [type, setType] = useState('table');
@@ -8,7 +8,7 @@ const ScrTable = () => {
         setType(newType)
     }
     return (
-        <div className='az-table'>
+        <div className='az-table src-table'>
             <div className='table-header'>
                 <div className='dash-heading'>
                     <h2>Your SCR</h2>
@@ -28,7 +28,7 @@ const ScrTable = () => {
                 </ul>
             </div>
             {type === 'table' &&
-                <div className='table-container'>
+                <div className='basic-table'>
                     <table>
                         <thead>
                             <tr>
@@ -42,19 +42,22 @@ const ScrTable = () => {
                         <tbody>
                             {tableData.map((item, index) => (
                                 <tr key={index}>
-                                    <td style={{width:'20%'}}>1</td>
-                                    <td style={{width:'20%'}}>Harsh </td>
-                                    <td style={{width:'20%'}}>2</td>
-                                    <td style={{width:'20%'}}>2</td>
-                                    <td style={{width:'20%'}}>2000</td>
+                                    <td style={{ width: '20%' }}>1</td>
+                                    <td style={{ width: '20%' }}>Harsh </td>
+                                    <td style={{ width: '20%' }}>2</td>
+                                    <td style={{ width: '20%' }}>2</td>
+                                    <td style={{ width: '20%' }}>2000</td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
+                    <p><b>Note : </b>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi eius ullam ducimus cum esse saepe libero, omnis ut iure aut.
+                    </p>
                 </div>
             }
-  {type === 'table2' &&
-                <div className='table-container'>
+            {type === 'table2' &&
+                <div className='basic-table'>
                     <table>
                         <thead>
                             <tr>
@@ -67,14 +70,17 @@ const ScrTable = () => {
                         <tbody>
                             {tableData.map((item, index) => (
                                 <tr key={index}>
-                                    <td style={{width:'25%'}}>1</td>
-                                    <td style={{width:'25%'}}>2</td>
-                                    <td style={{width:'25%'}}>2</td>
-                                    <td style={{width:'25%'}}>20%</td>
+                                    <td style={{ width: '25%' }}>1</td>
+                                    <td style={{ width: '25%' }}>2</td>
+                                    <td style={{ width: '25%' }}>2</td>
+                                    <td style={{ width: '25%' }}>20%</td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
+                    <p><b>Note : </b>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi eius ullam ducimus cum esse saepe libero, omnis ut iure aut.
+                    </p>
                 </div>
             }
         </div>

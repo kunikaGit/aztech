@@ -1,6 +1,46 @@
  @use '../../assets/scss/mixin.scss' as *;
 
  header {
+     .menu-toggle {
+         display: none;
+
+         @include media_768 {
+             display: block;
+         }
+     }
+     .mobile-menu{
+        padding: 20px;
+        ul{
+            padding: 0;
+            li{
+                list-style: none;
+                margin-bottom: 20px;
+            }
+        }
+     }
+     .logo {
+             display: flex;
+             align-items: center;
+             gap: 10px;
+             cursor: pointer;
+
+             @include media_1280 {
+                 gap: 3px;
+             }
+
+             img {
+                 max-width: 40px;
+             }
+
+             h2 {
+                 margin: 0;
+                 font-size: 25px;
+                 font-weight: 700;
+                 font-family: "DM Sans";
+                 color: #3A8BC2;
+                 margin-top: 5px;
+             }
+         }
      .header-wrapped {
          display: flex;
          align-items: center;
@@ -17,40 +57,34 @@
          backdrop-filter: blur(4px);
          box-shadow: 0px 4px 4px 0px #00000040;
 
-         .logo {
-             display: flex;
-             align-items: center;
-             gap: 10px;
-             cursor: pointer;
-
-             img {
-                 max-width: 40px;
-
-                 @include media_1280 {
-                     max-width: 35px;
-                 }
-             }
-
-             h2 {
-                 margin: 0;
-                 font-size: 25px;
-                 font-weight: 700;
-                 font-family: "DM Sans";
-                 color: #3A8BC2;
-                 margin-top: 5px;
-             }
+         
+         .searchbox{
+             @include media_768 {
+             display: none;
          }
-
+         }
          .menu {
              display: flex;
              align-items: center;
              gap: 30px;
+
+             @include media_1280 {
+                 gap: 15px;
+             }
+
+             @include media_768 {
+                 display: none;
+             }
 
              ul {
                  display: flex;
                  padding: 0;
                  gap: 30px;
                  margin: 0;
+
+                 @include media_1280 {
+                     gap: 15px;
+                 }
 
                  li {
                      list-style: none;
@@ -80,6 +114,13 @@
                  background-color: transparent;
                  border: none;
                  color: var(--heading-color);
+
+                 svg {
+                     @include media_1280 {
+                         height: 20px;
+                         width: 20px;
+                     }
+                 }
 
                  @include media_1280 {
                      font-size: 14px;

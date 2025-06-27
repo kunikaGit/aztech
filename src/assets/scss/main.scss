@@ -88,7 +88,7 @@ body {
 
 .container {
 	max-width: 90% !important;
-
+	padding: 0!important;
 	@include media_min_1600 {
 		max-width: 1500px !important;
 	}
@@ -127,12 +127,20 @@ section {
 		color: var(--heading-color);
 		font-size: 30px;
 		font-weight: 700;
+
+		@include media_1280 {
+			font-size: 24px;
+		}
 	}
 }
 
 .two-grid {
 	display: flex;
 	gap: 20px;
+
+	@include media_768 {
+		flex-direction: column;
+	}
 
 	.grid-item {
 		width: 50%;
@@ -622,18 +630,17 @@ section {
 
 .searchbox {
 	max-width: 50%;
-
 	position: relative;
 	flex: 1;
-
-	@include media_768 {
-		display: none;
-	}
 
 	.search-icon {
 		position: absolute;
 		top: 10px;
 		left: 12px;
+
+		@include media_1280 {
+			top: 7px;
+		}
 
 		svg {
 			path {
@@ -652,6 +659,11 @@ section {
 		font-size: 16px;
 		font-weight: 400;
 		outline: none;
+
+		@include media_1280 {
+			font-size: 14px;
+			padding: 8px 8px 8px 40px;
+		}
 
 		&:focus {
 			border-color: #000000b1;

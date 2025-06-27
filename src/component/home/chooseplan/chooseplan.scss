@@ -6,13 +6,21 @@
         width: 75%;
         margin: auto;
         margin-bottom: 80px;
-
         p {
             color: #656565;
+
+            @include media_1280 {
+                font-size: 14px;
+            }
+        }
+
+        @include media_1280 {
+            margin-bottom: 20px;
+            width: 100%;
         }
     }
 
-        .certificate-cards {
+    .certificate-cards {
         background-color: #f4f7faaa;
         padding: 20px;
         border-radius: 20px;
@@ -26,10 +34,10 @@
     .plan-cards {
         display: flex;
         gap: 30px;
-
+        flex-wrap: wrap;
         .cards {
-            width: 33%;
-            border: 2px solid #636363;
+            width: calc(33.33% - 30px);
+            border: 1px solid #636363;
             border-radius: 16px;
             color: #636363;
             padding: 40px 30px;
@@ -37,15 +45,23 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); // soft shadow
             transition: all 0.3s ease;
 
+            @include media_1280 {
+               padding: 30px 10px;
+            }
+            @include media_768 {
+                width: 100%;
+            }
+            
+
             hr {
-                border-bottom: 2px solid #636363;
+                border-bottom: 1px solid #636363;
                 opacity: 1;
             }
 
             .title {
                 color: #636363;
                 font-size: 30px;
-                font-weight: 700;
+                font-weight: 600;
             }
 
             .des {
@@ -57,7 +73,7 @@
 
                 h2 {
                     font-size: 50px;
-                    font-weight: 700;
+                    font-weight: 600;
                     color: #656565;
                     margin: 0;
                 }

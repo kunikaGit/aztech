@@ -2,56 +2,36 @@
 
 .banner {
     padding: 80px 0 80px 0;
-
-    .searchbox {
-        display: flex;
-        align-items: center;
-        background-color: #fff;
-        border-radius: 8px;
-        padding: 0 8px;
-        border: 1px solid #cccccc81;
-        width: 50%;
-        margin: auto;
-        margin-bottom: 30px;
-        input {
-            width: 100%;
-            border: none;
-            outline: none;
-            padding: 10px;
-            font-size: 22px;
-            font-family: 'Poppins', sans-serif;
-
-            // &::placeholder{
-            //     font-size: 20px;
-            //     color: #D9D9D9;
-            //     font-family: 'poppins';
-            // }
-            // Placeholder animation styles
-            &::placeholder {
-                font-size: 20px;
-                color: #020202;
-                font-family: 'Poppins', sans-serif;
-                transition: color 0.3s ease;
-            }
-
-            // Optional: blinking effect for '|' at the end of placeholder
-            &::placeholder::after {
-                content: '|'; // optional blinking cursor
-                animation: blink 1s step-start infinite;
-            }
-        }
-
-        button {
-            @include button(var(--blue-color), var(--white-color), 16px, 15px, 6px);
-            width: 110px;
-        }
+    .slider-container{
+         @include media_768 {
+             display: none;
+         }
     }
-
     .two-grid {
         align-items: center;
 
         .hero-content {
             width: 45%;
+ @include media_768 {
+             width: 100%;
+         }
+            .em {
+                display: inline-block;
+                color: #fff;
+                font-style: normal;
+                background-color: #ff0057;
+                padding: 10px 16px;
+                border-radius: 6px;
+                font-weight: 600;
+                margin-top: 15px;
+                font-size: 20px;
+                margin-bottom: 20px;
+
+                @include media_1280 {
+                    font-size: 18px;
+                    padding: 8px 14px;
+                }
+            }
 
             .banner-heading {
                 font-size: 35px;
@@ -64,7 +44,7 @@
                 -webkit-background-clip: text;
                 animation: fadeZoomIn 1.5s ease-in-out forwards;
                 opacity: 0;
-                margin-bottom: 30px;
+                margin-bottom: 0;
                 text-transform: capitalize;
 
                 span {
@@ -78,22 +58,11 @@
                     animation: slideIn 1s ease-in-out forwards;
                 }
 
-                .em {
-                    display: inline-block;
-                    color: #fff;
-                    font-style: normal;
-                    background-color: #ff0057;
-                    padding: 10px 16px;
-                    border-radius: 6px;
-                    font-weight: 600;
-                    // box-shadow: 0 0 12px rgba(255, 0, 87, 0.6);
-                    margin-top: 15px;
-                    font-size: 20px;
-                    // animation: pulse 1.5s infinite;
-                }
+
 
                 @include media_1280 {
-                    font-size: 38px;
+                    font-size: 32px;
+                    line-height: 35px;
 
                     .em {
                         font-size: 20px;
@@ -172,6 +141,10 @@
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 animation: shimmer 5s infinite linear;
+
+                @include media_1280 {
+                    font-size: 20px;
+                }
             }
 
             @keyframes shimmer {
@@ -201,11 +174,10 @@
                 font-size: 18px;
                 color: var(--text-grey);
                 width: 80%;
-                margin-bottom: 20px;
+                margin-bottom: 0;
 
                 @include media_1280 {
-                    font-size: 16px;
-                    margin-bottom: 30px;
+                    font-size: 14px;
                 }
             }
 

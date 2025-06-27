@@ -4,19 +4,22 @@ import './services.scss';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { Col, Row } from 'react-bootstrap';
+import { CategoryShimmer } from '../../component/common/shimmer';
+import { Search } from '@mui/icons-material';
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const Services = () => {
     const { plan_id } = useSelector((state) => state.auth);
-  const { auth_token } = useSelector((state) => state.auth);
+    const { auth_token } = useSelector((state) => state.auth);
 
-    const { fetchData } = useApiRequest();
+    const { loading, fetchData } = useApiRequest();
     const navigate = useNavigate();
     const [searchParams] = useSearchParams(); // <-- Get URL params
-                const plan_Id = searchParams.get('plan'); // <-- Extract plan_Id
-            const plan_name = searchParams.get('plan_name'); // <-- Extract plan_Id
+    const plan_Id = searchParams.get('plan'); // <-- Extract plan_Id
+    const plan_name = searchParams.get('plan_name'); // <-- Extract plan_Id
     const [list, setList] = useState([]);
     const [planId, setPlanId] = useState('')
     const [planName, setPlanName] = useState('')
@@ -46,8 +49,8 @@ const Services = () => {
 
                 if (res.success) {
                     setList(res.data.list);
-                                    setPlanId("")
-                setPlanName("")
+                    setPlanId("")
+                    setPlanName("")
                 }
             }
 
@@ -59,25 +62,25 @@ const Services = () => {
 
     const handleProduct = (e, category) => {
         e.preventDefault();
-        if(planId){
-        navigate(`${baseUrl}products?category=${category.id}&name=${category.name}&plan=${planId}&plan_name=${planName}`)
-        return
+        if (planId) {
+            navigate(`${baseUrl}products?category=${category.id}&name=${category.name}&plan=${planId}&plan_name=${planName}`)
+            return
         }
         navigate(`${baseUrl}products?category=${category.id}?name=${category.name}`)
     }
 
-      const handleCheckout = (e, plan) => {
-    e.preventDefault();
-    if (auth_token) {
-      let type = 1
-      if (plan_id < plan.id) {
-        type = 2
-      }
-      navigate(`${baseUrl}myaccount/checkout`, { state: { product: plan, type } });
-      return
-    }
-    navigate(`${baseUrl}login`)
-  };
+    const handleCheckout = (e, plan) => {
+        e.preventDefault();
+        if (auth_token) {
+            let type = 1
+            if (plan_id < plan.id) {
+                type = 2
+            }
+            navigate(`${baseUrl}myaccount/checkout`, { state: { product: plan, type } });
+            return
+        }
+        navigate(`${baseUrl}login`)
+    };
     return (
         <div className='services-wrapped'>
             <div className='two-grid'>
@@ -93,21 +96,33 @@ const Services = () => {
                 </div>
             </div>
             {plan_Id && plan_id && (plan_id < plan_Id) &&
-             <div className='header-card d-flex justify-content-between'>
-                <h2>Upgrade to {planName}</h2>
-                <button type='button' className='blue-btn' onClick={(e)=>{handleCheckout(e,planId)}} >Process to checkout</button>
-            </div>
-                }
+                <div className='header-card d-flex justify-content-between'>
+                    <h2>Upgrade to {planName}</h2>
+                    <button type='button' className='blue-btn' onClick={(e) => { handleCheckout(e, planId) }} >Process to checkout</button>
+                </div>
+            }
 
-
-                            {(plan_Id && !plan_id )&&
-             <div className='header-card d-flex justify-content-between'>
-                <h2>Get {planName} Plan</h2>
-                <button type='button' className='blue-btn' onClick={(e)=>{handleCheckout(e,planId)}}>Process to checkout</button>
+            {(plan_Id && !plan_id) &&
+                <div className='header-card d-flex justify-content-between'>
+                    <h2>Get {planName} Plan</h2>
+                    <button type='button' className='blue-btn' onClick={(e) => { handleCheckout(e, planId) }}>Process to checkout</button>
+                </div>
+            }
+            <div className='searchbox'>
+                <div className='search-icon'><Search color="#ccc" /></div>
+                <input placeholder="Search" name="search" />
             </div>
-                }
             <div className='service-cards-wrapped'>
-                {list.length > 0 &&
+                {loading ?
+                    <Row className='mb-5 w-100'>
+                        {[...Array(6)].map((_, index) => (
+                            <Col md={6} key={index}>
+                                <CategoryShimmer />
+                            </Col>
+                        ))}
+                    </Row>
+                    :
+                    list.length > 0 &&
                     list.map((category) => (
                         <div className='service-cards' onClick={(e) => { handleProduct(e, category) }}>
                             <div className='icon'>
@@ -115,10 +130,10 @@ const Services = () => {
                                 <img src={`${category.icon}`} alt='icon' />
                             </div>
                             <div className='content'>
-                                {category.product_count?
-                                <h3>{category.name} ({category.product_count})</h3>
-                                :
-                                <h3>{category.name} </h3>}
+                                {category.product_count ?
+                                    <h3>{category.name} { auth_token ? `${(category.product_count)}`:""}</h3>
+                                    :
+                                    <h3>{category.name} </h3>}
                                 <p>{category.description}</p>
                             </div>
                         </div>))}

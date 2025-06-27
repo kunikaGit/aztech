@@ -1,4 +1,10 @@
 .services-wrapped {
+    .searchbox{
+        margin-bottom: 30px;
+        input{
+            border-color: var(--blue-color);
+        }
+    }
     .header-card{
         background-color: #fff;
         padding: 10px 20px;

@@ -5,13 +5,15 @@ import { useNavigate } from 'react-router-dom'
 import useApiRequest from "../../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../../constants/endPoints";
 import Slider from 'react-slick'
+import { Col, Row } from 'react-bootstrap';
+import { ShimmerPostItem } from 'react-shimmer-effects';
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 
 
 
 const PopularCertifictes = () => {
-    const { fetchData } = useApiRequest();
+    const { loading, fetchData } = useApiRequest();
     const navigate = useNavigate();
 
     const [list, setList] = useState([]);
@@ -109,80 +111,7 @@ const PopularCertifictes = () => {
         ]
     };
 
-    var settings1 = {
-        dots: true,
-        infinite: total1 <= 3 ? false : true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        initialSlide: 0,
-        arrows: true,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    };
-
-
-    var settings2 = {
-        dots: true,
-        infinite: total2 <= 3 ? false : true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        initialSlide: 0,
-        arrows: true,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    };
-
-    const handlePageChange=(e,category)=>{
+    const handlePageChange = (e, category) => {
         navigate(`${baseUrl}products?category=${category.id}?name=${category.name}`)
     }
 
@@ -199,98 +128,126 @@ const PopularCertifictes = () => {
                 {total - 3 > 0 && <button type='button' className='blue-btn' onClick={() => { handleProduct() }}>Show {total - 3} More</button>}
             </div>
 
-            {list.length > 0 &&
-                <div className='certificate-cards'>
-                    <div className='card-header'>
-                        {categoryName && <h3 className='sub-heading'>{categoryName.name}</h3>}
-                        <button type='button' className='blue-btn' onClick={(e)=>{handlePageChange(e,categoryName)}}>Explore All</button>
-                    </div>
-
-                    <Slider {...settings}>
-                        {list.map((item, index) => (
-                            <div className='cards' key={index}>
-                                <div className='label-bg'>{item.type_name}</div>
-                                <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)}>
-                                    <img src={`${item.preview_image}`} /></div>
-                                <div className='content'>
-                                    <h3 className='title'>{item.name}</h3>
-                                    <p>{item.description}</p>
-                                    <div className='spc'>
-                                        {item.keywords.length > 0 && item.keywords.map((keyword) => (<div className='item'>{keyword}</div>))}
-                                    </div>
-                                    <ul className='p-0 list-content'>
-                                        <li><StarIcon /><b>4.6</b>(480 Review)</li>
-                                        <li><EyeIcon />1,840</li>
-                                        <li><MessageIcon />249</li>
-                                    </ul>
-                                    <div className='card_footer'>
-                                        {item.instructor_name &&
-                                            <div className='d-flex gap-3'>
-                                                <img src={`${item.instructor_image}`} alt='profile' />
-                                                <div className='profile-content'>
-                                                    <h3 className='name'>{item.instructor_name}</h3>
-                                                    <h3 className='des'>{item.instructor_description}</h3>
-                                                </div>
-                                            </div>}
-                                        <button type='button'>${item.price}</button>
+            {
+                loading ?
+                    <Row className='mb-5'>
+                        {[...Array(3)].map((_, index) => (
+                            <Col md={4} key={index}>
+                                <ShimmerPostItem card title text cta imageType="thumbnail" />
+                            </Col>
+                        ))}
+                    </Row>
+                    :
+                    list.length > 0 &&
+                    <div className='certificate-cards'>
+                        <div className='card-header'>
+                            {categoryName && <h3 className='sub-heading'>{categoryName.name}</h3>}
+                            <button type='button' className='blue-btn' onClick={(e) => { handlePageChange(e, categoryName) }}>Explore All</button>
+                        </div>
+                        <Slider {...settings}>
+                            {list?.map((item, index) => (
+                                <div className='cards' key={index}>
+                                    <div className='label-bg'>{item.type_name}</div>
+                                    <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)}>
+                                        <img src={`${item.preview_image}`} /></div>
+                                    <div className='content'>
+                                        <h3 className='title'>{item.name}</h3>
+                                        <p>{item.description}</p>
+                                        <div className='spc'>
+                                            {item.keywords.length > 0 && item.keywords.map((keyword) => (<div className='item'>{keyword}</div>))}
+                                        </div>
+                                        <ul className='p-0 list-content'>
+                                            <li><StarIcon /><b>4.6</b>(480 Review)</li>
+                                            <li><EyeIcon />1,840</li>
+                                            <li><MessageIcon />249</li>
+                                        </ul>
+                                        <div className='card_footer'>
+                                            {item.instructor_name &&
+                                                <div className='d-flex gap-3'>
+                                                    <img src={`${item.instructor_image}`} alt='profile' />
+                                                    <div className='profile-content'>
+                                                        <h3 className='name'>{item.instructor_name}</h3>
+                                                        <h3 className='des'>{item.instructor_description}</h3>
+                                                    </div>
+                                                </div>}
+                                            <button type='button'>${item.price}</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            ))}
+
+                        </Slider>
+                    </div>}
+
+            {
+                loading ?
+                    <Row className='mb-5'>
+                        {[...Array(3)].map((_, index) => (
+                            <Col md={4} key={index}>
+                                <ShimmerPostItem card title text cta imageType="thumbnail" />
+                            </Col>
                         ))}
-
-                    </Slider>
-                </div>}
-
-            {list1.length > 0 &&
-                <div className='certificate-cards'>
-                    <div className='card-header'>
-                        {categoryName1 && <h3 className='sub-heading'>{categoryName1.name}</h3>}
-                        <button type='button' className='blue-btn' onClick={(e)=>{handlePageChange(e,categoryName1)}}>Explore All</button>
-                    </div>
-                    <Slider {...settings1}>
-                        {list1.map((item, index) => (
-                            <div className='cards' key={index}>
-                                <div className='label-bg'>{item.type_name}</div>
-                                <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)}>
-                                    <img src={`${item.preview_image}`} /></div>
-                                <div className='content'>
-                                    <h3 className='title'>{item.name}</h3>
-                                    <p>{item.description}</p>
-                                    <div className='spc'>
-                                        {item.keywords.length > 0 && item.keywords.map((keyword) => (<div className='item'>{keyword}</div>))}
-                                    </div>
-                                    <ul className='p-0 list-content'>
-                                        <li><StarIcon /><b>4.6</b>(480 Review)</li>
-                                        <li><EyeIcon />1,840</li>
-                                        <li><MessageIcon />249</li>
-                                    </ul>
-                                    <div className='card_footer'>
-                                        {item.instructor_name &&
-                                            <div className='d-flex gap-3'>
-                                                <img src={`${item.instructor_image}`} alt='profile' />
-                                                <div className='profile-content'>
-                                                    <h3 className='name'>{item.instructor_name}</h3>
-                                                    <h3 className='des'>{item.instructor_description}</h3>
-                                                </div>
-                                            </div>}
-                                        <button type='button'>${item.price}</button>
+                    </Row>
+                    :
+                    list1.length > 0 &&
+                    <div className='certificate-cards'>
+                        <div className='card-header'>
+                            {categoryName1 && <h3 className='sub-heading'>{categoryName1.name}</h3>}
+                            <button type='button' className='blue-btn' onClick={(e) => { handlePageChange(e, categoryName1) }}>Explore All</button>
+                        </div>
+                        <Slider {...settings}>
+                            {list1.map((item, index) => (
+                                <div className='cards' key={index}>
+                                    <div className='label-bg'>{item.type_name}</div>
+                                    <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)}>
+                                        <img src={`${item.preview_image}`} /></div>
+                                    <div className='content'>
+                                        <h3 className='title'>{item.name}</h3>
+                                        <p>{item.description}</p>
+                                        <div className='spc'>
+                                            {item.keywords.length > 0 && item.keywords.map((keyword) => (<div className='item'>{keyword}</div>))}
+                                        </div>
+                                        <ul className='p-0 list-content'>
+                                            <li><StarIcon /><b>4.6</b>(480 Review)</li>
+                                            <li><EyeIcon />1,840</li>
+                                            <li><MessageIcon />249</li>
+                                        </ul>
+                                        <div className='card_footer'>
+                                            {item.instructor_name &&
+                                                <div className='d-flex gap-3'>
+                                                    <img src={`${item.instructor_image}`} alt='profile' />
+                                                    <div className='profile-content'>
+                                                        <h3 className='name'>{item.instructor_name}</h3>
+                                                        <h3 className='des'>{item.instructor_description}</h3>
+                                                    </div>
+                                                </div>}
+                                            <button type='button'>${item.price}</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
 
-                    </Slider>
-                </div>}
+                        </Slider>
+                    </div>}
 
 
-            {list2.length > 0 &&
+            {loading ?
+                <Row className='mb-5'>
+                    {[...Array(3)].map((_, index) => (
+                        <Col md={4} key={index}>
+                            <ShimmerPostItem card title text cta imageType="thumbnail" />
+                        </Col>
+                    ))}
+                </Row>
+                :
+                list2.length > 0 &&
                 <div className='certificate-cards'>
                     <div className='card-header'>
                         {categoryName2 && <h3 className='sub-heading'>{categoryName2.name}</h3>}
-                        <button type='button' className='blue-btn' onClick={(e)=>{handlePageChange(e,categoryName2)}}>Explore All</button>
+                        <button type='button' className='blue-btn' onClick={(e) => { handlePageChange(e, categoryName2) }}>Explore All</button>
                     </div>
 
-                    <Slider {...settings2}>
+                    <Slider {...settings}>
                         {list2.map((item, index) => (
                             <div className='cards' key={index}>
                                 <div className='label-bg'>{item.type_name}</div>

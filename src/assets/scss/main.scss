@@ -293,10 +293,12 @@ section {
 		tbody {
 			tr {
 				border-bottom: 1px solid #62667953;
+
 				&:last-child {
 					border: none;
 				}
 			}
+
 			.custom-row {
 				position: relative;
 
@@ -532,6 +534,11 @@ section {
 				font-size: 20px;
 				font-weight: 700;
 				margin-bottom: 4px;
+				height: 52px;
+				overflow: hidden;
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
 			}
 
 			p {
@@ -539,6 +546,11 @@ section {
 				margin-bottom: 10px;
 				font-size: 14px;
 				line-height: 19px;
+				height: 60px;
+				overflow: hidden;
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
 			}
 
 			.spc {
@@ -594,7 +606,7 @@ section {
 				}
 
 				button {
-					@include blue-btn(var(--blue-color), var(--white-color), 16px, 8px 20px, 6px);
+					@include blue-btn(var(--blue-color), var(--white-color), 14px, 5px 10px, 6px);
 					font-weight: 500;
 				}
 			}
@@ -606,4 +618,53 @@ section {
 	background-color: rgba(244, 247, 250, 0.6666666667);
 	padding: 20px;
 	border-radius: 20px;
+}
+
+.searchbox {
+	max-width: 50%;
+
+	position: relative;
+	flex: 1;
+
+	@include media_768 {
+		display: none;
+	}
+
+	.search-icon {
+		position: absolute;
+		top: 10px;
+		left: 12px;
+
+		svg {
+			path {
+				fill: #5094ed;
+			}
+		}
+	}
+
+	input {
+		padding: 10px 10px 10px 40px;
+		background: transparent;
+		border: 0.5px solid #cccccca9;
+		color: #000;
+		border-radius: 30px;
+		width: 100%;
+		font-size: 16px;
+		font-weight: 400;
+		outline: none;
+
+		&:focus {
+			border-color: #000000b1;
+		}
+	}
+
+	:focus {
+		outline: none;
+	}
+
+	::placeholder {
+		color: #1A73E8;
+		font-weight: 300;
+		opacity: 0.3;
+	}
 }

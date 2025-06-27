@@ -1,7 +1,12 @@
 @use '../../assets/scss/mixin.scss' as *;
 
 .courses-wrapped {
-
+ .searchbox{
+        margin-bottom: 30px;
+        input{
+            border-color: var(--blue-color);
+        }
+    }
      .header-card{
         background-color: #fff;
         padding: 10px 20px;
@@ -83,7 +88,15 @@
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    margin-bottom: 20px;
+     .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; // vertically center
+            margin-bottom: 40px; // same as your previous margin on h3
+        }
     .cards{
+
         width: calc(33.33% - 20px)
     }
     }

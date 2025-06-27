@@ -13,6 +13,7 @@ export { default as SuccessStatus } from "./status/successStatus";
 export { default as FailedStatus } from "./status/failedStatus";
 export { default as AboutUs } from "./aboutus";
 export { default as Services } from "./services";
+export { default as ScrTable } from "./scr";
 export { default as Packages } from "./package/index";
 
 

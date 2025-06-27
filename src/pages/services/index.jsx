@@ -99,7 +99,7 @@ const Services = () => {
             </div>
                 }
 
-{console.log(plan_Id , plan_id )}
+
                             {(plan_Id && !plan_id )&&
              <div className='header-card d-flex justify-content-between'>
                 <h2>Get {planName} Plan</h2>

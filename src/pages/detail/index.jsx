@@ -83,10 +83,11 @@ const ProductDetail = () => {
             if (auth_token) {
 
                 if (plan_id >= list[0].plan_included) {
-                    let res = await fetchData(`${API_ENDPOINTS.openProduct}?id=${ids}`, navigate, 'GET', {});
+                    let res = await fetchData(`${API_ENDPOINTS.previewProduct}?id=${ids}`, navigate, 'GET', {});
+                  
                     if (res.success) {
                         //window.open(res.data[0].link, '_blank');
-                        setPreviewUrl(res.data[0].link);
+                        setPreviewUrl(res.data[0].preview_link);
                         setIsModalOpen(true)
 
                     }

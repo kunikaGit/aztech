@@ -1,3 +1,5 @@
+@use '../../../assets/scss/mixin.scss' as *;
+
 .home-category-wrapped {
     padding-bottom: 120px;
     // .main-heading{
@@ -25,6 +27,10 @@
         .black-part {
             color: #000;
             font-size: 42px;
+
+            @include media_1280 {
+                font-size: 30px;
+            }
         }
 
         .highlight-part {
@@ -32,6 +38,10 @@
             font-size: 40px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             letter-spacing: 0.5px;
+
+            @include media_1280 {
+                font-size: 30px;
+            }
         }
 
         .sub-heading {
@@ -65,6 +75,12 @@
             display: flex;
             width: 60%;
 
+            @include media_1280 {
+                width: 50%;
+            }
+@include media_768{
+                width: 100%;
+            }
             ul {
                 width: 15%;
                 padding: 0;
@@ -78,47 +94,45 @@
                 }
             }
 
-            // .cat-img {
-            //     width: 85%;
-
-            //     img {
-            //         width: 100%;
-            //     }
-
-            //                     video {
-            //         width: 100%;
-            //     }
-            // }
-
             .cat-img {
-    width: 85%;
-    position: relative;  // very important to make absolute positioning work
+                width: 85%;
+                position: relative; // very important to make absolute positioning work
 
-    video {
-        width: 100%;
-    }
+                @include media_1280 {
+                    width: 100%;
+                }
 
-    .play-btn {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);  // centers the button perfectly
-        padding: 20px 40px;
-        font-size: 18px;
-        border: none;
-        background: rgba(0,0,0,0.7);
-        color: #fff;
-        border-radius: 50px;
-        cursor: pointer;
-        z-index: 2;
-    }
-}
+                video {
+                    width: 100%;
+                }
+
+                .play-btn {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%); // centers the button perfectly
+                    padding: 20px 40px;
+                    font-size: 18px;
+                    border: none;
+                    background: rgba(0, 0, 0, 0.7);
+                    color: #fff;
+                    border-radius: 50px;
+                    cursor: pointer;
+                    z-index: 2;
+                }
+            }
 
         }
 
         .content {
             width: 40%;
 
+            @include media_1280 {
+                width: 50%;
+            }
+@include media_768{
+                width: 100%;
+            }
             .label {
                 background-image: url(../../../assets/images/arrow-shape.svg);
                 padding: 2px 22px;
@@ -137,6 +151,10 @@
                 font-size: 30px;
                 font-weight: 700;
                 margin-bottom: 22px;
+
+                @include media_1280 {
+                    font-size: 24px;
+                }
             }
 
             .detail-author {
@@ -160,6 +178,10 @@
             p {
                 margin-bottom: 20px;
                 color: #0000007A;
+                 @include media_1280 {
+                    font-size: 15px;
+                    margin-bottom: 10px;
+                }
             }
 
             .blue-btn {

@@ -11,26 +11,27 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
 
   return (
     <div className='banner'>
-      {/* <div className='searchbox'>
-            <TypingInput/>
-          </div> */}
+ 
       <div className='two-grid'>
         <div className='hero-content'>
           <h3 className='label'>Smart Reward System</h3>
-          {/* <h1>Your All In One<br/>
+          <h1>Your All In One<br/>
             SMART DIGITAL MALL<br/>
             SMART LEARNING<br/>
             SMART REWARD<br/>
-            JOIN US NOW
-          </h1> */}
+            {/* JOIN US NOW */}
+          </h1>
 
-          <h1 class="banner-heading">
+          {/* <h1 class="banner-heading">
             Your All In One<br />
             <span>Smart Digital Mall, </span>
             <span>Smart Rewards,</span>
             <span>Smart Learning</span><br />
+          </h1> */}
             <Link to={`${baseUrl}signup`} className='em'>Join us now</Link>
-          </h1>
+                 <div className='typebox'>
+            <TypingInput/>
+          </div>
           {/* <Link to={`${baseUrl}signup`} className='blue-button'>Signup Now</Link> */}
           <p>Ready to level up your life? Dive into awesome AI tools, epic eBooks, cool code, music, and more — all in one digital mall. Learn new stuff, earn rewards, and bring your friends along for the ride. Let’s make smart moves together!</p>
           

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,useCallback } from 'react'
 import imageMap from '../../utils/helpers'
 import './services.scss';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { Col, Row } from 'react-bootstrap';
 import { CategoryShimmer } from '../../component/common/shimmer';
 import { Search } from '@mui/icons-material';
+import debounce from 'lodash.debounce';
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -23,14 +24,36 @@ const Services = () => {
     const [list, setList] = useState([]);
     const [planId, setPlanId] = useState('')
     const [planName, setPlanName] = useState('')
+  const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         callApi()
     }, [plan_Id]);
 
 
+     // Debounced API call function (wait 500ms after user stops typing)
+  const debouncedSearch = useCallback(
+    debounce(async (query) => {
+      if (!query.trim()) {
+        // Optionally clear or handle empty search
+        console.log('Empty search - no API call');
+        return;
+      }
 
-    const callApi = async () => {
+      callApi(query)
+       }, 500),
+    []
+  );
+
+    // Cleanup debounce on unmount
+  useEffect(() => {
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [debouncedSearch]);
+
+
+    const callApi = async (query=null) => {
         try {
 
 
@@ -38,14 +61,14 @@ const Services = () => {
             if (plan_Id) {
                 setPlanId(plan_Id)
                 setPlanName(plan_name)
-                let res1 = await fetchData(`${API_ENDPOINTS.categoriesPlanwise}?id=${plan_Id}`, navigate, 'GET', {});
+                let res1 = await fetchData(`${API_ENDPOINTS.categoriesPlanwise}?id=${plan_Id}&search=${query}`, navigate, 'GET', {});
                 if (res1.success) {
 
                     setList(res1.data.list)
                 }
 
             } else {
-                let res = await fetchData(API_ENDPOINTS.categories, navigate, 'GET', {});
+                let res = await fetchData(`${API_ENDPOINTS.categories}?search=${query}`, navigate, 'GET', {});
 
                 if (res.success) {
                     setList(res.data.list);
@@ -81,6 +104,20 @@ const Services = () => {
         }
         navigate(`${baseUrl}login`)
     };
+
+        // Handle input change
+      const handleChange = (e) => {
+        const value = e.target.value;
+        setSearchTerm(value);
+        debouncedSearch(value);
+      };
+    
+      // Cleanup debounce on unmount
+      useEffect(() => {
+        return () => {
+          debouncedSearch.cancel();
+        };
+      }, [debouncedSearch]);
     return (
         <div className='services-wrapped'>
             <div className='two-grid'>
@@ -110,7 +147,11 @@ const Services = () => {
             }
             <div className='searchbox'>
                 <div className='search-icon'><Search color="#ccc" /></div>
-                <input placeholder="Search" name="search" />
+                 <input  placeholder="Search"
+        name="search"
+        value={searchTerm}
+        onChange={handleChange}
+        autoComplete="off" />
             </div>
             <div className='service-cards-wrapped'>
                 {loading ?

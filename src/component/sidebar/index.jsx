@@ -40,7 +40,7 @@ const Sidebar = () => {
                         <NetworkIcon /> Network</Link></li>
                     <li>
                         <Link to={`${baseUrl}myaccount/scr`} className={location.pathname.includes('/scr') ? 'active' : ''}>
-                            <RewardIcon /> SCR</Link>
+                            <RewardIcon /> Sales Campaign Reward </Link>
                     </li>
                     <li><Link to={`${baseUrl}myaccount/profile`} className={location.pathname.includes('/profile') ? 'active' : ''}>
                         <ProfileIcon /> Profile</Link></li>

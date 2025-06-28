@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,useCallback } from 'react'
 import './courses.scss'
 import imageMap from '../../utils/helpers';
 import { EyeIcon, MessageIcon, StarIcon } from '../../icons/icons';
@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { Col, Row } from 'react-bootstrap';
 import { ShimmerPostItem } from 'react-shimmer-effects';
 import { Search } from '@mui/icons-material';
+import debounce from 'lodash.debounce';
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -24,7 +25,7 @@ const Courses = () => {
     const plan_name = queryParams.get('plan_name'); // <-- Extract plan_id
     const { loading, fetchData } = useApiRequest();
     const navigate = useNavigate();
-
+  const [searchTerm, setSearchTerm] = useState('');
     const [list1, setList1] = useState([]);
 
     const [planId, setPlanId] = useState('')
@@ -32,17 +33,40 @@ const Courses = () => {
 
     const [categoryId, setCategoryId] = useState('')
 
+    const [pageDependancy,setPageDependancy] = useState(false)
     useEffect(() => {
         callApi()
-    }, [plan_Id]);
+    }, [plan_Id,pageDependancy]);
 
-    const callApi = async () => {
+      // Debounced API call function (wait 500ms after user stops typing)
+  const debouncedSearch = useCallback(
+    debounce(async (query) => {
+      if (!query.trim()) {
+        // Optionally clear or handle empty search
+        console.log('Empty search - no API call');
+        return;
+      }
+
+      callApi(query)
+       }, 500),
+    []
+  );
+
+    // Cleanup debounce on unmount
+  useEffect(() => {
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [debouncedSearch]);
+
+
+    const callApi = async (query=null) => {
         try {
 
             setPlanId(plan_Id)
             setPlanName(plan_name)
             if (plan_Id) {
-                let res1 = await fetchData(`${API_ENDPOINTS.productsCategoryPlanwise}?plan_id=${plan_Id}&category_id=${category_id}`, navigate, 'GET', {});
+                let res1 = await fetchData(`${API_ENDPOINTS.productsCategoryPlanwise}?plan_id=${plan_Id}&category_id=${category_id}&search=${query}`, navigate, 'GET', {});
 
                 if (res1.success) {
 
@@ -55,7 +79,7 @@ const Courses = () => {
 
             if (category_id) {
 
-                let res1 = await fetchData(`${API_ENDPOINTS.categorywise2}?id=${category_id}`, navigate, 'GET', {});
+                let res1 = await fetchData(`${API_ENDPOINTS.categorywise2}?id=${category_id}&search=${query}`, navigate, 'GET', {});
                 if (res1.success) {
                     setList1(res1.data)
                     setPlanId("")
@@ -65,7 +89,7 @@ const Courses = () => {
                 return
             }
 
-            let res1 = await fetchData(API_ENDPOINTS.categorywise2, navigate, 'GET', {});
+            let res1 = await fetchData(`${API_ENDPOINTS.categorywise2}?id=&search=${query}`, navigate, 'GET', {});
             if (res1.success) {
                 setList1(res1.data)
                 setPlanId("")
@@ -89,6 +113,27 @@ const Courses = () => {
         navigate(`${baseUrl}login`)
     };
 
+
+        const handlePageChange = (e, category) => {
+        e.preventDefault()
+        navigate(`${baseUrl}products?category=${category.id}&name=${category.name}`) 
+        setPageDependancy(!pageDependancy)
+    }
+
+      // Handle input change
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    debouncedSearch(value);
+  };
+
+  // Cleanup debounce on unmount
+  useEffect(() => {
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [debouncedSearch]);
+
     return (
         <>
             <div className='courses-wrapped'>
@@ -103,7 +148,7 @@ const Courses = () => {
                         <p>
                             Dive into a vast universe of over 4,000 premium digital products — from cutting-edge AI tools and immersive educational content to creative assets, research papers, music, and beyond. Whether you're a student, professional, or lifelong learner, AZ Tech empowers you with everything you need to grow, create, and succeed — all in one place. Start exploring and transform your digital experience today!
                         </p>
-                        <button type='button' className='blue-btn'>Explore Now</button>
+                        {/* <button type='button' className='blue-btn'>Explore Now</button> */}
                     </div>
 
                 </div>
@@ -124,7 +169,11 @@ const Courses = () => {
 
                 <div className='searchbox'>
                     <div className='search-icon'><Search color="#ccc" /></div>
-                    <input placeholder="Search" name="search" />
+                    <input  placeholder="Search"
+        name="search"
+        value={searchTerm}
+        onChange={handleChange}
+        autoComplete="off" />
                 </div>
 
 
@@ -143,7 +192,7 @@ const Courses = () => {
                         <div className={`${index % 2 == 0 ? 'certificate-cards-new' : 'certificate-cards-new'} `}>
                             <div className='card-header'>
                                 {item.name && <h3 className='sub-heading'>{item.name}</h3>}
-                                <button type='button' className='blue-btn'>Explore All</button>
+                                <button type='button' className='blue-btn' onClick={e=>{handlePageChange(e,item)}}>Explore All</button>
                             </div>
                             <div className='certificate-cards'>
                                 <Slider

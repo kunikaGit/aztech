@@ -19,6 +19,9 @@ export const API_ENDPOINTS = {
     openProduct:"/products/open",
     previewProduct:"/products/preview",
 
+    searchHome:"/products/searchHome",
+
+
 
     planwise:"/products/planwise",
     referralTree: "/profile/referral-tree",
@@ -43,4 +46,8 @@ export const API_ENDPOINTS = {
     forgotPassword: "/forgot-password",
     verifyEmail: "/verify-email",
     currencies: "/payment/crypto-currencies?status=active",
+
+
+        scrDetails:"/scr/",
+    referralRules:"/scr/referral-rules",
 }

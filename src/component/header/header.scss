@@ -1,6 +1,51 @@
  @use '../../assets/scss/mixin.scss' as *;
 
  header {
+     .menu-toggle {
+         display: none;
+
+         @include media_768 {
+             display: block;
+         }
+     }
+
+     .mobile-menu {
+         padding: 20px;
+
+         ul {
+             padding: 0;
+
+             li {
+                 list-style: none;
+                 margin-bottom: 20px;
+             }
+         }
+     }
+
+     .logo {
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         cursor: pointer;
+
+         @include media_1280 {
+             gap: 3px;
+         }
+
+         img {
+             max-width: 40px;
+         }
+
+         h2 {
+             margin: 0;
+             font-size: 25px;
+             font-weight: 700;
+             font-family: "DM Sans";
+             color: #3A8BC2;
+             margin-top: 5px;
+         }
+     }
+
      .header-wrapped {
          display: flex;
          align-items: center;
@@ -17,40 +62,108 @@
          backdrop-filter: blur(4px);
          box-shadow: 0px 4px 4px 0px #00000040;
 
-         .logo {
-             display: flex;
-             align-items: center;
-             gap: 10px;
-             cursor: pointer;
 
-             img {
-                 max-width: 40px;
+         //  .searchbox{
+         //      @include media_768 {
+         //      display: none;
+         //  }
+         // }
+.searchbox {
+  position: relative;
+  width: 300px;
 
-                 @include media_1280 {
-                     max-width: 35px;
-                 }
-             }
+  input {
+    width: 100%;
+    padding: 8px 32px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: "Poppins";
+    background: #fff;
+    z-index: 1;
+  }
 
-             h2 {
-                 margin: 0;
-                 font-size: 25px;
-                 font-weight: 700;
-                 font-family: "DM Sans";
-                 color: #3A8BC2;
-                 margin-top: 5px;
-             }
-         }
+  .search-dropdown {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 100%;
+  background: #ffffff !important; // ✅ force solid white
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  z-index: 9999; // ✅ appear above everything
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
+
+  .section-block {
+    margin-bottom: 12px;
+
+    h5 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 4px;
+    }
+
+    .scroll-list {
+      max-height: 160px;
+      overflow-y: auto;
+      padding-right: 6px;
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          padding: 6px 0;
+          cursor: pointer;
+          white-space: nowrap; // ✅ FORCE 1 LINE
+          overflow: hidden;
+          text-overflow: ellipsis;
+          transition: background 0.2s;
+
+          &:hover {
+            background-color: #f1f1f1;
+          }
+        }
+      }
+
+      .no-result {
+        font-size: 13px;
+        color: #888;
+        padding: 6px 0;
+      }
+    }
+  }
+}
+
+
 
          .menu {
              display: flex;
              align-items: center;
              gap: 30px;
 
+             @include media_1280 {
+                 gap: 15px;
+             }
+
+             @include media_768 {
+                 display: none;
+             }
+
              ul {
                  display: flex;
                  padding: 0;
                  gap: 30px;
                  margin: 0;
+
+                 @include media_1280 {
+                     gap: 15px;
+                 }
 
                  li {
                      list-style: none;
@@ -80,6 +193,13 @@
                  background-color: transparent;
                  border: none;
                  color: var(--heading-color);
+
+                 svg {
+                     @include media_1280 {
+                         height: 20px;
+                         width: 20px;
+                     }
+                 }
 
                  @include media_1280 {
                      font-size: 14px;

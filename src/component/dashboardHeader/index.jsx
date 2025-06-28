@@ -1,19 +1,26 @@
+import React, { useEffect, useState, useRef } from 'react'
 import { Search } from '@mui/icons-material'
-import React from 'react'
 import { BellIcon } from '../../icons/icons'
 import imageMap from '../../utils/helpers'
 import './dashboardHeader.scss'
-import { useSelector,useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+
 const DashboardHeader = () => {
-       const { name } = useSelector((state) => state.auth);
-       const  profile  = useSelector((state) => state.auth);
-       console.log(profile)
+    const { name } = useSelector((state) => state.auth);
+    const profile = useSelector((state) => state.auth);
+
     return (
         <div className='dashboard-header'>
             <div className='first-section'>
                 <div className='search-box'>
                     <Search />
-                    <input type='text' placeholder='Search everything' />
+                    <input
+                        type='text'
+                        placeholder='Search everything'
+                       
+                    />
+
+
                 </div>
                 <div className='notification'>
                     <button type='button' className='bell border-0 bg-transparent'><BellIcon /></button>
@@ -25,7 +32,7 @@ const DashboardHeader = () => {
                     <span> {status}</span>
                 </div>
                 <div className='profile'>
-                    <img src={imageMap['user-icon.png']} alt='profile'/>
+                    <img src={imageMap['user-icon.png']} alt='profile' />
                 </div>
             </div>
         </div>

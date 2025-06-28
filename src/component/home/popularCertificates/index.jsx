@@ -112,7 +112,8 @@ const PopularCertifictes = () => {
     };
 
     const handlePageChange = (e, category) => {
-        navigate(`${baseUrl}products?category=${category.id}?name=${category.name}`)
+        e.preventDefault()
+        navigate(`${baseUrl}products?category=${category.id}&name=${category.name}`)
     }
 
     return (

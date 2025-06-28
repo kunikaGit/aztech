@@ -8,7 +8,7 @@ import Dashboardplans from '../../component/dashboard/dashboardplans'
 import Dashbordtable from '../../component/dashboard/dashbordtable'
 import DashbordtableTwo from '../../component/dashboard/dashbordtable2'
 
-import { UserIcon } from '../../icons/icons'
+import { CalenderIcon, UserIcon } from '../../icons/icons'
 import { useNavigate } from 'react-router-dom';
 import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
@@ -40,26 +40,43 @@ const Dashboard = () => {
     return (<>Loading...</>)
   }
 
+  const formatDateTime = (isoString) => {
+    const date = new Date(isoString);
+    return date.toLocaleString("en-GB", {
+      day: "2-digit",
+      month: "short", // or "2-digit"
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true, // set to false for 24-hour format
+    });
+  };
+
   return (
     <div className='dahboard-wrapped'>
       <div className='header-flex'>
         <h2 className='main-title'>Welcome {data.name} 👋</h2>
         <div className='box theme-card'>
-          <UserIcon />
+          <CalenderIcon />
+          {data.activationDate && <span>{formatDateTime(data.
+            activationDate)}</span>}
+          |
+          <span className='blue'><UserIcon /></span>
           {data.status == 'active' ? <span>{data.remainingDays} Days Left</span> : <span>Inactive User</span>}
         </div>
       </div>
-      <ActivityCard data={{ totalVisitedFromPackage: data.totalVisitedFromPackage, totalotherPurchases: data.totalotherPurchases, totalDownline: data.totalDownline, totalReferal: data.totalReferal, referralEarning: parseFloat(data.referralEarningBalance).toFixed(2) }}/>
+      <ActivityCard data={{ totalVisitedFromPackage: data.totalVisitedFromPackage, totalotherPurchases: data.totalotherPurchases, totalDownline: data.totalDownline, totalReferal: data.totalReferal, referralEarning: parseFloat(data.referralEarningBalance).toFixed(2) }} />
       <DasboardCards data={data.graphs} />
       <WalletCards data={data.balance} />
       <Dashboardplans data={data.plans} />
       {/* <Radarcharts data={{ totalVisitedFromPackage: data.totalVisitedFromPackage, totalotherPurchases: data.totalotherPurchases, totalDownline: data.totalDownline, totalReferal: data.totalReferal, referralEarning: parseFloat(data.referralEarningBalance).toFixed(2) }} /> */}
       <div className='flex-two-grid'>
         <div className='left-side'>
-            <Dashbordtable data={data.referralTable} />
+          <Dashbordtable data={data.referralTable} />
         </div>
-          <div className='right-side'>
-            <DashbordtableTwo data={data.referralEarning} /></div>
+        <div className='right-side'>
+          <DashbordtableTwo data={data.referralEarning} /></div>
       </div>
     </div>
   )

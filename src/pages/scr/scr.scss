@@ -1,0 +1,44 @@
+// .src-table{
+//     .basic-table{
+//         table{
+//             border: 1px solid rgba(98, 102, 121, 0.3254901961);
+//             margin-bottom: 20px;
+//             tr{
+//                 th,td{
+//                     padding: 15px;
+//                     // border: 1px solid rgba(98, 102, 121, 0.3254901961); //open this if want to border in columd
+//                 }
+//             }
+//         }
+//     }
+// }
+
+.src-table {
+  .basic-table {
+    display: flex;
+    justify-content: center; // ✅ centers the table horizontally
+
+    table {
+      border: 1px solid rgba(98, 102, 121, 0.325);
+      margin-bottom: 20px;
+      border-collapse: collapse;
+
+      tr {
+        th,
+        td {
+          padding: 15px;
+          white-space: nowrap; // ✅ prevents text from wrapping
+          text-align: center;   // ✅ centers content inside cells
+          // border: 1px solid rgba(98, 102, 121, 0.325); // optional column borders
+        }
+
+        td:nth-child(2) {
+          max-width: 300px;    // ✅ optional: control how wide the long text column can be
+          white-space: nowrap; // ✅ don't wrap
+          overflow: hidden;
+          text-overflow: ellipsis; // ✅ adds "..." if it overflows
+        }
+      }
+    }
+  }
+}

@@ -68,8 +68,10 @@
         .sub-heading {
             font-size: 24px;
             font-weight: 600;
-            margin-bottom: 40px;
             color: #004aab;
+            @include media_1280 {
+                    font-size: 20px;
+                }
         }
 
         .slick-slide {

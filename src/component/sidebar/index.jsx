@@ -1,5 +1,5 @@
 import React from 'react'
-import { BookIcon, DashboardIcon, HelpIcon, NetworkIcon, ProfileIcon, SettingIcon, TransactionIcon, StarIcon, Logout, GameIcon, PackageIcon, LogoutIcon } from '../../icons/icons'
+import { BookIcon, DashboardIcon, HelpIcon, NetworkIcon, ProfileIcon, SettingIcon, TransactionIcon, StarIcon, Logout, GameIcon, PackageIcon, LogoutIcon ,RewardIcon} from '../../icons/icons'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import './sidebar.scss';
 import { logout } from "../../redux/slice/authSlice";
@@ -40,7 +40,7 @@ const Sidebar = () => {
                         <NetworkIcon /> Network</Link></li>
                     <li>
                         <Link to={`${baseUrl}myaccount/scr`} className={location.pathname.includes('/scr') ? 'active' : ''}>
-                            <NetworkIcon /> SCR</Link>
+                            <RewardIcon /> SCR</Link>
                     </li>
                     <li><Link to={`${baseUrl}myaccount/profile`} className={location.pathname.includes('/profile') ? 'active' : ''}>
                         <ProfileIcon /> Profile</Link></li>

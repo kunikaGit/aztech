@@ -9,6 +9,7 @@ import {
 import Mainlayout from '../mainlayout';
 import DashboardOutlet from '../pages/dashboardOutlet';
 import AutoLogoutHandler from "./autoLogoutHeader"
+import { CommingSoon } from '../component';
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
 const RoutesMain = () => {
@@ -34,7 +35,7 @@ const RoutesMain = () => {
 
         {/* ----------Inner Dashboard pages-------------- */}
         <Route path={`${baseUrl}myaccount`} element={<DashboardOutlet />}>
-          <Route path={`${baseUrl}myaccount/mall`} element={<Myplans />} />
+          <Route path={`${baseUrl}myaccount/mall`} element={<CommingSoon />} />
           <Route path={`${baseUrl}myaccount/packages`} element={<Packages />} />
 
           <Route path={`${baseUrl}myaccount/dashboard`} element={<Dashboard />} />

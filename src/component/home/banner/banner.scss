@@ -195,21 +195,13 @@
                     background-color: var(--white-color);
                 }
             }
-
-            // .label {
-            //     font-weight: 500;
-            //     font-size: 22px;
-            //     color: var(--blue-color);
-            // }
             .label {
                 font-size: 24px;
                 font-weight: bold;
-                position: relative;
                 background: linear-gradient(to right, #0ff, #1A73E8, #0ff);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 animation: shimmer 5s infinite linear;
-
                 @include media_1280 {
                     font-size: 20px;
                 }
@@ -302,3 +294,5 @@
         }
     }
 }
+
+

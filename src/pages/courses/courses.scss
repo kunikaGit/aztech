@@ -1,8 +1,17 @@
 @use '../../assets/scss/mixin.scss' as *;
 
 .courses-wrapped {
+    .search-header{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 20px;
+        .blue-btn{
+            border-radius: 50px;
+        }
+    }
  .searchbox{
-        margin-bottom: 30px;
+        margin-bottom: 0;
         input{
             border-color: var(--blue-color);
         }

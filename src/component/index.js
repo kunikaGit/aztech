@@ -6,11 +6,9 @@ export { default as OnlineCourse } from "./home/onlineCourse";
 export { default as Chooseplan } from "./home/chooseplan";
 export { default as TrustedPrtner } from "./home/trustedPartner";
 export { default as HomeServices } from "./home/homeServices";
-
-
+export { default as CommingSoon } from "./common/commingSoon";
 
 //dahsboard
-export { default as Welcome } from "./dashboard/welcome";
 export { default as Dahboardtable } from "./dashboard/dahboardtable";
 
 //about us

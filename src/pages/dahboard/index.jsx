@@ -13,10 +13,14 @@ import { useNavigate } from 'react-router-dom';
 import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
 import ActivityCard from '../../component/dashboard/activityCards'
+import Modal from 'react-bootstrap/Modal';
 const Dashboard = () => {
   const { fetchData } = useApiRequest();
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [data, setData] = useState(null)
 
   useEffect(() => {
@@ -57,14 +61,25 @@ const Dashboard = () => {
     <div className='dahboard-wrapped'>
       <div className='header-flex'>
         <h2 className='main-title'>Welcome {data.name} 👋</h2>
-        <div className='box theme-card'>
-          <CalenderIcon />
-          {data.activationDate && <span>{formatDateTime(data.
-            activationDate)}</span>}
-          |
+        <div className='box theme-card' onClick={() => handleShow()} style={{ cursor: 'pointer' }}>
+
           <span className='blue'><UserIcon /></span>
           {data.status == 'active' ? <span>{data.remainingDays} Days Left</span> : <span>Inactive User</span>}
         </div>
+        <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+          centered
+          className='joining-modal'
+        >
+           <Modal.Header closeButton></Modal.Header>
+          <div className='content'>
+            <h3>Joining Data</h3>
+            {data.activationDate && <span> <CalenderIcon /> {formatDateTime(data.activationDate)}</span>}
+          </div>
+        </Modal>
       </div>
       <ActivityCard data={{ totalVisitedFromPackage: data.totalVisitedFromPackage, totalotherPurchases: data.totalotherPurchases, totalDownline: data.totalDownline, totalReferal: data.totalReferal, referralEarning: parseFloat(data.referralEarningBalance).toFixed(2) }} />
       <DasboardCards data={data.graphs} />

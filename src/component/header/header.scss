@@ -75,7 +75,6 @@
   input {
     width: 100%;
     padding: 8px 32px;
-    border-radius: 8px;
     border: 1px solid #ccc;
     font-family: "Poppins";
     background: #fff;
@@ -90,7 +89,7 @@
   background: #ffffff !important; // ✅ force solid white
   border: 1px solid #ddd;
   border-radius: 8px;
-  z-index: 9999; // ✅ appear above everything
+  z-index: 1200; 
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   padding: 10px;
 }

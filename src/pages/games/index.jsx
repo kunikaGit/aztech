@@ -45,7 +45,7 @@ const Games = () => {
 
     ])
 
-    const gameArray = ["https://html5.gamemonetize.co/ghsqbsab3s37q5x2gk5k54w6shwl4i5f/", "https://html5.gamemonetize.co/8sttq4hfxsvoveqhy43cp39updyjcs48/", "https://html5.gamemonetize.co/6afbjlwlbhxw5d3diva2y8qcq12paknn/", "https://html5.gamemonetize.co/2phx77hb3rbyjwskesu03phcv7d8d8k4/", "https://html5.gamemonetize.co/mlj93g4er4ynh1smd4fm0c0ecbuygg68/", "https://html5.gamemonetize.co/if45nr0axy9o1wlasn2cwo0u04r1i59z/", "https://html5.gamemonetize.co/wtv21hm84crp7qcztjsvkl5tuxa1uwzk/", "https://html5.gamemonetize.co/r85hwpgbjc07uasm61ypwqqd6fgq40fr/", "https://html5.gamemonetize.co/747rmx6lgnjk5zl63keg5fz24wz5ge4v/", "https://html5.gamemonetize.co/i0otyw47jtfd4u20u8cwxtuzq8vxjlia/", "https://html5.gamemonetize.co/kzgs6w7m9a6oipotviw3o2mclc0b0zxk/", "https://html5.gamemonetize.co/xeb0zdlwn0qpzwl2e9wbwqajdy15ho23/", "https://html5.gamemonetize.co/gisd00oq9kft4npyvub4v2ibqrp3x98j/", "https://html5.gamemonetize.co/1q6swhq95j9i4olu3luuea72ocg1ornl/", "https://html5.gamemonetize.co/h8381esputdzb7w30swugmh9aufj4lrz/", "https://html5.gamemonetize.co/30dx8hml6r4cfbx0bj341mfnaqnkkrrm/", "https://html5.gamemonetize.co/6jn2zmjsqtxy1e6dwju2346nhggg3h3h/", "https://html5.gamemonetize.co/2fv0ll1x7y0tpbax9wv27skdijx8nxs1/", "https://html5.gamemonetize.co/h31mj5h9t2r0imhvrmwf3xelw5nw2vjf/", "https://html5.gamemonetize.co/4fhv9bnnvkkv8xi4k1a5hl5res510tw5/", "https://html5.gamemonetize.co/0bjxllp6iiy7ygc1qgwwt5lnsnr741ia/", "https://html5.gamemonetize.co/5gv5nhrtgk7s57iddr7kxnxneuxugiya/", "https://html5.gamemonetize.co/wp9o3vgbgwsitkvnnit9emgdmxecn3jw/", "https://html5.gamemonetize.co/0fgyb9jvnyq1g35j2sz3aehyjabxvy2e/"]
+    const [gameArray, setGameArray] = useState(["https://html5.gamemonetize.co/ghsqbsab3s37q5x2gk5k54w6shwl4i5f/", "https://html5.gamemonetize.co/8sttq4hfxsvoveqhy43cp39updyjcs48/", "https://html5.gamemonetize.co/6afbjlwlbhxw5d3diva2y8qcq12paknn/", "https://html5.gamemonetize.co/2phx77hb3rbyjwskesu03phcv7d8d8k4/", "https://html5.gamemonetize.co/mlj93g4er4ynh1smd4fm0c0ecbuygg68/", "https://html5.gamemonetize.co/if45nr0axy9o1wlasn2cwo0u04r1i59z/", "https://html5.gamemonetize.co/wtv21hm84crp7qcztjsvkl5tuxa1uwzk/", "https://html5.gamemonetize.co/r85hwpgbjc07uasm61ypwqqd6fgq40fr/", "https://html5.gamemonetize.co/747rmx6lgnjk5zl63keg5fz24wz5ge4v/", "https://html5.gamemonetize.co/i0otyw47jtfd4u20u8cwxtuzq8vxjlia/", "https://html5.gamemonetize.co/kzgs6w7m9a6oipotviw3o2mclc0b0zxk/", "https://html5.gamemonetize.co/xeb0zdlwn0qpzwl2e9wbwqajdy15ho23/", "https://html5.gamemonetize.co/gisd00oq9kft4npyvub4v2ibqrp3x98j/", "https://html5.gamemonetize.co/1q6swhq95j9i4olu3luuea72ocg1ornl/", "https://html5.gamemonetize.co/h8381esputdzb7w30swugmh9aufj4lrz/", "https://html5.gamemonetize.co/30dx8hml6r4cfbx0bj341mfnaqnkkrrm/", "https://html5.gamemonetize.co/6jn2zmjsqtxy1e6dwju2346nhggg3h3h/", "https://html5.gamemonetize.co/2fv0ll1x7y0tpbax9wv27skdijx8nxs1/", "https://html5.gamemonetize.co/h31mj5h9t2r0imhvrmwf3xelw5nw2vjf/", "https://html5.gamemonetize.co/4fhv9bnnvkkv8xi4k1a5hl5res510tw5/", "https://html5.gamemonetize.co/0bjxllp6iiy7ygc1qgwwt5lnsnr741ia/", "https://html5.gamemonetize.co/5gv5nhrtgk7s57iddr7kxnxneuxugiya/", "https://html5.gamemonetize.co/wp9o3vgbgwsitkvnnit9emgdmxecn3jw/", "https://html5.gamemonetize.co/0fgyb9jvnyq1g35j2sz3aehyjabxvy2e/"])
 
     useEffect(() => {
         // callApi()
@@ -77,11 +77,16 @@ const Games = () => {
         navigate(`${baseUrl}login`);
     }
 
-    const handleGame = (e, gamelink) => {
+    const handleGame = (e, gamelink, index) => {
         e.preventDefault()
-    if (gamelink) {
-        window.open(gamelink, '_blank', 'noopener,noreferrer');
-    }
+
+        const shuffled = [...gameArray].sort(() => 0.5 - Math.random());
+        console.log(shuffled)
+        let gameLink = shuffled[index]
+        setGameArray(shuffled)
+        if (gameLink) {
+            window.open(gameLink, '_blank', 'noopener,noreferrer');
+        }
     }
     return (
         <div className='games-wrapped'>
@@ -138,8 +143,8 @@ const Games = () => {
                     
                             <p>{item.title}</p>
                         </div>))} */}
-                    {gameArray.map((item) => (
-                        <div className='border-card' onClick={e => { handleGame(e, item) }}>
+                    {gameArray.map((item, index) => (
+                        <div className='border-card' onClick={e => { handleGame(e, item, index) }}>
 
                             <img src={`https://az-file-uploads.s3.eu-west-1.amazonaws.com/surprise-game.png`} />
 

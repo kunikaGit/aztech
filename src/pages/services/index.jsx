@@ -171,6 +171,7 @@ const Services = () => {
                                 <img src={`${category.icon}`} alt='icon' />
                             </div>
                             <div className='content'>
+                                {console.log(`(${category.product_count})`,auth_token)}
                                 {category.product_count ?
                                     <h3>{category.name} { auth_token ? `(${category.product_count})`:""}</h3>
                                     :

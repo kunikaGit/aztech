@@ -50,4 +50,6 @@ export const API_ENDPOINTS = {
 
         scrDetails:"/scr/",
     referralRules:"/scr/referral-rules",
+
+    submitHelp:"/help/"
 }

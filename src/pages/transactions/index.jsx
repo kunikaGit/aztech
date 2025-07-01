@@ -6,18 +6,30 @@ import { DeleteOutline } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
+import WalletCards from '../../component/dashboard/walletCards';
 const Transactions = () => {
     const ITEMS_PER_PAGE = 10;
     const [currentPage, setCurrentPage] = useState(1);
 
     const navigate = useNavigate();
     const [list, setList] = useState([])
-    useEffect(() => {
-        callApi()
-    }, []);
+    const [walletData, setWalletData] = useState(null)
+ 
 
     const { fetchData } = useApiRequest();
 
+    
+      const fetchWalletBalance = async () => {
+        try {
+          let res = await fetchData(API_ENDPOINTS?.dashboard, navigate, 'GET', {});
+    
+          if (res.success) {
+            setWalletData(res.data)
+          }
+        } catch (error) {
+          console.log(error)
+        }
+      }
     const callApi = async () => {
         try {
 
@@ -30,6 +42,10 @@ const Transactions = () => {
             console.log(error)
         }
     }
+   useEffect(() => {
+        callApi()
+        fetchWalletBalance()
+    }, []);
 
     const formatDateTime = (isoString) => {
         const date = new Date(isoString);
@@ -67,6 +83,8 @@ const Transactions = () => {
                     <li><Link to='/#'>Day</Link></li>
                 </ul> */}
             </div>
+      <WalletCards data={walletData?.balance} />
+
             <div className='table-container'>
                 <table>
                     <thead>

@@ -4,12 +4,15 @@ import {
   Checkout, Courses, Dashboard, Home, Login, Myplans, MyProfile, Networks,
   ProductDetail, Signup, Transactions, SuccessStatus, FailedStatus, AboutUs, Services, Packages, Games,
   Help,
-  ScrTable
+  ScrTable,
+  TermsContions,
+  PrivacyPolicy,
+  Faq
 } from '../pages';
 import Mainlayout from '../mainlayout';
 import DashboardOutlet from '../pages/dashboardOutlet';
 import AutoLogoutHandler from "./autoLogoutHeader"
-import { CommingSoon } from '../component';
+import { CommingSoon} from '../component';
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
 const RoutesMain = () => {
@@ -23,10 +26,13 @@ const RoutesMain = () => {
         <Route path={`${baseUrl}success`} element={<SuccessStatus />} />
         <Route path={`${baseUrl}failed`} element={<FailedStatus />} />
         <Route path={`${baseUrl}`} element={<Home />} />
-          <Route path={`${baseUrl}myaccount/games`} element={<Games />} />
+        <Route path={`${baseUrl}myaccount/games`} element={<Games />} />
 
         {/* -----------Outer pages--------- */}
         <Route path={`${baseUrl}`} element={<Mainlayout />}>
+          <Route path={`${baseUrl}terms-condition`} element={<TermsContions />} />
+          <Route path={`${baseUrl}privacy-policy`} element={<PrivacyPolicy />} />
+          <Route path={`${baseUrl}faq`} element={<Faq />} />
           <Route path={`${baseUrl}products`} element={<Courses />} />
           <Route path={`${baseUrl}detail`} element={<ProductDetail />} />
           <Route path={`${baseUrl}about-us`} element={<AboutUs />} />

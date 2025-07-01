@@ -1,0 +1,36 @@
+
+@use "../../assets/scss/mixin.scss" as *;
+
+.terms_condition{
+    padding: 50px 0 ;
+    h1{
+        font-size: 30px;
+        margin-bottom: 10px;
+        text-align: center;
+        font-weight: 600;
+    }
+    h3{
+        font-size: 20px;
+        font-weight: 500;
+        color: #001428;
+        margin-bottom: 15px;
+        margin-top: 40px;
+        @include media_768 {
+            font-size: 16px;
+             margin-bottom: 10px;
+            margin-top: 20px;
+        }
+    }
+    p{
+        color: #808080;
+        font-size: 16px;
+        margin-bottom: 10px;
+        a{
+            color: #02B1F4;
+        }
+        @include media_768 {
+            font-size: 12px;
+             margin-bottom: 15px;
+        }
+    }
+}

@@ -15,7 +15,9 @@ export { default as AboutUs } from "./aboutus";
 export { default as Services } from "./services";
 export { default as ScrTable } from "./scr";
 export { default as Packages } from "./package/index";
-
+export { default as TermsContions } from "./contentPages/termsConditions";
+export { default as PrivacyPolicy } from "./contentPages/privacyPolicy";
+export { default as Faq } from "./faq";
 
 
 export { default as Games } from "./games";

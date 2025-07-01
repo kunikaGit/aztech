@@ -1,6 +1,7 @@
 import React from 'react';
 import './footer.scss';
 import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 const baseUrl = import.meta.env.VITE_BASE_URL;
 const Footer = () => {
   return (
@@ -23,7 +24,9 @@ const Footer = () => {
               <li><a href="#">Home</a></li>
               <li><a href="#">About Us</a></li>
               <li><a href="#">Services</a></li>
-              <li><a href="#">Blog</a></li>
+              <li><Link to={`${baseUrl}terms-condition`}>Terms and Conditions</Link></li>
+              <li><Link to={`${baseUrl}privacy-policy`}>Privacy Policy</Link></li>
+              <li><Link to={`${baseUrl}faq`}>FAQ</Link></li>
             </ul>
           </div>
 

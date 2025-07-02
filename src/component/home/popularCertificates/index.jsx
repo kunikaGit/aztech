@@ -171,7 +171,7 @@ const PopularCertifictes = () => {
                                                         <h3 className='des'>{item.instructor_description}</h3>
                                                     </div>
                                                 </div>}
-                                            <button type='button'>${item.price}</button>
+                                            <button onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)} type='button'>View</button>
                                         </div>
                                     </div>
                                 </div>
@@ -222,7 +222,7 @@ const PopularCertifictes = () => {
                                                         <h3 className='des'>{item.instructor_description}</h3>
                                                     </div>
                                                 </div>}
-                                            <button type='button'>${item.price}</button>
+                                            <button onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)} type='button'>View</button>
                                         </div>
                                     </div>
                                 </div>
@@ -274,7 +274,7 @@ const PopularCertifictes = () => {
                                                     <h3 className='des'>{item.instructor_description}</h3>
                                                 </div>
                                             </div>}
-                                        <button type='button'>${item.price}</button>
+                                        <button onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)} type='button'>View</button>
                                     </div>
                                 </div>
                             </div>

@@ -61,7 +61,7 @@ const Dashboard = () => {
     <div className='dahboard-wrapped'>
       <div className='header-flex'>
         <h2 className='main-title'>Welcome {data.name} 👋</h2>
-        <div className='box theme-card' onClick={() => handleShow()} style={{ cursor: 'pointer' }}>
+        <div className='box theme-card' onClick={() =>data.status == 'active'? handleShow():""} style={{ cursor: 'pointer' }}>
 
           <span className='blue'><UserIcon /></span>
           {data.status == 'active' ? <span>{data.remainingDays} Days Left</span> : <span>Inactive User</span>}

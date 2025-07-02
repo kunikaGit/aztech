@@ -172,11 +172,15 @@ const ProductDetail = () => {
                             </div>
                         </div>
                         <div className='price-chart'>
+                            {list[0].plan_name==0?
                             <h2>$ {list[0].discount_percentage > 0 ? list[0].price - ((list[0].price * list[0].discount_percentage) / 100) : list[0].price}</h2>
+                            :
+                            <h2>Plan - {list[0].plan_name}</h2>}
+                            {list[0].plan_name==0 &&
                             <div className='price'>
                                 $ {list[0].price}
                                 <div className='discount'>{list[0].discount_percentage > 0 ? `${list[0].discount_percentage}% Off` : 'No discount available'}</div>
-                            </div>
+                            </div>}
                             <div className='action-btn'>
                                 <button type='button' className='outlined' onClick={(e) => handleCallOpen(e)}>{auth_token ? plan_id >= list[0].plan_included ? "Open" : "Upgrade Now" : "Buy Now"}</button>
                             </div>

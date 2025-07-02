@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import imageMap from '../../utils/helpers'
 import { DeleteOutline } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
-import { EditIcon } from '../../icons/icons'
+import { EditIcon,UserIcon } from '../../icons/icons'
 import { red } from '@mui/material/colors';
 import { useNavigate } from 'react-router-dom';
 import useApiRequest from "../../hook/useApiRequest";
@@ -99,7 +99,7 @@ const Networks = () => {
                                 <tr key={index} className={`custom-row borders-${index % 3}`} >
                                     <td>
                                         <div className='profile d-flex align-items-center gap-2'>
-                                            <div className='image'><img src={`https://static-00.iconduck.com/assets.00/user-icon-1024x1024-dtzturco.png`} alt='Profile' /></div>
+                                            <div className='image'><UserIcon /></div>
                                             <div className='info'>
                                                 <h3>{user.name}</h3>
                                                 <p>{user.surname}</p>

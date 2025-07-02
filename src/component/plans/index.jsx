@@ -29,7 +29,6 @@ const Plans = () => {
         let res = await fetchData(API_ENDPOINTS.dashboard, navigate, 'GET', {});
         if (res.success) {
           setData(res.data.plans)
-          console.log(res.data.plans)
 
         }
       } else {

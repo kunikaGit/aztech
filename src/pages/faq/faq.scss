@@ -1,0 +1,90 @@
+@use '../../assets/scss/mixin.scss' as *;
+
+
+.question {
+padding: 50px 0;
+
+    .accordion {
+        width: 60%;
+        margin-top: 40px;
+        @include media_768{
+            margin-top: 20px;
+         }
+        h2{
+            margin-bottom: 0;
+        }
+        .accordion-button{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            background: transparent;
+            font-size: 18px;
+            padding: 18px 24px;
+            border-radius: 4px;
+            font-weight: 500;
+            border: 1px solid #E4E7E9;
+            text-align: left;
+            box-shadow: none;
+            color: var(--heading-color);
+            &::after{
+                content: none;
+            }
+
+            @include media_1024{
+               font-size: 16px;
+                 padding: 14px 18px;
+            }
+            @include media_991{
+                font-size: 14px;
+                  padding: 12px 10px;
+             }
+               .icon_close{
+                    display: block;
+                }
+                .icon_open{
+                    display: none;
+                }
+             
+            &.collapsed{
+                .icon_close{
+                    display: none;
+                }
+                .icon_open{
+                    display: block;
+                }
+            }
+        }
+
+        .accordion-item {
+            margin-bottom: 20px;
+            border-radius: 4px;
+            @include media_991{
+               margin-bottom: 12px;
+             }
+            .text_14{
+                font-weight: 400;
+            }
+            .accordion-body{
+                padding: 20px;
+                border: 1px solid #E4E7E9;
+                border-top: none;
+                border-radius: 0 0 4px 4px ;
+                @include media_991{
+                    font-size: var(--Font_12);
+                      padding:15px;
+                 }
+
+            }
+            &.active {
+                // box-shadow: 0px 8px 40px 0px #0000001F;
+                .accordion-button{
+                    background-color: var(--blue-color);
+                    color: var(--white-color);
+                    border-radius: 4px 4px 0 0;
+                }
+   
+            }
+
+        }
+    }
+}

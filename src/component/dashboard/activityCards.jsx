@@ -38,7 +38,7 @@ const ActivityCard = ({data}) => {
             </div>
             <div className='content'>
                 <h3>245</h3>
-                <p>Game Plan</p>
+                <p>Game Plan Earnings</p>
             </div>
         </div>
 
@@ -48,7 +48,7 @@ const ActivityCard = ({data}) => {
             </div>
             <div className='content'>
                 <h3>$25,000</h3>
-                <p>Total Purchase</p>
+                <p>Mall Purchase</p>
             </div>
         </div>
           

@@ -14,7 +14,13 @@ import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
 import ActivityCard from '../../component/dashboard/activityCards'
 import Modal from 'react-bootstrap/Modal';
+import { useDispatch, useSelector } from "react-redux";
+
 const Dashboard = () => {
+
+    const {  plan_id, status } = useSelector((state) => state.auth);
+  const dispatch = useDispatch(); // ❗Must be inside a React component
+
   const { fetchData } = useApiRequest();
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
@@ -23,6 +29,15 @@ const Dashboard = () => {
   const handleShow = () => setShow(true);
   const [data, setData] = useState(null)
 
+  const callUpdateRedux =async(newstatus,newPlanId)=>{
+// dispatch(updateUserPlanInfo({
+//     status: newstatus,
+//     plan_id: newPlanId
+//   }));
+
+ localStorage.setItem("status", newstatus);
+  localStorage.setItem("plan_id", newPlanId);
+}
   useEffect(() => {
     callApi()
   }, []);
@@ -33,7 +48,9 @@ const Dashboard = () => {
 
       if (res.success) {
         setData(res.data)
-        console.log(res.data)
+        if(res.data.planId!=plan_id || res.data.status!=status ){
+          callUpdateRedux(res.data.status,res.data.planId)
+        }
       }
     } catch (error) {
       console.log(error)
@@ -43,6 +60,7 @@ const Dashboard = () => {
   if (!data) {
     return (<>Loading...</>)
   }
+
 
   const formatDateTime = (isoString) => {
     const date = new Date(isoString);

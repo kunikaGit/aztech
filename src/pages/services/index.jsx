@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useCallback } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import imageMap from '../../utils/helpers'
 import './services.scss';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -24,36 +24,36 @@ const Services = () => {
     const [list, setList] = useState([]);
     const [planId, setPlanId] = useState('')
     const [planName, setPlanName] = useState('')
-  const [searchTerm, setSearchTerm] = useState('');
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         callApi()
     }, [plan_Id]);
 
 
-     // Debounced API call function (wait 500ms after user stops typing)
-  const debouncedSearch = useCallback(
-    debounce(async (query) => {
-      if (!query.trim()) {
-        // Optionally clear or handle empty search
-        console.log('Empty search - no API call');
-        return;
-      }
+    // Debounced API call function (wait 500ms after user stops typing)
+    const debouncedSearch = useCallback(
+        debounce(async (query) => {
+            if (!query.trim()) {
+                // Optionally clear or handle empty search
+                console.log('Empty search - no API call');
+                return;
+            }
 
-      callApi(query)
-       }, 500),
-    []
-  );
+            callApi(query)
+        }, 500),
+        []
+    );
 
     // Cleanup debounce on unmount
-  useEffect(() => {
-    return () => {
-      debouncedSearch.cancel();
-    };
-  }, [debouncedSearch]);
+    useEffect(() => {
+        return () => {
+            debouncedSearch.cancel();
+        };
+    }, [debouncedSearch]);
 
 
-    const callApi = async (query=null) => {
+    const callApi = async (query = null) => {
         try {
 
 
@@ -96,7 +96,7 @@ const Services = () => {
         e.preventDefault();
         if (auth_token) {
             let type = 1
-            if (plan_id < plan.id) {
+            if (plan_id < plan) {
                 type = 2
             }
             navigate(`${baseUrl}myaccount/checkout`, { state: { product: plan, type } });
@@ -105,19 +105,19 @@ const Services = () => {
         navigate(`${baseUrl}login`)
     };
 
-        // Handle input change
-      const handleChange = (e) => {
+    // Handle input change
+    const handleChange = (e) => {
         const value = e.target.value;
         setSearchTerm(value);
         debouncedSearch(value);
-      };
-    
-      // Cleanup debounce on unmount
-      useEffect(() => {
+    };
+
+    // Cleanup debounce on unmount
+    useEffect(() => {
         return () => {
-          debouncedSearch.cancel();
+            debouncedSearch.cancel();
         };
-      }, [debouncedSearch]);
+    }, [debouncedSearch]);
     return (
         <div className='services-wrapped'>
             <div className='two-grid'>
@@ -133,25 +133,25 @@ const Services = () => {
                 </div>
             </div>
             {plan_Id && plan_id && (plan_id < plan_Id) &&
-                <div className='header-card d-flex justify-content-between'>
-                    <h2>Upgrade to {planName}</h2>
-                    <button type='button' className='blue-btn' onClick={(e) => { handleCheckout(e, planId) }} >Process to checkout</button>
-                </div>
-            }
+                    <div className='header-card d-flex justify-content-between'>
+                        <h2>Upgrade to {planName}</h2>
+                        <button type='button' className='blue-btn' onClick={(e) => { handleCheckout(e, planId) }} >Process to checkout</button>
+                    </div>
+                }
 
-            {(plan_Id && !plan_id) &&
-                <div className='header-card d-flex justify-content-between'>
-                    <h2>Get {planName} Plan</h2>
-                    <button type='button' className='blue-btn' onClick={(e) => { handleCheckout(e, planId) }}>Process to checkout</button>
-                </div>
-            }
+                {(plan_Id && !plan_id) &&
+                    <div className='header-card d-flex justify-content-between'>
+                        <h2>Get {planName} Plan</h2>
+                        <button type='button' className='blue-btn' onClick={(e) => { handleCheckout(e, planId) }} >Process to checkout</button>
+                    </div>
+                }
             <div className='searchbox'>
                 <div className='search-icon'><Search color="#ccc" /></div>
-                 <input  placeholder="Search"
-        name="search"
-        value={searchTerm}
-        onChange={handleChange}
-        autoComplete="off" />
+                <input placeholder="Search"
+                    name="search"
+                    value={searchTerm}
+                    onChange={handleChange}
+                    autoComplete="off" />
             </div>
             <div className='service-cards-wrapped'>
                 {loading ?
@@ -171,9 +171,8 @@ const Services = () => {
                                 <img src={`${category.icon}`} alt='icon' />
                             </div>
                             <div className='content'>
-                                {console.log(`(${category.product_count})`,auth_token)}
                                 {category.product_count ?
-                                    <h3>{category.name} { auth_token ? `(${category.product_count})`:""}</h3>
+                                    <h3>{category.name} {auth_token ? `(${category.product_count})` : ""}</h3>
                                     :
                                     <h3>{category.name} </h3>}
                                 <p>{category.description}</p>

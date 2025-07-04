@@ -51,6 +51,10 @@ const authSlice = createSlice({
       state.auth_token = null; // clear token from redux
       localStorage.clear();
     },    
+     updateUserPlanInfo(state, action) {
+    state.status = action.payload.status;
+    state.plan_id = action.payload.plan_id;
+  }
   },
 
   extraReducers: (builder) => {
@@ -76,6 +80,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout, isloginSuccess } = authSlice.actions;
+export const { logout, isloginSuccess,updateUserPlanInfo } = authSlice.actions;
 
 export default authSlice;

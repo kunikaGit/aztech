@@ -20,7 +20,7 @@ export const API_ENDPOINTS = {
     previewProduct:"/products/preview",
 
     searchHome:"/products/searchHome",
-
+    landingPageDetails:"/content/landing-page-details",
 
 
     planwise:"/products/planwise",

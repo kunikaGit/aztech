@@ -62,6 +62,9 @@ const Plans = () => {
       }
       navigate(`${baseUrl}myaccount/checkout`, { state: { product: plan, type } });
       return
+    }else{
+    navigate(`${baseUrl}login`);
+
     }
 
     //navigate(`${baseUrl}login`);

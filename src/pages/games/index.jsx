@@ -88,13 +88,30 @@ const Games = () => {
             window.open(gameLink, '_blank', 'noopener,noreferrer');
         }
     }
+
+    const handleBack = (e) => {
+        e.preventDefault()
+        navigate(`${baseUrl}myaccount/dashboard`)
+    }
+
     return (
         <div className='games-wrapped'>
+
             <div className='vdo-section'>
+            
                 <video autoPlay muted loop playsInline className='background-video'>
                     <source src={`https://az-file-uploads.s3.eu-west-1.amazonaws.com/game-video.mp4`} type="video/mp4" />
                 </video>
+
+
                 <section className='main-content'>
+                <button
+                    className='part-btn dashboard-nav-btn btn-small'
+                    style={{ position: 'fixed', top: 24, left: 24, zIndex: 1000, padding: '4px 12px', fontSize: '0.85rem', minHeight: 'unset', minWidth: 'unset' }}
+                    onClick={(e) => handleBack(e)}
+                >
+                    {'< Dashboard'}
+                </button>
                     <h2 className='highlighted-text-shadow'>WIN 2X AND MORE WITH AZ TECH</h2>
                     <h3 className='para'>AZ Tech Provides you amazing opportunity to<br /> learn , win and grow</h3>
                     {/* <button onClick={(e) => { handleParticipate(e) }} className='part-btn mb-5'>Participate Now</button> */}
@@ -121,7 +138,7 @@ const Games = () => {
                     </h4>
 
                     <div className='note'>
-                        <p><b>Note :</b> The $50 reward isn’t a question of 'if' — only 'when'. Play your part in AZ, and see it happen faster</p>
+                        <p><b>Note :</b> The $50 reward isn't a question of 'if' — only 'when'. Play your part in AZ, and see it happen faster</p>
                     </div>
                 </section>
             </div>

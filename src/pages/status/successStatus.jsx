@@ -14,11 +14,12 @@ const SuccessStatus = () => {
       let data = location.state?.txHash
       await updateStatusApi(1, data);
       setTimeout(() => {
-        navigate(`${baseUrl}`);
+        navigate(`${baseUrl}myaccount/dashboard`);
       }, 2000);
     }, 3000);
 
     return () => clearTimeout(timeout);
+
   }, []);
 
   const { fetchData } = useApiRequest();

@@ -7,7 +7,8 @@ import {
   ScrTable,
   TermsContions,
   PrivacyPolicy,
-  Faq
+  Faq,
+  Quiz,Settings
 } from '../pages';
 import Mainlayout from '../mainlayout';
 import DashboardOutlet from '../pages/dashboardOutlet';
@@ -37,6 +38,7 @@ const RoutesMain = () => {
           <Route path={`${baseUrl}detail`} element={<ProductDetail />} />
           <Route path={`${baseUrl}about-us`} element={<AboutUs />} />
           <Route path={`${baseUrl}services`} element={<Services />} />
+          <Route path={`${baseUrl}quiz`} element={<Quiz />} />
         </Route>
 
         {/* ----------Inner Dashboard pages-------------- */}
@@ -51,6 +53,7 @@ const RoutesMain = () => {
           <Route path={`${baseUrl}myaccount/checkout`} element={<Checkout />} />
           <Route path={`${baseUrl}myaccount/profile`} element={<MyProfile />} />
           <Route path={`${baseUrl}myaccount/help`} element={<Help />} />
+          <Route path={`${baseUrl}myaccount/settings`} element={<Settings />} />
         </Route>
       </Routes>
     </>

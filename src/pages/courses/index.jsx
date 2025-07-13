@@ -28,6 +28,12 @@ const Courses = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [list1, setList1] = useState([]);
 
+    // Pagination state
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const [totalItems, setTotalItems] = useState(0);
+    const [pageSize, setPageSize] = useState(9);
+
     const [planId, setPlanId] = useState('')
     const [planName, setPlanName] = useState('')
 
@@ -36,7 +42,7 @@ const Courses = () => {
     const [pageDependancy, setPageDependancy] = useState(false)
     useEffect(() => {
         callApi()
-    }, [plan_Id, pageDependancy]);
+    }, [plan_Id, pageDependancy, currentPage]);
 
     // Debounced API call function (wait 500ms after user stops typing)
     const debouncedSearch = useCallback(
@@ -62,34 +68,60 @@ const Courses = () => {
 
     const callApi = async (query = null) => {
         try {
-
             setPlanId(plan_Id)
             setPlanName(plan_name)
+            
             if (plan_Id) {
-                let res1 = await fetchData(`${API_ENDPOINTS.productsCategoryPlanwise}?plan_id=${plan_Id}&category_id=${category_id}&search=${query}`, navigate, 'GET', {});
+                let res1 = await fetchData(
+                    `${API_ENDPOINTS.productsCategoryPlanwise}?plan_id=${plan_Id}&category_id=${category_id}&search=${query || ''}&page_number=${currentPage}&limit=${pageSize}`, 
+                    navigate, 
+                    'GET', 
+                    {}
+                );
                 if (res1.success) {
                     setList1(res1.data.list)
+                    setTotalPages(res1.data.total_pages || 1)
+                    setTotalItems(res1.data.total || 0)
                 }
                 return
             }
 
             if (category_id) {
-
-                let res1 = await fetchData(`${API_ENDPOINTS.categorywise2}?id=${category_id}&search=${query}`, navigate, 'GET', {});
+                let res1 = await fetchData(
+                    `${API_ENDPOINTS.categorywise2}?id=${category_id}&search=${query || ''}&page_number=${currentPage}&limit=${pageSize}`, 
+                    navigate, 
+                    'GET', 
+                    {}
+                );
                 if (res1.success) {
                     setList1(res1.data)
                     setPlanId("")
                     setCategoryId(category_id)
                     setPlanName("")
+                    // Handle pagination data from category response
+                    if (res1.data[0].total_pages) {
+                        setTotalPages(res1.data[0].total_pages)
+                        setTotalItems(res1.data[0].total || 0)
+                    }
                 }
                 return
             }
 
-            let res1 = await fetchData(`${API_ENDPOINTS.categorywise2}?id=&search=${query}`, navigate, 'GET', {});
+            let res1 = await fetchData(
+                `${API_ENDPOINTS.categorywise2}?id=&search=${query || ''}&page_number=${currentPage}&limit=${pageSize}`, 
+                navigate, 
+                'GET', 
+                {}
+            );
             if (res1.success) {
                 setList1(res1.data)
                 setPlanId("")
                 setPlanName("")
+                // Handle pagination data from category response
+                if (res1.data.total_pages) {
+                    setTotalPages(res1.data.total_pages)
+                    setTotalItems(res1.data.total || 0)
+                }
             }
         } catch (error) {
             console.log(error)
@@ -109,7 +141,6 @@ const Courses = () => {
         navigate(`${baseUrl}login`)
     };
 
-
     const handlePageChange = (e, category) => {
         e.preventDefault()
         navigate(`${baseUrl}products?category=${category.id}&name=${category.name}`)
@@ -120,12 +151,72 @@ const Courses = () => {
     const handleChange = (e) => {
         const value = e.target.value;
         setSearchTerm(value);
+        setCurrentPage(1); // Reset to first page when searching
         debouncedSearch(value);
     };
-    const handleReset  = () =>{
+    
+    const handleReset = () => {
         setSearchTerm('')
+        setCurrentPage(1); // Reset to first page when resetting
         callApi()
     }
+
+    // Pagination handlers
+    const handlePageClick = (pageNumber) => {
+        setCurrentPage(pageNumber);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const handlePreviousPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    };
+
+    const handleNextPage = () => {
+        if (currentPage < totalPages) {
+            setCurrentPage(currentPage + 1);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    };
+
+    // Generate page numbers for pagination
+    const generatePageNumbers = () => {
+        const pages = [];
+        const maxVisiblePages = 5;
+        
+        if (totalPages <= maxVisiblePages) {
+            for (let i = 1; i <= totalPages; i++) {
+                pages.push(i);
+            }
+        } else {
+            if (currentPage <= 3) {
+                for (let i = 1; i <= 4; i++) {
+                    pages.push(i);
+                }
+                pages.push('...');
+                pages.push(totalPages);
+            } else if (currentPage >= totalPages - 2) {
+                pages.push(1);
+                pages.push('...');
+                for (let i = totalPages - 3; i <= totalPages; i++) {
+                    pages.push(i);
+                }
+            } else {
+                pages.push(1);
+                pages.push('...');
+                for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+                    pages.push(i);
+                }
+                pages.push('...');
+                pages.push(totalPages);
+            }
+        }
+        
+        return pages;
+    };
+
     // Cleanup debounce on unmount
     useEffect(() => {
         return () => {
@@ -343,7 +434,9 @@ const Courses = () => {
                     <Row className='mb-5'>
                         {[...Array(3)].map((_, index) => (
                             <Col md={4} key={index}>
-                                <ShimmerPostItem card title text cta imageType="thumbnail" />
+                                <Col md={4} key={index}>
+                                    <ShimmerPostItem card title text cta imageType="thumbnail" />
+                                </Col>
                             </Col>
                         ))}
                     </Row>
@@ -396,6 +489,45 @@ const Courses = () => {
                             ))}
                         </div>
                     </>}
+
+                {/* Pagination Component */}
+                {totalPages > 1 && (
+                    <div className='pagination-container'>
+                        <div className='pagination-info'>
+                            <span>Showing {((currentPage - 1) * pageSize) + 1} to {Math.min(currentPage * pageSize, totalItems)} of {totalItems} results</span>
+                        </div>
+                        <div className='pagination-controls'>
+                            <button 
+                                className={`pagination-btn ${currentPage === 1 ? 'disabled' : ''}`}
+                                onClick={handlePreviousPage}
+                                disabled={currentPage === 1}
+                            >
+                                Previous
+                            </button>
+                            
+                            <div className='page-numbers'>
+                                {generatePageNumbers().map((page, index) => (
+                                    <button
+                                        key={index}
+                                        className={`page-number ${page === currentPage ? 'active' : ''} ${page === '...' ? 'ellipsis' : ''}`}
+                                        onClick={() => page !== '...' && handlePageClick(page)}
+                                        disabled={page === '...'}
+                                    >
+                                        {page}
+                                    </button>
+                                ))}
+                            </div>
+                            
+                            <button 
+                                className={`pagination-btn ${currentPage === totalPages ? 'disabled' : ''}`}
+                                onClick={handleNextPage}
+                                disabled={currentPage === totalPages}
+                            >
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                )}
             </div >
         </>
     )

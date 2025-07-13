@@ -8,6 +8,7 @@ export { default as Dashboard } from "./dahboard";
 export { default as Transactions } from "./transactions";
 export { default as Networks } from "./networks";
 export { default as MyProfile } from "./profile";
+export { default as Settings } from "./settings";
 export { default as Checkout } from "./checkout";
 export { default as SuccessStatus } from "./status/successStatus";
 export { default as FailedStatus } from "./status/failedStatus";
@@ -18,7 +19,7 @@ export { default as Packages } from "./package/index";
 export { default as TermsContions } from "./contentPages/termsConditions";
 export { default as PrivacyPolicy } from "./contentPages/privacyPolicy";
 export { default as Faq } from "./faq";
-
+export { default as Quiz } from "./quiz";
 
 export { default as Games } from "./games";
 export { default as Help } from "./help";

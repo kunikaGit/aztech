@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
@@ -8,13 +8,25 @@ const Help = () => {
     const { fetchData } = useApiRequest();
 
     const [formData, setFormData] = useState({
-        fullName: '',
-        mobile: '',
+        name: '',
+        phone_number: '',
         email: '',
         subject: '',
         message: ''
     });
 
+    const [helpList, setHelpList] = useState([]);
+
+    useEffect(() => {
+        callApi();
+    },[])
+
+    const callApi = async () => {
+        const res = await fetchData(`${API_ENDPOINTS.getHelp}`, navigate, "GET");
+        if (res.success) {
+            setHelpList(res.data);
+        }
+    }
     const [errors, setErrors] = useState({});
 
     const handleChange = (e) => {
@@ -25,7 +37,7 @@ const Help = () => {
     const validate = () => {
         const newErrors = {};
 
-        if (!formData.fullName.trim()) newErrors.fullName = 'Full Name is required.';
+        if (!formData.name.trim()) newErrors.name = 'Full Name is required.';
         if (!formData.email.trim()) {
             newErrors.email = 'Email is required.';
         } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
@@ -57,8 +69,8 @@ const Help = () => {
                 successMsg(res.message)
                 // Reset form
                 setFormData({
-                    fullName: '',
-                    mobile: '',
+                    name: '',
+                    phone_number: '',
                     email: '',
                     subject: '',
                     message: ''
@@ -87,20 +99,20 @@ const Help = () => {
                         <label>Full Name</label>
                         <input
                             type='text'
-                            name='fullName'
-                            value={formData.fullName}
+                            name='name'
+                            value={formData.name}
                             onChange={handleChange}
                             placeholder='Enter full name'
                         />
-                        {errors.fullName && <span className="error">{errors.fullName}</span>}
+                        {errors.name && <span className="error">{errors.name}</span>}
                     </div>
 
                     <div className='input-main-data'>
                         <label>Mobile Number (Optional)</label>
                         <input
                             type='text'
-                            name='mobile'
-                            value={formData.mobile}
+                            name='phone_number'
+                            value={formData.phone_number}
                             onChange={handleChange}
                             placeholder='Phone'
                         />
@@ -148,6 +160,43 @@ const Help = () => {
                     {/* <button type='button' className='cancel' onClick={handleCancel}>Cancel</button> */}
                 </div>
             </form>
+
+            {helpList.length > 0 ? (
+                        <div className='withdraw-history-table'>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>S. No</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Mobile Number</th>
+                                        <th>Subject</th>
+                                        <th>Message</th>
+                                        <th>Replied Message</th>
+                                        <th>Replied At</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {helpList.map((item, index) => (
+                                        <tr key={index}>
+                                            <td style={{ width: '10%' }}>{index + 1}</td>
+                                            <td style={{ width: '10%' }}>{item.name}</td>
+                                            <td style={{ width: '10%' }}>{item.email}</td>
+                                            <td style={{ width: '10%' }}>{item.phone_number==null ? "N/A" : item.phone_number}</td>
+                                            <td style={{ width: '10%' }}>{item.subject}</td>
+                                            <td style={{ width: '10%' }}>{item.message}</td>
+                                            <td style={{ width: '10%' }}>{item.replied_message}</td>
+                                            <td style={{ width: '10%' }}>{item.replied_at==null ? "N/A" : item.replied_at}</td>
+
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    ) : (
+                        ""
+                    )}
         </div>
     );
 };

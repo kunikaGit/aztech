@@ -39,6 +39,8 @@ export const API_ENDPOINTS = {
 
     couponCode: "/payment/apply-coupon-code",
     getProfile: "/profile",
+    getWithdrawCurrencies: "/profile/withdrawal-currencies",
+
     updateProfile: "/profile",
     changePassowrd: "/profile/change-password",
     dashboard: "/profile/dashboard",
@@ -51,5 +53,9 @@ export const API_ENDPOINTS = {
         scrDetails:"/scr/",
     referralRules:"/scr/referral-rules",
 
-    submitHelp:"/help/"
+    livequiz:"/products/live-quiz",
+    submitQuiz:"/products/submit-quiz",
+    getHelp:"/profile/help",
+    submitHelp:"/profile/help"
+
 }

@@ -60,9 +60,18 @@ const ProductDetail = () => {
                 if (plan_id >= list[0].plan_included) {
                     let res = await fetchData(`${API_ENDPOINTS.openProduct}?id=${ids}`, navigate, 'GET', {});
                     if (res.success) {
-                        //window.open(res.data[0].link, '_blank');
+if(list[0].format==='quiz'){
+    window.open(res.data[0].link, '_blank');
+    return
+}
+
+
+                      if(res.data[0].link){
                         setPreviewUrl(res.data[0].link)
-                         setIsModalOpen(true)
+                        setIsModalOpen(true)
+                      }else{
+                        navigate(`${baseUrl}`)
+                      }
                     }
                     return
                 } else {
@@ -160,7 +169,8 @@ const ProductDetail = () => {
                                             ▶️
                                         </div>
                                     </div>
-                                ) : (
+                                ) :list[0].format === "quiz" ? (""):
+                                 (
                                     <img src={`${list[0].main_image}`} alt="preview" />
                                 )}
                             </div>

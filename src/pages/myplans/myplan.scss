@@ -71,8 +71,36 @@
             }
         }
     }
-}
 
+    
+}
+.basic-table {
+    display: flex;
+    justify-content: center; // ✅ centers the table horizontally
+
+    table {
+      border: 1px solid rgba(98, 102, 121, 0.325);
+      margin-bottom: 20px;
+      border-collapse: collapse;
+
+      tr {
+        th,
+        td {
+          padding: 15px;
+          white-space: nowrap; // ✅ prevents text from wrapping
+          text-align: center;   // ✅ centers content inside cells
+          // border: 1px solid rgba(98, 102, 121, 0.325); // optional column borders
+        }
+
+        td:nth-child(2) {
+          max-width: 300px;    // ✅ optional: control how wide the long text column can be
+          white-space: nowrap; // ✅ don't wrap
+          overflow: hidden;
+          text-overflow: ellipsis; // ✅ adds "..." if it overflows
+        }
+      }
+    }
+  }
 .courses-wrapped {
    .two-grid {
         padding: 70px 0;
@@ -158,3 +186,26 @@
       
     }
 }
+
+.withdraw-history-table {
+    margin-top: 40px;
+    h3 { margin-bottom: 16px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      th, td {
+        padding: 12px 10px;
+        border-bottom: 1px solid #eee;
+        text-align: left;
+      }
+      th {
+        background: #f5f7fa;
+        font-weight: 700;
+        color: #3A8BC2;
+      }
+      tr:last-child td { border-bottom: none; }
+    }
+  }

@@ -24,6 +24,11 @@
         justify-content: space-between;
         align-items: center; // vertically center
         margin-bottom: 40px; // same as your previous margin on h3
+         @include media_576 {
+                flex-direction: column;
+                gap: 10px;
+                align-items: start;
+            }
     }
 
     .two-grid {
@@ -35,11 +40,21 @@
 
         .heading {
             width: 50%;
+               @include media_768{
+                    width: 100%;
+                 }
+            img{
+                 @include media_576 {
+                    width: 100%;
+                 }
+            }
         }
 
         .main-content {
             width: 50%;
-
+   @include media_768{
+                    width: 100%;
+                 }
             h2 {
                 font-size: 38px;
                 font-weight: 700;

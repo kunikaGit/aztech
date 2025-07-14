@@ -1,35 +1,40 @@
 @use '../../assets/scss/mixin.scss' as *;
 
 .courses-wrapped {
-    .search-header{
+    .search-header {
         display: flex;
         gap: 10px;
         align-items: center;
         margin-bottom: 20px;
-        .blue-btn{
+
+        .blue-btn {
             border-radius: 50px;
         }
     }
- .searchbox{
+
+    .searchbox {
         margin-bottom: 0;
-        input{
+
+        input {
             border-color: var(--blue-color);
         }
     }
-     .header-card{
+
+    .header-card {
         background-color: #fff;
         padding: 10px 20px;
         border-radius: 10px;
         margin-bottom: 30px;
         align-items: center;
-        h2{
+
+        h2 {
             margin: 0;
             font-size: 24px;
             font-weight: 700;
             color: var(--blue-color);
         }
     }
-    
+
     .two-grid {
         padding: 70px 0;
         gap: 30px;
@@ -39,11 +44,16 @@
 
     .heading {
         width: 50%;
+           @include media_768{
+                    width: 100%;
+                 }
     }
 
     .main-content {
         width: 60%;
-
+ @include media_768{
+                    width: 100%;
+                 }
         h2 {
             font-size: 38px;
             font-weight: 700;
@@ -60,7 +70,7 @@
         }
     }
 
-    
+
 
     .certificate-cards-new {
         background-color: #f4f7faaa;
@@ -68,191 +78,208 @@
         border-radius: 20px;
         margin-bottom: 40px;
 
-                .card-header {
+        .card-header {
             display: flex;
             justify-content: space-between;
             align-items: center; // vertically center
             margin-bottom: 40px; // same as your previous margin on h3
+             @include media_576 {
+                flex-direction: column;
+                gap: 10px;
+                align-items: start;
+            }
         }
+
         .sub-heading {
             font-size: 24px;
             font-weight: 600;
             color: #004aab;
+
             @include media_1280 {
-                    font-size: 20px;
-                }
+                font-size: 20px;
+            }
         }
 
         .slick-slide {
             padding: 0 15px;
+            @include media_576{
+                padding: 0;
+            }
         }
 
         .main-heading {
             margin-bottom: 30px;
         }
 
-      
+
     }
 
-.certificate-cards {
-    &.without-slider{
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-     .card-header {
+    .certificate-cards {
+        &.without-slider {
             display: flex;
-            justify-content: space-between;
-            align-items: center; // vertically center
-            margin-bottom: 40px; // same as your previous margin on h3
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+
+            .card-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center; // vertically center
+                margin-bottom: 40px; // same as your previous margin on h3
+                 @include media_576 {
+                flex-direction: column;
+                gap: 10px;
+                align-items: start;
+            }
+            }
+
+            .cards {
+
+                width: calc(33.33% - 20px)
+            }
         }
-    .cards{
 
-        width: calc(33.33% - 20px)
-    }
     }
 
-}
-
-// Pagination Styles
-.pagination-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin: 40px 0;
-    padding: 20px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
-    .pagination-info {
-        color: #666;
-        font-size: 0.9rem;
-        font-weight: 500;
-    }
-
-    .pagination-controls {
+    // Pagination Styles
+    .pagination-container {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
+        gap: 20px;
+        margin: 40px 0;
+        padding: 20px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
-        .pagination-btn {
-            padding: 8px 16px;
-            border: 2px solid #e0e0e0;
-            background: white;
-            color: #333;
-            border-radius: 8px;
-            cursor: pointer;
+        .pagination-info {
+            color: #666;
+            font-size: 0.9rem;
             font-weight: 500;
-            transition: all 0.3s ease;
-            min-width: 80px;
-
-            &:hover:not(.disabled) {
-                border-color: #3A8BC2;
-                color: #3A8BC2;
-                transform: translateY(-1px);
-            }
-
-            &.disabled {
-                opacity: 0.5;
-                cursor: not-allowed;
-            }
         }
 
-        .page-numbers {
+        .pagination-controls {
             display: flex;
-            gap: 5px;
             align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
 
-            .page-number {
-                padding: 8px 12px;
+            .pagination-btn {
+                padding: 8px 16px;
                 border: 2px solid #e0e0e0;
                 background: white;
                 color: #333;
-                border-radius: 6px;
+                border-radius: 8px;
                 cursor: pointer;
                 font-weight: 500;
                 transition: all 0.3s ease;
-                min-width: 40px;
-                text-align: center;
+                min-width: 80px;
 
-                &:hover:not(.disabled):not(.ellipsis) {
+                &:hover:not(.disabled) {
                     border-color: #3A8BC2;
                     color: #3A8BC2;
                     transform: translateY(-1px);
                 }
 
-                &.active {
-                    background: #3A8BC2;
-                    color: white;
-                    border-color: #3A8BC2;
-                }
-
-                &.ellipsis {
-                    border: none;
-                    background: transparent;
-                    cursor: default;
-                    min-width: auto;
-                    padding: 8px 4px;
-
-                    &:hover {
-                        transform: none;
-                    }
-                }
-
-                &:disabled {
+                &.disabled {
+                    opacity: 0.5;
                     cursor: not-allowed;
                 }
             }
-        }
-    }
-}
-
-// Responsive pagination
-@media (max-width: 768px) {
-    .pagination-container {
-        margin: 20px 0;
-        padding: 15px;
-
-        .pagination-controls {
-            gap: 8px;
-
-            .pagination-btn {
-                padding: 6px 12px;
-                font-size: 0.9rem;
-                min-width: 70px;
-            }
 
             .page-numbers {
-                gap: 3px;
+                display: flex;
+                gap: 5px;
+                align-items: center;
 
                 .page-number {
-                    padding: 6px 8px;
-                    font-size: 0.9rem;
-                    min-width: 35px;
+                    padding: 8px 12px;
+                    border: 2px solid #e0e0e0;
+                    background: white;
+                    color: #333;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                    min-width: 40px;
+                    text-align: center;
+
+                    &:hover:not(.disabled):not(.ellipsis) {
+                        border-color: #3A8BC2;
+                        color: #3A8BC2;
+                        transform: translateY(-1px);
+                    }
+
+                    &.active {
+                        background: #3A8BC2;
+                        color: white;
+                        border-color: #3A8BC2;
+                    }
+
+                    &.ellipsis {
+                        border: none;
+                        background: transparent;
+                        cursor: default;
+                        min-width: auto;
+                        padding: 8px 4px;
+
+                        &:hover {
+                            transform: none;
+                        }
+                    }
+
+                    &:disabled {
+                        cursor: not-allowed;
+                    }
                 }
             }
         }
     }
-}
 
-@media (max-width: 480px) {
-    .pagination-container {
-        .pagination-controls {
-            flex-direction: column;
-            gap: 15px;
+    // Responsive pagination
+    @media (max-width: 768px) {
+        .pagination-container {
+            margin: 20px 0;
+            padding: 15px;
 
-            .page-numbers {
-                order: 2;
-            }
+            .pagination-controls {
+                gap: 8px;
 
-            .pagination-btn {
-                order: 1;
+                .pagination-btn {
+                    padding: 6px 12px;
+                    font-size: 0.9rem;
+                    min-width: 70px;
+                }
+
+                .page-numbers {
+                    gap: 3px;
+
+                    .page-number {
+                        padding: 6px 8px;
+                        font-size: 0.9rem;
+                        min-width: 35px;
+                    }
+                }
             }
         }
     }
-}
+
+    @media (max-width: 480px) {
+        .pagination-container {
+            .pagination-controls {
+                flex-direction: column;
+                gap: 15px;
+
+                .page-numbers {
+                    order: 2;
+                }
+
+                .pagination-btn {
+                    order: 1;
+                }
+            }
+        }
+    }
 }

@@ -145,6 +145,9 @@ section {
 
 	.grid-item {
 		width: 50%;
+		@include media_768 {
+		width: 100%;
+	}
 	}
 }
 
@@ -582,7 +585,10 @@ section {
 				align-items: center;
 				list-style: none;
 				margin-bottom: 15px;
-
+				@include media_576{
+					flex-wrap: wrap;
+					gap: 10px;
+				}
 				li {
 					display: flex;
 					align-items: center;

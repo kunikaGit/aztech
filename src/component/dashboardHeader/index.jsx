@@ -4,22 +4,31 @@ import { BellIcon } from '../../icons/icons'
 import imageMap from '../../utils/helpers'
 import './dashboardHeader.scss'
 import { useSelector, useDispatch } from 'react-redux'
+import Drawer from 'react-modern-drawer'
+import Sidebar from '../sidebar'
+
 
 const DashboardHeader = () => {
     const { name } = useSelector((state) => state.auth);
     const profile = useSelector((state) => state.auth);
+    const [isOpen, setIsOpen] = useState(false)
+    const toggleDrawer = () => {
+        setIsOpen((prevState) => !prevState)
+    }
 
     return (
+        <>
         <div className='dashboard-header'>
+            <button type="button" className="menu-toggle bg-transparent border-0" onClick={toggleDrawer}>
+                <img src={imageMap['menu.svg']} alt="img" />
+            </button>
             <div className='first-section'>
                 <div className='search-box'>
                     <Search />
                     <input
                         type='text'
                         placeholder='Search everything'
-                       
                     />
-
 
                 </div>
                 <div className='notification'>
@@ -36,6 +45,15 @@ const DashboardHeader = () => {
                 </div>
             </div>
         </div>
+            <Drawer
+                open={isOpen}
+                onClose={toggleDrawer}
+                direction='left'
+                className='mobile-menu'
+                style={{ width: "200px" }}>
+                      <Sidebar />
+            </Drawer>
+            </>
     )
 }
 

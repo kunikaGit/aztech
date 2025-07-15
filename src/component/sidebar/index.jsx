@@ -1,5 +1,5 @@
 import React from 'react'
-import { BookIcon, DashboardIcon, HelpIcon, NetworkIcon, ProfileIcon, SettingIcon, TransactionIcon, StarIcon, Logout, GameIcon, PackageIcon, LogoutIcon ,RewardIcon} from '../../icons/icons'
+import { BookIcon, DashboardIcon, HelpIcon, NetworkIcon, ProfileIcon, SettingIcon, TransactionIcon, StarIcon, Logout, GameIcon, PackageIcon, LogoutIcon, RewardIcon } from '../../icons/icons'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import './sidebar.scss';
 import { logout } from "../../redux/slice/authSlice";

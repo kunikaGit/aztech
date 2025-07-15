@@ -62,18 +62,14 @@ const Header = () => {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
-    const handleSearch=(e,path)=>{
+    const handleSearch = (e, path) => {
         e.preventDefault()
-       navigate(`${baseUrl}${path}`)
+        navigate(`${baseUrl}${path}`)
     }
-    return (
-        <header>
-            <div className="header-wrapped">
-                <div className="logo" onClick={() => navigate(`${baseUrl}`)}>
-                    <img src="/test/images/logo-1.png" alt="logo" />
-                    <h2>AZTECH</h2>
-                </div>
-                <div className='searchbox' ref={dropdownRef}>
+
+    const SearchBar = () =>{
+        return(
+             <div className='searchbox' ref={dropdownRef}>
                     <div className='search-icon'><Search color="#ccc" /></div>
                     <input
                         type='text'
@@ -93,7 +89,7 @@ const Header = () => {
                                     {results.products.length > 0 ? (
                                         <ul>
                                             {results.products.map((product) => (
-                                                <li key={product.id} title={product.name} onClick={e=>{handleSearch(e,`detail?prd=${product.id}`)}}>{product.name}</li>
+                                                <li key={product.id} title={product.name} onClick={e => { handleSearch(e, `detail?prd=${product.id}`) }}>{product.name}</li>
                                             ))}
                                         </ul>
                                     ) : (
@@ -109,7 +105,7 @@ const Header = () => {
                                     {results.categories.length > 0 ? (
                                         <ul>
                                             {results.categories.map((cat) => (
-                                                <li key={cat.id} title={cat.name} onClick={e=>{handleSearch(e,`products?category=${cat.id}&${cat.name}`)}}>{cat.name}</li>
+                                                <li key={cat.id} title={cat.name} onClick={e => { handleSearch(e, `products?category=${cat.id}&${cat.name}`) }}>{cat.name}</li>
                                             ))}
                                         </ul>
                                     ) : (
@@ -122,7 +118,19 @@ const Header = () => {
 
 
                 </div>
-
+        )
+    }
+    
+    return (
+        <header>
+            <div className="header-wrapped">
+                <div className="logo" onClick={() => navigate(`${baseUrl}`)}>
+                    <img src="/test/images/logo-1.png" alt="logo" />
+                    <h2>AZTECH</h2>
+                </div>
+                <div className="web-search">
+                <SearchBar/>
+                </div>
                 <div className="menu">
                     <ul>
                         <li><Link to={`${baseUrl}`} className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
@@ -151,6 +159,7 @@ const Header = () => {
                             <h2>AZTECH</h2>
                         </div>
                     </li>
+                    <li><SearchBar/></li>
                     <li><Link to={`${baseUrl}`} className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
                     <li><Link to={`${baseUrl}products`} className={location.pathname === '/products' ? 'active' : ''}>Products</Link></li>
                     <li><Link to={`${baseUrl}services`} className={location.pathname === '/services' ? 'active' : ''}>Services</Link></li>

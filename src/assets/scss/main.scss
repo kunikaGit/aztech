@@ -145,15 +145,20 @@ section {
 
 	.grid-item {
 		width: 50%;
+
 		@include media_768 {
-		width: 100%;
-	}
+			width: 100%;
+		}
 	}
 }
 
 .dashboard-layout-wrapped {
 	display: flex;
-
+	.web-sidebar{
+		@include media_768 {
+			display: none;
+		}
+	}
 	.sidebar-wrapped {
 		width: 200px;
 	}
@@ -164,6 +169,7 @@ section {
 
 		@include media_1280 {
 			padding: 15px;
+			width: 100%;
 		}
 	}
 
@@ -585,10 +591,12 @@ section {
 				align-items: center;
 				list-style: none;
 				margin-bottom: 15px;
-				@include media_576{
+
+				@include media_576 {
 					flex-wrap: wrap;
 					gap: 10px;
 				}
+
 				li {
 					display: flex;
 					align-items: center;
@@ -691,15 +699,23 @@ section {
 .wallet-cards {
 	display: flex;
 	gap: 10px;
-    margin-bottom: 20px;
+	margin-bottom: 20px;
+	flex-wrap: wrap;
+
+	@include media_576 {
+		width: 100%;
+	}
+
 	.theme-card {
 		box-shadow: 0 2px 6px 2px #cccccc7a;
 		background-color: var(--white-color);
 		padding: 15px;
 		border-radius: 15px;
-		.des{
+
+		.des {
 			font-size: 14px;
 		}
+
 		.withdra-btn {
 			background-color: transparent;
 			color: var(--blue-color);
@@ -709,7 +725,8 @@ section {
 			border-radius: 25px;
 			width: 100%;
 			transition: .3s;
-			&:hover{
+
+			&:hover {
 				background-color: var(--blue-color);
 				color: var(--white-color);
 			}
@@ -725,13 +742,23 @@ section {
 	}
 
 	.card-wrapped {
-		width: 25%;
-		.card-content{
-		   display: flex;
-		   justify-content: space-between;
-		   gap: 5px;
+		width: calc(25% - 10px);
 
-	   }
+		@include media_768 {
+			width: calc(50% - 10px);
+		}
+
+		@include media_768 {
+			width:100%;
+		}
+
+		.card-content {
+			display: flex;
+			justify-content: space-between;
+			gap: 5px;
+
+		}
+
 		.icon {
 			height: 70px;
 			width: 70px;

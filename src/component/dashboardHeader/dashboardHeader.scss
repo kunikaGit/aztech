@@ -1,14 +1,24 @@
+@use '../../assets/scss/mixin.scss' as *;
 .dashboard-header{
     display: flex;
     justify-content: space-between;
     align-content: center;
     gap: 75px;
     margin-bottom: 30px;
+    .menu-toggle{
+        display: none;
+          @include media_768{
+        display: block;
+    }
+    }
     .first-section{
         display: flex;
         align-items: center;
         gap: 20px;
         width: 75%;
+        @include media_768{
+            display: none;
+        }
         .search-box{
             background-color: var(--color-ECEFF3);
             border-radius: 200px;

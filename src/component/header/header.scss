@@ -8,9 +8,18 @@
              display: block;
          }
      }
-
+     .web-search{
+        @include media_768{
+            display: none;
+        }
+     }
      .mobile-menu {
          padding: 20px;
+
+         .searchbox {
+             max-width: 100%;
+             width: 100%;
+         }
 
          ul {
              padding: 0;
@@ -68,76 +77,76 @@
          //      display: none;
          //  }
          // }
-.searchbox {
-  position: relative;
-  width: 300px;
+         .searchbox {
+             position: relative;
+             width: 300px;
 
-  input {
-    width: 100%;
-    padding: 8px 32px;
-    border: 1px solid #ccc;
-    font-family: "Poppins";
-    background: #fff;
-    z-index: 1;
-  }
+             input {
+                 width: 100%;
+                 padding: 8px 32px;
+                 border: 1px solid #ccc;
+                 font-family: "Poppins";
+                 background: #fff;
+                 z-index: 1;
+             }
 
-  .search-dropdown {
-  position: absolute;
-  top: 105%;
-  left: 0;
-  width: 100%;
-  background: #ffffff !important; // ✅ force solid white
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  z-index: 1200; 
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-}
+             .search-dropdown {
+                 position: absolute;
+                 top: 105%;
+                 left: 0;
+                 width: 100%;
+                 background: #ffffff !important; // ✅ force solid white
+                 border: 1px solid #ddd;
+                 border-radius: 8px;
+                 z-index: 1200;
+                 box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+                 padding: 10px;
+             }
 
 
-  .section-block {
-    margin-bottom: 12px;
+             .section-block {
+                 margin-bottom: 12px;
 
-    h5 {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 6px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 4px;
-    }
+                 h5 {
+                     font-size: 14px;
+                     font-weight: 600;
+                     margin-bottom: 6px;
+                     border-bottom: 1px solid #eee;
+                     padding-bottom: 4px;
+                 }
 
-    .scroll-list {
-      max-height: 160px;
-      overflow-y: auto;
-      padding-right: 6px;
+                 .scroll-list {
+                     max-height: 160px;
+                     overflow-y: auto;
+                     padding-right: 6px;
 
-      ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
+                     ul {
+                         list-style: none;
+                         margin: 0;
+                         padding: 0;
 
-        li {
-          padding: 6px 0;
-          cursor: pointer;
-          white-space: nowrap; // ✅ FORCE 1 LINE
-          overflow: hidden;
-          text-overflow: ellipsis;
-          transition: background 0.2s;
+                         li {
+                             padding: 6px 0;
+                             cursor: pointer;
+                             white-space: nowrap; // ✅ FORCE 1 LINE
+                             overflow: hidden;
+                             text-overflow: ellipsis;
+                             transition: background 0.2s;
 
-          &:hover {
-            background-color: #f1f1f1;
-          }
-        }
-      }
+                             &:hover {
+                                 background-color: #f1f1f1;
+                             }
+                         }
+                     }
 
-      .no-result {
-        font-size: 13px;
-        color: #888;
-        padding: 6px 0;
-      }
-    }
-  }
-}
+                     .no-result {
+                         font-size: 13px;
+                         color: #888;
+                         padding: 6px 0;
+                     }
+                 }
+             }
+         }
 
 
 

@@ -7,7 +7,9 @@ const DashboardOutlet = () => {
     return (
         <>
             <div className='dashboard-layout-wrapped'>
+                <div className='web-sidebar'>
                 <Sidebar />
+                </div>
                 <div className='dashboard-main'>
                     <DashboardHeader />
                     <Outlet />

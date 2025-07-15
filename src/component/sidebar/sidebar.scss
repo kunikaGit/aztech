@@ -1,9 +1,11 @@
+@use '../../assets/scss/mixin.scss' as *;
 .sidebar-wrapped{
     background-color:var(--white-color);
     height: 100vh;
     padding: 20px 0;
     position: sticky;
     top: 0;
+
     .logo{
         padding: 20px;
         border-bottom: 2px solid #DFE1E7;

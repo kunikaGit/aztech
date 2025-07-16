@@ -20,6 +20,7 @@ const Courses = () => {
 
     const queryParams = new URLSearchParams(location.search);
     const category_id = queryParams.get('category'); // this will be "4" if ?prd=4
+    const subcategory_id = queryParams.get('subcategory'); // this will be "4" if ?prd=4
 
     const plan_Id = queryParams.get('plan'); // <-- Extract plan_id
     const plan_name = queryParams.get('plan_name'); // <-- Extract plan_id
@@ -38,6 +39,8 @@ const Courses = () => {
     const [planName, setPlanName] = useState('')
 
     const [categoryId, setCategoryId] = useState('')
+    const [subcategoryId, setSubCategoryId] = useState('')
+
 
     const [pageDependancy, setPageDependancy] = useState(false)
     useEffect(() => {
@@ -70,14 +73,26 @@ const Courses = () => {
         try {
             setPlanId(plan_Id)
             setPlanName(plan_name)
-            
+            let res1
             if (plan_Id) {
-                let res1 = await fetchData(
-                    `${API_ENDPOINTS.productsCategoryPlanwise}?plan_id=${plan_Id}&category_id=${category_id}&search=${query || ''}&page_number=${currentPage}&limit=${pageSize}`, 
-                    navigate, 
-                    'GET', 
-                    {}
-                );
+
+                if (subcategory_id) {
+                    res1 = await fetchData(
+                        `${API_ENDPOINTS.productsCategoryPlanwise}?plan_id=${plan_Id}&category_id=${category_id}&search=${query || ''}&page_number=${currentPage}&limit=${pageSize}&subcategory_id=${subcategory_id}`,
+                        navigate,
+                        'GET',
+                        {}
+                    );
+                    setSubCategoryId(subcategory_id)
+                } else {
+                    res1 = await fetchData(
+                        `${API_ENDPOINTS.productsCategoryPlanwise}?plan_id=${plan_Id}&category_id=${category_id}&search=${query || ''}&page_number=${currentPage}&limit=${pageSize}`,
+                        navigate,
+                        'GET',
+                        {}
+                    );
+                }
+
                 if (res1.success) {
                     setList1(res1.data.list)
                     setTotalPages(res1.data.total_pages || 1)
@@ -87,10 +102,10 @@ const Courses = () => {
             }
 
             if (category_id) {
-                let res1 = await fetchData(
-                    `${API_ENDPOINTS.categorywise2}?id=${category_id}&search=${query || ''}&page_number=${currentPage}&limit=${pageSize}`, 
-                    navigate, 
-                    'GET', 
+                res1 = await fetchData(
+                    `${API_ENDPOINTS.categorywise2}?id=${category_id}&search=${query || ''}&page_number=${currentPage}&limit=${pageSize}`,
+                    navigate,
+                    'GET',
                     {}
                 );
                 if (res1.success) {
@@ -105,22 +120,41 @@ const Courses = () => {
                     }
                 }
                 return
+            } else if (subcategory_id) {
+                res1 = await fetchData(
+                    `${API_ENDPOINTS.categorywise2}?search=${query || ''}&page_number=${currentPage}&limit=${pageSize}&subcategory_id=${subcategory_id}`,
+                    navigate,
+                    'GET',
+                    {}
+                );
+                if (res1.success) {
+                    setList1(res1.data)
+                    setPlanId("")
+                    setPlanName("")
+                    setSubCategoryId(subcategory_id)
+                    // Handle pagination data from category response
+                    if (res1.data[0].total_pages) {
+                        setTotalPages(res1.data[0].total_pages)
+                        setTotalItems(res1.data[0].total || 0)
+                    }
+                }
+                return
             }
 
-            let res1 = await fetchData(
-                `${API_ENDPOINTS.categorywise2}?id=&search=${query || ''}&page_number=${currentPage}&limit=${pageSize}`, 
-                navigate, 
-                'GET', 
+            let res2 = await fetchData(
+                `${API_ENDPOINTS.categorywise2}?id=&search=${query || ''}&page_number=${currentPage}&limit=${pageSize}`,
+                navigate,
+                'GET',
                 {}
             );
-            if (res1.success) {
-                setList1(res1.data)
+            if (res2.success) {
+                setList1(res2.data)
                 setPlanId("")
                 setPlanName("")
                 // Handle pagination data from category response
-                if (res1.data.total_pages) {
-                    setTotalPages(res1.data.total_pages)
-                    setTotalItems(res1.data.total || 0)
+                if (res2.data.total_pages) {
+                    setTotalPages(res2.data.total_pages)
+                    setTotalItems(res2.data.total || 0)
                 }
             }
         } catch (error) {
@@ -154,7 +188,7 @@ const Courses = () => {
         setCurrentPage(1); // Reset to first page when searching
         debouncedSearch(value);
     };
-    
+
     const handleReset = () => {
         setSearchTerm('')
         setCurrentPage(1); // Reset to first page when resetting
@@ -185,7 +219,7 @@ const Courses = () => {
     const generatePageNumbers = () => {
         const pages = [];
         const maxVisiblePages = 5;
-        
+
         if (totalPages <= maxVisiblePages) {
             for (let i = 1; i <= totalPages; i++) {
                 pages.push(i);
@@ -213,7 +247,7 @@ const Courses = () => {
                 pages.push(totalPages);
             }
         }
-        
+
         return pages;
     };
 
@@ -278,7 +312,7 @@ const Courses = () => {
                         ))}
                     </Row>
                     :
-                    list1?.length > 0 && (!plan_Id) && (!categoryId) &&
+                    list1?.length > 0 && (!plan_Id) && (!categoryId) && (!subcategoryId) &&
                     list1?.map((item, index) => (
                         <div className={`${index % 2 == 0 ? 'certificate-cards-new' : 'certificate-cards-new'} `}>
                             <div className='card-header'>
@@ -379,7 +413,7 @@ const Courses = () => {
                         ))}
                     </Row>
                     :
-                    list1?.length > 0 && (plan_Id) && (!categoryId) &&
+                    list1?.length > 0 && (plan_Id) && (!categoryId) && (!subcategoryId) &&
                     <> <div className=''>
                         {list1[0]?.category_name && <h3 className='sub-heading'>{list1[0]?.category_name}</h3>}
 
@@ -441,9 +475,69 @@ const Courses = () => {
                         ))}
                     </Row>
                     :
-                    list1?.length > 0 && (!plan_Id) && (categoryId) &&
+                    list1?.length > 0 && (!plan_Id) && (categoryId) && (!subcategoryId) &&
                     <> <div className=''>
                         {list1[0]?.name && <h3 className='sub-heading'>{list1[0]?.name}</h3>}
+
+                    </div>
+                        <div className='certificate-cards without-slider'>
+
+
+
+                            {list1[0]?.products?.map((item, index) => (
+
+                                <div className='cards' key={index}>
+
+
+                                    <div className='label-bg'>{item.type_name}</div>
+                                    <div className='img' onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)}><img src={`${item.preview_image}`} /></div>
+                                    <div className='content'>
+                                        <h3 className='title'>{item.name}</h3>
+                                        <p>{item.description}</p>
+
+                                        {item?.keywords.length > 0 && <div className='spc'>
+                                            {item?.keywords.map((keyword) => (<div className='item'>{keyword}</div>))}
+                                        </div>}
+                                        <ul className='p-0 list-content'>
+                                            <li><StarIcon /><b>4.6</b>(480 Review)</li>
+                                            <li><EyeIcon />1,840</li>
+                                            <li><MessageIcon />249</li>
+                                        </ul>
+                                        <div className='card_footer'>
+                                            {item.instructor_name &&
+                                                <div className='d-flex gap-3'>
+                                                    <img src={`${item.instructor_image}`} alt='profile' />
+                                                    <div className='profile-content'>
+                                                        <h3 className='name'>{item.instructor_name}</h3>
+                                                        <h3 className='des'>{item.instructor_description}</h3>
+                                                    </div>
+                                                </div>}
+
+                                            <button type='button' onClick={() => navigate(`${baseUrl}detail?prd=${item.id}`)}>View Now</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            ))}
+                        </div>
+                    </>}
+
+                {loading ?
+                    <Row className='mb-5'>
+                        {[...Array(3)].map((_, index) => (
+                            <Col md={4} key={index}>
+                                <Col md={4} key={index}>
+                                    <ShimmerPostItem card title text cta imageType="thumbnail" />
+                                </Col>
+                            </Col>
+                        ))}
+                    </Row>
+                    :
+                    list1?.length > 0 && (!plan_Id) && (subcategoryId) &&
+                    <> <div className=''>
+                        {list1[0]?.description && <h3 className='sub-heading'>{list1[0]?.description}</h3>}
 
                     </div>
                         <div className='certificate-cards without-slider'>
@@ -497,14 +591,14 @@ const Courses = () => {
                             <span>Showing {((currentPage - 1) * pageSize) + 1} to {Math.min(currentPage * pageSize, totalItems)} of {totalItems} results</span>
                         </div>
                         <div className='pagination-controls'>
-                            <button 
+                            <button
                                 className={`pagination-btn ${currentPage === 1 ? 'disabled' : ''}`}
                                 onClick={handlePreviousPage}
                                 disabled={currentPage === 1}
                             >
                                 Previous
                             </button>
-                            
+
                             <div className='page-numbers'>
                                 {generatePageNumbers().map((page, index) => (
                                     <button
@@ -517,8 +611,8 @@ const Courses = () => {
                                     </button>
                                 ))}
                             </div>
-                            
-                            <button 
+
+                            <button
                                 className={`pagination-btn ${currentPage === totalPages ? 'disabled' : ''}`}
                                 onClick={handleNextPage}
                                 disabled={currentPage === totalPages}

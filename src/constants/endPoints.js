@@ -11,6 +11,8 @@ export const API_ENDPOINTS = {
     plans: "/plan",
     products: "/products",
     categories:"/products/categories",
+    subcategories:"/products/sub-category",
+
     categoriesPlanwise:"/products/categories-plan-wise",
     productsCategoryPlanwise:"/products/products-plan-category-wise",
     categorywise:"/products/categorywise",

@@ -5,6 +5,7 @@
   margin-left: auto;
   position: relative;
   margin-right: 50px;
+  z-index: 1; // Add low z-index to keep it behind search dropdown
 }
 
 .prism {

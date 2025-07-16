@@ -8,7 +8,7 @@ import {
   TermsContions,
   PrivacyPolicy,
   Faq,
-  Quiz,Settings
+  Quiz,Settings,SubCategory
 } from '../pages';
 import Mainlayout from '../mainlayout';
 import DashboardOutlet from '../pages/dashboardOutlet';
@@ -26,6 +26,8 @@ const RoutesMain = () => {
         <Route path={`${baseUrl}signup`} element={<Signup />} />
         <Route path={`${baseUrl}success`} element={<SuccessStatus />} />
         <Route path={`${baseUrl}failed`} element={<FailedStatus />} />
+        <Route path={`${baseUrl}quiz`} element={<Quiz />} />
+
         <Route path={`${baseUrl}`} element={<Home />} />
         <Route path={`${baseUrl}myaccount/games`} element={<Games />} />
 
@@ -38,7 +40,7 @@ const RoutesMain = () => {
           <Route path={`${baseUrl}detail`} element={<ProductDetail />} />
           <Route path={`${baseUrl}about-us`} element={<AboutUs />} />
           <Route path={`${baseUrl}services`} element={<Services />} />
-          <Route path={`${baseUrl}quiz`} element={<Quiz />} />
+          <Route path={`${baseUrl}subcategory`} element={<SubCategory />} />
         </Route>
 
         {/* ----------Inner Dashboard pages-------------- */}

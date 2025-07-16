@@ -71,6 +71,7 @@
 .searchbox {
   position: relative;
   width: 300px;
+  z-index: 9999; // Add high z-index to searchbox container
 
   input {
     width: 100%;
@@ -89,7 +90,7 @@
   background: #ffffff !important; // ✅ force solid white
   border: 1px solid #ddd;
   border-radius: 8px;
-  z-index: 1200; 
+  z-index: 10000; // Increase z-index to be higher than prism animation
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   padding: 10px;
 }

@@ -1,21 +1,44 @@
 @use '../../assets/scss/mixin.scss' as *;
+
 .login-wrapped {
     padding: 80px 0;
+   @include media_768{
+              padding: 10px 0;
+            }
     .two-grid {
         gap: 100px;
-        @include media_768{
-           flex-direction: column-reverse;
+
+        @include media_768 {
+            flex-direction: column;
+            gap: 10px;
         }
+
         .content {
             width: 50%;
-            @include media_768{
+
+            .welcome-content {
+                @include media_768 {
+                    display: none;
+                }
+            }
+
+            @include media_768 {
                 width: 100%;
             }
+
             .logo {
                 margin-bottom: 15px;
                 cursor: pointer;
-                img{
-                    max-width: 150px;
+                display: flex;
+                img {
+                    max-width: 50px;
+
+                    @include media_768 {
+                        margin: auto;
+                        position: absolute;
+                        right: 40px;
+                        top: 45px;
+                    }
                 }
             }
 
@@ -58,36 +81,43 @@
 
         .form {
             width: 50%;
-            @include media_768{
+
+            @include media_768 {
                 width: 100%;
             }
-            form{
+
+            form {
                 background: linear-gradient(180deg, #C2E9FB 0%, #A1C4FD 100%);
                 margin-left: auto;
                 padding: 35px;
                 border-radius: 30px;
-                @include media_768{
+
+                @include media_768 {
                     width: 100%;
-                    padding: 10px;
+                    padding: 20px 10px;
                 }
-                h1{
+
+                h1 {
                     color: #101010;
                     font-size: 36px;
                     margin-bottom: 10px;
                     font-weight: 600;
                 }
-                p{
+
+                p {
                     color: #515151;
                     font-size: 16px;
                     margin-bottom: 20px;
                 }
-                .divide-line{
+
+                .divide-line {
                     margin: 25px 0;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     position: relative;
-                    &::before{
+
+                    &::before {
                         content: '';
                         position: absolute;
                         height: 1px;
@@ -95,7 +125,8 @@
                         width: 35%;
                         left: 0;
                     }
-                    &::after{
+
+                    &::after {
                         content: '';
                         position: absolute;
                         height: 1px;
@@ -103,17 +134,20 @@
                         width: 35%;
                         right: 0;
                     }
-                    span{
+
+                    span {
                         color: #6F6F6F;
                     }
                 }
-                .new-account{
+
+                .new-account {
                     margin: 25px 0;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     position: relative;
-                    &::before{
+
+                    &::before {
                         content: '';
                         position: absolute;
                         height: 1px;
@@ -121,7 +155,8 @@
                         // width: 35%;
                         left: 0;
                     }
-                    &::after{
+
+                    &::after {
                         content: '';
                         position: absolute;
                         height: 1px;
@@ -129,18 +164,22 @@
                         //width: 35%;
                         right: 0;
                     }
-                    span{
+
+                    span {
                         color: #6F6F6F;
                     }
                 }
-                .input-main-data{
+
+                .input-main-data {
                     margin-bottom: 18px;
-                    label{
+
+                    label {
                         color: #101010;
                         font-weight: 500;
                         margin-bottom: 10px;
                     }
                 }
+
                 .input-box {
                     display: block;
                     padding: 12px 16px;
@@ -149,29 +188,34 @@
                     border: 1px solid #8A8A8A;
                     width: 100%;
                     background-color: transparent;
-                    &::placeholder{
+
+                    &::placeholder {
                         font-size: 14px;
                     }
                 }
+
                 .form-footer {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
                     margin-bottom: 30px;
-                    label{
-                        input{
+
+                    label {
+                        input {
                             height: 20px;
                             width: 20px;
                         }
                     }
-                    a{
+
+                    a {
                         color: #101010;
                         font-weight: 500;
                         margin-bottom: 0;
                     }
-                    
+
                 }
-                .blue-btn{
+
+                .blue-btn {
                     width: 100%;
                     border-radius: 30px;
                     padding: 16px;
@@ -180,33 +224,35 @@
         }
     }
 }
-    .password-requirements {
-        margin: 10px 0  ;
-        .requirement-row {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 6px;
-        }
 
-        .requirement {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 13px;
-        }
+.password-requirements {
+    margin: 10px 0;
 
-        .dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        .dot-passed {
-            background-color: green;
-        }
-
-        .dot-not-passed {
-            background-color: red;
-        }
+    .requirement-row {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 6px;
     }
+
+    .requirement {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+    }
+
+    .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    .dot-passed {
+        background-color: green;
+    }
+
+    .dot-not-passed {
+        background-color: red;
+    }
+}

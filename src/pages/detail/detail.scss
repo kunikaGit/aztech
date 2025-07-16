@@ -1,7 +1,13 @@
+@use '../../assets/scss/mixin.scss' as *;
+
 .product-details {
     .two_grid {
         display: flex;
         gap: 30px;
+
+        @include media_768 {
+            flex-direction: column;
+        }
 
         .review {
             display: flex;
@@ -13,15 +19,29 @@
         .content {
             width: 70%;
 
+            @include media_768 {
+                width: 100%;
+            }
+
             .more-details {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 margin-bottom: 30px;
 
+                @include media_768 {
+                    flex-direction: column;
+                    align-items: start;
+                    justify-content: flex-start;
+                }
+
                 .detail-item {
                     display: flex;
                     gap: 50px;
+
+                    @include media_768 {
+                        padding-left: 10px;
+                    }
 
                     .item {
                         p {
@@ -41,6 +61,10 @@
                 .actions {
                     display: flex;
                     gap: 20px;
+
+                    @include media_576 {
+                        gap: 0;
+                    }
 
                     .action-item {
                         display: flex;
@@ -106,6 +130,10 @@
         }
 
         .price-chart {
+            @include media_768 {
+                width: 100%;
+            }
+
             width: 30%;
             background: linear-gradient(180deg, rgba(194, 233, 251, 0.5) 0%, rgba(161, 196, 253, 0.5) 100%);
             border-radius: 8px;
@@ -146,6 +174,10 @@
                     border-radius: 8px;
                     border: 1px solid var(--blue-color);
                     box-shadow: none;
+
+                    @include media_768 {
+                        width: fit-content;
+                    }
 
                     &.field {
                         background-color: var(--blue-color);

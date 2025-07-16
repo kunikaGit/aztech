@@ -187,6 +187,7 @@ const Signup = () => {
               <div className='logo' onClick={()=>navigate(`${baseUrl}`)}>
                 <img src={`${baseUrl}images/logo-big-1.png`} alt='logo' />
               </div>
+               <div className='welcome-content'>
               <div className='heading'>
                 Join <b>AZ Tech</b> – Your Digital Gateway to Learn & Grow 🚀
               </div>
@@ -197,6 +198,7 @@ const Signup = () => {
                   <li>Enjoy time-pass games while staying productive</li>
                   <li>Be part of a growing digital learning community</li>
                 </ul>
+              </div>
               </div>
             </div>
             <div className='form'>

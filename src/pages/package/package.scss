@@ -1,84 +1,5 @@
 @use '../../assets/scss/mixin.scss' as *;
 
-.courses-wrapped {
-
-    .two-grid {
-        padding: 50px 0;
-        gap: 30px;
-        align-items: center;
-        height: 100%;
-    }
-
-    .heading {
-        width: 40%;
-    }
-
-    .main-content {
-        width: 60%;
-
-        h2 {
-            font-size: 38px;
-            font-weight: 700;
-            color: #474747;
-        }
-
-        p {
-            font-size: 18px;
-            color: var(--text-grey);
-        }
-
-        .blue-btn {
-            width: 200px;
-        }
-    }
-
-    .course-listing {
-        .main-heading {
-            margin-bottom: 30px;
-        }
-
-        .certificate-cards {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 50px;
-        }
-
-        .certificate-cards-new {
-            background-color: #f4f7faaa;
-            padding: 20px;
-            border-radius: 20px;
-            margin-bottom: 40px;
-
-            .card-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center; // vertically center
-                margin-bottom: 40px; // same as your previous margin on h3
-            }
-
-            .sub-heading {
-                font-size: 24px;
-                font-weight: 600;
-                color: #004aab;
-
-                @include media_1280 {
-                    font-size: 20px;
-                }
-            }
-
-            .slick-slide {
-                padding: 0 15px;
-            }
-
-            .main-heading {
-                margin-bottom: 30px;
-            }
-
-
-        }
-    }
-}
-
 
 .services-wrapped {
     .card-header {
@@ -86,38 +7,13 @@
         justify-content: space-between;
         align-items: center; // vertically center
         margin-bottom: 40px; // same as your previous margin on h3
+         @include media_576 {
+                flex-direction: column;
+                gap: 10px;
+                align-items: start;
+            }
     }
 
-    .two-grid {
-        padding: 70px 0;
-        gap: 30px;
-        // height: 70vh;
-        align-items: center;
-
-
-        .heading {
-            width: 50%;
-        }
-
-        .main-content {
-            width: 50%;
-
-            h2 {
-                font-size: 38px;
-                font-weight: 700;
-                color: #474747;
-            }
-
-            p {
-                font-size: 18px;
-                color: var(--text-grey);
-            }
-
-            .blue-btn {
-                width: 200px;
-            }
-        }
-    }
 
     .service-cards-wrapped {
         display: flex;

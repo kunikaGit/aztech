@@ -34,11 +34,15 @@
                 width: 400px;
                 height: 50px; // control height
 
+                @include media_576 {
+                    width: 300px;
+                }
+
                 input {
                     width: 100%;
                     border: none;
                     outline: none;
-                    padding: 20px;
+                    padding: 10px 10px;
                     font-size: 12px;
                     font-family: 'Poppins', sans-serif;
 
@@ -75,31 +79,31 @@
             //     }
             // }
 
-              .em {
-    display: inline-block;
-    color: #007BFF; // Blue text
-    background-color: transparent;
-    border: 2px solid #007BFF; // Blue border
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-weight: 600;
-    margin-top: 15px;
-    font-size: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-    text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
+            .em {
+                display: inline-block;
+                color: #007BFF; // Blue text
+                background-color: transparent;
+                border: 2px solid #007BFF; // Blue border
+                padding: 10px 20px;
+                border-radius: 6px;
+                font-weight: 600;
+                margin-top: 15px;
+                font-size: 20px;
+                margin-bottom: 20px;
+                text-align: center;
+                text-decoration: none;
+                transition: background-color 0.3s ease, color 0.3s ease;
 
-    &:hover {
-      background-color: #007BFF;
-      color: #fff; // white text on hover
-    }
+                &:hover {
+                    background-color: #007BFF;
+                    color: #fff; // white text on hover
+                }
 
-    @include media_1280 {
-      font-size: 18px;
-      padding: 8px 16px;
-    }
-  }
+                @include media_1280 {
+                    font-size: 18px;
+                    padding: 8px 16px;
+                }
+            }
 
             .banner-heading {
                 font-size: 35px;
@@ -195,6 +199,7 @@
                     background-color: var(--white-color);
                 }
             }
+
             .label {
                 font-size: 24px;
                 font-weight: bold;
@@ -202,6 +207,7 @@
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 animation: shimmer 5s infinite linear;
+
                 @include media_1280 {
                     font-size: 20px;
                 }
@@ -226,6 +232,10 @@
 
                 @include media_1280 {
                     font-size: 40px;
+                    line-height: 45px;
+                }
+                 @include media_576 {
+                    font-size: 30px;
                     line-height: 45px;
                 }
             }
@@ -294,5 +304,3 @@
         }
     }
 }
-
-

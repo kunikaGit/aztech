@@ -6,7 +6,11 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 35px;
-
+ @include media_576 {
+                flex-direction: column;
+                gap: 10px;
+                align-items: start;
+            }
         .main-heading {
             h2 {
                 margin: 0;
@@ -38,20 +42,32 @@
             justify-content: space-between;
             align-items: center; // vertically center
             margin-bottom: 40px; // same as your previous margin on h3
+
+            @include media_576 {
+                flex-direction: column;
+                gap: 10px;
+                align-items: start;
+            }
         }
 
         .sub-heading {
 
             font-size: 24px;
             font-weight: 600;
-            margin-bottom: 40px;
             color: #004aab;
+
+            @include media_576 {
+                font-size: 20px;
+            }
 
         }
 
         .slick-slide {
             padding: 0 15px;
 
+            @include media_576 {
+                padding: 0;
+            }
         }
     }
 

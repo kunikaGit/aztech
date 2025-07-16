@@ -113,6 +113,7 @@ const Login = () => {
               <div className='logo' onClick={() => navigate(`${baseUrl}`)}>
                 <img src={`${baseUrl}images/logo-big-1.png`} alt='logo' />
               </div>
+              <div className='welcome-content'>
               <div className='heading'>
                 Welcome Back to <b>AZ Tech!</b>👋 
               </div>
@@ -123,6 +124,7 @@ const Login = () => {
                   <li>Unlock your saved courses, eBooks, and tools</li>
                   <li>Secure login to keep your progress safe</li>
                 </ul>
+              </div>
               </div>
             </div>
             <div className='form'>

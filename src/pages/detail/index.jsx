@@ -60,18 +60,18 @@ const ProductDetail = () => {
                 if (plan_id >= list[0].plan_included) {
                     let res = await fetchData(`${API_ENDPOINTS.openProduct}?id=${ids}`, navigate, 'GET', {});
                     if (res.success) {
-if(list[0].format==='quiz'){
-    window.open(res.data[0].link, '_blank');
-    return
-}
+                        if (list[0].format === 'quiz') {
+                            window.open(res.data[0].link, '_blank');
+                            return
+                        }
 
 
-                      if(res.data[0].link){
-                        setPreviewUrl(res.data[0].link)
-                        setIsModalOpen(true)
-                      }else{
-                        navigate(`${baseUrl}`)
-                      }
+                        if (res.data[0].link) {
+                            setPreviewUrl(res.data[0].link)
+                            setIsModalOpen(true)
+                        } else {
+                            navigate(`${baseUrl}`)
+                        }
                     }
                     return
                 } else {
@@ -93,7 +93,7 @@ if(list[0].format==='quiz'){
 
                 if (plan_id >= list[0].plan_included) {
                     let res = await fetchData(`${API_ENDPOINTS.previewProduct}?id=${ids}`, navigate, 'GET', {});
-                  
+
                     if (res.success) {
                         //window.open(res.data[0].link, '_blank');
                         setPreviewUrl(res.data[0].preview_link);
@@ -103,7 +103,7 @@ if(list[0].format==='quiz'){
                     return
                 }
             }
-         //   navigate(`${baseUrl}`)
+            //   navigate(`${baseUrl}`)
 
         } catch (error) {
             console.log(error)
@@ -169,10 +169,10 @@ if(list[0].format==='quiz'){
                                             ▶️
                                         </div>
                                     </div>
-                                ) :list[0].format === "quiz" ? (""):
-                                 (
-                                    <img src={`${list[0].main_image}`} alt="preview" />
-                                )}
+                                ) : list[0].format === "quiz" ? ("") :
+                                    (
+                                        <img src={`${list[0].main_image}`} alt="preview" />
+                                    )}
                             </div>
 
                             <div className='description-box'>
@@ -182,15 +182,15 @@ if(list[0].format==='quiz'){
                             </div>
                         </div>
                         <div className='price-chart'>
-                            {list[0].plan_name==0?
-                            <h2>$ {list[0].discount_percentage > 0 ? list[0].price - ((list[0].price * list[0].discount_percentage) / 100) : list[0].price}</h2>
-                            :
-                            <h2>Plan - {list[0].plan_name}</h2>}
-                            {list[0].plan_name==0 &&
-                            <div className='price'>
-                                $ {list[0].price}
-                                <div className='discount'>{list[0].discount_percentage > 0 ? `${list[0].discount_percentage}% Off` : 'No discount available'}</div>
-                            </div>}
+                            {list[0].plan_name == 0 ?
+                                <h2>$ {list[0].discount_percentage > 0 ? list[0].price - ((list[0].price * list[0].discount_percentage) / 100) : list[0].price}</h2>
+                                :
+                                <h2>Plan - {list[0].plan_name}</h2>}
+                            {list[0].plan_name == 0 &&
+                                <div className='price'>
+                                    $ {list[0].price}
+                                    <div className='discount'>{list[0].discount_percentage > 0 ? `${list[0].discount_percentage}% Off` : 'No discount available'}</div>
+                                </div>}
                             <div className='action-btn'>
                                 <button type='button' className='outlined' onClick={(e) => handleCallOpen(e)}>{auth_token ? plan_id >= list[0].plan_included ? "Open" : "Upgrade Now" : "Buy Now"}</button>
                             </div>

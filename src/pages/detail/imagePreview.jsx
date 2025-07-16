@@ -17,7 +17,7 @@ const PreviewModal = ({ isOpen, onClose, fileUrl, format }) => {
       <button className="close-btn" onClick={onClose}>x</button>
       <div className="preview-content">
       
-        { format === 'ppt' ? (
+        { format == 'ppt' || format == 'pptx' ? (
   <iframe
     src={`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(fileUrl)}`}
     style={{ width: '100%', height: '80vh', border: 'none' }}

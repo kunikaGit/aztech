@@ -14,14 +14,15 @@
             display: none;
         width: 100%;
         }
-        .searchbox {
-            max-width: 100%;
-            width: 100%;
-        }
+
      }
      .mobile-menu {
          padding: 20px;
-
+      .searchbox {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+      }
 
          ul {
              padding: 0;
@@ -74,13 +75,11 @@
          box-shadow: 0px 4px 4px 0px #00000040;
 
 
-        //   .searchbox{
-        //       @include media_768 {
-        //       display: none;
-        //   }
-        //  }
+
          .searchbox {
-             position: relative;
+            position: relative;
+            width: 100%;
+            max-width: 100%;
 
              input {
                  width: 100%;

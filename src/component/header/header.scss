@@ -9,17 +9,19 @@
          }
      }
      .web-search{
+        width: 50%;
         @include media_768{
             display: none;
+        width: 100%;
+        }
+        .searchbox {
+            max-width: 100%;
+            width: 100%;
         }
      }
      .mobile-menu {
          padding: 20px;
 
-         .searchbox {
-             max-width: 100%;
-             width: 100%;
-         }
 
          ul {
              padding: 0;
@@ -79,7 +81,6 @@
         //  }
          .searchbox {
              position: relative;
-             width: 300px;
 
              input {
                  width: 100%;

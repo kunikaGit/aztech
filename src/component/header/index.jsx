@@ -86,9 +86,9 @@ const Header = () => {
                             <div className="section-block">
                                 <h5>Products</h5>
                                 <div className="scroll-list">
-                                    {results.products.length > 0 ? (
+                                    {results?.products.length > 0 ? (
                                         <ul>
-                                            {results.products.map((product) => (
+                                            {results?.products.map((product) => (
                                                 <li key={product.id} title={product.name} onClick={e => { handleSearch(e, `detail?prd=${product.id}`) }}>{product.name}</li>
                                             ))}
                                         </ul>
@@ -102,9 +102,9 @@ const Header = () => {
                             <div className="section-block">
                                 <h5>Services</h5>
                                 <div className="scroll-list">
-                                    {results.categories.length > 0 ? (
+                                    {results?.categories.length > 0 ? (
                                         <ul>
-                                            {results.categories.map((cat) => (
+                                            {results?.categories.map((cat) => (
                                                 <li key={cat.id} title={cat.name} onClick={e => { handleSearch(e, `products?category=${cat.id}&${cat.name}`) }}>{cat.name}</li>
                                             ))}
                                         </ul>

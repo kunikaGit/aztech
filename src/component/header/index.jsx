@@ -67,9 +67,17 @@ const Header = () => {
         navigate(`${baseUrl}${path}`)
     }
 
-    const SearchBar = () =>{
-        return(
-             <div className='searchbox' ref={dropdownRef}>
+
+    
+    return (
+        <header>
+            <div className="header-wrapped">
+                <div className="logo" onClick={() => navigate(`${baseUrl}`)}>
+                    <img src="/test/images/logo-1.png" alt="logo" />
+                    <h2>AZTECH</h2>
+                </div>
+                <div className="web-search">
+                 <div className='searchbox' ref={dropdownRef}>
                     <div className='search-icon'><Search color="#ccc" /></div>
                     <input
                         type='text'
@@ -118,18 +126,6 @@ const Header = () => {
 
 
                 </div>
-        )
-    }
-    
-    return (
-        <header>
-            <div className="header-wrapped">
-                <div className="logo" onClick={() => navigate(`${baseUrl}`)}>
-                    <img src="/test/images/logo-1.png" alt="logo" />
-                    <h2>AZTECH</h2>
-                </div>
-                <div className="web-search">
-                <SearchBar/>
                 </div>
                 <div className="menu">
                     <ul>
@@ -159,7 +155,57 @@ const Header = () => {
                             <h2>AZTECH</h2>
                         </div>
                     </li>
-                    <li><SearchBar/></li>
+                    <li>
+                           <div className='searchbox' ref={dropdownRef}>
+                    <div className='search-icon'><Search color="#ccc" /></div>
+                    <input
+                        type='text'
+                        placeholder='Search everything'
+                        value={query}
+                        onChange={handleChange}
+                        onFocus={() => query && setShowDropdown(true)}
+                    />
+
+                    {/* 🔽 Dropdown Results */}
+                    {showDropdown && (
+                        <div className="search-dropdown">
+                            {/* Products Section */}
+                            <div className="section-block">
+                                <h5>Products</h5>
+                                <div className="scroll-list">
+                                    {results?.products.length > 0 ? (
+                                        <ul>
+                                            {results?.products.map((product) => (
+                                                <li key={product.id} title={product.name} onClick={e => { handleSearch(e, `detail?prd=${product.id}`) }}>{product.name}</li>
+                                            ))}
+                                        </ul>
+                                    ) : (
+                                        <p className="no-result">No Product found</p>
+                                    )}
+                                </div>
+                            </div>
+
+                            {/* Services Section */}
+                            <div className="section-block">
+                                <h5>Services</h5>
+                                <div className="scroll-list">
+                                    {results?.categories.length > 0 ? (
+                                        <ul>
+                                            {results?.categories.map((cat) => (
+                                                <li key={cat.id} title={cat.name} onClick={e => { handleSearch(e, `products?category=${cat.id}&${cat.name}`) }}>{cat.name}</li>
+                                            ))}
+                                        </ul>
+                                    ) : (
+                                        <p className="no-result">No Services found</p>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+
+                </div>
+                    </li>
                     <li><Link to={`${baseUrl}`} className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
                     <li><Link to={`${baseUrl}products`} className={location.pathname === '/products' ? 'active' : ''}>Products</Link></li>
                     <li><Link to={`${baseUrl}services`} className={location.pathname === '/services' ? 'active' : ''}>Services</Link></li>

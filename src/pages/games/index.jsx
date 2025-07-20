@@ -6,8 +6,44 @@ import { API_ENDPOINTS } from "../../constants/endPoints";
 import './games.scss';
 import AZProgress from './azprogres';
 import { useSelector } from "react-redux";
+import Slider from 'react-slick';
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
+var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4   ,
+    initialSlide: 0,
+    arrows: true,
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true
+            }
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                initialSlide: 2
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
+    ]
+};
 
 const Games = () => {
     const { auth_token } = useSelector((state) => state.auth);
@@ -98,20 +134,20 @@ const Games = () => {
         <div className='games-wrapped'>
 
             <div className='vdo-section'>
-            
+
                 <video autoPlay muted loop playsInline className='background-video'>
                     <source src={`https://az-file-uploads.s3.eu-west-1.amazonaws.com/game-video.mp4`} type="video/mp4" />
                 </video>
 
 
                 <section className='main-content'>
-                <button
-                    className='part-btn dashboard-nav-btn btn-small'
-                    style={{ position: 'fixed', top: 24, left: 24, zIndex: 1000, padding: '4px 12px', fontSize: '0.85rem', minHeight: 'unset', minWidth: 'unset' }}
-                    onClick={(e) => handleBack(e)}
-                >
-                    {'< Dashboard'}
-                </button>
+                    <button
+                        className='part-btn dashboard-nav-btn btn-small'
+                        style={{ position: 'fixed', top: 24, left: 24, zIndex: 1000, padding: '4px 12px', fontSize: '0.85rem', minHeight: 'unset', minWidth: 'unset' }}
+                        onClick={(e) => handleBack(e)}
+                    >
+                        {'< Dashboard'}
+                    </button>
                     <h2 className='highlighted-text-shadow'>WIN 2X AND MORE WITH AZ TECH</h2>
                     <h3 className='para'>AZ Tech Provides you amazing opportunity to<br /> learn , win and grow</h3>
                     {/* <button onClick={(e) => { handleParticipate(e) }} className='part-btn mb-5'>Participate Now</button> */}
@@ -162,10 +198,20 @@ const Games = () => {
                         </div>))} */}
                     {gameArray.map((item, index) => (
                         <div className='border-card' onClick={e => { handleGame(e, item, index) }}>
-
                             <img src={`https://az-file-uploads.s3.eu-west-1.amazonaws.com/surprise-game.png`} />
-
                         </div>))}
+                </div>
+
+                 <div className='content'>
+                    <h3 style={{color:'#000'}}> Play free games under az community </h3>
+                </div>
+                <div className='slider-game'>
+                    <Slider {...settings}>
+                        {gameArray.map((item, index) => (
+                            <div className='border-card p-3' onClick={e => { handleGame(e, item, index) }}>
+                                <img src={`https://az-file-uploads.s3.eu-west-1.amazonaws.com/surprise-game.png`} />
+                            </div>))}
+                    </Slider>
                 </div>
             </div>
 

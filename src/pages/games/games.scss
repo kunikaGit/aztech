@@ -166,6 +166,16 @@
         }
     }
 
+    .slider-game{
+        .slick-prev:before, .slick-next:before{
+            color: #ff0cba;
+        }
+        .border-card{
+            img{
+                width: 100%;
+            }
+        }
+    }
 
 
     .content {
@@ -186,7 +196,6 @@
         }
     }
 
-
     .blue-card {
         // background-color: #027CB5;
         background: linear-gradient(to bottom, #050609, rgba(255, 255, 255, 0.444));
@@ -202,7 +211,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
-
+            margin-bottom: 50px;
             .border-card {
                 width: calc(33% - 20px);
                 text-align: center;

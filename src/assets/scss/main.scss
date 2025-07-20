@@ -154,11 +154,13 @@ section {
 
 .dashboard-layout-wrapped {
 	display: flex;
-	.web-sidebar{
+
+	.web-sidebar {
 		@include media_768 {
 			display: none;
 		}
 	}
+
 	.sidebar-wrapped {
 		width: 200px;
 	}
@@ -500,12 +502,18 @@ section {
 	}
 }
 
+
 .landing-page-wrapped {
+	background: url(../../assets/images/bg.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+
 	.hero-section {
-		background-color: #fff;
+		background-color: var(--bg-color);
 		padding: 0;
 		padding-top: 20px;
 		z-index: 0;
+
 		.header-wrapped {
 			margin: 0;
 			background-color: var(--light-color);
@@ -516,7 +524,7 @@ section {
 
 .certificate-cards {
 	.cards {
-		background-color: var(--white-color);
+		background-color: var(--card-color);
 		border-radius: 10px;
 		position: relative;
 
@@ -749,7 +757,7 @@ section {
 		}
 
 		@include media_768 {
-			width:100%;
+			width: 100%;
 		}
 
 		.card-content {
@@ -794,5 +802,12 @@ section {
 			}
 		}
 
+	}
+}
+
+
+.dark-theme {
+	.landing-page-wrapped {
+		background: none;
 	}
 }

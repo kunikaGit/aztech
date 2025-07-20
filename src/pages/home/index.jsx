@@ -3,13 +3,12 @@ import Header from '../../component/header';
 import { Banner, Chooseplan, HomeCategories, HomeServices, OnlineCourse, PopularCertifictes, TrustedPrtner } from '../../component';
 import { Container } from 'react-bootstrap';
 import Footer from '../../component/footer';
-import imageMap from '../../utils/helpers';
 
 
 const Home = () => {
 
   return (
-    <div className='landing-page-wrapped' style={{ background: `url(${imageMap['bg.png']})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
+    <div className='landing-page-wrapped' >
       <section className='hero-section'>
         <Container>
           <Header />

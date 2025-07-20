@@ -118,7 +118,7 @@
         .plan-card {
             background: linear-gradient(147.87deg, #6F4CF3 22.08%, #0EACDC 100.23%);
             color: var(--white-color);
-            width: calc(33.33% - 10px);
+            width: calc(33.33% - 15px);
 
             @include media_576 {
                 width: 100%;

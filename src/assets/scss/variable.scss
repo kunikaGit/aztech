@@ -12,5 +12,17 @@
    --text-grey:#8C8989;
    --color-ECEFF3:#ECEFF3;
    --color-420B23:#420B23;
-   --color-3F4254:#3F4254
+   --color-3F4254:#3F4254;
+
+   --card-color: #FFF;
+   --bg-color:#FFF;
+}
+
+.dark-theme {
+  --black-color: #fff;
+  --white-color: #000;
+  --light-color: #001435;
+
+  --card-color:#181818;
+   --bg-color:#001435;
 }

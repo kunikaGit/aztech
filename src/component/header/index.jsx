@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect, useState, useRef, useContext } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import './header.scss'
 import { UserIcon } from "../../icons/icons";
@@ -9,6 +9,7 @@ import Drawer from 'react-modern-drawer'
 import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
 import debounce from 'lodash.debounce';
+import { ThemeContext } from "../../context/themeContext";
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const Header = () => {
@@ -66,9 +67,10 @@ const Header = () => {
         e.preventDefault()
         navigate(`${baseUrl}${path}`)
     }
+  const { darkMode, toggleTheme } = useContext(ThemeContext);
 
 
-    
+
     return (
         <header>
             <div className="header-wrapped">
@@ -77,55 +79,55 @@ const Header = () => {
                     <h2>AZTECH</h2>
                 </div>
                 <div className="web-search">
-                 <div className='searchbox' ref={dropdownRef}>
-                    <div className='search-icon'><Search color="#ccc" /></div>
-                    <input
-                        type='text'
-                        placeholder='Search everything'
-                        value={query}
-                        onChange={handleChange}
-                        onFocus={() => query && setShowDropdown(true)}
-                    />
+                    <div className='searchbox' ref={dropdownRef}>
+                        <div className='search-icon'><Search color="#ccc" /></div>
+                        <input
+                            type='text'
+                            placeholder='Search everything'
+                            value={query}
+                            onChange={handleChange}
+                            onFocus={() => query && setShowDropdown(true)}
+                        />
 
-                    {/* 🔽 Dropdown Results */}
-                    {showDropdown && (
-                        <div className="search-dropdown">
-                            {/* Products Section */}
-                            <div className="section-block">
-                                <h5>Products</h5>
-                                <div className="scroll-list">
-                                    {results?.products.length > 0 ? (
-                                        <ul>
-                                            {results?.products.map((product) => (
-                                                <li key={product.id} title={product.name} onClick={e => { handleSearch(e, `detail?prd=${product.id}`) }}>{product.name}</li>
-                                            ))}
-                                        </ul>
-                                    ) : (
-                                        <p className="no-result">No Product found</p>
-                                    )}
+                        {/* 🔽 Dropdown Results */}
+                        {showDropdown && (
+                            <div className="search-dropdown">
+                                {/* Products Section */}
+                                <div className="section-block">
+                                    <h5>Products</h5>
+                                    <div className="scroll-list">
+                                        {results?.products.length > 0 ? (
+                                            <ul>
+                                                {results?.products.map((product) => (
+                                                    <li key={product.id} title={product.name} onClick={e => { handleSearch(e, `detail?prd=${product.id}`) }}>{product.name}</li>
+                                                ))}
+                                            </ul>
+                                        ) : (
+                                            <p className="no-result">No Product found</p>
+                                        )}
+                                    </div>
+                                </div>
+
+                                {/* Services Section */}
+                                <div className="section-block">
+                                    <h5>Services</h5>
+                                    <div className="scroll-list">
+                                        {results?.categories.length > 0 ? (
+                                            <ul>
+                                                {results?.categories.map((cat) => (
+                                                    <li key={cat.id} title={cat.name} onClick={e => { handleSearch(e, `products?category=${cat.id}&${cat.name}`) }}>{cat.name}</li>
+                                                ))}
+                                            </ul>
+                                        ) : (
+                                            <p className="no-result">No Services found</p>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
-
-                            {/* Services Section */}
-                            <div className="section-block">
-                                <h5>Services</h5>
-                                <div className="scroll-list">
-                                    {results?.categories.length > 0 ? (
-                                        <ul>
-                                            {results?.categories.map((cat) => (
-                                                <li key={cat.id} title={cat.name} onClick={e => { handleSearch(e, `products?category=${cat.id}&${cat.name}`) }}>{cat.name}</li>
-                                            ))}
-                                        </ul>
-                                    ) : (
-                                        <p className="no-result">No Services found</p>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    )}
+                        )}
 
 
-                </div>
+                    </div>
                 </div>
                 <div className="menu">
                     <ul>
@@ -136,6 +138,9 @@ const Header = () => {
                     <button type="button" className="orange-button" onClick={() => navigate(auth_token ? `${baseUrl}myaccount/dashboard` : `${baseUrl}login`)}>
                         {auth_token ? <span>My Account <UserIcon /></span> : `Login`}
                     </button>
+                    {/* <button className="button" onClick={toggleTheme}>
+                        Switch to {darkMode ? "Light" : "Dark"} Theme
+                    </button> */}
                 </div>
                 <button type="button" className="menu-toggle bg-transparent border-0" onClick={toggleDrawer}>
                     <img src={imageMap['menu.svg']} alt="img" />
@@ -156,55 +161,55 @@ const Header = () => {
                         </div>
                     </li>
                     <li>
-                           <div className='searchbox' ref={dropdownRef}>
-                    <div className='search-icon'><Search color="#ccc" /></div>
-                    <input
-                        type='text'
-                        placeholder='Search everything'
-                        value={query}
-                        onChange={handleChange}
-                        onFocus={() => query && setShowDropdown(true)}
-                    />
+                        <div className='searchbox' ref={dropdownRef}>
+                            <div className='search-icon'><Search color="#ccc" /></div>
+                            <input
+                                type='text'
+                                placeholder='Search everything'
+                                value={query}
+                                onChange={handleChange}
+                                onFocus={() => query && setShowDropdown(true)}
+                            />
 
-                    {/* 🔽 Dropdown Results */}
-                    {showDropdown && (
-                        <div className="search-dropdown">
-                            {/* Products Section */}
-                            <div className="section-block">
-                                <h5>Products</h5>
-                                <div className="scroll-list">
-                                    {results?.products.length > 0 ? (
-                                        <ul>
-                                            {results?.products.map((product) => (
-                                                <li key={product.id} title={product.name} onClick={e => { handleSearch(e, `detail?prd=${product.id}`) }}>{product.name}</li>
-                                            ))}
-                                        </ul>
-                                    ) : (
-                                        <p className="no-result">No Product found</p>
-                                    )}
-                                </div>
-                            </div>
+                            {/* 🔽 Dropdown Results */}
+                            {showDropdown && (
+                                <div className="search-dropdown">
+                                    {/* Products Section */}
+                                    <div className="section-block">
+                                        <h5>Products</h5>
+                                        <div className="scroll-list">
+                                            {results?.products.length > 0 ? (
+                                                <ul>
+                                                    {results?.products.map((product) => (
+                                                        <li key={product.id} title={product.name} onClick={e => { handleSearch(e, `detail?prd=${product.id}`) }}>{product.name}</li>
+                                                    ))}
+                                                </ul>
+                                            ) : (
+                                                <p className="no-result">No Product found</p>
+                                            )}
+                                        </div>
+                                    </div>
 
-                            {/* Services Section */}
-                            <div className="section-block">
-                                <h5>Services</h5>
-                                <div className="scroll-list">
-                                    {results?.categories.length > 0 ? (
-                                        <ul>
-                                            {results?.categories.map((cat) => (
-                                                <li key={cat.id} title={cat.name} onClick={e => { handleSearch(e, `products?category=${cat.id}&${cat.name}`) }}>{cat.name}</li>
-                                            ))}
-                                        </ul>
-                                    ) : (
-                                        <p className="no-result">No Services found</p>
-                                    )}
+                                    {/* Services Section */}
+                                    <div className="section-block">
+                                        <h5>Services</h5>
+                                        <div className="scroll-list">
+                                            {results?.categories.length > 0 ? (
+                                                <ul>
+                                                    {results?.categories.map((cat) => (
+                                                        <li key={cat.id} title={cat.name} onClick={e => { handleSearch(e, `products?category=${cat.id}&${cat.name}`) }}>{cat.name}</li>
+                                                    ))}
+                                                </ul>
+                                            ) : (
+                                                <p className="no-result">No Services found</p>
+                                            )}
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            )}
+
+
                         </div>
-                    )}
-
-
-                </div>
                     </li>
                     <li><Link to={`${baseUrl}`} className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
                     <li><Link to={`${baseUrl}products`} className={location.pathname === '/products' ? 'active' : ''}>Products</Link></li>

@@ -141,8 +141,10 @@ const SubCategory = () => {
                     </div>
                 </div>
                 <div className='main-content'>
-                    <h2>Discover the Ultimate Digital Mall at AZ Tech</h2>
-                    <p>Explore thousands of cutting-edge digital products — from AI tools and creative assets to eBooks, videos, music, and much more. Everything you need to learn, create, and grow is just a click away.</p>
+                    <h2>Explore Curated Collections by Interest and Industry</h2>
+                    <p>Unlock tailored digital experiences with our diverse range of sub-categories — whether you're looking for specific tools, focused learning paths, or niche content. From design and development to education, productivity, and entertainment, each sub-category at AZ Tech is designed to help you discover exactly what you need, faster. Navigate with ease and dive deeper into the digital world that matches your goals.
+
+</p>
                 </div>
             </div>
             {plan_Id && plan_id && (plan_id < plan_Id) &&
@@ -168,11 +170,9 @@ const SubCategory = () => {
             </div>
             {list.length > 0 &&
                 <div className='d-flex justify-content-between'>
-                    {list[0].category_name}
+                   <h5> {list[0].category_name} ({total})</h5>
                 </div>}
-            <div className='total-count'>
-                {total}
-            </div>
+        
             <div className='subcategory-cards-wrapped'>
                 {loading ?
                     <Row className='mb-5 w-100'>

@@ -1,34 +1,40 @@
 @use '../../assets/scss/mixin.scss' as *;
+
 .services-wrapped {
-    .searchbox{
+    .searchbox {
         margin-bottom: 30px;
-        input{
+
+        input {
             border-color: var(--blue-color);
         }
     }
-    .header-card{
+
+    .header-card {
         background-color: #fff;
         padding: 10px 20px;
         border-radius: 10px;
         margin-bottom: 30px;
         align-items: center;
-        h2{
+
+        h2 {
             margin: 0;
             font-size: 24px;
             font-weight: 700;
             color: var(--blue-color);
         }
     }
+
     .card-header {
         display: flex;
         justify-content: space-between;
         align-items: center; // vertically center
         margin-bottom: 40px; // same as your previous margin on h3
-         @include media_576 {
-                flex-direction: column;
-                gap: 10px;
-                align-items: start;
-            }
+
+        @include media_576 {
+            flex-direction: column;
+            gap: 10px;
+            align-items: start;
+        }
     }
 
     .two-grid {
@@ -40,21 +46,25 @@
 
         .heading {
             width: 50%;
-               @include media_768{
+
+            @include media_768 {
+                width: 100%;
+            }
+
+            img {
+                @include media_576 {
                     width: 100%;
-                 }
-            img{
-                 @include media_576 {
-                    width: 100%;
-                 }
+                }
             }
         }
 
         .main-content {
             width: 50%;
-   @include media_768{
-                    width: 100%;
-                 }
+
+            @include media_768 {
+                width: 100%;
+            }
+
             h2 {
                 font-size: 38px;
                 font-weight: 700;
@@ -90,12 +100,15 @@
             box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
             transition: .3s;
             cursor: pointer;
+
             .content {
                 width: 80%;
             }
-@include media_768 {
+
+            @include media_768 {
                 width: 100%;
             }
+
             &:hover {
                 background: linear-gradient(147.87deg, #6F4CF3 22.08%, #0EACDC 100.23%);
                 color: var(--white-color);
@@ -120,19 +133,22 @@
                 justify-content: center;
                 padding: 10px;
                 background-color: #E5EFFF;
-
-                img {
-                    height: 70px;
-                    width: 70px;
-                    object-fit: contain;
-                    /* or object-fit: cover if you want full fit */
-                }
+img {
+        height: 70px;
+        width: 70px;
+        object-fit: contain;
+        /* or object-fit: cover if you want full fit */
+        pointer-events: none;
+        //user-drag: none;
+        -webkit-user-drag: none;
+    }
             }
 
             h3 {
                 font-size: 20px;
                 font-weight: 700;
                 margin-bottom: 10px;
+
                 @include media_1280 {
                     font-size: 18px;
                     margin-bottom: 5px;
@@ -142,7 +158,8 @@
             p {
                 font-size: 16px;
                 margin: 0;
-                 @include media_1280 {
+
+                @include media_1280 {
                     font-size: 14px;
                 }
             }

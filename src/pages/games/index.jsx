@@ -206,7 +206,7 @@ const Games = () => {
                     <h3 className='para'>AZ Tech Provides you amazing opportunity to<br /> learn , win and grow</h3>
                     {/* <button onClick={(e) => { handleParticipate(e) }} className='part-btn mb-5'>Participate Now</button> */}
 
-                    <div className='withdrawal d-flex justify-content-center align-items-center'>
+                    <div className='withdrawal'>
                         <div className='progressbar'>AZ</div>
                         <div className='withdrawal-amount'>
                             <div className='balance'>$2000</div>
@@ -214,7 +214,7 @@ const Games = () => {
                         </div>
                     </div>
 
-                    <div className='withdrawal d-flex justify-content-center align-items-center'>
+                    <div className='withdrawal'>
                         <div className='progressbar'>AZ</div>
                         <div className='withdrawal-amount'>
                             <div className='balance'>Start your AZ 2X game journey with only $25</div>

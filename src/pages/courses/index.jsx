@@ -499,9 +499,7 @@ const Courses = () => {
                             ))}
                         </div>
                     </>}
-
-
-
+                    
                 {loading ?
                     <Row className='mb-5'>
                         {[...Array(3)].map((_, index) => (
@@ -592,9 +590,6 @@ const Courses = () => {
 
                     </div>
                         <div className='certificate-cards without-slider'>
-
-
-
                             {list1[0]?.products?.map((item, index) => (
 
                                 <div className='cards' key={index}>

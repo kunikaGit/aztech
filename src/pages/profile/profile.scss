@@ -5,10 +5,20 @@
         display: flex;
         margin-bottom: 40px;
 
+        @include media_576 {
+            flex-direction: column;
+            gap: 10px;
+        }
+
         .profile-des {
             width: 50%;
             display: flex;
             gap: 30px;
+
+            @include media_576 {
+                width: 100%;
+                gap: 10px;
+            }
 
             .profile-img {
                 width: 110px;
@@ -16,14 +26,19 @@
                 position: relative;
                 border: 1px dashed var(--blue-color);
                 border-radius: 10px;
-                
+
+                @include media_576 {
+                    width: 130px;
+                }
+
                 img {
-                border-radius: 10px;
+                    border-radius: 10px;
                     height: 100%;
                     width: 100%;
                     object-fit: cover;
                 }
-                input{
+
+                input {
                     position: absolute;
                     top: 0;
                     left: 0;
@@ -57,6 +72,10 @@
             align-items: start;
             gap: 20px;
 
+            @include media_576 {
+                width: 100%;
+            }
+
             button {
                 display: flex;
                 align-items: center;
@@ -75,20 +94,31 @@
 
     .profile-form {
         display: flex;
-        column-gap:  30px;
+        column-gap: 30px;
         row-gap: 10px;
         flex-wrap: wrap;
         margin-bottom: 20px;
-    padding: 25px;
-    background-color: #fff;
-    border-radius: 15px;
+        padding: 25px;
+        background-color: #fff;
+        border-radius: 15px;
+
+        @include media_576 {
+            flex-direction: column;
+        }
+
         .input-main-data {
             width: calc(50% - 20px);
-            label{
+
+            @include media_576 {
+                width: 100%!important;
+            }
+
+            label {
                 padding-left: 10px;
                 margin-bottom: 10px;
             }
-            textarea{
+
+            textarea {
                 width: 100%;
                 padding: 15px;
                 border: 1px solid var(--text-grey);
@@ -97,11 +127,11 @@
         }
 
         .error {
-    color: red;
-    font-size: 14px;
-    margin-top: 4px;
-    display: block;
-}
+            color: red;
+            font-size: 14px;
+            margin-top: 4px;
+            display: block;
+        }
     }
 
     .action-btns {
@@ -109,9 +139,11 @@
         align-items: center;
         gap: 20px;
         justify-content: end;
-        button{
+
+        button {
             width: 155px;
         }
+
         .save {
             @include blue-btn(var(--blue-color), var(--white-color), 16px, 10px 20px, 6px);
         }

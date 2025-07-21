@@ -134,8 +134,13 @@
             }
 
             .cards {
-
-                width: calc(33.33% - 20px)
+                width: calc(33.33% - 20px);
+                 @include media_768{
+                    width: 50%;
+                 }
+                 @include media_576 {
+                    width: 100%;
+                 }
             }
         }
 

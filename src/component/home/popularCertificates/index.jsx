@@ -29,7 +29,21 @@ const PopularCertifictes = () => {
     const [categoryName1, setCategoryName1] = useState();
     const [categoryName2, setCategoryName2] = useState();
 
-
+    function getDisplayKeywords(keywords, maxLen = 55) {
+        let display = [];
+        let totalLen = 0;
+        let i = 0;
+        for (; i < keywords.length; i++) {
+            const word = keywords[i];
+            // +2 for comma and space if not first
+            const addLen = (i === 0 ? 0 : 2) + word.length;
+            if (totalLen + addLen > maxLen) break;
+            display.push(word);
+            totalLen += addLen;
+        }
+        const remaining = keywords.length - i;
+        return { display, remaining };
+    }
 
     useEffect(() => {
         callApi()
@@ -154,9 +168,22 @@ const PopularCertifictes = () => {
                                     <div className='content'>
                                         <h3 className='title'>{item.name}</h3>
                                         <p>{item.description}</p>
-                                        <div className='spc'>
-                                            {item.keywords.length > 0 && item.keywords.map((keyword) => (<div className='item'>{keyword}</div>))}
-                                        </div>
+                              
+                                     
+                                            {item?.keywords.length > 0 && (() => {
+                                                        const { display, remaining } = getDisplayKeywords(item.keywords, 55);
+                                                        return (
+                                                            <div className='spc'>
+                                                                {display.map((keyword, idx) => (
+                                                                    <div className='item' key={idx}>{keyword}</div>
+                                                                ))}
+                                                                {remaining > 0 && (
+                                                                    <div className='item more-keywords'>+{remaining} more</div>
+                                                                )}
+                                                            </div>
+                                                        );
+                                                    })()}
+                                      
                                         <ul className='p-0 list-content'>
                                             <li><StarIcon /><b>4.6</b>(480 Review)</li>
                                             <li><EyeIcon />1,840</li>

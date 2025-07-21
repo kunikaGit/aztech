@@ -58,6 +58,8 @@ export const API_ENDPOINTS = {
     livequiz:"/products/live-quiz",
     submitQuiz:"/products/submit-quiz",
     getHelp:"/profile/help",
-    submitHelp:"/profile/help"
+    submitHelp:"/profile/help",
 
+    cashWalletTransactions:"/transactions/transfer-from-cash-wallet",
+    azWalletTransactions:"/transactions/transfer-from-az-wallet",
 }

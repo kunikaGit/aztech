@@ -30,9 +30,9 @@ const Settings = () => {
       let res = await fetchData(API_ENDPOINTS.getWithdrawCurrencies, navigate, 'GET', {});
 
       if (res.success) {
-        
-          setWithdrawCurrencies(res.data)
-        
+
+        setWithdrawCurrencies(res.data)
+
       }
 
 
@@ -83,28 +83,28 @@ const Settings = () => {
     }
   }
 
-   const formatDateTime = (isoString) => {
-        const date = new Date(isoString);
-        return date.toLocaleString("en-GB", {
-            day: "2-digit",
-            month: "short", // or "2-digit"
-            year: "numeric",
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-            hour12: true, // set to false for 24-hour format
-        });
-      }
+  const formatDateTime = (isoString) => {
+    const date = new Date(isoString);
+    return date.toLocaleString("en-GB", {
+      day: "2-digit",
+      month: "short", // or "2-digit"
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true, // set to false for 24-hour format
+    });
+  }
   return (
     <div className='my-plan-wrapped'>
       <div className='dash-heading'>
         <h2>Settings</h2>
         <p>You can add you wallet address by selecting the currency type</p>
       </div>
-      
+
       <form>
         <div className='profile-form'>
-          
+
 
           <div className='input-main-data'>
             <label>Select Currency</label>
@@ -125,7 +125,7 @@ const Settings = () => {
             />
           </div>
 
-         
+
 
           <div className='input-main-data'>
             <label>Wallet Address</label>
@@ -134,7 +134,7 @@ const Settings = () => {
               placeholder='Enter wallet address'
               name='wallet_address'
               value={formData.wallet_address}
-              
+
             />
           </div>
 
@@ -152,31 +152,33 @@ const Settings = () => {
           </div>
         </div>
 
-          <div className='action-btns'>
-            <button type='submit' className='save' onClick={(e) => updateProfile(e)}>Save</button>
-          </div>
-       
+        <div className='action-btns'>
+          <button type='submit' className='save' onClick={(e) => updateProfile(e)}>Save</button>
+        </div>
+
       </form>
 
       <div className="withdraw-history-table">
         <h3>Withdraw Request History</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Currency</th>
-              <th>Amount</th>
-              <th>Status</th>
-              <th>Address</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* Placeholder for history data */}
-            {/* In a real app, you'd fetch this from an API */}
-            {/* For now, we'll just show a message */}
-            <tr><td colSpan={5}>No history found.</td></tr>
-          </tbody>
-        </table>
+        <div className='az-table'>
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Currency</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* Placeholder for history data */}
+              {/* In a real app, you'd fetch this from an API */}
+              {/* For now, we'll just show a message */}
+              <tr><td colSpan={5}>No history found.</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
     </div>

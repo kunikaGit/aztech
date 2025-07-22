@@ -1,3 +1,4 @@
+@use '../../assets/scss/mixin.scss' as *;
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=VT323&display=swap');
 
 .games-wrapped {
@@ -5,7 +6,7 @@
 
     .vdo-section {
         position: relative;
-        height: 90vh;
+        min-height: 90vh;
 
         &::before {
             content: '';
@@ -45,6 +46,11 @@
             width: 65%;
             margin: auto;
             margin-bottom: 30px;
+
+            @include media_768 {
+                width: 80%;
+                font-size: 25px;
+            }
         }
 
         .highlighted-text-shadow {
@@ -58,6 +64,12 @@
             text-shadow: 0 9.36px 6.896px #6e5266, 0 -2px 1px #fff;
             letter-spacing: -4px;
 
+            @include media_768 {
+                font-size: 48px;
+                line-height: 50px;
+                margin-bottom: 10px;
+                margin-top: 30px;
+            }
         }
 
         .part-btn {
@@ -80,11 +92,13 @@
             line-height: 36px;
             margin-bottom: 20px;
         }
-        .note{
-            p{
+
+        .note {
+            p {
                 color: #fff;
             }
         }
+
         /* CSS */
         .part-btn {
             font-family: "Space Grotesk", sans-serif;
@@ -129,13 +143,17 @@
         }
 
         .withdrawal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             gap: 100px;
-            // border: 2px solid #fff;
-            // border-radius: 10px;
-            // width: 500px;
             margin: 30px auto;
 
-            // padding: 10px;
+            @include media_768 {
+                flex-direction: column;
+                gap: 10px;
+            }
+
             .withdrawal-amount {
                 background-color: #ffffff40;
                 border-radius: 10px;
@@ -166,12 +184,15 @@
         }
     }
 
-    .slider-game{
-        .slick-prev:before, .slick-next:before{
+    .slider-game {
+
+        .slick-prev:before,
+        .slick-next:before {
             color: #ff0cba;
         }
-        .border-card{
-            img{
+
+        .border-card {
+            img {
                 width: 100%;
             }
         }
@@ -186,6 +207,10 @@
             color: var(--white-color);
             font-size: 50px;
             font-weight: 700;
+
+            @include media_768 {
+                font-size: 28px;
+            }
         }
 
         p {
@@ -193,6 +218,12 @@
             font-size: 22px;
             width: 60%;
             margin: auto;
+
+            @include media_768 {
+                width: 100%;
+                font-size: 18px;
+
+            }
         }
     }
 
@@ -212,6 +243,12 @@
             flex-wrap: wrap;
             gap: 30px;
             margin-bottom: 50px;
+
+            @include media_768 {
+                width: 100%;
+                gap: 10px;
+            }
+
             .border-card {
                 width: calc(33% - 20px);
                 text-align: center;
@@ -219,6 +256,14 @@
                 padding: 10px;
                 border-radius: 10px;
                 background-color: #fff;
+
+                @include media_768 {
+                    width: calc(50% - 20px);
+
+                }
+                 @include media_768 {
+                    width: 100%;
+                }
 
                 p {
                     color: #000;
@@ -231,10 +276,10 @@
                     overflow: hidden;
                 }
 
-               img{
-                 width: 100%;
+                img {
+                    width: 100%;
                     overflow: hidden;
-               }
+                }
             }
         }
     }

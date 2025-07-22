@@ -39,6 +39,10 @@
                 @include media_1280 {
                     font-size: 35px;
                 }
+                 @include media_768 {
+                    font-size: 26px;
+                    margin-bottom: 10px;
+                }
             }
 
             span {

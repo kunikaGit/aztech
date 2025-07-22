@@ -55,6 +55,9 @@
 .withdraw-history-table {
   margin-top: 40px;
   h3 { margin-bottom: 16px; }
+  .az-table{
+    overflow-x: auto;
+  }
   table {
     width: 100%;
     border-collapse: collapse;

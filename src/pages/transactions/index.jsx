@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
-import imageMap from '../../utils/helpers';
-import { EditIcon } from '../../icons/icons';
-import { DeleteOutline } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import useApiRequest from "../../hook/useApiRequest";
 import { API_ENDPOINTS } from "../../constants/endPoints";
 import WalletCards from '../../component/dashboard/walletCards';
+import './transactions.scss';
 const Transactions = () => {
     const ITEMS_PER_PAGE = 10;
     const [currentPage, setCurrentPage] = useState(1);
@@ -71,7 +68,7 @@ const Transactions = () => {
     };
 
     return (
-        <div className='az-table'>
+        <div className='az-table transaction-table'>
             <div className='table-header'>
                 <div className='dash-heading'>
                     <h2>Total Transactions</h2>

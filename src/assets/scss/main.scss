@@ -213,7 +213,10 @@ section {
 		display: flex;
 		justify-content: space-between;
 		margin-bottom: 20px;
-
+		@include media_576{
+			flex-direction: column;
+			gap: 10px;
+		}
 		.dash-heading {
 			h2 {
 				margin-bottom: 4px;
@@ -264,6 +267,9 @@ section {
 			li {
 				list-style: none;
 
+				@include media_576{
+					width: 50%;
+				}
 				button {
 					border: none;
 					outline: none;
@@ -274,7 +280,10 @@ section {
 					color: var(--text-grey);
 					transition: all 0.3s ease;
 					font-weight: 500;
-
+					@include media_576{
+					width: 100%;
+					padding: 7px 5px;
+				}
 					&.active {
 						background-color: #22A6AC;
 						color: white;
@@ -293,6 +302,7 @@ section {
 		background-color: var(--white-color);
 		border-radius: 10px;
 		box-shadow: 0px 1px 5px 0px #00000040;
+		overflow-x: auto;
 	}
 
 	table {
@@ -307,6 +317,7 @@ section {
 				color: #000;
 				font-size: 16px;
 				padding: 12px;
+				white-space: nowrap;
 			}
 		}
 
@@ -322,33 +333,6 @@ section {
 			.custom-row {
 				position: relative;
 
-
-				// &::after {
-				// 	content: '';
-				// 	position: absolute;
-				// 	left: 0;
-				// 	top: 12px;
-				// 	height: 50px;
-				// 	width: 2px;
-				// }
-
-				// &.borders-0 {
-				// 	&::after {
-				// 		background-color: red;
-				// 	}
-				// }
-
-				// &.borders-1 {
-				// 	&::after {
-				// 		background-color: orange;
-				// 	}
-				// }
-
-				// &.borders-2 {
-				// 	&::after {
-				// 		background-color: pink;
-				// 	}
-				// }
 			}
 
 			td {
@@ -617,7 +601,10 @@ section {
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
-
+				@include media_576{
+					flex-direction: column;
+					gap: 10px;
+				}
 				img {
 					height: 40px;
 					width: 40px;
@@ -639,6 +626,9 @@ section {
 				button {
 					@include blue-btn(var(--blue-color), var(--white-color), 14px, 5px 10px, 6px);
 					font-weight: 500;
+					@include media_576{
+						width: 100%;
+					}
 				}
 			}
 		}

@@ -62,4 +62,7 @@ export const API_ENDPOINTS = {
 
     cashWalletTransactions:"/transactions/transfer-from-cash-wallet",
     azWalletTransactions:"/transactions/transfer-from-az-wallet",
+    gameWalletTransactions:"/transactions/transfer-from-game-wallet",
+
+    gameDetails:"/game/details",
 }

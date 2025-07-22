@@ -1,0 +1,197 @@
+/* 
+  FluidCard Component Styles
+  
+  Customization Guide:
+  - fillColor: Change the --fill-color CSS variable or pass fillColor prop
+  - fillPercentage: Adjust --fill-percentage or pass fillPercentage prop (0-100)
+  - backgroundImage: Pass backgroundImage prop with image URL
+  - Dimensions: Adjust --card-width and --card-height or pass width/height props
+*/
+
+.fluid-card {
+  position: relative;
+  width: var(--card-width, 400px);
+  height: var(--card-height, 300px);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.fluid-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15), 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Background Image Layer */
+.fluid-card__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fluid-card:hover .fluid-card__background {
+  transform: scale(1.1);
+}
+
+/* Overlay for better contrast */
+.fluid-card__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.246) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  transition: opacity 0.3s ease;
+}
+
+.fluid-card:hover .fluid-card__overlay {
+  opacity: 0.8;
+}
+
+/* Text Container - This creates the mask for hollow text */
+.fluid-card__text-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fluid Background Behind Text */
+.fluid-card__fluid-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--fill-percentage, 70%);
+  background: linear-gradient(
+    0deg,
+    var(--fill-color, #3B82F6) 0%,
+    rgba(59, 130, 246, 0.8) 70%,
+    rgba(59, 130, 246, 0.4) 100%
+  );
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0 0 20px 20px;
+  backdrop-filter: blur(5px);
+}
+
+.fluid-card:hover .fluid-card__fluid-bg {
+  height: calc(var(--fill-percentage, 70%) + 10%);
+  background: linear-gradient(
+    0deg,
+    var(--fill-color, #3B82F6) 0%,
+    rgba(59, 130, 246, 0.9) 50%,
+    rgba(59, 130, 246, 0.6) 100%
+  );
+}
+
+/* Hollow Text Effect */
+.fluid-card__text {
+  font-family: 'Arial Black', 'Helvetica Bold', sans-serif;
+  font-size: clamp(4rem, 12vw, 8rem);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  
+  /* Create hollow text effect */
+  color: transparent;
+  -webkit-text-stroke: 4px rgba(255, 255, 255, 0.9);
+  text-stroke: 4px rgba(255, 255, 255, 0.9);
+  
+  /* Mask the background through the text */
+  background: inherit;
+  background-clip: text;
+  -webkit-background-clip: text;
+  
+  /* Additional text shadow for depth */
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+  
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+  position: relative;
+}
+
+.fluid-card:hover .fluid-card__text {
+  -webkit-text-stroke: 5px rgba(255, 255, 255, 1);
+  text-stroke: 5px rgba(255, 255, 255, 1);
+  filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.4));
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .fluid-card {
+    width: min(90vw, var(--card-width, 400px));
+    height: min(70vw, var(--card-height, 300px));
+    border-radius: 15px;
+  }
+  
+  .fluid-card__text {
+    font-size: clamp(3rem, 15vw, 6rem);
+    -webkit-text-stroke: 3px rgba(255, 255, 255, 0.9);
+    text-stroke: 3px rgba(255, 255, 255, 0.9);
+  }
+  
+  .fluid-card:hover .fluid-card__text {
+    -webkit-text-stroke: 4px rgba(255, 255, 255, 1);
+    text-stroke: 4px rgba(255, 255, 255, 1);
+  }
+}
+
+@media (max-width: 480px) {
+  .fluid-card__text {
+    font-size: clamp(2.5rem, 18vw, 5rem);
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.9);
+    text-stroke: 2px rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* Animation Classes for Dynamic Effects */
+.fluid-card--animate-in {
+  animation: cardSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Pulse effect for fluid background */
+.fluid-card--pulse .fluid-card__fluid-bg {
+  animation: fluidPulse 3s ease-in-out infinite;
+}
+
+@keyframes fluidPulse {
+  0%, 100% {
+    height: var(--fill-percentage, 70%);
+    opacity: 1;
+  }
+  50% {
+    height: calc(var(--fill-percentage, 70%) + 5%);
+    opacity: 0.8;
+  }
+}

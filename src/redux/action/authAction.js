@@ -23,6 +23,8 @@ export const login = createAsyncThunk(
         localStorage.setItem("plan_id", data?.data.plan_id);
         localStorage.setItem("name", data?.data.name);
         localStorage.setItem("profile", data?.data.profile);
+        localStorage.setItem("game_plan", data?.data.game_plan);
+       
 
         dispatch(isloginSuccess());
       //  navigate("/")

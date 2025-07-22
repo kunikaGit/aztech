@@ -17,7 +17,9 @@ const initialState = {
   status:localStorage.getItem("status"),
   plan_id:localStorage.getItem("plan_id"),
   name:localStorage.getItem("name"),
-  profile:localStorage.getItem("profile")
+  profile:localStorage.getItem("profile"),
+  game_plan:localStorage.getItem("game_plan") || 'inactive'
+
 };
 
 
@@ -31,6 +33,8 @@ const authSlice = createSlice({
       const plan_id = localStorage.getItem("plan_id");
       const name = localStorage.getItem("name");
       const profile = localStorage.getItem("profile");
+      const game_plan = localStorage.getItem("game_plan");
+
       if (token) {
         return {
           ...state,
@@ -41,7 +45,8 @@ const authSlice = createSlice({
           plan_id,
           error: null,
           profile,
-          name
+          name,
+          game_plan
         };
       }
     },    

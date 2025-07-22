@@ -21,6 +21,10 @@ const WalletCards = ({ data }) => {
     const [recieversEmail, setRecieversEmail] = useState('')
     const [AZError, setAZError] = useState();
 
+    const [gameModal, setgameModal] = useState(false);
+    const [GameError, setGameError] = useState();
+
+
 
 
     const handleShowCash = (e) => {
@@ -35,12 +39,12 @@ const WalletCards = ({ data }) => {
 
     const handleShowGame = (e) => {
         e.preventDefault()
-        setCashModal(true)
+        setgameModal(true)
     }
 
     const handleShowWithdraw = (e) => {
         e.preventDefault()
-        setCashModal(true)
+        //setCashModal(true)
     }
 
 
@@ -52,17 +56,15 @@ const WalletCards = ({ data }) => {
         setAZModal('');
         setRecieversEmail('');
         setAZError('')
-        setAmount('')
+        setAmount('');
+        setGameError('');
+        setgameModal(false)
     }
 
     const handleWalletSelect = (value) => {
         setCashTransferWallet(value)
     }
 
-    const handleNext = (e) => {
-        e.preventDefault();
-
-    }
 
     const handleChangeAmount = (value) => {
         setAmount(value)
@@ -93,6 +95,14 @@ const WalletCards = ({ data }) => {
     }
 
     const validationCash = () => {
+                             if ( data?.cashWallet <amount) {
+            setGameError("Insufficient funds in your Cash Wallet.");
+            return false;
+        }
+        if (!amount || isNaN(amount) || parseFloat(amount) < 10) {
+            setAZError("Minimum transfer amount should be 10.");
+            return false;
+        }
         return true
     }
 
@@ -121,7 +131,63 @@ const WalletCards = ({ data }) => {
     }
 
     const validationAZ = () => {
-        return true
+        if (!recieversEmail || !/^\S+@\S+\.\S+$/.test(recieversEmail)) {
+            setAZError("Please enter a valid receiver email.");
+            return false;
+        }
+
+        if (!amount || isNaN(amount) || parseFloat(amount) < 10) {
+            setAZError("Minimum transfer amount should be 10.");
+            return false;
+        }
+
+
+                             if ( data?.azWallet <amount) {
+            setGameError("Insufficient funds in your AZ Wallet.");
+            return false;
+        }
+        return true;
+    };
+
+
+    const handleSubmitGame = async (e) => {
+        e.preventDefault();
+        try {
+
+            const valid = validationGame();
+            if (valid) {
+                let payload = {
+                    amount
+                }
+                let res = await fetchData(API_ENDPOINTS.gameWalletTransactions, navigate, 'POST', payload);
+                if (res.success) {
+                    successMsg(res.message)
+                } else {
+                    errorMsg(res.message)
+                }
+            } else {
+                errorMsg(AZError)
+            }
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const validationGame = () => {
+
+       
+                     if ( data?.gameWallet <amount) {
+            setGameError("Insufficient funds in your Game Wallet.");
+            return false;
+        }
+
+             if (!amount || isNaN(amount) || parseFloat(amount) < 10) {
+            setGameError("Minimum transfer amount should be 10.");
+            return false;
+        }
+
+        return true;
     }
 
     const handleChangeReciever = (value) => {
@@ -142,7 +208,7 @@ const WalletCards = ({ data }) => {
                         </div>
                     </div>
                     <p className='des'>Use this wallet to purchase premium mall products. Funds come from the Cash Wallet. You can also send money to others with a 1% fee.</p>
-                    <button type='button' onClick={e => { handleShowAZ(e, 'az') }} className='withdra-btn'>Purchase</button>
+                    <button type='button' onClick={e => { handleShowAZ(e, 'az') }} className='withdra-btn'>Purchase/Transfer</button>
                 </div>
                 <div className='card-wrapped theme-card'>
                     <div className='card-content'>
@@ -255,6 +321,35 @@ const WalletCards = ({ data }) => {
 
                     <div className="form-check">
                         <button className='btn-primary' disabled={recieversEmail && amount ? false : true} onClick={e => handleSubmitAZ(e)}>Submit</button>
+                    </div>
+
+
+                </div>
+            </Modal>
+
+            <Modal
+                show={gameModal
+                }
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+                centered
+                className='joining-modal'
+            >
+                <Modal.Header closeButton></Modal.Header>
+                <div className='content'>
+                    <h4>Transfer amount to Cash Wallet</h4>
+                    <div className="form-check">
+                        <label className="form-check-label" >
+                            Amount
+                            <input className="form-input" type="number" value={amount} onChange={e => { handleChangeAmount(e.target.value) }} />
+
+                        </label>
+
+                    </div>
+
+                    <div className="form-check">
+                        <button className='btn-primary' disabled={recieversEmail && amount ? false : true} onClick={e => handleSubmitGame(e)}>Submit</button>
                     </div>
 
 

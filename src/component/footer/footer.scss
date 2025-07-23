@@ -31,6 +31,10 @@
     flex-wrap: wrap;
     gap: 20px;
 
+    @include media_576 {
+      flex-direction: column;
+    }
+
   }
 
   &__section {
@@ -40,6 +44,10 @@
     @include media_1280 {
       flex: 1 1 180px;
       max-width: 180px;
+    }
+
+    @include media_576 {
+      flex: none;
     }
 
     p {
@@ -64,6 +72,10 @@
   &__logo {
     max-width: 200px;
     margin-bottom: 50px;
+
+    @include media_576 {
+      margin: 0;
+    }
   }
 
   &__social {

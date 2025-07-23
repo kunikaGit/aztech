@@ -24,12 +24,13 @@
       border-collapse: collapse;
 
       tr {
-        th,
+        th{
+            white-space: nowrap; 
+        }
         td {
           padding: 15px;
-          white-space: nowrap; // ✅ prevents text from wrapping
-          text-align: center;   // ✅ centers content inside cells
-          // border: 1px solid rgba(98, 102, 121, 0.325); // optional column borders
+          white-space: wrap; 
+          text-align: center;  
         }
 
         td:nth-child(2) {

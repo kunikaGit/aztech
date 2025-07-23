@@ -1,6 +1,7 @@
 @use '../../../assets/scss/mixin.scss' as *;
 
 .home-category-wrapped {
+    z-index: 0;
     padding-bottom: 120px;
     // .main-heading{
     //     width: 70%;

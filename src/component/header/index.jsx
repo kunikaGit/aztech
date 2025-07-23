@@ -151,7 +151,7 @@ const Header = () => {
                 onClose={toggleDrawer}
                 direction='left'
                 className='mobile-menu'
-                style={{ width: "200px" }}>
+                style={{ width: "250px" }}>
 
                 <ul>
                     <li>

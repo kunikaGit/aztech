@@ -102,14 +102,14 @@ const ScrTable = () => {
                                 <tbody>
                                     {scrList.map((item, index) => (
                                         <tr key={index}>
-                                            <td style={{ width: '10%' }}>{index + 1}</td>
-                                            <td style={{ width: '10%' }}>{item.name ?? "player"}</td>
-                                            <td style={{ width: '10%' }}>{item.total_sales_unit}</td>
-                                            <td style={{ width: '10%' }}>{parseFloat(item.total_sales_amount).toFixed(2)}</td>
-                                            <td style={{ width: '10%' }}>{parseFloat(item.reward_amount).toFixed(2)}</td>
-                                            <td style={{ width: '10%' }}>{parseFloat(item.reward_percentage).toFixed(0)}</td>
+                                            <td >{index + 1}</td>
+                                            <td >{item.name ?? "player"}</td>
+                                            <td >{item.total_sales_unit}</td>
+                                            <td >{parseFloat(item.total_sales_amount).toFixed(2)}</td>
+                                            <td >{parseFloat(item.reward_amount).toFixed(2)}</td>
+                                            <td >{parseFloat(item.reward_percentage).toFixed(0)}</td>
 
-                                            <td style={{ width: '10%' }}>{item.rank_name}</td>
+                                            <td >{item.rank_name}</td>
 
                                         </tr>
                                     ))}
@@ -162,11 +162,11 @@ const ScrTable = () => {
                                 <tbody>
                                     {referralRules.map((item, index) => (
                                         <tr key={index}>
-                                            <td style={{ width: '10%' }}>{index + 1}</td>
-                                            <td style={{ width: '10%' }}>{item.name}</td>
-                                            <td style={{ width: '10%' }}>{item.directs}</td>
-                                            <td style={{ width: '10%' }}>{item.description}</td>
-                                            <td style={{ width: '10%' }}>{parseFloat(item.percentage).toFixed(0)}</td>
+                                            <td >{index + 1}</td>
+                                            <td >{item.name}</td>
+                                            <td >{item.directs}</td>
+                                            <td >{item.description}</td>
+                                            <td >{parseFloat(item.percentage).toFixed(0)}</td>
                                         </tr>
                                     ))}
                                 </tbody>

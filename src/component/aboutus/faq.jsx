@@ -38,7 +38,7 @@ const Faq = () => {
                     Services from
                     2025!</h2>
             </div>
-            <div className='item2'>
+            {/* <div className='item2'>
                 <Accordion>
                     {list?.map((item, index) => (
                         <Accordion.Item
@@ -56,7 +56,7 @@ const Faq = () => {
                         </Accordion.Item>
                     ))}
                 </Accordion>
-            </div>
+            </div> */}
         </div>
     )
 }

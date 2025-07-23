@@ -1,6 +1,81 @@
  @use '../../assets/scss/mixin.scss' as *;
 
  header {
+      .searchbox {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+
+             input {
+                 width: 100%;
+                 padding: 8px 32px;
+                 border: 1px solid #ccc;
+                 font-family: "Poppins";
+                 background: #fff;
+                 z-index: 1;
+             }
+
+             .search-dropdown {
+                 position: absolute;
+                 top: 105%;
+                 left: 0;
+                 width: 100%;
+                 background: #ffffff !important; // ✅ force solid white
+                 border: 1px solid #ddd;
+                 border-radius: 8px;
+                 z-index: 1200;
+                 box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+                 padding: 10px;
+
+             }
+
+
+             .section-block {
+                 margin-bottom: 12px;
+
+                 h5 {
+                     font-size: 14px;
+                     font-weight: 600;
+                     margin-bottom: 6px;
+                     border-bottom: 1px solid #eee;
+                     padding-bottom: 4px;
+                 }
+
+                 .scroll-list {
+                     max-height: 160px;
+                     overflow-y: auto;
+                     padding-right: 6px;
+
+                     ul {
+                         list-style: none;
+                         margin: 0;
+                         padding: 0;
+
+                         li {
+                             padding: 6px 0;
+                             cursor: pointer;
+                             white-space: nowrap; // ✅ FORCE 1 LINE
+                             overflow: hidden;
+                             text-overflow: ellipsis;
+                             transition: background 0.2s;
+         @include media_768{
+                    margin-bottom:0;
+                    font-size: 12px;
+                 }
+                             &:hover {
+                                 background-color: #f1f1f1;
+                             }
+                         }
+                     }
+
+                     .no-result {
+                         font-size: 13px;
+                         color: #888;
+                         padding: 6px 0;
+                     }
+                 }
+             }
+         }
      .menu-toggle {
          display: none;
 
@@ -17,7 +92,7 @@
 
      }
      .mobile-menu {
-         padding: 20px;
+         padding: 20px 10px;
       .searchbox {
             position: relative;
             width: 100%;
@@ -30,6 +105,7 @@
              li {
                  list-style: none;
                  margin-bottom: 20px;
+        
              }
          }
      }
@@ -76,77 +152,7 @@
 
 
 
-         .searchbox {
-            position: relative;
-            width: 100%;
-            max-width: 100%;
-
-             input {
-                 width: 100%;
-                 padding: 8px 32px;
-                 border: 1px solid #ccc;
-                 font-family: "Poppins";
-                 background: #fff;
-                 z-index: 1;
-             }
-
-             .search-dropdown {
-                 position: absolute;
-                 top: 105%;
-                 left: 0;
-                 width: 100%;
-                 background: #ffffff !important; // ✅ force solid white
-                 border: 1px solid #ddd;
-                 border-radius: 8px;
-                 z-index: 1200;
-                 box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-                 padding: 10px;
-             }
-
-
-             .section-block {
-                 margin-bottom: 12px;
-
-                 h5 {
-                     font-size: 14px;
-                     font-weight: 600;
-                     margin-bottom: 6px;
-                     border-bottom: 1px solid #eee;
-                     padding-bottom: 4px;
-                 }
-
-                 .scroll-list {
-                     max-height: 160px;
-                     overflow-y: auto;
-                     padding-right: 6px;
-
-                     ul {
-                         list-style: none;
-                         margin: 0;
-                         padding: 0;
-
-                         li {
-                             padding: 6px 0;
-                             cursor: pointer;
-                             white-space: nowrap; // ✅ FORCE 1 LINE
-                             overflow: hidden;
-                             text-overflow: ellipsis;
-                             transition: background 0.2s;
-
-                             &:hover {
-                                 background-color: #f1f1f1;
-                             }
-                         }
-                     }
-
-                     .no-result {
-                         font-size: 13px;
-                         color: #888;
-                         padding: 6px 0;
-                     }
-                 }
-             }
-         }
+       
 
 
 

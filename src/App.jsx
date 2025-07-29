@@ -5,6 +5,7 @@ import 'react-modern-drawer/dist/index.css'
 import RoutesMain from './routes/routes';
 import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from './context/themeContext';
+import {useEffect } from'react';
 function App() {
   // useEffect(() => {
   //   const handleContextMenu = (e) => {

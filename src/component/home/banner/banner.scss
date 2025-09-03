@@ -3,6 +3,10 @@
 .banner {
     padding: 80px 0 80px 0;
 
+    @include media_576 {
+        padding: 50px 0 50px 0;
+    }
+
     .slider-container {
         @include media_768 {
             display: none;
@@ -35,7 +39,9 @@
                 height: 50px; // control height
 
                 @include media_576 {
-                    width: 300px;
+                    width: 100%;
+                    height: 42px;
+                    padding: 0 2px;
                 }
 
                 input {
@@ -46,11 +52,19 @@
                     font-size: 12px;
                     font-family: 'Poppins', sans-serif;
 
+                    @include media_576 {
+                        padding: 5px;
+                    }
+
                     &::placeholder {
                         font-size: 16px;
                         color: #020202;
                         font-family: 'Poppins', sans-serif;
                         transition: color 0.3s ease;
+
+                        @include media_576 {
+                            font-size: 12px;
+                        }
                     }
 
                     // Optional: blinking effect for '|' at the end of placeholder
@@ -234,8 +248,9 @@
                     font-size: 40px;
                     line-height: 45px;
                 }
-                 @include media_576 {
-                    font-size: 30px;
+
+                @include media_576 {
+                    font-size: 26px;
                     line-height: 45px;
                 }
             }

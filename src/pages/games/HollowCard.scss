@@ -9,7 +9,7 @@
 
 .hollow-card {
   position: relative;
-  width: 250px;
+  width: 500px;
   height: 250px;
   border-radius: 8px;
   overflow: hidden;
@@ -22,7 +22,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(204, 204, 204);
+  background-color: transparent; //rgb(204, 204, 204);
 }
 
 .hollow-card__fill {

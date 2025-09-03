@@ -9,7 +9,7 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
 const Quiz = React.memo(() => {
     const [quiz, setQuiz] = useState([]);
 
-    const [quizDetails, setQuizDetails] = useState({set_name:"",created_at:"",end_at:"",duration:"",questions_length:""});
+    const [quizDetails, setQuizDetails] = useState({set_name:"",created_at:"",duration:"",questions_length:""});
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswers, setSelectedAnswers] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -20,8 +20,8 @@ const Quiz = React.memo(() => {
     const [yourAnswers, setYourAnswers] = useState([]);
     const [grade, setGrade] = useState(null);
     // Share results state
-    const [emails, setEmails] = useState([""]);
-    const [shareLoading, setShareLoading] = useState(false);
+    // const [emails, setEmails] = useState([""]);
+    // const [shareLoading, setShareLoading] = useState(false);
 
     const { fetchData } = useApiRequest();
     const navigate = useNavigate();
@@ -30,6 +30,33 @@ const Quiz = React.memo(() => {
     const session_id = queryParams.get('session_id');
 
     
+    // here I want a to call use effect to check the end_at and if the time of end_at come call handleSubmit()
+
+// useEffect(() => {
+//     const checkEndTime = () => {
+//         const createdAt = new Date(quizDetails.created_at); // the created_at will come here as Wed Aug 13 2025 23:07:50 GMT+0530 (India Standard Time) and I want to add duration in that and duration will come in minutes as 20
+//         const duration = quizDetails.duration || 0;
+//         const endTime = new Date(createdAt.getTime() + duration * 60000);//
+//         const currentTime = new Date();
+//         console.log("End Time:", endTime, "Current Time:", currentTime);
+//         // I am getting End Time: Invalid Date Current Time: Wed Aug 13 2025 23:15:01 GMT+0530 (India Standard Time)
+//         console.log("Created At:", createdAt);
+//         console.log("Duration:", duration);
+
+//         // if (endTime <= currentTime && !isSubmitted) {
+//         //     handleSubmit();
+//         // }
+//     };
+
+//     // run immediately on mount
+//     checkEndTime();
+
+//     // then run every minute
+//     const intervalId = setInterval(checkEndTime, 60000); // 60 seconds
+//     return () => clearInterval(intervalId);
+
+// }, []);
+
 
     useEffect(() => {
         callApi();
@@ -110,42 +137,42 @@ const Quiz = React.memo(() => {
     const progress = ((currentQuestionIndex + 1) / quizDetails.questions_length) * 100;
 
     // Add email input
-    const handleEmailChange = (idx, value) => {
-        const newEmails = [...emails];
-        newEmails[idx] = value;
-        setEmails(newEmails);
-    };
+    // const handleEmailChange = (idx, value) => {
+    //     const newEmails = [...emails];
+    //     newEmails[idx] = value;
+    //     setEmails(newEmails);
+    // };
 
-    const handleAddEmail = () => {
-        if (emails.length < 2) setEmails([...emails, ""]);
-    };
+    // const handleAddEmail = () => {
+    //     if (emails.length < 2) setEmails([...emails, ""]);
+    // };
 
-    const handleRemoveEmail = (idx) => {
-        if (emails.length > 1) setEmails(emails.filter((_, i) => i !== idx));
-    };
+    // const handleRemoveEmail = (idx) => {
+    //     if (emails.length > 1) setEmails(emails.filter((_, i) => i !== idx));
+    // };
 
-    const handleShareResults = async () => {
-        // Validate emails
-        const validEmails = emails.filter(e => e.trim() !== "");
-        if (validEmails.length === 0) {
-            errorMsg("Please enter at least one email address.");
-            return;
-        }
-        for (let email of validEmails) {
-            if (!/^\S+@\S+\.\S+$/.test(email)) {
-                errorMsg("Please enter valid email addresses.");
-                return;
-            }
-        }
-        setShareLoading(true);
-        try {
-           successMsg("Results shared successfully");
-        } catch {
-            errorMsg("Failed to share results.");
-        } finally {
-            setShareLoading(false);
-        }
-    };
+    // const handleShareResults = async () => {
+    //     // Validate emails
+    //     const validEmails = emails.filter(e => e.trim() !== "");
+    //     if (validEmails.length === 0) {
+    //         errorMsg("Please enter at least one email address.");
+    //         return;
+    //     }
+    //     for (let email of validEmails) {
+    //         if (!/^\S+@\S+\.\S+$/.test(email)) {
+    //             errorMsg("Please enter valid email addresses.");
+    //             return;
+    //         }
+    //     }
+    //     setShareLoading(true);
+    //     try {
+    //        successMsg("Results shared successfully");
+    //     } catch {
+    //         errorMsg("Failed to share results.");
+    //     } finally {
+    //         setShareLoading(false);
+    //     }
+    // };
 
     if (quiz.length === 0) {
         return (
@@ -264,7 +291,7 @@ const Quiz = React.memo(() => {
                         </div>
 
 
-                        <div className="share-results">
+                        {/* <div className="share-results">
                             <h3>Share Results</h3>
                             {emails.map((email, idx) => (
                                 <div className="email-input-row" key={idx}>
@@ -300,7 +327,7 @@ const Quiz = React.memo(() => {
                                     {shareLoading ? 'Sharing...' : 'Share'}
                                 </button>
                             </div>
-                        </div>
+                        </div> */}
                         
                         <button
                             className="nav-btn"

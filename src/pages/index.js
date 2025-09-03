@@ -23,6 +23,8 @@ export { default as Quiz } from "./quiz";
 export { default as SubCategory } from "./subcategory/index";
 export { default as Games } from "./games";
 export { default as Help } from "./help";
+export { default as QuizStart } from "./quiz/startQuiz";
+
 
 
 

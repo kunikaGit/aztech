@@ -50,36 +50,6 @@ const Games = () => {
 
     const { fetchData } = useApiRequest();
     const navigate = useNavigate();
-    const [list, setList] = useState([
-        {
-            title: "Car Simulator",
-            link: "https://html5.gamemonetize.co/h31mj5h9t2r0imhvrmwf3xelw5nw2vjf/"
-        },
-        {
-            title: "Zombie Shooter",
-            link: "https://html5.gamemonetize.co/4fhv9bnnvkkv8xi4k1a5hl5res510tw5/"
-        },
-
-        {
-            title: "Car Simulator",
-            link: "https://html5.gamemonetize.co/0bjxllp6iiy7ygc1qgwwt5lnsnr741ia/"
-        },
-        {
-            title: "Zombie Shooter",
-            link: "https://html5.gamemonetize.co/5gv5nhrtgk7s57iddr7kxnxneuxugiya/"
-        },
-
-        {
-            title: "Car Simulator",
-            link: "https://html5.gamemonetize.co/wp9o3vgbgwsitkvnnit9emgdmxecn3jw/"
-        },
-        {
-            title: "Zombie Shooter",
-            link: "https://html5.gamemonetize.co/0fgyb9jvnyq1g35j2sz3aehyjabxvy2e/"
-        },
-
-
-    ])
 
     const [gameDetails, setGameDetails] = useState(null);
 
@@ -132,6 +102,7 @@ const Games = () => {
         }
     ]);
 
+        const [gameArray3, setGameArray3] = useState([{link:"https://html5.gamemonetize.co/ghsqbsab3s37q5x2gk5k54w6shwl4i5f/",name:"Mr Autofire"}, {link:"https://html5.gamemonetize.co/8sttq4hfxsvoveqhy43cp39updyjcs48/",name:"Stop Zombies"},{ link:"https://html5.gamemonetize.co/6afbjlwlbhxw5d3diva2y8qcq12paknn/",name:"Tile Stamper"}, {link:"https://html5.gamemonetize.co/2phx77hb3rbyjwskesu03phcv7d8d8k4/",name:"Save Earth"}, {link:"https://html5.gamemonetize.co/mlj93g4er4ynh1smd4fm0c0ecbuygg68/",name:"Trick Arrow"}, {link:"https://html5.gamemonetize.co/if45nr0axy9o1wlasn2cwo0u04r1i59z/",name:"Bob the builder coloring"}, {link:"https://html5.gamemonetize.co/wtv21hm84crp7qcztjsvkl5tuxa1uwzk/",name:"Tung Tung Sahur Supermarket"},{ link:"https://html5.gamemonetize.co/r85hwpgbjc07uasm61ypwqqd6fgq40fr/",name:"Data Breach"}, {link:"https://html5.gamemonetize.co/747rmx6lgnjk5zl63keg5fz24wz5ge4v/",name:"Monster Rush"}, {link:"https://html5.gamemonetize.co/i0otyw47jtfd4u20u8cwxtuzq8vxjlia/",name:"Bottle Flip"}, {link:"https://html5.gamemonetize.co/kzgs6w7m9a6oipotviw3o2mclc0b0zxk/",name:"Chicken Dash"},{ link:"https://html5.gamemonetize.co/xeb0zdlwn0qpzwl2e9wbwqajdy15ho23/",name:"Block Breaker"}, {link:"https://html5.gamemonetize.co/gisd00oq9kft4npyvub4v2ibqrp3x98j/",name:"Drive Mad 2"}, {link:"https://html5.gamemonetize.co/1q6swhq95j9i4olu3luuea72ocg1ornl/",name:"Spirit Boy"}, {link:"https://html5.gamemonetize.co/h8381esputdzb7w30swugmh9aufj4lrz/",name:"Tennis Dash"}, {link:"https://html5.gamemonetize.co/30dx8hml6r4cfbx0bj341mfnaqnkkrrm/",name:"Black and Pink"}, {link:"https://html5.gamemonetize.co/6jn2zmjsqtxy1e6dwju2346nhggg3h3h/",name:"Italian Brainroot Pizza"}, {link:"https://html5.gamemonetize.co/2fv0ll1x7y0tpbax9wv27skdijx8nxs1/",name:"Mystireous Familiar Encharand Bestiar"}, {link:"https://html5.gamemonetize.co/h31mj5h9t2r0imhvrmwf3xelw5nw2vjf/",name:"Hide And Luig"}, {link:"https://html5.gamemonetize.co/4fhv9bnnvkkv8xi4k1a5hl5res510tw5/",name:"I am Security"}, {link:"https://html5.gamemonetize.co/0bjxllp6iiy7ygc1qgwwt5lnsnr741ia/",name:"Girls Nail Fashion Salon"}, {link:"https://html5.gamemonetize.co/5gv5nhrtgk7s57iddr7kxnxneuxugiya/",name:"Dark Spirint"}, {link:"https://html5.gamemonetize.co/wp9o3vgbgwsitkvnnit9emgdmxecn3jw/",name:"Magic Piano Music"}, {link:"https://html5.gamemonetize.co/0fgyb9jvnyq1g35j2sz3aehyjabxvy2e/",name:"Shish Fruit"}])
 
     useEffect(() => {
         callApi()
@@ -277,6 +248,27 @@ const Games = () => {
                     <h3> Play free games under az community</h3>
                     <p>Enjoy a variety of engaging and fun games, absolutely free—exclusively for our community members!</p>
                 </div>
+                {/* <div className="game-list-3col" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, margin: '21px 0' }}>
+                    {gameArray3.map((game, idx) => (
+                        <div key={idx} className="border-card p-3" style={{ cursor: 'pointer', textAlign: 'center' }} onClick={e => handleGame2(e, game.link)}>
+                            <div style={{ fontWeight: 600, marginBottom: 8 ,color:"#ff0cba"}}>{game.name}</div>
+                          
+                        </div>
+                    ))}
+                </div> */}
+                <div className="game-list-3col" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, margin: '32px 0',marginLeft: '132px' }}>
+    {gameArray3.map((game, idx) => (
+        <div
+            key={idx}
+            className="border-card p-3"
+            style={{ cursor: 'pointer', textAlign: 'left', display: 'flex', alignItems: 'center', gap: 8 }}
+            onClick={e => handleGame2(e, game.link)}
+        >
+            <span style={{ fontSize: 18, color: '#ff0cba' }}>➔</span>
+            <div style={{ fontWeight: 600, marginBottom: 8, color: "#ff0cba" }}>{game.name}</div>
+        </div>
+    ))}
+</div>
                 <div className='slider-game'>
                     <Slider {...settings}>
                         {gameArray2.map((item, index) => (

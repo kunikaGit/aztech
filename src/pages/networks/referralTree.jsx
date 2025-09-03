@@ -23,7 +23,7 @@ const ReferralTree = ({ data }) => {
     attributes: {
       Status: node.status === 'active' ? 'Active' : 'Inactive',
       Email: node.email || 'N/A',
-      JoinDate: node.created_at ? new Date(node.created_at).toLocaleDateString() : 'N/A',
+      JoinDate: node.joining_date ? new Date(node.joining_date).toLocaleDateString() : 'N/A',
       Referrals: node.referrals?.length || 0
     },
     children: node.referrals?.map(mapToTreeFormat) || [],

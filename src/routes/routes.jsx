@@ -8,7 +8,7 @@ import {
   TermsContions,
   PrivacyPolicy,
   Faq,
-  Quiz,Settings,SubCategory
+  Quiz,Settings,SubCategory,QuizStart
 } from '../pages';
 import Mainlayout from '../mainlayout';
 import DashboardOutlet from '../pages/dashboardOutlet';
@@ -27,6 +27,8 @@ const RoutesMain = () => {
         <Route path={`${baseUrl}success`} element={<SuccessStatus />} />
         <Route path={`${baseUrl}failed`} element={<FailedStatus />} />
         <Route path={`${baseUrl}quiz`} element={<Quiz />} />
+        <Route path={`${baseUrl}start-quiz`} element={<QuizStart />} />
+
 
         <Route path={`${baseUrl}`} element={<Home />} />
         <Route path={`${baseUrl}myaccount/games`} element={<Games />} />

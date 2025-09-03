@@ -58,12 +58,16 @@ const ProductDetail = () => {
         try {
             if (auth_token) {
                 if (plan_id >= list[0].plan_included) {
-                    let res = await fetchData(`${API_ENDPOINTS.openProduct}?id=${ids}`, navigate, 'GET', {});
-                    if (res.success) {
-                        if (list[0].format === 'quiz') {
-                            window.open(res.data[0].link, '_blank');
+                      if (list[0].format === 'quiz') {
+                            window.open(`${baseUrl}start-quiz?id=${ids}`, '_blank');
                             return
                         }
+                    let res = await fetchData(`${API_ENDPOINTS.openProduct}?id=${ids}`, navigate, 'POST', {});
+                    if (res.success) {
+                        // if (list[0].format === 'quiz') {
+                        //     window.open(res.data[0].link, '_blank');
+                        //     return
+                        // }
 
 
                         if (res.data[0].link) {
